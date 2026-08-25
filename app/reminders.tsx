@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Linking, Pressable, StyleSheet, Switch, View } from 'react-native';
 
-import { Button, Card, Screen, Stepper, Text } from '@/components';
+import { Button, Card, Screen, Text, TimePicker } from '@/components';
 import { reminderCopy } from '@/content/reminders';
 import { formatTime } from '@/lib/date';
 import {
@@ -14,7 +14,8 @@ import {
 import { useAppState } from '@/state/AppState';
 import { colors, palette, spacing } from '@/theme';
 
-const MINUTE_STEP = 5;
+/** How long the picker must be still before the new time is saved. */
+const COMMIT_DELAY_MS = 350;
 
 /**
  * One daily reminder, scheduled locally. The switch owns the permission dance;
@@ -28,6 +29,10 @@ export default function RemindersScreen() {
   const [permission, setPermission] = useState<PermissionState>('undetermined');
   const [scheduled, setScheduled] = useState(0);
   const [busy, setBusy] = useState(false);
+  // A spinning wheel fires continuously, and each save would otherwise mean an
+  // AsyncStorage write plus a cancel-and-reschedule against the OS.
+  const [draft, setDraft] = useState<{ hour: number; minute: number } | null>(null);
+  const shown = draft ?? { hour, minute };
 
   const refresh = useCallback(async () => {
     setPermission(await getPermissionState());
@@ -59,14 +64,16 @@ export default function RemindersScreen() {
     }
   };
 
-  const shiftHour = (delta: number) =>
-    updateReminders({ hour: (hour + delta + 24) % 24 });
-
-  const shiftMinute = (delta: number) => {
-    const total = hour * 60 + minute + delta * MINUTE_STEP;
-    const wrapped = (total + 24 * 60) % (24 * 60);
-    return updateReminders({ hour: Math.floor(wrapped / 60), minute: wrapped % 60 });
-  };
+  // Commits the draft once the picker settles, then hands control back to the store.
+  useEffect(() => {
+    if (!draft) return;
+    if (draft.hour === hour && draft.minute === minute) {
+      setDraft(null);
+      return;
+    }
+    const commit = setTimeout(() => void updateReminders(draft), COMMIT_DELAY_MS);
+    return () => clearTimeout(commit);
+  }, [draft, hour, minute, updateReminders]);
 
   const copy = reminderCopy(progress?.stage ?? null);
   const blocked = enabled && permission !== 'granted';
@@ -94,7 +101,7 @@ export default function RemindersScreen() {
           <View style={styles.switchText}>
             <Text variant="subheading">Daily reminder</Text>
             <Text variant="small" color={colors.textFaint}>
-              {enabled ? `Every day at ${formatTime(hour, minute)}` : 'Off'}
+              {enabled ? `Every day at ${formatTime(shown.hour, shown.minute)}` : 'Off'}
             </Text>
           </View>
           <Switch
@@ -128,29 +135,13 @@ export default function RemindersScreen() {
         <>
           <Card>
             <Text variant="label">Time</Text>
-            <Text variant="hero" center>
-              {formatTime(hour, minute)}
-            </Text>
-            <View style={styles.timeRow}>
-              <Stepper
-                label="Hour"
-                size="compact"
-                value={formatTime(hour, 0).replace(/:\d\d/, '')}
-                onDecrement={() => shiftHour(-1)}
-                onIncrement={() => shiftHour(1)}
-                decrementLabel="An hour earlier"
-                incrementLabel="An hour later"
-              />
-              <Stepper
-                label="Minute"
-                size="compact"
-                value={`${minute}`.padStart(2, '0')}
-                onDecrement={() => shiftMinute(-1)}
-                onIncrement={() => shiftMinute(1)}
-                decrementLabel="Five minutes earlier"
-                incrementLabel="Five minutes later"
-              />
-            </View>
+            <TimePicker
+              hour={shown.hour}
+              minute={shown.minute}
+              onChange={(nextHour, nextMinute) =>
+                setDraft({ hour: nextHour, minute: nextMinute })
+              }
+            />
           </Card>
 
           <Card tint={colors.surfaceSunken}>
@@ -189,13 +180,5 @@ const styles = StyleSheet.create({
   switchText: {
     flex: 1,
     gap: 2,
-  },
-  timeRow: {
-    flexDirection: 'row',
-    gap: spacing.lg,
-    borderTopWidth: 1,
-    borderTopColor: colors.border,
-    paddingTop: spacing.lg,
-    marginTop: spacing.xs,
   },
 });

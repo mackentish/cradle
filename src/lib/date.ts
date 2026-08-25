@@ -53,8 +53,24 @@ export function formatLongDate(date: Date): string {
 
 /** "9:00 AM" — respects the device's 12/24-hour preference. */
 export function formatTime(hour: number, minute: number): string {
-  const date = new Date(2000, 0, 1, hour, minute);
-  return date.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+  return dateAtTime(hour, minute).toLocaleTimeString(undefined, {
+    hour: 'numeric',
+    minute: '2-digit',
+  });
+}
+
+/** Today at the given wall-clock time. Native pickers take a Date, not h/m. */
+export function dateAtTime(hour: number, minute: number, base: Date = new Date()): Date {
+  return new Date(base.getFullYear(), base.getMonth(), base.getDate(), hour, minute, 0, 0);
+}
+
+/**
+ * Whether this locale uses a 24-hour clock. Android's picker defaults to 24h
+ * regardless of locale, so it has to be told.
+ */
+export function prefers24Hour(): boolean {
+  const formatted = dateAtTime(13, 0).toLocaleTimeString(undefined, { hour: 'numeric' });
+  return !/[ap]\.?\s?m\.?/i.test(formatted);
 }
 
 export function formatDuration(totalSeconds: number): string {

@@ -13,7 +13,8 @@ npm install
 npm start          # then press i / a, or scan with Expo Go
 ```
 
-Requires Node 20+. Works in Expo Go — every dependency is either part of the Expo SDK or pure JS.
+Requires Node 20+. Works in Expo Go — every dependency is part of the Expo SDK or pure JS, including
+the native `@expo/ui` pickers, whose module ships inside Expo Go.
 
 ```sh
 npx tsc --noEmit                        # typecheck
@@ -86,6 +87,13 @@ breathing, not building strength.
 Enabling requests permission and saves `enabled: false` if refused, so the switch never reads as on
 while the OS is dropping every notification. If permission is revoked later, the screen says so and
 offers a route into system settings.
+
+The time is picked with the real system control, via `@expo/ui` — a SwiftUI wheel on iOS and a
+Material 3 clock dial on Android. Their prop shapes differ enough that `TimePicker` is split by
+platform extension (`.ios.tsx` / `.android.tsx`), with `TimePicker.tsx` falling back to steppers on
+web; all three share `TimePicker.types.ts`. Both native pickers are left uncontrolled — feeding the
+selection back down mid-scroll fights the wheel — and the reminders screen debounces before saving,
+since a spinning wheel would otherwise mean an AsyncStorage write and a reschedule per frame.
 
 ## No backend, on purpose
 

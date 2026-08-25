@@ -8,4 +8,6 @@ export { Pill } from './Pill';
 export { ProgressRing } from './ProgressRing';
 export { Screen } from './Screen';
 export { Stepper } from './Stepper';
+export { TimePicker } from './TimePicker';
+export type { TimePickerProps } from './TimePicker.types';
 export { Text } from './Text';

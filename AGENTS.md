@@ -10,6 +10,11 @@ Expo SDK 57 + expo-router, TypeScript, no backend. See README.md for the domain 
 
 - **Stay Expo Go compatible.** Every dependency must be in the Expo SDK or pure JS. No custom native
   modules — that's why the date entry is plain number fields and the icons are hand-rolled SVG.
+  `@expo/ui` is fine because its native module is compiled into Expo Go; check before reaching for
+  anything else with an `ios/` directory.
+- **`@expo/ui` is pre-1.0 and its API shifts between SDKs.** Keep it behind a component of ours
+  (`TimePicker`) so an upstream change is a one-file fix, and keep the platform split in
+  `.ios.tsx` / `.android.tsx` — the SwiftUI and Compose prop shapes genuinely differ.
 - **No network calls, ever.** The whole promise is that nothing leaves the device. Content is
   bundled; state is in AsyncStorage.
 - **Reminders are local notifications only.** Never add push tokens, `getExpoPushTokenAsync`, or
