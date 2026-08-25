@@ -7,4 +7,5 @@ export { Icon, type IconName } from './Icon';
 export { Pill } from './Pill';
 export { ProgressRing } from './ProgressRing';
 export { Screen } from './Screen';
+export { Stepper } from './Stepper';
 export { Text } from './Text';

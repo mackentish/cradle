@@ -51,6 +51,12 @@ export function formatLongDate(date: Date): string {
   });
 }
 
+/** "9:00 AM" — respects the device's 12/24-hour preference. */
+export function formatTime(hour: number, minute: number): string {
+  const date = new Date(2000, 0, 1, hour, minute);
+  return date.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+}
+
 export function formatDuration(totalSeconds: number): string {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;

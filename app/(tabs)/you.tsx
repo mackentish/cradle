@@ -5,7 +5,7 @@ import { Alert, Pressable, Share, StyleSheet, View } from 'react-native';
 import { Card, Pill, Screen, Text } from '@/components';
 import { PT_NOTE, RED_FLAGS, SAFETY_INTRO } from '@/content/safety';
 import { describeProgress } from '@/domain/pregnancy';
-import { formatLongDate, fromDayKey } from '@/lib/date';
+import { formatLongDate, formatTime, fromDayKey } from '@/lib/date';
 import { buildBackup } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
 import { colors, radius, spacing } from '@/theme';
@@ -65,6 +65,19 @@ export default function YouScreen() {
         {profile.birthDate ? (
           <Pill label="Postpartum programme" tint={colors.accentSoft} ink={colors.accent} />
         ) : null}
+      </Card>
+
+      <Card>
+        <Text variant="label">Reminders</Text>
+        <Row
+          label="Daily reminder"
+          value={
+            profile.reminders.enabled
+              ? formatTime(profile.reminders.hour, profile.reminders.minute)
+              : 'Off'
+          }
+          onPress={() => router.push('/reminders')}
+        />
       </Card>
 
       <Card>

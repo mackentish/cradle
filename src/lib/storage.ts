@@ -14,6 +14,7 @@ export const emptyProfile: Profile = {
   birthDate: null,
   name: null,
   acknowledgedDisclaimerAt: null,
+  reminders: { enabled: false, hour: 9, minute: 0 },
 };
 
 export async function loadProfile(): Promise<Profile> {

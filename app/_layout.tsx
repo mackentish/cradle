@@ -16,8 +16,12 @@ import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { configureNotifications } from '@/lib/notifications';
 import { AppStateProvider } from '@/state/AppState';
 import { colors } from '@/theme';
+
+// How a reminder behaves if it fires while the app is open. Set once, at import.
+configureNotifications();
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
@@ -57,6 +61,7 @@ export default function RootLayout() {
             options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
           />
           <Stack.Screen name="plan" options={{ animation: 'slide_from_right' }} />
+          <Stack.Screen name="reminders" options={{ animation: 'slide_from_right' }} />
           <Stack.Screen name="exercise/[id]" options={{ animation: 'slide_from_right' }} />
         </Stack>
       </AppStateProvider>

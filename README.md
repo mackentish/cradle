@@ -71,9 +71,25 @@ Dusty rose primary, sage secondary, warm cream background. Quicksand for heading
 — both rounded, both free. Tokens live in `src/theme`; the palette is the only place to change a
 colour.
 
+## Reminders
+
+One daily reminder, off by default, toggled in **You → Daily reminder**. It's a *local*
+notification: `expo-notifications` hands iOS/Android a single `DAILY` trigger that repeats on the
+device forever until cancelled. No push token, no server, no network — it fires with the phone in
+airplane mode.
+
+`src/lib/notifications.ts` is the only place that talks to the OS. `AppState` re-syncs on every
+launch and whenever the settings or the current stage change, which means the wording follows the
+programme (`src/content/reminders.ts`) — a third-trimester reminder talks about opening and
+breathing, not building strength.
+
+Enabling requests permission and saves `enabled: false` if refused, so the switch never reads as on
+while the OS is dropping every notification. If permission is revoked later, the screen says so and
+offers a route into system settings.
+
 ## No backend, on purpose
 
-- Due date, birth date and session history are in `AsyncStorage`, keyed and versioned.
+- Due date, birth date, reminder settings and session history are in `AsyncStorage`, keyed and versioned.
 - Deleting the app deletes the history. **You → Export a backup** shares a JSON blob;
   **Restore from a backup** pastes it back.
 - Content changes ship with an app release (or EAS Update).
@@ -91,7 +107,6 @@ prominent.
 
 ## Not built yet
 
-- Local notification reminders (`expo-notifications`)
 - Illustrations or audio cues for the session player
 - A "how did that feel?" note after each session
 - App icon and splash art (still the Expo template)

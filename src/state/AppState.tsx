@@ -9,8 +9,9 @@ import React, {
 } from 'react';
 
 import { getProgress } from '@/domain/pregnancy';
-import type { Profile, Progress, SessionLog } from '@/domain/types';
+import type { Profile, Progress, ReminderSettings, SessionLog } from '@/domain/types';
 import { toDayKey } from '@/lib/date';
+import { syncReminders } from '@/lib/notifications';
 import {
   clearAll,
   emptyProfile,
@@ -29,6 +30,7 @@ type AppStateValue = {
   stats: StreakSummary;
   onboarded: boolean;
   updateProfile: (patch: Partial<Profile>) => Promise<void>;
+  updateReminders: (patch: Partial<ReminderSettings>) => Promise<void>;
   logSession: (log: Omit<SessionLog, 'day' | 'completedAt'>) => Promise<void>;
   removeLog: (completedAt: string) => Promise<void>;
   replaceAll: (profile: Profile, logs: SessionLog[]) => Promise<void>;
@@ -80,6 +82,14 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     [commitProfile]
   );
 
+  const updateReminders = useCallback(
+    (patch: Partial<ReminderSettings>) => {
+      const current = profileRef.current;
+      return commitProfile({ ...current, reminders: { ...current.reminders, ...patch } });
+    },
+    [commitProfile]
+  );
+
   const logSession = useCallback(
     (log: Omit<SessionLog, 'day' | 'completedAt'>) => {
       const now = new Date();
@@ -110,9 +120,20 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
     await clearAll();
   }, []);
 
-  const value = useMemo<AppStateValue>(() => {
-    const progress = getProgress(profile);
-    return {
+  const progress = useMemo(() => getProgress(profile), [profile]);
+
+  // Keeps what the OS has scheduled in step with the saved settings and the
+  // current stage, so the reminder wording follows the programme. Stage objects
+  // are singletons from the programme table, so the identity check is stable.
+  const { enabled, hour, minute } = profile.reminders;
+  const stage = progress?.stage ?? null;
+  useEffect(() => {
+    if (!ready) return;
+    void syncReminders({ enabled, hour, minute }, stage);
+  }, [ready, enabled, hour, minute, stage]);
+
+  const value = useMemo<AppStateValue>(
+    () => ({
       ready,
       profile,
       logs,
@@ -120,12 +141,25 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       stats: summarise(logs),
       onboarded: Boolean(progress) && Boolean(profile.acknowledgedDisclaimerAt),
       updateProfile,
+      updateReminders,
       logSession,
       removeLog,
       replaceAll,
       reset,
-    };
-  }, [ready, profile, logs, updateProfile, logSession, removeLog, replaceAll, reset]);
+    }),
+    [
+      ready,
+      profile,
+      logs,
+      progress,
+      updateProfile,
+      updateReminders,
+      logSession,
+      removeLog,
+      replaceAll,
+      reset,
+    ]
+  );
 
   return <AppStateContext.Provider value={value}>{children}</AppStateContext.Provider>;
 }

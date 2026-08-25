@@ -121,4 +121,14 @@ export type Profile = {
   birthDate: string | null;
   name: string | null;
   acknowledgedDisclaimerAt: string | null;
+  reminders: ReminderSettings;
+};
+
+/** A single daily local notification. Off until she turns it on. */
+export type ReminderSettings = {
+  enabled: boolean;
+  /** Local time, 0–23. */
+  hour: number;
+  /** Local time, 0–59, stepped in fives by the UI. */
+  minute: number;
 };

@@ -12,6 +12,10 @@ Expo SDK 57 + expo-router, TypeScript, no backend. See README.md for the domain 
   modules — that's why the date entry is plain number fields and the icons are hand-rolled SVG.
 - **No network calls, ever.** The whole promise is that nothing leaves the device. Content is
   bundled; state is in AsyncStorage.
+- **Reminders are local notifications only.** Never add push tokens, `getExpoPushTokenAsync`, or
+  anything remote — that would need a server and break the promise above. All OS notification calls
+  live in `src/lib/notifications.ts`, wrapped so a revoked permission can never take a screen down;
+  `AppState` owns scheduling, screens only save settings.
 - **All text goes through `src/components/Text.tsx`** and all colour/spacing through `src/theme`.
   Don't hardcode a hex value or a font family in a screen.
 - **Safety copy lives in `src/content/safety.ts`.** Don't restate a disclaimer inline.

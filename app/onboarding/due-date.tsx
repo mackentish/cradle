@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, DateFields, Pill, Screen, Text } from '@/components';
+import { Button, Card, DateFields, Pill, Screen, Stepper, Text } from '@/components';
 import {
   describeProgress,
   dueDateFromWeek,
@@ -84,15 +84,15 @@ export default function DueDateScreen() {
         </Card>
       ) : (
         <Card>
-          <Text variant="label">How far along</Text>
-          <View style={styles.stepper}>
-            <StepperButton label="−" onPress={() => setWeeksAlong((w) => Math.max(1, w - 1))} />
-            <View style={styles.weekReadout}>
-              <Text variant="hero">{weeksAlong}</Text>
-              <Text variant="small">weeks</Text>
-            </View>
-            <StepperButton label="+" onPress={() => setWeeksAlong((w) => Math.min(42, w + 1))} />
-          </View>
+          <Stepper
+            label="How far along"
+            value={String(weeksAlong)}
+            caption="weeks"
+            onDecrement={() => setWeeksAlong((w) => Math.max(1, w - 1))}
+            onIncrement={() => setWeeksAlong((w) => Math.min(42, w + 1))}
+            decrementLabel="One week earlier"
+            incrementLabel="One week later"
+          />
           {dueDate ? (
             <Text variant="small" center>
               That puts your due date around {formatLongDate(dueDate)}.
@@ -150,16 +150,6 @@ function ModeTab({
   );
 }
 
-function StepperButton({ label, onPress }: { label: string; onPress: () => void }) {
-  return (
-    <Pressable onPress={onPress} style={styles.stepperButton} accessibilityRole="button">
-      <Text variant="title" color={colors.primaryPressed}>
-        {label}
-      </Text>
-    </Pressable>
-  );
-}
-
 const styles = StyleSheet.create({
   content: {
     gap: spacing.xl,
@@ -181,22 +171,6 @@ const styles = StyleSheet.create({
   },
   modeTabActive: {
     backgroundColor: colors.surface,
-  },
-  stepper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  stepperButton: {
-    width: 56,
-    height: 56,
-    borderRadius: radius.pill,
-    backgroundColor: colors.primarySoft,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  weekReadout: {
-    alignItems: 'center',
   },
   footer: {
     gap: spacing.sm,
