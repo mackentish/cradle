@@ -1,6 +1,6 @@
-import { useKeepAwake } from 'expo-keep-awake';
-import React, { useMemo, useState } from 'react';
-import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { useKeepAwake } from "expo-keep-awake";
+import React, { useMemo, useState } from "react";
+import { Alert, Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 import {
   Button,
@@ -11,16 +11,16 @@ import {
   ProgressRing,
   Screen,
   Text,
-} from '@/components';
-import { celebrationFor } from '@/content/celebration';
-import { kindLabels } from '@/domain/exercises';
-import { describeStep, sessionForDay, sessionSeconds } from '@/domain/session';
-import type { Progress, SegmentKind } from '@/domain/types';
-import { useDismiss } from '@/hooks/useDismiss';
-import { useSessionPlayer } from '@/hooks/useSessionPlayer';
-import { formatDuration } from '@/lib/date';
-import { useAppState } from '@/state/AppState';
-import { colors, radius, spacing } from '@/theme';
+} from "@/components";
+import { celebrationFor } from "@/content/celebration";
+import { kindLabels } from "@/domain/exercises";
+import { describeStep, sessionForDay, sessionSeconds } from "@/domain/session";
+import type { Progress, SegmentKind } from "@/domain/types";
+import { useDismiss } from "@/hooks/useDismiss";
+import { useSessionPlayer } from "@/hooks/useSessionPlayer";
+import { formatDuration } from "@/lib/date";
+import { useAppState } from "@/state/AppState";
+import { colors, radius, spacing } from "@/theme";
 
 const PHASE_COLORS: Record<SegmentKind, string> = {
   lift: colors.phaseLift,
@@ -36,16 +36,19 @@ export default function SessionScreen() {
   return <Player progress={progress} />;
 }
 
-function Player({ progress }: { progress: Progress }) {
+function Player({ progress }: Readonly<{ progress: Progress }>) {
   const { logSession, stats } = useAppState();
   const leave = useDismiss();
   useKeepAwake();
 
-  const session = useMemo(() => sessionForDay(progress.stage), [progress.stage]);
+  const session = useMemo(
+    () => sessionForDay(progress.stage),
+    [progress.stage],
+  );
   const player = useSessionPlayer(session);
   const [saved, setSaved] = useState(false);
 
-  const isComplete = player.status === 'complete';
+  const isComplete = player.status === "complete";
   // Frozen at the moment the session completes. Saving the log moves the streak
   // and the session count, and recomputing would swap the message out from under
   // her — "That's one" becoming "Beautifully done" mid-read.
@@ -58,7 +61,7 @@ function Player({ progress }: { progress: Progress }) {
         stageId: progress.stage.id,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isComplete]
+    [isComplete],
   );
 
   const confirmLeave = () => {
@@ -66,10 +69,14 @@ function Player({ progress }: { progress: Progress }) {
       leave();
       return;
     }
-    Alert.alert('Leave the session?', 'Your progress in this session will not be saved.', [
-      { text: 'Keep going', style: 'cancel' },
-      { text: 'Leave', style: 'destructive', onPress: leave },
-    ]);
+    Alert.alert(
+      "Leave the session?",
+      "Your progress in this session will not be saved.",
+      [
+        { text: "Keep going", style: "cancel" },
+        { text: "Leave", style: "destructive", onPress: leave },
+      ],
+    );
   };
 
   const finish = async () => {
@@ -118,12 +125,16 @@ function Player({ progress }: { progress: Progress }) {
   }
 
   const { exercise, step, segment } = player;
-  const phaseColor = PHASE_COLORS[segment?.kind ?? 'hold'];
+  const phaseColor = PHASE_COLORS[segment?.kind ?? "hold"];
 
   return (
     <Screen scroll={false} style={styles.root}>
       <View style={styles.topBar}>
-        <Pressable onPress={confirmLeave} hitSlop={12} accessibilityRole="button">
+        <Pressable
+          onPress={confirmLeave}
+          hitSlop={12}
+          accessibilityRole="button"
+        >
           <Text variant="smallStrong" color={colors.textFaint}>
             Close
           </Text>
@@ -137,10 +148,15 @@ function Player({ progress }: { progress: Progress }) {
       </View>
 
       <View style={styles.track}>
-        <View style={[styles.trackFill, { width: `${player.overallProgress * 100}%` }]} />
+        <View
+          style={[
+            styles.trackFill,
+            { width: `${player.overallProgress * 100}%` },
+          ]}
+        />
       </View>
 
-      {player.status === 'intro' ? (
+      {player.status === "intro" ? (
         <>
           <ScrollView
             style={styles.introScroll}
@@ -148,39 +164,41 @@ function Player({ progress }: { progress: Progress }) {
             showsVerticalScrollIndicator={false}
           >
             <View style={styles.introHeader}>
-            <Text variant="label">{kindLabels[exercise.kind]} · {describeStep(step)}</Text>
-            <Text variant="title">{exercise.name}</Text>
-            <Text variant="body">{exercise.summary}</Text>
-          </View>
-
-          <Card>
-            <Text variant="label">Get into position</Text>
-            {exercise.positions.map((position) => (
-              <Text key={position} variant="small">
-                · {position}
+              <Text variant="label">
+                {kindLabels[exercise.kind]} · {describeStep(step)}
               </Text>
-            ))}
-          </Card>
+              <Text variant="title">{exercise.name}</Text>
+              <Text variant="body">{exercise.summary}</Text>
+            </View>
 
-          <Card>
-            <Text variant="label">How to</Text>
-            {exercise.howTo.map((line, index) => (
-              <View key={line} style={styles.howToRow}>
-                <Text variant="smallStrong" color={colors.primaryPressed}>
-                  {index + 1}
+            <Card>
+              <Text variant="label">Get into position</Text>
+              {exercise.positions.map((position) => (
+                <Text key={position} variant="small">
+                  · {position}
                 </Text>
-                <Text variant="small" style={styles.howToText}>
-                  {line}
-                </Text>
-              </View>
-            ))}
-          </Card>
-
-          {step.note ? (
-            <Card tint={colors.accentSoft}>
-              <Text variant="small">{step.note}</Text>
+              ))}
             </Card>
-          ) : null}
+
+            <Card>
+              <Text variant="label">How to</Text>
+              {exercise.howTo.map((line, index) => (
+                <View key={line} style={styles.howToRow}>
+                  <Text variant="smallStrong" color={colors.primaryPressed}>
+                    {index + 1}
+                  </Text>
+                  <Text variant="small" style={styles.howToText}>
+                    {line}
+                  </Text>
+                </View>
+              ))}
+            </Card>
+
+            {step.note ? (
+              <Card tint={colors.accentSoft}>
+                <Text variant="small">{step.note}</Text>
+              </Card>
+            ) : null}
 
             {exercise.caution ? (
               <Card tint={colors.primarySoft}>
@@ -192,7 +210,11 @@ function Player({ progress }: { progress: Progress }) {
 
           <View style={styles.introActions}>
             <Button label="I'm ready" onPress={player.startStep} />
-            <Button label="Skip this one" variant="quiet" onPress={player.skipStep} />
+            <Button
+              label="Skip this one"
+              variant="quiet"
+              onPress={player.skipStep}
+            />
           </View>
         </>
       ) : (
@@ -229,10 +251,12 @@ function Player({ progress }: { progress: Progress }) {
 
           <View style={styles.runningActions}>
             <Button
-              label={player.status === 'paused' ? 'Resume' : 'Pause'}
+              label={player.status === "paused" ? "Resume" : "Pause"}
               variant="secondary"
               haptic={false}
-              onPress={player.status === 'paused' ? player.resume : player.pause}
+              onPress={
+                player.status === "paused" ? player.resume : player.pause
+              }
             />
             <Button
               label="Skip step"
@@ -252,16 +276,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
   },
   topBar: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingBottom: spacing.lg,
   },
   track: {
     height: 6,
     borderRadius: radius.pill,
     backgroundColor: colors.surfaceSunken,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   trackFill: {
     height: 6,
@@ -280,7 +304,7 @@ const styles = StyleSheet.create({
     gap: spacing.xs,
   },
   howToRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: spacing.md,
   },
   howToText: {
@@ -292,14 +316,14 @@ const styles = StyleSheet.create({
   },
   runningBody: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
     gap: spacing.xl,
   },
   cues: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
     gap: spacing.sm,
   },
   cue: {
@@ -311,12 +335,12 @@ const styles = StyleSheet.create({
     paddingVertical: 6,
   },
   runningActions: {
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     gap: spacing.sm,
   },
   centered: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     gap: spacing.xxl,
   },
   completeRoot: {
@@ -325,7 +349,7 @@ const styles = StyleSheet.create({
   },
   completeBody: {
     gap: spacing.md,
-    alignItems: 'center',
+    alignItems: "center",
   },
   completeActions: {
     gap: spacing.sm,
