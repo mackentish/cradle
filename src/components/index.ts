@@ -1,3 +1,4 @@
+export { BackLink } from './BackLink';
 export { Button } from './Button';
 export { Card } from './Card';
 export { CradleMark } from './CradleMark';

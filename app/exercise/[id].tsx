@@ -1,25 +1,18 @@
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { Card, Pill, Screen, Text } from '@/components';
+import { BackLink, Card, Pill, Screen, Text } from '@/components';
 import { exercises, kindLabels } from '@/domain/exercises';
 import { colors, spacing } from '@/theme';
 
 export default function ExerciseScreen() {
-  const router = useRouter();
   const { id } = useLocalSearchParams<{ id: string }>();
   const exercise = id ? exercises[id] : undefined;
 
   return (
     <Screen>
-      <View style={styles.topBar}>
-        <Pressable onPress={() => router.back()} hitSlop={12} accessibilityRole="button">
-          <Text variant="smallStrong" color={colors.textFaint}>
-            ‹ Back
-          </Text>
-        </Pressable>
-      </View>
+      <BackLink />
 
       {!exercise ? (
         <Card>
@@ -79,9 +72,6 @@ export default function ExerciseScreen() {
 }
 
 const styles = StyleSheet.create({
-  topBar: {
-    flexDirection: 'row',
-  },
   header: {
     gap: spacing.sm,
   },

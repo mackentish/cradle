@@ -1,9 +1,9 @@
-import { useRouter } from 'expo-router';
 import React, { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Button, Card, DateFields, Screen, Text } from '@/components';
 import { getProgress } from '@/domain/pregnancy';
+import { useDismiss } from '@/hooks/useDismiss';
 import { daysBetween, fromDayKey, toDayKey } from '@/lib/date';
 import { emptyProfile } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
@@ -11,8 +11,8 @@ import { colors, spacing } from '@/theme';
 
 /** Setting a birth date is what flips the whole programme over to postpartum. */
 export default function BirthDateScreen() {
-  const router = useRouter();
   const { profile, updateProfile } = useAppState();
+  const dismiss = useDismiss();
 
   const [date, setDate] = useState<Date | null>(
     profile.birthDate ? fromDayKey(profile.birthDate) : new Date()
@@ -41,7 +41,7 @@ export default function BirthDateScreen() {
   const save = async () => {
     if (!date || error) return;
     await updateProfile({ birthDate: toDayKey(date) });
-    router.back();
+    dismiss();
   };
 
   return (
@@ -74,7 +74,7 @@ export default function BirthDateScreen() {
 
       <View style={styles.footer}>
         <Button label="Save" onPress={save} disabled={!date || Boolean(error)} />
-        <Button label="Not yet" variant="quiet" onPress={() => router.back()} />
+        <Button label="Not yet" variant="quiet" onPress={dismiss} />
       </View>
     </Screen>
   );

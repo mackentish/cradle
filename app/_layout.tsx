@@ -23,6 +23,15 @@ import { colors } from '@/theme';
 // How a reminder behaves if it fires while the app is open. Set once, at import.
 configureNotifications();
 
+/**
+ * Anchors the stack to the tabs, so opening a nested route cold — a deep link, or
+ * a reminder tap later on — lands on top of the app rather than replacing it.
+ * Without this the back button has nowhere to go.
+ */
+export const unstable_settings = {
+  anchor: '(tabs)',
+};
+
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
     Quicksand_500Medium,

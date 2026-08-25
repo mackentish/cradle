@@ -1,4 +1,3 @@
-import { useRouter } from 'expo-router';
 import { useKeepAwake } from 'expo-keep-awake';
 import React, { useMemo, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
@@ -7,8 +6,9 @@ import { Button, Card, ProgressRing, Screen, Text } from '@/components';
 import { kindLabels } from '@/domain/exercises';
 import { describeStep, sessionForDay, sessionSeconds } from '@/domain/session';
 import type { Progress, SegmentKind } from '@/domain/types';
-import { formatDuration } from '@/lib/date';
+import { useDismiss } from '@/hooks/useDismiss';
 import { useSessionPlayer } from '@/hooks/useSessionPlayer';
+import { formatDuration } from '@/lib/date';
 import { useAppState } from '@/state/AppState';
 import { colors, radius, spacing } from '@/theme';
 
@@ -27,15 +27,13 @@ export default function SessionScreen() {
 }
 
 function Player({ progress }: { progress: Progress }) {
-  const router = useRouter();
   const { logSession } = useAppState();
+  const leave = useDismiss();
   useKeepAwake();
 
   const session = useMemo(() => sessionForDay(progress.stage), [progress.stage]);
   const player = useSessionPlayer(session);
   const [saved, setSaved] = useState(false);
-
-  const leave = () => router.back();
 
   const confirmLeave = () => {
     if (player.status === 'complete') {

@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Card, Pill, Screen, Text } from '@/components';
+import { BackLink, Card, Pill, Screen, Text } from '@/components';
 import { getExercise } from '@/domain/exercises';
 import { stages } from '@/domain/program';
 import { describeStep, sessionSeconds } from '@/domain/session';
@@ -17,13 +17,7 @@ export default function PlanScreen() {
 
   return (
     <Screen>
-      <View style={styles.topBar}>
-        <Pressable onPress={() => router.back()} hitSlop={12} accessibilityRole="button">
-          <Text variant="smallStrong" color={colors.textFaint}>
-            ‹ Back
-          </Text>
-        </Pressable>
-      </View>
+      <BackLink />
 
       <View style={styles.header}>
         <Text variant="title">The full plan</Text>
@@ -93,9 +87,6 @@ export default function PlanScreen() {
 }
 
 const styles = StyleSheet.create({
-  topBar: {
-    flexDirection: 'row',
-  },
   header: {
     gap: spacing.sm,
   },

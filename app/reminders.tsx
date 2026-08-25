@@ -1,8 +1,7 @@
-import { useRouter } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Linking, Pressable, StyleSheet, Switch, View } from 'react-native';
+import { Linking, StyleSheet, Switch, View } from 'react-native';
 
-import { Button, Card, Screen, Text, TimePicker } from '@/components';
+import { BackLink, Button, Card, Screen, Text, TimePicker } from '@/components';
 import { reminderCopy } from '@/content/reminders';
 import { formatTime } from '@/lib/date';
 import {
@@ -22,7 +21,6 @@ const COMMIT_DELAY_MS = 350;
  * AppState owns actually scheduling it, so this screen only ever saves settings.
  */
 export default function RemindersScreen() {
-  const router = useRouter();
   const { profile, progress, updateReminders } = useAppState();
   const { enabled, hour, minute } = profile.reminders;
 
@@ -80,13 +78,7 @@ export default function RemindersScreen() {
 
   return (
     <Screen>
-      <View style={styles.topBar}>
-        <Pressable onPress={() => router.back()} hitSlop={12} accessibilityRole="button">
-          <Text variant="smallStrong" color={colors.textFaint}>
-            ‹ Back
-          </Text>
-        </Pressable>
-      </View>
+      <BackLink />
 
       <View style={styles.header}>
         <Text variant="title">Reminders</Text>
@@ -165,9 +157,6 @@ export default function RemindersScreen() {
 }
 
 const styles = StyleSheet.create({
-  topBar: {
-    flexDirection: 'row',
-  },
   header: {
     gap: spacing.sm,
   },

@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
 import { Button, Card, Screen, Text } from '@/components';
+import { useDismiss } from '@/hooks/useDismiss';
 import { parseBackup } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
 import { colors, fonts, radius, spacing } from '@/theme';
@@ -14,6 +15,7 @@ import { colors, fonts, radius, spacing } from '@/theme';
 export default function RestoreScreen() {
   const router = useRouter();
   const { replaceAll } = useAppState();
+  const dismiss = useDismiss();
   const [raw, setRaw] = useState('');
   const [error, setError] = useState<string | null>(null);
 
@@ -62,7 +64,7 @@ export default function RestoreScreen() {
 
       <View style={styles.footer}>
         <Button label="Restore" onPress={restore} disabled={raw.trim().length === 0} />
-        <Button label="Cancel" variant="quiet" onPress={() => router.back()} />
+        <Button label="Cancel" variant="quiet" onPress={dismiss} />
       </View>
     </Screen>
   );

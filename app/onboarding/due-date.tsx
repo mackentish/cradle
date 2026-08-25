@@ -9,6 +9,7 @@ import {
   getProgress,
   validateDueDate,
 } from '@/domain/pregnancy';
+import { useDismiss } from '@/hooks/useDismiss';
 import { formatLongDate, fromDayKey, toDayKey } from '@/lib/date';
 import { emptyProfile } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
@@ -19,6 +20,7 @@ type Mode = 'due-date' | 'weeks-along';
 export default function DueDateScreen() {
   const router = useRouter();
   const { profile, updateProfile } = useAppState();
+  const dismiss = useDismiss('/(tabs)/you');
   const isEditing = Boolean(profile.dueDate);
 
   const [mode, setMode] = useState<Mode>('due-date');
@@ -50,7 +52,7 @@ export default function DueDateScreen() {
   const onContinue = async () => {
     if (!dueDate || error) return;
     await updateProfile({ dueDate: toDayKey(dueDate), birthDate: null });
-    if (isEditing) router.back();
+    if (isEditing) dismiss();
     else router.push('/onboarding/safety');
   };
 
@@ -121,7 +123,7 @@ export default function DueDateScreen() {
           onPress={onContinue}
           disabled={!dueDate || Boolean(error)}
         />
-        {isEditing ? <Button label="Cancel" variant="quiet" onPress={() => router.back()} /> : null}
+        {isEditing ? <Button label="Cancel" variant="quiet" onPress={dismiss} /> : null}
       </View>
     </Screen>
   );
