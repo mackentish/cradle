@@ -23,8 +23,10 @@ const CONFETTI_COLORS = [
 
 type ConfettiProps = {
   count?: number;
-  /** How long a single piece takes to fall, in ms. */
-  duration?: number;
+  /** How long one piece takes to cross the screen, ms. Controls the speed. */
+  fallDuration?: number;
+  /** Spread of start times across the pieces, ms. Controls how long it showers. */
+  stagger?: number;
 };
 
 type Piece = {
@@ -36,8 +38,8 @@ type Piece = {
   /** How far it drifts sideways on the way down, in px. */
   sway: number;
   rotations: number;
-  /** Fraction of the total timeline before this piece starts falling. */
-  delay: number;
+  /** Absolute ms offset before this piece starts falling. */
+  delayMs: number;
   round: boolean;
 };
 
@@ -46,12 +48,18 @@ type Piece = {
  * and it works in Expo Go.
  *
  * One shared driver animates every piece; each one derives its own local clock
- * from that driver via an interpolation offset. That keeps this to a single
- * animation on the native driver instead of N of them, and every animated
- * property here (transform, opacity) is native-driver safe.
+ * from a window of that driver — [start, start + fallDuration] — so pieces share
+ * a speed but begin at staggered times. That keeps this to a single animation on
+ * the native driver instead of N of them, and transforms are native-driver safe.
  */
-export function Confetti({ count = 60, duration = 6000 }: ConfettiProps) {
+export function Confetti({
+  count = 180,
+  fallDuration = 6000,
+  stagger = 2200,
+}: ConfettiProps) {
   const { width, height } = useWindowDimensions();
+  // The driver runs long enough for the last-starting piece to finish its fall.
+  const total = fallDuration + stagger;
   const progress = useRef(new Animated.Value(0)).current;
   const [reduceMotion, setReduceMotion] = useState(false);
 
@@ -79,12 +87,10 @@ export function Confetti({ count = 60, duration = 6000 }: ConfettiProps) {
         color: CONFETTI_COLORS[index % CONFETTI_COLORS.length],
         sway: (Math.random() * 2 - 1) * 46,
         rotations: 1 + Math.random() * 2,
-        // Staggered over the first third of the timeline so it falls as a shower.
-        // This is a fraction, so it stretches with `duration` rather than bunching up.
-        delay: Math.random() * 0.34,
+        delayMs: Math.random() * stagger,
         round: index % 3 === 0,
       })),
-    [count]
+    [count, stagger]
   );
 
   useEffect(() => {
@@ -95,11 +101,11 @@ export function Confetti({ count = 60, duration = 6000 }: ConfettiProps) {
     // Linear: a fall that eases out looks like it is running out of gravity.
     Animated.timing(progress, {
       toValue: 1,
-      duration,
+      duration: total,
       easing: Easing.linear,
       useNativeDriver: true,
     }).start();
-  }, [progress, duration, reduceMotion]);
+  }, [progress, total, reduceMotion]);
 
   // Motion is the whole point of this component, so honour the system setting by
   // sitting it out entirely rather than showing a static scatter.
@@ -108,9 +114,12 @@ export function Confetti({ count = 60, duration = 6000 }: ConfettiProps) {
   return (
     <View style={styles.overlay} pointerEvents="none" accessibilityElementsHidden>
       {pieces.map((piece) => {
-        // Each piece's own 0 → 1 clock, offset by its delay.
+        // Each piece's own 0 → 1 clock. The window is its start *and* its end, so
+        // every piece takes the same fallDuration to cross — mapping [delay, 1]
+        // instead would give delayed pieces less time for the same distance, so
+        // they would fall faster and the whole shower would land at once.
         const local = progress.interpolate({
-          inputRange: [piece.delay, 1],
+          inputRange: [piece.delayMs / total, (piece.delayMs + fallDuration) / total],
           outputRange: [0, 1],
           extrapolate: 'clamp',
         });
@@ -126,10 +135,9 @@ export function Confetti({ count = 60, duration = 6000 }: ConfettiProps) {
                 height: piece.round ? piece.size : piece.size * 1.6,
                 borderRadius: piece.round ? piece.size / 2 : radius.sm / 3,
                 backgroundColor: piece.color,
-                opacity: local.interpolate({
-                  inputRange: [0, 0.08, 0.72, 1],
-                  outputRange: [0, 1, 1, 0],
-                }),
+                // No opacity animation: a piece is clipped by the overlay above the
+                // screen, then falls right past the bottom edge. Fading it out on the
+                // way down read as bunching up and vanishing rather than falling off.
                 transform: [
                   {
                     translateY: local.interpolate({
