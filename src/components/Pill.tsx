@@ -9,13 +9,16 @@ export function Pill({
   label,
   tint = colors.primarySoft,
   ink = colors.primaryPressed,
+  center = false,
 }: {
   label: string;
   tint?: string;
   ink?: string;
+  /** Centres the pill instead of hugging the left edge of its row. */
+  center?: boolean;
 }) {
   return (
-    <View style={[styles.pill, { backgroundColor: tint }]}>
+    <View style={[styles.pill, center && styles.centered, { backgroundColor: tint }]}>
       <Text variant="smallStrong" color={ink}>
         {label}
       </Text>
@@ -24,6 +27,9 @@ export function Pill({
 }
 
 const styles = StyleSheet.create({
+  centered: {
+    alignSelf: 'center',
+  },
   pill: {
     alignSelf: 'flex-start',
     borderRadius: radius.pill,

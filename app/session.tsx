@@ -2,7 +2,17 @@ import { useKeepAwake } from 'expo-keep-awake';
 import React, { useMemo, useState } from 'react';
 import { Alert, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 
-import { Button, Card, ProgressRing, Screen, Text } from '@/components';
+import {
+  Button,
+  Card,
+  Confetti,
+  CradleMark,
+  Pill,
+  ProgressRing,
+  Screen,
+  Text,
+} from '@/components';
+import { celebrationFor } from '@/content/celebration';
 import { kindLabels } from '@/domain/exercises';
 import { describeStep, sessionForDay, sessionSeconds } from '@/domain/session';
 import type { Progress, SegmentKind } from '@/domain/types';
@@ -27,7 +37,7 @@ export default function SessionScreen() {
 }
 
 function Player({ progress }: { progress: Progress }) {
-  const { logSession } = useAppState();
+  const { logSession, stats } = useAppState();
   const leave = useDismiss();
   useKeepAwake();
 
@@ -35,8 +45,24 @@ function Player({ progress }: { progress: Progress }) {
   const player = useSessionPlayer(session);
   const [saved, setSaved] = useState(false);
 
+  const isComplete = player.status === 'complete';
+  // Frozen at the moment the session completes. Saving the log moves the streak
+  // and the session count, and recomputing would swap the message out from under
+  // her — "That's one" becoming "Beautifully done" mid-read.
+  const celebration = useMemo(
+    () =>
+      celebrationFor({
+        totalSessions: stats.totalSessions,
+        streak: stats.completedToday ? stats.current : stats.current + 1,
+        phase: progress.phase,
+        stageId: progress.stage.id,
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [isComplete]
+  );
+
   const confirmLeave = () => {
-    if (player.status === 'complete') {
+    if (isComplete) {
       leave();
       return;
     }
@@ -60,23 +86,34 @@ function Player({ progress }: { progress: Progress }) {
     leave();
   };
 
-  if (player.status === 'complete') {
+  if (isComplete) {
     return (
-      <Screen contentStyle={styles.centered}>
-        <View style={styles.completeBody}>
-          <Text variant="hero" center>
-            Session complete
-          </Text>
-          <Text variant="body" center>
-            {formatDuration(Math.round(player.completedSeconds))} of {session.title.toLowerCase()}.
-            Take a slow breath before you get up.
-          </Text>
-        </View>
-        <View style={styles.completeActions}>
-          <Button label="Save and finish" onPress={finish} />
-          <Button label="Discard this one" variant="quiet" onPress={leave} />
-        </View>
-      </Screen>
+      // Confetti sits outside the Screen: inside its ScrollView an absolute
+      // overlay would scroll away and get clipped.
+      <View style={styles.completeRoot}>
+        <Screen contentStyle={styles.centered}>
+          <View style={styles.completeBody}>
+            <CradleMark size={84} />
+            <Text variant="hero" center>
+              {celebration.title}
+            </Text>
+            <Text variant="body" center>
+              {celebration.body}
+            </Text>
+            <Pill
+              label={`${formatDuration(Math.round(player.completedSeconds))} · ${session.title}`}
+              tint={colors.accentSoft}
+              ink={colors.accent}
+              center
+            />
+          </View>
+          <View style={styles.completeActions}>
+            <Button label="Save and finish" onPress={finish} />
+            <Button label="Discard this one" variant="quiet" onPress={leave} />
+          </View>
+        </Screen>
+        <Confetti />
+      </View>
     );
   }
 
@@ -282,8 +319,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: spacing.xxl,
   },
+  completeRoot: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
   completeBody: {
     gap: spacing.md,
+    alignItems: 'center',
   },
   completeActions: {
     gap: spacing.sm,

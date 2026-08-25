@@ -1,6 +1,7 @@
 export { BackLink } from './BackLink';
 export { Button } from './Button';
 export { Card } from './Card';
+export { Confetti } from './Confetti';
 export { CradleMark } from './CradleMark';
 export { DateFields } from './DateFields';
 export { DayDots } from './DayDots';
