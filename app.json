@@ -49,6 +49,13 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "1133418c-e8cf-4ad6-bb91-ed8edee8eff3"
+      }
+    },
+    "owner": "mackentish"
   }
 }
