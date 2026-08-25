@@ -50,7 +50,7 @@ type Piece = {
  * animation on the native driver instead of N of them, and every animated
  * property here (transform, opacity) is native-driver safe.
  */
-export function Confetti({ count = 26, duration = 3400 }: ConfettiProps) {
+export function Confetti({ count = 60, duration = 6000 }: ConfettiProps) {
   const { width, height } = useWindowDimensions();
   const progress = useRef(new Animated.Value(0)).current;
   const [reduceMotion, setReduceMotion] = useState(false);
@@ -80,6 +80,7 @@ export function Confetti({ count = 26, duration = 3400 }: ConfettiProps) {
         sway: (Math.random() * 2 - 1) * 46,
         rotations: 1 + Math.random() * 2,
         // Staggered over the first third of the timeline so it falls as a shower.
+        // This is a fraction, so it stretches with `duration` rather than bunching up.
         delay: Math.random() * 0.34,
         round: index % 3 === 0,
       })),
