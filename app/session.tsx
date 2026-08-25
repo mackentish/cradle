@@ -14,7 +14,7 @@ import {
 } from "@/components";
 import { celebrationFor } from "@/content/celebration";
 import { kindLabels } from "@/domain/exercises";
-import { describeStep, sessionForDay, sessionSeconds } from "@/domain/session";
+import { describeStep, sessionForDay } from "@/domain/session";
 import type { Progress, SegmentKind } from "@/domain/types";
 import { useDismiss } from "@/hooks/useDismiss";
 import { useSessionPlayer } from "@/hooks/useSessionPlayer";
@@ -143,7 +143,7 @@ function Player({ progress }: Readonly<{ progress: Progress }>) {
           Step {player.stepIndex + 1} of {player.stepCount}
         </Text>
         <Text variant="smallStrong" color={colors.textFaint}>
-          {formatDuration(sessionSeconds(session))}
+          {formatDuration(player.totalSeconds)}
         </Text>
       </View>
 

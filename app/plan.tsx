@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { BackLink, Card, Pill, Screen, Text } from '@/components';
 import { getExercise } from '@/domain/exercises';
+import { phaseLabel } from '@/domain/pregnancy';
 import { stages } from '@/domain/program';
 import { describeStep, sessionSeconds } from '@/domain/session';
 import { formatDuration } from '@/lib/date';
@@ -35,7 +36,7 @@ export default function PlanScreen() {
             <View style={styles.stageHeader}>
               <View style={styles.stageTitle}>
                 <Text variant="label" color={tone.ink}>
-                  {stage.phase === 'pregnancy' ? 'Pregnancy' : 'Postpartum'} · {stage.range}
+                  {phaseLabel(stage.phase)} · {stage.range}
                 </Text>
                 <Text variant="heading">{stage.title}</Text>
               </View>

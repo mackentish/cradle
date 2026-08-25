@@ -10,8 +10,43 @@ export type ExerciseKind =
   | 'functional'
   | 'mobility';
 
+/**
+ * Every exercise in the library, spelled out so the programme's step data is
+ * checked at compile time. `src/domain/program.ts` is ~600 lines of hand-written
+ * steps; without this a mistyped id is a crash on the day that session comes up
+ * in the rotation, which could be weeks after the typo shipped.
+ */
+export type ExerciseId =
+  | 'diaphragmatic-breath'
+  | 'find-your-floor'
+  | 'connection-breath'
+  | 'short-hold'
+  | 'long-hold'
+  | 'elevator'
+  | 'quick-flicks'
+  | 'the-knack'
+  | 'full-release'
+  | 'perineal-bulge'
+  | 'birth-breathing'
+  | 'happy-baby-supported'
+  | 'child-pose-wide'
+  | 'deep-squat-support'
+  | 'bridge'
+  | 'side-lying-clam'
+  | 'bird-dog'
+  | 'heel-slide'
+  | 'sit-to-stand'
+  | 'wall-sit-lift'
+  | 'cat-cow'
+  | 'pelvic-tilt'
+  | 'hip-flexor-kneel'
+  | 'figure-four'
+  | 'posture-reset'
+  | 'gentle-walk'
+  | 'rest-and-breathe';
+
 export type Exercise = {
-  id: string;
+  id: ExerciseId;
   name: string;
   kind: ExerciseKind;
   /** One line, shown on the step card. */
@@ -27,7 +62,7 @@ export type Exercise = {
 /** A step measured in repetitions, each rep cycling lift → hold → release → rest. */
 export type RepStep = {
   type: 'reps';
-  exerciseId: string;
+  exerciseId: ExerciseId;
   reps: number;
   liftSec: number;
   holdSec: number;
@@ -39,17 +74,20 @@ export type RepStep = {
 /** A step measured in one continuous stretch of time (breathing, stretches). */
 export type HoldStep = {
   type: 'hold';
-  exerciseId: string;
+  exerciseId: ExerciseId;
   durationSec: number;
   note?: string;
 };
 
 export type Step = RepStep | HoldStep;
 
+/** At least one element. Lets `[0]` be a value rather than a maybe-value. */
+export type NonEmpty<T> = [T, ...T[]];
+
 export type SessionTemplate = {
   id: string;
   title: string;
-  steps: Step[];
+  steps: NonEmpty<Step>;
 };
 
 export type StageId =
@@ -76,7 +114,7 @@ export type Stage = {
   /** Inclusive end week, or null for "through the end of the phase". */
   endWeek: number | null;
   /** Rotated day to day so sessions vary without needing a server. */
-  sessions: SessionTemplate[];
+  sessions: NonEmpty<SessionTemplate>;
 };
 
 /** Where the user is right now, derived entirely from due date + optional birth date. */

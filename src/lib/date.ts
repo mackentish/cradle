@@ -12,9 +12,19 @@ export function toDayKey(date: Date): string {
   return `${y}-${m}-${d}`;
 }
 
-/** Parses YYYY-MM-DD as local midnight (not UTC, which would shift the day). */
+/** Whether a string is a well-formed YYYY-MM-DD naming a real calendar day. */
+export function isDayKey(value: unknown): value is string {
+  return typeof value === 'string' && toDayKey(fromDayKey(value)) === value;
+}
+
+/**
+ * Parses YYYY-MM-DD as local midnight (not UTC, which would shift the day).
+ * A malformed key yields an Invalid Date rather than a plausible-looking wrong
+ * one — check with `isDayKey` first for anything that came from outside the app.
+ */
 export function fromDayKey(key: string): Date {
   const [y, m, d] = key.split('-').map(Number);
+  if (y === undefined || m === undefined || d === undefined) return new Date(NaN);
   return new Date(y, m - 1, d);
 }
 

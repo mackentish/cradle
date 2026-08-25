@@ -8,15 +8,12 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "backgroundColor": "#FDFAF7",
-    "newArchEnabled": true,
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#FDFAF7"
-    },
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.mackentish.cradle"
+      "supportsTablet": false,
+      "bundleIdentifier": "com.mackentish.cradle",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "package": "com.mackentish.cradle",
@@ -33,6 +30,15 @@
     },
     "plugins": [
       "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#FDFAF7"
+        }
+      ],
       [
         "expo-notifications",
         {

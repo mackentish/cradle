@@ -3,12 +3,12 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { BackLink, Card, Pill, Screen, Text } from '@/components';
-import { exercises, kindLabels } from '@/domain/exercises';
+import { findExercise, kindLabels } from '@/domain/exercises';
 import { colors, spacing } from '@/theme';
 
 export default function ExerciseScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const exercise = id ? exercises[id] : undefined;
+  const exercise = id ? findExercise(id) : undefined;
 
   return (
     <Screen>

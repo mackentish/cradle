@@ -2,8 +2,8 @@ import * as Haptics from 'expo-haptics';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { getExercise } from '@/domain/exercises';
-import { buildSegments, stepSeconds } from '@/domain/session';
-import type { SessionTemplate } from '@/domain/types';
+import { buildSegments, sessionSeconds, stepSeconds } from '@/domain/session';
+import type { SessionTemplate, Step } from '@/domain/types';
 
 const TICK_MS = 100;
 
@@ -26,15 +26,14 @@ export function useSessionPlayer(session: SessionTemplate) {
   const deadlineRef = useRef<number | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const step = session.steps[stepIndex];
+  // `stepIndex` never runs past the last step — advancing off the end sets
+  // 'complete' instead. The fallback is what tells the type checker that.
+  const step: Step = session.steps[stepIndex] ?? session.steps[0];
   const exercise = getExercise(step.exerciseId);
   const segments = useMemo(() => buildSegments(step), [step]);
   const segment = segments[Math.min(segmentIndex, segments.length - 1)];
 
-  const totalSeconds = useMemo(
-    () => session.steps.reduce((total, s) => total + stepSeconds(s), 0),
-    [session]
-  );
+  const totalSeconds = useMemo(() => sessionSeconds(session), [session]);
   const secondsBeforeStep = useMemo(
     () =>
       session.steps.slice(0, stepIndex).reduce((total, s) => total + stepSeconds(s), 0),
@@ -62,6 +61,23 @@ export function useSessionPlayer(session: SessionTemplate) {
     [segments]
   );
 
+  /**
+   * Stops the clock and moves to the next step's intro, or ends the session if
+   * that was the last one. Reached both by finishing a step and by skipping it.
+   */
+  const leaveStep = useCallback(() => {
+    clearTimer();
+    deadlineRef.current = null;
+    if (stepIndex + 1 < session.steps.length) {
+      setStepIndex(stepIndex + 1);
+      setSegmentIndex(0);
+      setRemainingMs(0);
+      setStatus('intro');
+    } else {
+      setStatus('complete');
+    }
+  }, [clearTimer, session.steps.length, stepIndex]);
+
   /** Called when a segment's clock runs out. */
   const advance = useCallback(() => {
     const finished = segments[segmentIndex];
@@ -74,19 +90,9 @@ export function useSessionPlayer(session: SessionTemplate) {
       return;
     }
 
-    clearTimer();
-    deadlineRef.current = null;
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-
-    if (stepIndex + 1 < session.steps.length) {
-      setStepIndex(stepIndex + 1);
-      setSegmentIndex(0);
-      setRemainingMs(0);
-      setStatus('intro');
-    } else {
-      setStatus('complete');
-    }
-  }, [beginSegment, clearTimer, segmentIndex, segments, session.steps.length, stepIndex]);
+    leaveStep();
+  }, [beginSegment, leaveStep, segmentIndex, segments]);
 
   // One interval for the whole session; it reads the current deadline each tick.
   useEffect(() => {
@@ -127,19 +133,6 @@ export function useSessionPlayer(session: SessionTemplate) {
     setStatus('running');
   }, [remainingMs, status]);
 
-  const skipStep = useCallback(() => {
-    clearTimer();
-    deadlineRef.current = null;
-    if (stepIndex + 1 < session.steps.length) {
-      setStepIndex(stepIndex + 1);
-      setSegmentIndex(0);
-      setRemainingMs(0);
-      setStatus('intro');
-    } else {
-      setStatus('complete');
-    }
-  }, [clearTimer, session.steps.length, stepIndex]);
-
   const finishNow = useCallback(() => {
     clearTimer();
     deadlineRef.current = null;
@@ -179,7 +172,7 @@ export function useSessionPlayer(session: SessionTemplate) {
     startStep,
     pause,
     resume,
-    skipStep,
+    skipStep: leaveStep,
     finishNow,
   };
 }

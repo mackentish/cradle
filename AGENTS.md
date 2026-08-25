@@ -27,7 +27,16 @@ Expo SDK 57 + expo-router, TypeScript, no backend. See README.md for the domain 
 - **Gestational age is computed in one place** (`src/domain/pregnancy.ts`). Don't recompute weeks
   from a due date anywhere else.
 - **Dates are local, never UTC.** Use `toDayKey`/`fromDayKey` from `src/lib/date.ts`; `new Date('YYYY-MM-DD')`
-  parses as UTC and shifts the day.
+  parses as UTC and shifts the day. `fromDayKey` returns an Invalid Date for a malformed key rather
+  than a plausible wrong one — anything from outside the app goes through `isDayKey` first.
+- **Nothing enters the app from storage unvalidated.** `toProfile`/`toLogs` in `src/lib/storage.ts`
+  are the boundary, and both `loadProfile`/`loadLogs` and `parseBackup` go through them. A backup is
+  pasted in by hand, and `replaceAll` writes to disk before the provider re-reads it — so an
+  unchecked field is a crash on every launch afterwards, not a bad restore you can back out of.
+- **`Step.exerciseId` is `ExerciseId`, not `string`.** Adding an exercise means adding it to the
+  union in `src/domain/types.ts` as well as the library. That makes a typo in `program.ts` a compile
+  error instead of a crash on the day that session comes up in the rotation. `getExercise` takes the
+  union; `findExercise` is the one that accepts a route param.
 - Screens that need `progress` gate on it in a wrapper component, then render an inner component —
   hooks must not sit behind an early return.
 
@@ -60,6 +69,10 @@ invent exercise prescriptions, and flag anything that should be reviewed by a pe
 
 ```sh
 npm test
-npm run typecheck
+npm run typecheck                       # strict + noUncheckedIndexedAccess
 npx expo export --platform ios
 ```
+
+`noUncheckedIndexedAccess` is on, so an index into an array or a `Record<string, _>` is a
+maybe-value. Prefer saying why it can't be missing — a `NonEmpty<T>` field, or a `?? list[0]`
+fallback with a comment — over an `!`.

@@ -150,7 +150,9 @@ export default function RemindersScreen() {
       <Text variant="small" color={colors.textFaint} center>
         {scheduled > 0
           ? 'Scheduled on this device.'
-          : 'Nothing scheduled — the reminder is off.'}
+          : blocked
+            ? 'Saved, but your phone will not deliver it yet.'
+            : 'Nothing scheduled — the reminder is off.'}
       </Text>
     </Screen>
   );

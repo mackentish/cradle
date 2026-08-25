@@ -95,5 +95,5 @@ export function describeStep(step: Step): string {
  */
 export function sessionForDay(stage: Stage, date: Date = now()): SessionTemplate {
   const index = Math.abs(dayIndex(date)) % stage.sessions.length;
-  return stage.sessions[index];
+  return stage.sessions[index] ?? stage.sessions[0];
 }

@@ -11,7 +11,7 @@ import {
 import { palette, radius } from '@/theme';
 
 /** Soft pastels rather than primaries — this should feel like petals, not a party popper. */
-const CONFETTI_COLORS = [
+const CONFETTI_COLORS: [string, ...string[]] = [
   palette.blush300,
   palette.blush400,
   palette.blush200,
@@ -100,7 +100,7 @@ export function Confetti({
         key: `piece-${index}`,
         left: Math.random(),
         size: 7 + Math.random() * 7,
-        color: CONFETTI_COLORS[index % CONFETTI_COLORS.length],
+        color: CONFETTI_COLORS[index % CONFETTI_COLORS.length] ?? CONFETTI_COLORS[0],
         sway: (Math.random() * 2 - 1) * 46,
         rotations: 1 + Math.random() * 2,
         delayFraction: Math.random(),

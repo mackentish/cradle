@@ -18,7 +18,7 @@ describe('reminders', () => {
 
     await waitFor(() => expect(notificationDouble.scheduled).toHaveLength(1));
     // The contract that matters: one daily trigger at the saved time.
-    expect(notificationDouble.scheduled[0].trigger).toMatchObject({
+    expect(notificationDouble.scheduled[0]?.trigger).toMatchObject({
       type: 'daily',
       hour: 9,
       minute: 0,
@@ -41,7 +41,7 @@ describe('reminders', () => {
     fireEvent(screen.getByLabelText('Daily reminder'), 'valueChange', true);
 
     await waitFor(() => expect(notificationDouble.scheduled).toHaveLength(1));
-    expect(notificationDouble.scheduled[0].content).toMatchObject({
+    expect(notificationDouble.scheduled[0]?.content).toMatchObject({
       title: 'Practise opening',
     });
   });

@@ -617,6 +617,10 @@ export const stagesById = Object.fromEntries(stages.map((s) => [s.id, s])) as Re
   Stage
 >;
 
+export function isStageId(value: unknown): value is StageId {
+  return typeof value === 'string' && Object.hasOwn(stagesById, value);
+}
+
 export function stagesForPhase(phase: Phase): Stage[] {
   return stages.filter((stage) => stage.phase === phase);
 }
@@ -624,10 +628,16 @@ export function stagesForPhase(phase: Phase): Stage[] {
 /** Picks the stage whose week range contains `week`, clamping at both ends. */
 export function stageFor(phase: Phase, week: number): Stage {
   const candidates = stagesForPhase(phase);
+  const first = candidates[0];
+  const last = candidates[candidates.length - 1];
+  // Both phases are populated in the table above, so this is a table-integrity
+  // failure rather than anything a user can reach.
+  if (!first || !last) throw new Error(`No stages defined for phase: ${phase}`);
+
   const match = candidates.find(
     (stage) => week >= stage.startWeek && (stage.endWeek === null || week <= stage.endWeek)
   );
   if (match) return match;
   // Before the first stage's range (e.g. a due date more than 40 weeks out).
-  return week < candidates[0].startWeek ? candidates[0] : candidates[candidates.length - 1];
+  return week < first.startWeek ? first : last;
 }

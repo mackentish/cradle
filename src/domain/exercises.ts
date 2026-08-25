@@ -1,4 +1,4 @@
-import type { Exercise } from './types';
+import type { Exercise, ExerciseId } from './types';
 
 /**
  * The exercise library. Everything here is general pelvic-floor wellness content
@@ -387,16 +387,22 @@ const list: Exercise[] = [
   },
 ];
 
-export const exercises: Record<string, Exercise> = Object.fromEntries(
+/**
+ * Keyed by `ExerciseId`, so a lookup from step data needs no undefined check.
+ * `list` is the source of truth; the cast is what `Object.fromEntries` costs, and
+ * the completeness of the union against it is asserted in the domain test.
+ */
+export const exercises = Object.fromEntries(
   list.map((exercise) => [exercise.id, exercise])
-);
+) as Record<ExerciseId, Exercise>;
 
-export const allExercises = list;
+export function getExercise(id: ExerciseId): Exercise {
+  return exercises[id];
+}
 
-export function getExercise(id: string): Exercise {
-  const exercise = exercises[id];
-  if (!exercise) throw new Error(`Unknown exercise: ${id}`);
-  return exercise;
+/** Lookup for an id that came from outside the type system — a route param. */
+export function findExercise(id: string): Exercise | undefined {
+  return Object.hasOwn(exercises, id) ? exercises[id as ExerciseId] : undefined;
 }
 
 export const kindLabels: Record<Exercise['kind'], string> = {
