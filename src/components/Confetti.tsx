@@ -21,12 +21,20 @@ const CONFETTI_COLORS = [
   palette.lavender500,
 ];
 
+/** How far above the top a piece starts, and how far below the bottom it exits. */
+const SPAWN_ABOVE = 60;
+const EXIT_BELOW = 60;
+
 type ConfettiProps = {
   count?: number;
   /** How long one piece takes to cross the screen, ms. Controls the speed. */
   fallDuration?: number;
-  /** Spread of start times across the pieces, ms. Controls how long it showers. */
-  stagger?: number;
+  /**
+   * How much of the screen height the shower spans, 0–1, measured at the moment
+   * the last piece leaves the top. Coverage is a function of how long pieces keep
+   * emitting relative to how long they take to fall — not of how many there are.
+   */
+  coverage?: number;
 };
 
 type Piece = {
@@ -38,8 +46,8 @@ type Piece = {
   /** How far it drifts sideways on the way down, in px. */
   sway: number;
   rotations: number;
-  /** Absolute ms offset before this piece starts falling. */
-  delayMs: number;
+  /** Where this piece sits in the stagger window, 0–1. Scaled to ms at render. */
+  delayFraction: number;
   round: boolean;
 };
 
@@ -53,11 +61,19 @@ type Piece = {
  * the native driver instead of N of them, and transforms are native-driver safe.
  */
 export function Confetti({
-  count = 180,
+  count = 120,
   fallDuration = 6000,
-  stagger = 2200,
+  coverage = 0.75,
 }: ConfettiProps) {
   const { width, height } = useWindowDimensions();
+
+  // Pieces spawn above the screen and travel past the bottom, so the distance
+  // covered is more than the screen height — worth accounting for, otherwise the
+  // requested coverage comes out a few percent high.
+  const travel = height + SPAWN_ABOVE + EXIT_BELOW;
+  // How long to keep emitting: long enough for the leading piece to reach
+  // `coverage` of the way down the visible screen.
+  const stagger = fallDuration * ((coverage * height + SPAWN_ABOVE) / travel);
   // The driver runs long enough for the last-starting piece to finish its fall.
   const total = fallDuration + stagger;
   const progress = useRef(new Animated.Value(0)).current;
@@ -87,10 +103,12 @@ export function Confetti({
         color: CONFETTI_COLORS[index % CONFETTI_COLORS.length],
         sway: (Math.random() * 2 - 1) * 46,
         rotations: 1 + Math.random() * 2,
-        delayMs: Math.random() * stagger,
+        delayFraction: Math.random(),
         round: index % 3 === 0,
       })),
-    [count, stagger]
+    // Deliberately only `count`: a timing tweak should re-time the same pieces,
+    // not scatter a fresh set of them.
+    [count]
   );
 
   useEffect(() => {
@@ -118,8 +136,9 @@ export function Confetti({
         // every piece takes the same fallDuration to cross — mapping [delay, 1]
         // instead would give delayed pieces less time for the same distance, so
         // they would fall faster and the whole shower would land at once.
+        const start = (piece.delayFraction * stagger) / total;
         const local = progress.interpolate({
-          inputRange: [piece.delayMs / total, (piece.delayMs + fallDuration) / total],
+          inputRange: [start, start + fallDuration / total],
           outputRange: [0, 1],
           extrapolate: 'clamp',
         });
@@ -142,7 +161,7 @@ export function Confetti({
                   {
                     translateY: local.interpolate({
                       inputRange: [0, 1],
-                      outputRange: [-60, height + 60],
+                      outputRange: [-SPAWN_ABOVE, height + EXIT_BELOW],
                     }),
                   },
                   {
