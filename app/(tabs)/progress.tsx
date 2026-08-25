@@ -1,0 +1,189 @@
+import { Redirect } from 'expo-router';
+import React, { useMemo } from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import { Card, DayDots, Pill, Screen, Text } from '@/components';
+import { stagesForPhase, stagesById } from '@/domain/program';
+import type { Progress } from '@/domain/types';
+import { formatDayKey, formatDuration } from '@/lib/date';
+import { recentDays } from '@/lib/streak';
+import { useAppState } from '@/state/AppState';
+import { colors, radius, spacing, stageColors } from '@/theme';
+
+export default function ProgressScreen() {
+  const { ready, progress } = useAppState();
+
+  if (!ready) return null;
+  if (!progress) return <Redirect href="/onboarding" />;
+  return <ProgressView progress={progress} />;
+}
+
+function ProgressView({ progress }: { progress: Progress }) {
+  const { logs, stats } = useAppState();
+
+  const days = useMemo(() => recentDays(logs, 7), [logs]);
+  const recentSessions = useMemo(
+    () => [...logs].sort((a, b) => b.completedAt.localeCompare(a.completedAt)).slice(0, 12),
+    [logs]
+  );
+  const phaseStages = stagesForPhase(progress.phase);
+
+  return (
+    <Screen>
+      <View style={styles.header}>
+        <Text variant="label">Progress</Text>
+        <Text variant="hero">
+          {stats.current} day{stats.current === 1 ? '' : 's'} running
+        </Text>
+        <Text variant="body">
+          {stats.completedToday
+            ? 'Today is in the bank.'
+            : stats.current > 0
+              ? 'Yesterday counted. Today is still open.'
+              : 'Every streak starts with one session.'}
+        </Text>
+      </View>
+
+      <View style={styles.statRow}>
+        <Stat label="Sessions" value={String(stats.totalSessions)} />
+        <Stat label="Time" value={formatDuration(stats.totalSeconds)} />
+        <Stat label="Best streak" value={`${stats.longest}d`} />
+      </View>
+
+      <Card>
+        <Text variant="label">Last seven days</Text>
+        <DayDots days={days} />
+      </Card>
+
+      <Card>
+        <Text variant="label">The journey</Text>
+        <View style={styles.timeline}>
+          {phaseStages.map((stage) => {
+            const isCurrent = stage.id === progress.stage.id;
+            const tone = stageColors[stage.colorKey];
+            const done =
+              progress.week > (stage.endWeek ?? Number.POSITIVE_INFINITY) && !isCurrent;
+            return (
+              <View key={stage.id} style={styles.timelineRow}>
+                <View
+                  style={[
+                    styles.timelineDot,
+                    { backgroundColor: isCurrent ? tone.ink : done ? tone.tint : colors.border },
+                  ]}
+                />
+                <View style={styles.timelineBody}>
+                  <View style={styles.timelineTitle}>
+                    <Text variant={isCurrent ? 'subheading' : 'bodyStrong'}>{stage.title}</Text>
+                    {isCurrent ? (
+                      <Pill label="You are here" tint={tone.tint} ink={tone.ink} />
+                    ) : null}
+                  </View>
+                  <Text variant="small" color={colors.textFaint}>
+                    {stage.range}
+                  </Text>
+                  {isCurrent ? (
+                    <View style={styles.emphasis}>
+                      {stage.emphasis.map((item) => (
+                        <Text key={item} variant="small">
+                          · {item}
+                        </Text>
+                      ))}
+                    </View>
+                  ) : null}
+                </View>
+              </View>
+            );
+          })}
+        </View>
+      </Card>
+
+      <Card>
+        <Text variant="label">Recent sessions</Text>
+        {recentSessions.length === 0 ? (
+          <Text variant="small">Nothing logged yet — your first session will show up here.</Text>
+        ) : (
+          <View style={styles.logList}>
+            {recentSessions.map((log) => (
+              <View key={log.completedAt} style={styles.logRow}>
+                <View>
+                  <Text variant="bodyStrong">{stagesById[log.stageId]?.title ?? log.stageId}</Text>
+                  <Text variant="small" color={colors.textFaint}>
+                    {log.phase === 'pregnancy' ? `Week ${log.week}` : `${log.week}w postpartum`} ·{' '}
+                    {formatDuration(log.seconds)}
+                  </Text>
+                </View>
+                <Text variant="small" color={colors.textFaint}>
+                  {formatDayKey(log.day)}
+                </Text>
+              </View>
+            ))}
+          </View>
+        )}
+      </Card>
+    </Screen>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <View style={styles.stat}>
+      <Text variant="heading">{value}</Text>
+      <Text variant="label">{label}</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  header: {
+    gap: 4,
+  },
+  statRow: {
+    flexDirection: 'row',
+    gap: spacing.md,
+  },
+  stat: {
+    flex: 1,
+    backgroundColor: colors.surface,
+    borderRadius: radius.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    paddingVertical: spacing.lg,
+    alignItems: 'center',
+    gap: 2,
+  },
+  timeline: {
+    gap: spacing.lg,
+  },
+  timelineRow: {
+    flexDirection: 'row',
+    gap: spacing.lg,
+  },
+  timelineDot: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    marginTop: 6,
+  },
+  timelineBody: {
+    flex: 1,
+    gap: 2,
+  },
+  timelineTitle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  emphasis: {
+    marginTop: spacing.xs,
+    gap: 2,
+  },
+  logList: {
+    gap: spacing.lg,
+  },
+  logRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: spacing.md,
+  },
+});
