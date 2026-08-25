@@ -1,0 +1,4309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screen snapshots progress 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                "Progress",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "2",
+                " day",
+                "s",
+                " running",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Quicksand_700Bold",
+                    "fontSize": 34,
+                    "lineHeight": 41,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "Yesterday counted. Today is still open.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "style": {
+              "gap": 4,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    "2",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#3D3238",
+                        "fontFamily": "Quicksand_600SemiBold",
+                        "fontSize": 20,
+                        "lineHeight": 27,
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+                {
+                  "children": [
+                    "Sessions",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#A2939A",
+                        "fontFamily": "Nunito_700Bold",
+                        "fontSize": 12,
+                        "letterSpacing": 0.9,
+                        "lineHeight": 16,
+                        "textTransform": "uppercase",
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#F0E7E4",
+                  "borderRadius": 16,
+                  "borderWidth": 1,
+                  "flex": 1,
+                  "gap": 2,
+                  "paddingVertical": 16,
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    "10 min",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#3D3238",
+                        "fontFamily": "Quicksand_600SemiBold",
+                        "fontSize": 20,
+                        "lineHeight": 27,
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+                {
+                  "children": [
+                    "Time",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#A2939A",
+                        "fontFamily": "Nunito_700Bold",
+                        "fontSize": 12,
+                        "letterSpacing": 0.9,
+                        "lineHeight": 16,
+                        "textTransform": "uppercase",
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#F0E7E4",
+                  "borderRadius": 16,
+                  "borderWidth": 1,
+                  "flex": 1,
+                  "gap": 2,
+                  "paddingVertical": 16,
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    "2d",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#3D3238",
+                        "fontFamily": "Quicksand_600SemiBold",
+                        "fontSize": 20,
+                        "lineHeight": 27,
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+                {
+                  "children": [
+                    "Best streak",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#A2939A",
+                        "fontFamily": "Nunito_700Bold",
+                        "fontSize": 12,
+                        "letterSpacing": 0.9,
+                        "lineHeight": 16,
+                        "textTransform": "uppercase",
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "center",
+                  "backgroundColor": "#FFFFFF",
+                  "borderColor": "#F0E7E4",
+                  "borderRadius": 16,
+                  "borderWidth": 1,
+                  "flex": 1,
+                  "gap": 2,
+                  "paddingVertical": 16,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": {
+              "flexDirection": "row",
+              "gap": 12,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "Last seven days",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "T",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "W",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "T",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "F",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          {
+                            "backgroundColor": "#C9787F",
+                            "borderColor": "#C9787F",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "S",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          {
+                            "backgroundColor": "#C9787F",
+                            "borderColor": "#C9787F",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "S",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "M",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "The journey",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "borderRadius": 6,
+                            "height": 12,
+                            "marginTop": 6,
+                            "width": 12,
+                          },
+                          {
+                            "backgroundColor": "#F8E7E8",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                "Foundation",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#3D3238",
+                                    "fontFamily": "Nunito_600SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "gap": 8,
+                            },
+                          },
+                          "type": "View",
+                        },
+                        {
+                          "children": [
+                            "Weeks 1–13",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                          "gap": 2,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "borderRadius": 6,
+                            "height": 12,
+                            "marginTop": 6,
+                            "width": 12,
+                          },
+                          {
+                            "backgroundColor": "#647F60",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                "Build",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#3D3238",
+                                    "fontFamily": "Quicksand_600SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 22,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    "You are here",
+                                  ],
+                                  "props": {
+                                    "style": [
+                                      {
+                                        "color": "#3D3238",
+                                        "fontFamily": "Nunito_600SemiBold",
+                                        "fontSize": 14,
+                                        "lineHeight": 21,
+                                      },
+                                      {
+                                        "color": "#647F60",
+                                      },
+                                      null,
+                                      undefined,
+                                    ],
+                                  },
+                                  "type": "Text",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "alignSelf": "flex-start",
+                                    "borderRadius": 999,
+                                    "paddingHorizontal": 12,
+                                    "paddingVertical": 5,
+                                  },
+                                  false,
+                                  {
+                                    "backgroundColor": "#EAF1E7",
+                                  },
+                                ],
+                              },
+                              "type": "View",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "gap": 8,
+                            },
+                          },
+                          "type": "View",
+                        },
+                        {
+                          "children": [
+                            "Weeks 14–27",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                "· ",
+                                "Longer holds, more reps",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                            {
+                              "children": [
+                                "· ",
+                                "Connect the floor to hips and core",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                            {
+                              "children": [
+                                "· ",
+                                "Side-lying replaces flat-on-your-back from about 20 weeks",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "gap": 2,
+                              "marginTop": 4,
+                            },
+                          },
+                          "type": "View",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                          "gap": 2,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "borderRadius": 6,
+                            "height": 12,
+                            "marginTop": 6,
+                            "width": 12,
+                          },
+                          {
+                            "backgroundColor": "#F0E7E4",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                "Sustain",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#3D3238",
+                                    "fontFamily": "Nunito_600SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "gap": 8,
+                            },
+                          },
+                          "type": "View",
+                        },
+                        {
+                          "children": [
+                            "Weeks 28–34",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                          "gap": 2,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "borderRadius": 6,
+                            "height": 12,
+                            "marginTop": 6,
+                            "width": 12,
+                          },
+                          {
+                            "backgroundColor": "#F0E7E4",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                "Prepare",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#3D3238",
+                                    "fontFamily": "Nunito_600SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25,
+                                  },
+                                  null,
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "gap": 8,
+                            },
+                          },
+                          "type": "View",
+                        },
+                        {
+                          "children": [
+                            "Week 35 onward",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                          "gap": 2,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "gap": 16,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "Recent sessions",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Build",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Week 20",
+                            " ·",
+                            " ",
+                            "5 min",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "Jun 14",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#6E5F65",
+                            "fontFamily": "Nunito_400Regular",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 12,
+                      "justifyContent": "space-between",
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Build",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Week 20",
+                            " ·",
+                            " ",
+                            "5 min",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "Jun 13",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#6E5F65",
+                            "fontFamily": "Nunito_400Regular",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 12,
+                      "justifyContent": "space-between",
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "gap": 16,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+      ],
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": [
+      {
+        "flex": 1,
+      },
+      {
+        "backgroundColor": "#FDFAF7",
+      },
+      undefined,
+    ],
+    "testID": "progress-screen",
+  },
+  "type": "RCTScrollView",
+}
+`;
+
+exports[`screen snapshots reminders, switched on 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    "‹ ",
+                    "Back",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#3D3238",
+                        "fontFamily": "Nunito_600SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 21,
+                      },
+                      {
+                        "color": "#A2939A",
+                      },
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "accessibilityLabel": "Back",
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": {
+              "flexDirection": "row",
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "Reminders",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Quicksand_700Bold",
+                    "fontSize": 26,
+                    "lineHeight": 33,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "One nudge a day, at a time you pick. It is scheduled on this phone by iOS or Android — no account, no server, and it works with the phone offline.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "style": {
+              "gap": 8,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Daily reminder",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Quicksand_600SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        "Every day at 7:30 PM",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#6E5F65",
+                            "fontFamily": "Nunito_400Regular",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flex": 1,
+                      "gap": 2,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "props": {
+                    "accessibilityLabel": "Daily reminder",
+                    "accessibilityRole": "switch",
+                    "style": [
+                      {
+                        "alignSelf": "flex-start",
+                      },
+                      {
+                        "backgroundColor": "#F8E7E8",
+                        "borderRadius": 16,
+                      },
+                    ],
+                    "value": true,
+                  },
+                  "type": "RCTSwitch",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
+                  "justifyContent": "space-between",
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "Time",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                {
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "height": 200,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "What you will see",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "Time to build",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Nunito_600SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "This is the best window for real strength work. Your session is ready.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 14,
+                    "lineHeight": 21,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "The wording follows your stage, so it changes as your pregnancy moves on.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 14,
+                    "lineHeight": 21,
+                  },
+                  {
+                    "color": "#A2939A",
+                  },
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              {
+                "backgroundColor": "#FDF6F6",
+                "borderColor": "transparent",
+              },
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            "Nothing scheduled — the reminder is off.",
+          ],
+          "props": {
+            "style": [
+              {
+                "color": "#6E5F65",
+                "fontFamily": "Nunito_400Regular",
+                "fontSize": 14,
+                "lineHeight": 21,
+              },
+              {
+                "color": "#A2939A",
+              },
+              {
+                "textAlign": "center",
+              },
+              undefined,
+            ],
+          },
+          "type": "Text",
+        },
+      ],
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": [
+      {
+        "flex": 1,
+      },
+      {
+        "backgroundColor": "#FDFAF7",
+      },
+      undefined,
+    ],
+    "testID": "reminders-screen",
+  },
+  "type": "RCTScrollView",
+}
+`;
+
+exports[`screen snapshots session complete 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "fill": {
+                          "payload": 4294502376,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGCircle",
+                    },
+                    {
+                      "props": {
+                        "fill": {
+                          "payload": 4293177525,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGCircle",
+                    },
+                    {
+                      "props": {
+                        "d": "M22 42 A28 28 0 0 0 78 42",
+                        "fill": null,
+                        "stroke": {
+                          "payload": 4291393663,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGPath",
+                    },
+                    {
+                      "props": {
+                        "d": "M36 45 A14 14 0 0 0 64 45",
+                        "fill": null,
+                        "stroke": {
+                          "payload": 4286487673,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGPath",
+                    },
+                  ],
+                  "props": {
+                    "fill": {
+                      "payload": 4278190080,
+                      "type": 0,
+                    },
+                  },
+                  "type": "RNSVGGroup",
+                },
+              ],
+              "props": {
+                "style": [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 84,
+                    "width": 84,
+                  },
+                ],
+              },
+              "type": "RNSVGSvgView",
+            },
+            {
+              "children": [
+                "Beautifully done",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Quicksand_700Bold",
+                    "fontSize": 34,
+                    "lineHeight": 41,
+                  },
+                  null,
+                  {
+                    "textAlign": "center",
+                  },
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "Take a slow breath before you get up.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  {
+                    "textAlign": "center",
+                  },
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    "0s · Strength",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#3D3238",
+                        "fontFamily": "Nunito_600SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 21,
+                      },
+                      {
+                        "color": "#7E9C79",
+                      },
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "style": [
+                  {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 999,
+                    "paddingHorizontal": 12,
+                    "paddingVertical": 5,
+                  },
+                  {
+                    "alignSelf": "center",
+                  },
+                  {
+                    "backgroundColor": "#EAF1E7",
+                  },
+                ],
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": {
+              "alignItems": "center",
+              "gap": 12,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    "Save and finish",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#6E5F65",
+                        "fontFamily": "Nunito_400Regular",
+                        "fontSize": 16,
+                        "lineHeight": 25,
+                      },
+                      null,
+                      null,
+                      [
+                        {
+                          "fontFamily": "Quicksand_700Bold",
+                          "fontSize": 17,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#FFFFFF",
+                        },
+                      ],
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                },
+                "style": [
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 999,
+                    "justifyContent": "center",
+                    "minHeight": 56,
+                    "paddingHorizontal": 24,
+                  },
+                  {
+                    "backgroundColor": "#C9787F",
+                    "elevation": 2,
+                    "shadowColor": "#8C6A6F",
+                    "shadowOffset": {
+                      "height": 6,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.08,
+                    "shadowRadius": 16,
+                  },
+                  null,
+                  undefined,
+                  undefined,
+                ],
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    "Discard this one",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#6E5F65",
+                        "fontFamily": "Nunito_400Regular",
+                        "fontSize": 16,
+                        "lineHeight": 25,
+                      },
+                      null,
+                      null,
+                      [
+                        {
+                          "fontFamily": "Quicksand_700Bold",
+                          "fontSize": 17,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#6E5F65",
+                        },
+                      ],
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                },
+                "style": [
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 999,
+                    "justifyContent": "center",
+                    "minHeight": 56,
+                    "paddingHorizontal": 24,
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                    "minHeight": 44,
+                  },
+                  null,
+                  undefined,
+                  undefined,
+                ],
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": {
+              "gap": 8,
+            },
+          },
+          "type": "View",
+        },
+      ],
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": [
+      {
+        "flex": 1,
+      },
+      {
+        "backgroundColor": "#FDFAF7",
+      },
+      undefined,
+    ],
+    "testID": "session-complete",
+  },
+  "type": "RCTScrollView",
+}
+`;
+
+exports[`screen snapshots today 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                "Good morning",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#A2939A",
+                    "fontFamily": "Nunito_700Bold",
+                    "fontSize": 12,
+                    "letterSpacing": 0.9,
+                    "lineHeight": 16,
+                    "textTransform": "uppercase",
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "Week 20",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Quicksand_700Bold",
+                    "fontSize": 34,
+                    "lineHeight": 41,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "140 days to go",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "style": {
+              "gap": 4,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Weeks 14–27",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Nunito_600SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#647F60",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "alignSelf": "flex-start",
+                        "borderRadius": 999,
+                        "paddingHorizontal": 12,
+                        "paddingVertical": 5,
+                      },
+                      false,
+                      {
+                        "backgroundColor": "#FFFFFF",
+                      },
+                    ],
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Full plan ›",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Nunito_600SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#647F60",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "accessibilityRole": "button",
+                    "accessibilityState": {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                "Build",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Quicksand_600SemiBold",
+                    "fontSize": 20,
+                    "lineHeight": 27,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "You probably feel more human again, and this is the best window for real strength work. Holds get longer, and the pelvic floor starts working with the hips and deep core the way it does in daily life.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 14,
+                    "lineHeight": 21,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              {
+                "backgroundColor": "#EAF1E7",
+                "borderColor": "transparent",
+              },
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Today's session",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        "Strength",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Quicksand_600SemiBold",
+                            "fontSize": 20,
+                            "lineHeight": 27,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flex": 1,
+                      "gap": 2,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "6m 8s",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Nunito_600SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#AE5F67",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "backgroundColor": "#F8E7E8",
+                      "borderRadius": 999,
+                      "paddingHorizontal": 12,
+                      "paddingVertical": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "flex-start",
+                  "flexDirection": "row",
+                  "gap": 12,
+                  "justifyContent": "space-between",
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "1",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#AE5F67",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "backgroundColor": "#FDF6F6",
+                          "borderRadius": 999,
+                          "height": 30,
+                          "justifyContent": "center",
+                          "width": 30,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Connection Breath",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Breath",
+                            " · ",
+                            "45s",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "accessibilityRole": "button",
+                    "accessibilityState": {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "2",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#AE5F67",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "backgroundColor": "#FDF6F6",
+                          "borderRadius": 999,
+                          "height": 30,
+                          "justifyContent": "center",
+                          "width": 30,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Endurance Holds",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Strength",
+                            " · ",
+                            "8 × 6s hold",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "accessibilityRole": "button",
+                    "accessibilityState": {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "3",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#AE5F67",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "backgroundColor": "#FDF6F6",
+                          "borderRadius": 999,
+                          "height": 30,
+                          "justifyContent": "center",
+                          "width": 30,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Quick Flicks",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Quick",
+                            " · ",
+                            "10 quick reps",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "accessibilityRole": "button",
+                    "accessibilityState": {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "4",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#AE5F67",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "backgroundColor": "#FDF6F6",
+                          "borderRadius": 999,
+                          "height": 30,
+                          "justifyContent": "center",
+                          "width": 30,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Side-Lying Clam",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Functional",
+                            " · ",
+                            "10 × 2s hold",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "accessibilityRole": "button",
+                    "accessibilityState": {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "5",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#AE5F67",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "backgroundColor": "#FDF6F6",
+                          "borderRadius": 999,
+                          "height": 30,
+                          "justifyContent": "center",
+                          "width": 30,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Full Release",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#3D3238",
+                                "fontFamily": "Nunito_600SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                        {
+                          "children": [
+                            "Release",
+                            " · ",
+                            "45s",
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              {
+                                "color": "#A2939A",
+                              },
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "flex": 1,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "accessibilityRole": "button",
+                    "accessibilityState": {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 16,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "gap": 12,
+                  "marginVertical": 8,
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    "Start session",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#6E5F65",
+                        "fontFamily": "Nunito_400Regular",
+                        "fontSize": 16,
+                        "lineHeight": 25,
+                      },
+                      null,
+                      null,
+                      [
+                        {
+                          "fontFamily": "Quicksand_700Bold",
+                          "fontSize": 17,
+                          "lineHeight": 22,
+                        },
+                        {
+                          "color": "#FFFFFF",
+                        },
+                      ],
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": false,
+                  "expanded": undefined,
+                  "selected": undefined,
+                },
+                "style": [
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 999,
+                    "justifyContent": "center",
+                    "minHeight": 56,
+                    "paddingHorizontal": 24,
+                  },
+                  {
+                    "backgroundColor": "#C9787F",
+                    "elevation": 2,
+                    "shadowColor": "#8C6A6F",
+                    "shadowOffset": {
+                      "height": 6,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.08,
+                    "shadowRadius": 16,
+                  },
+                  null,
+                  undefined,
+                  undefined,
+                ],
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    "This week",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#A2939A",
+                        "fontFamily": "Nunito_700Bold",
+                        "fontSize": 12,
+                        "letterSpacing": 0.9,
+                        "lineHeight": 16,
+                        "textTransform": "uppercase",
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+                {
+                  "children": [
+                    "2",
+                    " of 7 days",
+                  ],
+                  "props": {
+                    "style": [
+                      {
+                        "color": "#3D3238",
+                        "fontFamily": "Nunito_600SemiBold",
+                        "fontSize": 14,
+                        "lineHeight": 21,
+                      },
+                      null,
+                      null,
+                      undefined,
+                    ],
+                  },
+                  "type": "Text",
+                },
+              ],
+              "props": {
+                "style": {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "T",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "W",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "T",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "F",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          {
+                            "backgroundColor": "#C9787F",
+                            "borderColor": "#C9787F",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "S",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          {
+                            "backgroundColor": "#C9787F",
+                            "borderColor": "#C9787F",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "S",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          {
+                            "backgroundColor": "transparent",
+                          },
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#FDF6F6",
+                            "borderColor": "#F0E7E4",
+                            "borderRadius": 999,
+                            "borderWidth": 1,
+                            "height": 30,
+                            "width": 30,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        "M",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#A2939A",
+                            "fontFamily": "Nunito_700Bold",
+                            "fontSize": 12,
+                            "letterSpacing": 0.9,
+                            "lineHeight": 16,
+                            "textTransform": "uppercase",
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "#7E9C79",
+                            "borderRadius": 2,
+                            "height": 4,
+                            "width": 4,
+                          },
+                          false,
+                        ],
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+      ],
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": [
+      {
+        "flex": 1,
+      },
+      {
+        "backgroundColor": "#FDFAF7",
+      },
+      undefined,
+    ],
+    "testID": "today-screen",
+  },
+  "type": "RCTScrollView",
+}
+`;
+
+exports[`screen snapshots welcome 1`] = `
+{
+  "children": [
+    {
+      "children": [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "props": {
+                        "fill": {
+                          "payload": 4294502376,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGCircle",
+                    },
+                    {
+                      "props": {
+                        "fill": {
+                          "payload": 4293177525,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGCircle",
+                    },
+                    {
+                      "props": {
+                        "d": "M22 42 A28 28 0 0 0 78 42",
+                        "fill": null,
+                        "stroke": {
+                          "payload": 4291393663,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGPath",
+                    },
+                    {
+                      "props": {
+                        "d": "M36 45 A14 14 0 0 0 64 45",
+                        "fill": null,
+                        "stroke": {
+                          "payload": 4286487673,
+                          "type": 0,
+                        },
+                      },
+                      "type": "RNSVGPath",
+                    },
+                  ],
+                  "props": {
+                    "fill": {
+                      "payload": 4278190080,
+                      "type": 0,
+                    },
+                  },
+                  "type": "RNSVGGroup",
+                },
+              ],
+              "props": {
+                "style": [
+                  {
+                    "backgroundColor": "transparent",
+                    "borderWidth": 0,
+                  },
+                  {
+                    "flex": 0,
+                    "height": 92,
+                    "width": 92,
+                  },
+                ],
+              },
+              "type": "RNSVGSvgView",
+            },
+            {
+              "children": [
+                "Cradle",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Quicksand_700Bold",
+                    "fontSize": 34,
+                    "lineHeight": 41,
+                  },
+                  null,
+                  {
+                    "textAlign": "center",
+                  },
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "Pelvic floor care that keeps pace with your pregnancy.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  {
+                    "textAlign": "center",
+                  },
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "style": {
+              "alignItems": "center",
+              "gap": 12,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "props": {
+                    "style": {
+                      "backgroundColor": "#F0D0D3",
+                      "borderRadius": 5,
+                      "height": 10,
+                      "marginTop": 7,
+                      "width": 10,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Built around your week",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Quicksand_600SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        "Tell Cradle your due date once. The programme moves with you, week by week, and shifts toward birth prep as you get closer.",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#6E5F65",
+                            "fontFamily": "Nunito_400Regular",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flex": 1,
+                      "gap": 4,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "flexDirection": "row",
+                  "gap": 16,
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "props": {
+                    "style": {
+                      "backgroundColor": "#F0D0D3",
+                      "borderRadius": 5,
+                      "height": 10,
+                      "marginTop": 7,
+                      "width": 10,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Squeeze and release",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Quicksand_600SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        "A pelvic floor that can let go matters as much as one that can lift. Both are trained here — and the balance changes over time.",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#6E5F65",
+                            "fontFamily": "Nunito_400Regular",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flex": 1,
+                      "gap": 4,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "flexDirection": "row",
+                  "gap": 16,
+                },
+              },
+              "type": "View",
+            },
+            {
+              "children": [
+                {
+                  "props": {
+                    "style": {
+                      "backgroundColor": "#F0D0D3",
+                      "borderRadius": 5,
+                      "height": 10,
+                      "marginTop": 7,
+                      "width": 10,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Yours alone",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Quicksand_600SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 22,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        "No account, no sign-up, nothing leaves your phone. Cradle works offline because everything lives on your device.",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#6E5F65",
+                            "fontFamily": "Nunito_400Regular",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          null,
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "flex": 1,
+                      "gap": 4,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "style": {
+                  "flexDirection": "row",
+                  "gap": 16,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": {
+              "gap": 24,
+            },
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
+                "Let's begin",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  null,
+                  [
+                    {
+                      "fontFamily": "Quicksand_700Bold",
+                      "fontSize": 17,
+                      "lineHeight": 22,
+                    },
+                    {
+                      "color": "#FFFFFF",
+                    },
+                  ],
+                ],
+              },
+              "type": "Text",
+            },
+          ],
+          "props": {
+            "accessibilityRole": "button",
+            "accessibilityState": {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            },
+            "style": [
+              {
+                "alignItems": "center",
+                "borderRadius": 999,
+                "justifyContent": "center",
+                "minHeight": 56,
+                "paddingHorizontal": 24,
+              },
+              {
+                "backgroundColor": "#C9787F",
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              null,
+              undefined,
+              undefined,
+            ],
+          },
+          "type": "View",
+        },
+      ],
+      "type": "View",
+    },
+  ],
+  "props": {
+    "style": [
+      {
+        "flex": 1,
+      },
+      {
+        "backgroundColor": "#FDFAF7",
+      },
+      undefined,
+    ],
+    "testID": "welcome-screen",
+  },
+  "type": "RCTScrollView",
+}
+`;

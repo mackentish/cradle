@@ -24,7 +24,7 @@ export default function Welcome() {
   const router = useRouter();
 
   return (
-    <Screen contentStyle={styles.content} topInset={spacing.xl}>
+    <Screen contentStyle={styles.content} topInset={spacing.xl} testID="welcome-screen">
       <View style={styles.hero}>
         <CradleMark size={92} />
         <Text variant="hero" center>

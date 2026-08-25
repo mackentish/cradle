@@ -77,7 +77,7 @@ export default function RemindersScreen() {
   const blocked = enabled && permission !== 'granted';
 
   return (
-    <Screen>
+    <Screen testID="reminders-screen">
       <BackLink />
 
       <View style={styles.header}>

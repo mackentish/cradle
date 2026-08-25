@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Card, DateFields, Screen, Text } from '@/components';
 import { getProgress } from '@/domain/pregnancy';
 import { useDismiss } from '@/hooks/useDismiss';
+import { now } from '@/lib/clock';
 import { daysBetween, fromDayKey, toDayKey } from '@/lib/date';
 import { emptyProfile } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
@@ -15,7 +16,7 @@ export default function BirthDateScreen() {
   const dismiss = useDismiss();
 
   const [date, setDate] = useState<Date | null>(
-    profile.birthDate ? fromDayKey(profile.birthDate) : new Date()
+    profile.birthDate ? fromDayKey(profile.birthDate) : now()
   );
   const [touched, setTouched] = useState(false);
 
@@ -27,7 +28,7 @@ export default function BirthDateScreen() {
   const error = useMemo(() => {
     if (touched && !date) return 'That date does not exist — check the day.';
     if (!date) return null;
-    const days = daysBetween(date, new Date());
+    const days = daysBetween(date, now());
     if (days < 0) return 'That is in the future.';
     if (days > 730) return 'That is more than two years ago.';
     return null;

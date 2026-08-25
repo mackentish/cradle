@@ -98,7 +98,7 @@ function Player({ progress }: Readonly<{ progress: Progress }>) {
       // Confetti sits outside the Screen: inside its ScrollView an absolute
       // overlay would scroll away and get clipped.
       <View style={styles.completeRoot}>
-        <Screen contentStyle={styles.centered}>
+        <Screen contentStyle={styles.centered} testID="session-complete">
           <View style={styles.completeBody}>
             <CradleMark size={84} />
             <Text variant="hero" center>

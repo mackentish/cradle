@@ -1,3 +1,5 @@
+import { now } from './clock';
+
 /** Local-calendar date helpers. Everything user-facing is local, never UTC. */
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -60,7 +62,7 @@ export function formatTime(hour: number, minute: number): string {
 }
 
 /** Today at the given wall-clock time. Native pickers take a Date, not h/m. */
-export function dateAtTime(hour: number, minute: number, base: Date = new Date()): Date {
+export function dateAtTime(hour: number, minute: number, base: Date = now()): Date {
   return new Date(base.getFullYear(), base.getMonth(), base.getDate(), hour, minute, 0, 0);
 }
 

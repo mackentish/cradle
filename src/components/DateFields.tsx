@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
 
+import { now } from '@/lib/clock';
 import { colors, fonts, radius, spacing } from '@/theme';
 
 import { Text } from './Text';
@@ -20,7 +21,7 @@ export function DateFields({ initial, onChange }: DateFieldsProps) {
   const [month, setMonth] = useState(initial ? pad(initial.getMonth() + 1) : '');
   const [day, setDay] = useState(initial ? pad(initial.getDate()) : '');
   const [year, setYear] = useState(
-    initial ? String(initial.getFullYear()) : String(new Date().getFullYear())
+    initial ? String(initial.getFullYear()) : String(now().getFullYear())
   );
 
   const dayRef = useRef<TextInput>(null);

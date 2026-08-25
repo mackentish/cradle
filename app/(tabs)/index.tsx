@@ -1,4 +1,4 @@
-import { Redirect, useRouter } from 'expo-router';
+import { useRouter } from 'expo-router';
 import React, { useMemo } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
@@ -7,6 +7,7 @@ import { getExercise, kindLabels } from '@/domain/exercises';
 import { describeCountdown, describeProgress } from '@/domain/pregnancy';
 import { describeStep, sessionForDay, sessionSeconds } from '@/domain/session';
 import type { Progress } from '@/domain/types';
+import { now } from '@/lib/clock';
 import { formatDuration } from '@/lib/date';
 import { recentDays } from '@/lib/streak';
 import { useAppState } from '@/state/AppState';
@@ -15,8 +16,9 @@ import { colors, radius, spacing, stageColors } from '@/theme';
 export default function TodayScreen() {
   const { ready, progress } = useAppState();
 
-  if (!ready) return null;
-  if (!progress) return <Redirect href="/onboarding" />;
+  // Guarded by the root layout, so a missing profile here means storage is
+  // still loading rather than a user who skipped onboarding.
+  if (!ready || !progress) return null;
   return <Today progress={progress} />;
 }
 
@@ -33,7 +35,7 @@ function Today({ progress }: { progress: Progress }) {
   const countdown = describeCountdown(progress);
 
   return (
-    <Screen>
+    <Screen testID="today-screen">
       <View style={styles.header}>
         <Text variant="label">{greeting()}</Text>
         <Text variant="hero">{describeProgress(progress)}</Text>
@@ -124,7 +126,7 @@ function Today({ progress }: { progress: Progress }) {
 }
 
 function greeting(): string {
-  const hour = new Date().getHours();
+  const hour = now().getHours();
   if (hour < 12) return 'Good morning';
   if (hour < 18) return 'Good afternoon';
   return 'Good evening';

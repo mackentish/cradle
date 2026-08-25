@@ -2,6 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import type { Profile, SessionLog } from '@/domain/types';
 
+import { now } from './clock';
+
 /**
  * Everything lives on the device. Keys are versioned so a future shape change
  * can migrate rather than clobber.
@@ -63,7 +65,7 @@ export function buildBackup(profile: Profile, logs: SessionLog[]): Backup {
   return {
     app: 'cradle',
     version: 1,
-    exportedAt: new Date().toISOString(),
+    exportedAt: now().toISOString(),
     profile,
     logs,
   };

@@ -16,7 +16,7 @@ export default function PlanScreen() {
   const { progress } = useAppState();
 
   return (
-    <Screen>
+    <Screen testID="plan-screen">
       <BackLink />
 
       <View style={styles.header}>

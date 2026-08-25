@@ -77,7 +77,7 @@ export function Confetti({
   // The driver runs long enough for the last-starting piece to finish its fall.
   const total = fallDuration + stagger;
   const progress = useRef(new Animated.Value(0)).current;
-  const [reduceMotion, setReduceMotion] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState<boolean | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -112,7 +112,7 @@ export function Confetti({
   );
 
   useEffect(() => {
-    if (reduceMotion) return;
+    if (reduceMotion !== false) return;
     // Reset first: the driver is held in a ref, so without this a re-run would
     // animate from 1 to 1 and nothing would move.
     progress.setValue(0);
@@ -125,9 +125,10 @@ export function Confetti({
     }).start();
   }, [progress, total, reduceMotion]);
 
-  // Motion is the whole point of this component, so honour the system setting by
-  // sitting it out entirely rather than showing a static scatter.
-  if (reduceMotion) return null;
+  // Nothing renders until the accessibility setting is known, and nothing renders
+  // at all when it is on: motion is the whole point here, so a static scatter
+  // would be a consolation prize rather than an accommodation.
+  if (reduceMotion !== false) return null;
 
   return (
     <View style={styles.overlay} pointerEvents="none" accessibilityElementsHidden>
@@ -146,6 +147,7 @@ export function Confetti({
         return (
           <Animated.View
             key={piece.key}
+            testID="confetti-piece"
             style={[
               styles.piece,
               {

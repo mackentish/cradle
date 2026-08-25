@@ -17,7 +17,8 @@ Requires Node 20+. Works in Expo Go — every dependency is part of the Expo SDK
 the native `@expo/ui` pickers, whose module ships inside Expo Go.
 
 ```sh
-npx tsc --noEmit                        # typecheck
+npm test                                # jest, including snapshots
+npm run typecheck                       # tsc --noEmit
 npx expo export --platform ios          # verify the bundle builds
 ```
 
@@ -102,6 +103,41 @@ since a spinning wheel would otherwise mean an AsyncStorage write and a reschedu
   **Restore from a backup** pastes it back.
 - Content changes ship with an app release (or EAS Update).
 - The trade-off accepted here: no cross-device sync.
+
+## Tests
+
+`npm test` drives the app through its happy paths with `expo-router`'s testing
+library — real navigation, real AsyncStorage, real pregnancy maths. Only the things
+that reach native code are doubled (`tests/doubles/`), and the notification double
+keeps real state so "enabling a reminder schedules exactly one daily trigger" is an
+assertion rather than a hope.
+
+```
+tests/
+  flows/          onboarding, a full session, reminders, the postpartum switch
+  components/     DateFields parsing, Confetti piece count and Reduce Motion
+  screens.test.tsx  snapshots of the main screens
+  doubles/        stateful stand-ins for notifications and accessibility
+  visual.ts       the pruned-tree projection the snapshots use
+```
+
+The snapshots are **render-tree, not pixel**. They capture structure, copy and
+resolved styles — so a colour, radius or spacing regression shows up — but they
+cannot catch a layout that only breaks once real text metrics are involved. Pixel
+diffing would need a simulator harness plus image comparison, which is a bigger
+piece of infrastructure than this repo currently earns. Regenerate with
+`npm run test:update` and read the diff.
+
+Two things worth knowing before touching the setup:
+
+- **Time goes through `src/lib/clock.ts`.** `now()` is the only source of the
+  current date, and `setNow()` freezes it for tests. Screens show the week, today's
+  session and a streak, so without that seam every screen test is coupled to the
+  clock of whatever machine runs it.
+- **`@testing-library/react-native` is pinned to 13.x on purpose.** v14 made
+  `render` and `fireEvent` async; `expo-router`'s testing library is built against
+  the synchronous 13 API, and mixing them produces overlapping `act()` calls and
+  state updates that silently never apply.
 
 ## Safety
 

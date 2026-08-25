@@ -1,5 +1,6 @@
 import type { SessionLog } from '@/domain/types';
 
+import { now } from './clock';
 import { addDays, fromDayKey, toDayKey } from './date';
 
 export type StreakSummary = {
@@ -16,7 +17,7 @@ function uniqueDays(logs: SessionLog[]): string[] {
   return Array.from(new Set(logs.map((log) => log.day))).sort();
 }
 
-export function summarise(logs: SessionLog[], today: Date = new Date()): StreakSummary {
+export function summarise(logs: SessionLog[], today: Date = now()): StreakSummary {
   const days = uniqueDays(logs);
   const daySet = new Set(days);
   const todayKey = toDayKey(today);
@@ -61,7 +62,7 @@ export function summarise(logs: SessionLog[], today: Date = new Date()): StreakS
 export function recentDays(
   logs: SessionLog[],
   count: number,
-  today: Date = new Date()
+  today: Date = now()
 ): Array<{ day: string; done: boolean }> {
   const daySet = new Set(logs.map((log) => log.day));
   return Array.from({ length: count }, (_, i) => {

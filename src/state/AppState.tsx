@@ -10,6 +10,7 @@ import React, {
 
 import { getProgress } from '@/domain/pregnancy';
 import type { Profile, Progress, ReminderSettings, SessionLog } from '@/domain/types';
+import { now } from '@/lib/clock';
 import { toDayKey } from '@/lib/date';
 import { syncReminders } from '@/lib/notifications';
 import {
@@ -92,8 +93,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
 
   const logSession = useCallback(
     (log: Omit<SessionLog, 'day' | 'completedAt'>) => {
-      const now = new Date();
-      const entry: SessionLog = { ...log, day: toDayKey(now), completedAt: now.toISOString() };
+      const at = now();
+      const entry: SessionLog = { ...log, day: toDayKey(at), completedAt: at.toISOString() };
       return commitLogs([...logsRef.current, entry]);
     },
     [commitLogs]

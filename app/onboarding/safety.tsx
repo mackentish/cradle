@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { Button, Card, Screen, Text } from '@/components';
 import { RED_FLAGS, SAFETY_INTRO, STOP_RULES } from '@/content/safety';
+import { now } from '@/lib/clock';
 import { useAppState } from '@/state/AppState';
 import { colors, spacing } from '@/theme';
 
@@ -12,7 +13,7 @@ export default function SafetyScreen() {
   const { updateProfile } = useAppState();
 
   const accept = async () => {
-    await updateProfile({ acknowledgedDisclaimerAt: new Date().toISOString() });
+    await updateProfile({ acknowledgedDisclaimerAt: now().toISOString() });
     router.replace('/(tabs)');
   };
 

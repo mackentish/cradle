@@ -1,3 +1,4 @@
+import { now } from '@/lib/clock';
 import { dayIndex } from '@/lib/date';
 
 import { getExercise } from './exercises';
@@ -92,7 +93,7 @@ export function describeStep(step: Step): string {
  * Rotates through a stage's session variants by calendar day, so the same day
  * always yields the same session and consecutive days differ.
  */
-export function sessionForDay(stage: Stage, date: Date = new Date()): SessionTemplate {
+export function sessionForDay(stage: Stage, date: Date = now()): SessionTemplate {
   const index = Math.abs(dayIndex(date)) % stage.sessions.length;
   return stage.sessions[index];
 }

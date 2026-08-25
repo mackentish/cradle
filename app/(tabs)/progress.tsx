@@ -1,4 +1,3 @@
-import { Redirect } from 'expo-router';
 import React, { useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -13,8 +12,9 @@ import { colors, radius, spacing, stageColors } from '@/theme';
 export default function ProgressScreen() {
   const { ready, progress } = useAppState();
 
-  if (!ready) return null;
-  if (!progress) return <Redirect href="/onboarding" />;
+  // Guarded by the root layout, so a missing profile here means storage is
+  // still loading rather than a user who skipped onboarding.
+  if (!ready || !progress) return null;
   return <ProgressView progress={progress} />;
 }
 
@@ -29,7 +29,7 @@ function ProgressView({ progress }: { progress: Progress }) {
   const phaseStages = stagesForPhase(progress.phase);
 
   return (
-    <Screen>
+    <Screen testID="progress-screen">
       <View style={styles.header}>
         <Text variant="label">Progress</Text>
         <Text variant="hero">

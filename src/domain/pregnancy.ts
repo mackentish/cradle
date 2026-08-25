@@ -1,3 +1,4 @@
+import { now } from '@/lib/clock';
 import { daysBetween, fromDayKey, startOfDay } from '@/lib/date';
 
 import { stageFor } from './program';
@@ -11,7 +12,7 @@ export const MAX_TRACKED_WEEK = 42;
  * Turns a due date (and an optional birth date) into everything the program
  * needs to know. This is the only place gestational age is computed.
  */
-export function getProgress(profile: Profile, today: Date = new Date()): Progress | null {
+export function getProgress(profile: Profile, today: Date = now()): Progress | null {
   const { dueDate, birthDate } = profile;
 
   if (birthDate) {
@@ -76,7 +77,7 @@ export function describeCountdown(progress: Progress): string | null {
 }
 
 /** Validates a candidate due date. Returns an error message, or null if it's fine. */
-export function validateDueDate(dueDate: Date, today: Date = new Date()): string | null {
+export function validateDueDate(dueDate: Date, today: Date = now()): string | null {
   const days = daysBetween(startOfDay(today), startOfDay(dueDate));
   if (Number.isNaN(days)) return 'That date does not look right.';
   if (days > GESTATION_DAYS) {
@@ -89,7 +90,7 @@ export function validateDueDate(dueDate: Date, today: Date = new Date()): string
 }
 
 /** Due date implied by a stated current gestational week, for the alternate entry path. */
-export function dueDateFromWeek(week: number, days = 0, today: Date = new Date()): Date {
+export function dueDateFromWeek(week: number, days = 0, today: Date = now()): Date {
   const remaining = GESTATION_DAYS - (week * 7 + days);
   const due = startOfDay(today);
   due.setDate(due.getDate() + remaining);

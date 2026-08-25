@@ -37,9 +37,29 @@ Exercises are in `src/domain/exercises.ts`, the stage/session programme in `src/
 Anything with a contraindication needs a `caution`. This is health content for pregnant users: don't
 invent exercise prescriptions, and flag anything that should be reviewed by a pelvic floor PT.
 
+## Testing
+
+- **All time goes through `now()` in `src/lib/clock.ts`.** Never call `new Date()`
+  in app code — `setNow()` is what makes screen tests deterministic.
+- **`@testing-library/react-native` stays on 13.x.** v14 made `render`/`fireEvent`
+  async and expo-router's testing library expects the sync API. Mixing them fails
+  in the worst way: no error, just state updates that never apply.
+- Flows use `renderRouter` from `expo-router/testing-library` and navigate the way
+  a user would. Only native-facing modules are mocked, in `tests/setup.tsx`.
+- Stateful doubles live in `tests/doubles/` and are reset in a global `afterEach`.
+  Prefer them over `jest.spyOn` on a module you also mocked — the spy patches a
+  different object than the one under test.
+- Snapshots go through `visualTree()`, which prunes to styles, copy and structure.
+  Snapshotting a `ReactTestInstance` directly serialises the fiber and throws
+  `RangeError: Invalid string length`.
+- Screens are guarded by `Stack.Protected` in the root layout, not by redirecting
+  from inside a screen. The anchor keeps the tabs mounted underneath, and a
+  mounted screen that redirects fights every navigation in the onboarding flow.
+
 ## Checks
 
 ```sh
-npx tsc --noEmit
+npm test
+npm run typecheck
 npx expo export --platform ios
 ```

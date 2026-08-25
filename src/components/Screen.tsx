@@ -15,6 +15,8 @@ type ScreenProps = {
   bottomInset?: number;
   /** Extra breathing room above the content, on top of the safe-area inset. */
   topInset?: number;
+  /** Lets tests snapshot one screen without the navigator wrapped around it. */
+  testID?: string;
 };
 
 export function Screen({
@@ -25,6 +27,7 @@ export function Screen({
   background = colors.background,
   bottomInset = 0,
   topInset = 0,
+  testID,
 }: ScreenProps) {
   const insets = useSafeAreaInsets();
   // Applied last, so a caller's contentStyle can never eat the safe-area inset
@@ -36,12 +39,15 @@ export function Screen({
 
   if (!scroll) {
     return (
-      <View style={[styles.root, { backgroundColor: background }, style, padding]}>{children}</View>
+      <View testID={testID} style={[styles.root, { backgroundColor: background }, style, padding]}>
+        {children}
+      </View>
     );
   }
 
   return (
     <ScrollView
+      testID={testID}
       style={[styles.root, { backgroundColor: background }, style]}
       contentContainerStyle={[styles.content, contentStyle, padding]}
       showsVerticalScrollIndicator={false}
