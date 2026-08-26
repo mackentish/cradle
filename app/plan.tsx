@@ -43,6 +43,7 @@ export default function PlanScreen() {
       <SegmentedTabs
         value={selected}
         onChange={setSelected}
+        activeColor={tone.ink}
         options={PROGRAM_IDS.map((programId) => ({
           value: programId,
           label: programTitle(programsById[programId], phase),

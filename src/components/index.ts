@@ -1,5 +1,5 @@
 export { BackLink } from './BackLink';
-export { Button } from './Button';
+export { Button, type ButtonTone } from './Button';
 export { Card } from './Card';
 export { Chevron, type ChevronDirection } from './Chevron';
 export { Collapsible } from './Collapsible';

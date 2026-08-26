@@ -120,6 +120,23 @@ Dusty rose primary, sage secondary, warm cream background. Quicksand for heading
 — both rounded, both free. Tokens live in `src/theme`; the palette is the only place to change a
 color.
 
+Four color scales, each answering a different question, and mixing them up is the easy mistake.
+`stageColors` is *when* she is — the Today banner, the plan timeline. `programColors` is *what* she's
+doing, and it owns not just a program's card but every control that acts on it: the Start button, the
+progress track, the reminder switch. `programPhaseColors` is what to do with her body in the next
+eight seconds — a four-step ramp per program, out of that program's own family, darkening from `rest`
+through `release` and `lift` to `hold`. The ring is therefore sage all the way through a core session,
+with the phase carried by lightness rather than by a jump to another hue. `colors.primary` is the app
+itself: onboarding, the tab bar, **You**, and the exercise library, which is shared and has no
+program in scope.
+
+The ring used to run on one cross-family scale — blush to lift, lavender to release, sage to rest.
+That read well in pelvic floor, where it was designed, and badly in the other two: sage and lavender
+are the *other programs'* identity colors, so a core session turned sage on every rest for reasons
+that had nothing to do with core. Per-program ramps cost two new palette steps (`sage400`,
+`lavender400` — those families ran 300 → 500) and buy a ring that always agrees with the card that
+launched it.
+
 ## Reminders
 
 One daily reminder **per program**, all off by default, each toggled from its row in **You →
@@ -175,7 +192,8 @@ assertion rather than a hope.
 
 ```
 tests/
-  flows/          onboarding, a full session, reminders, the postpartum switch, Today's three cards
+  flows/          onboarding, a full session, reminders, the postpartum switch, Today's three cards,
+                  and where program color stops and phase color starts
   domain/         the exercise-id/library loop, registry integrity, rotation independence
   lib/            storage coercion and both migrations, per-program streaks
   components/     DateFields parsing, Confetti piece count and Reduce Motion
@@ -186,8 +204,14 @@ tests/
 
 A few of these exist to pin decisions that are easy to undo by accident: that the three programs
 agree on week boundaries, that no two sessions in a stage band share a title (two cards side by side
-would read as duplicates), that the day rotation gives the three programs *different* sessions, and
-that switching one reminder on leaves the other two untouched.
+would read as duplicates), that the day rotation gives the three programs *different* sessions, that
+switching one reminder on leaves the other two untouched, and that each program's session ring stays
+inside its own color family while still darkening from rest through hold. That last one needs its own
+test because the screen snapshots capture only the *completed* session — the running timer has no
+snapshot coverage at all, so a ring quietly reverted to dusty rose in all three programs would
+otherwise ship green. What is *not* covered is the live transition between phases: driving the player
+past a segment boundary needs fake timers, and those deadlock the synchronous `waitFor` in
+`@testing-library/react-native` 13. The ramp's ordering is asserted as data instead.
 
 The snapshots are **render-tree, not pixel**. They capture structure, copy and
 resolved styles — so a color, radius or spacing regression shows up — but they

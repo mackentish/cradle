@@ -16,13 +16,15 @@ export const palette = {
   sage50: '#F4F8F2',
   sage100: '#EAF1E7',
   sage300: '#C0D4BA',
+  sage400: '#9FB899',
   sage500: '#7E9C79',
   sage600: '#647F60',
 
-  // Tertiary: lavender (used for release / rest / postpartum)
+  // Tertiary: lavender (birth prep's identity, and the postpartum accent)
   lavender50: '#F7F5FB',
   lavender100: '#EFEBF6',
   lavender300: '#CDC3E0',
+  lavender400: '#ACA1C4',
   lavender500: '#8B7FA8',
   lavender600: '#6F6389',
 
@@ -54,12 +56,6 @@ export const colors = {
   text: palette.ink,
   textSoft: palette.inkSoft,
   textFaint: palette.inkFaint,
-
-  /** Session player phase colors — lift is effort, release is letting go. */
-  phaseLift: palette.blush400,
-  phaseHold: palette.blush500,
-  phaseRelease: palette.lavender500,
-  phaseRest: palette.sage500,
 } as const;
 
 /** Each program stage gets a soft identity color, used on cards and the timeline. */
@@ -82,11 +78,77 @@ export type StageColorKey = keyof typeof stageColors;
  *
  * Deliberately separate from `stageColors` — a stage says *when* she is, a
  * program says *what* she's doing, and the two are not interchangeable.
+ *
+ * Five fields rather than three, because a control that acts on one program is
+ * tinted by it: `ring`/`pressed` build a filled button, `tint`/`softBorder` a
+ * soft one, `ink` the label on top. Pelvic floor's five are value-identical to
+ * `primary`/`primaryPressed`/`primarySoft`/`primarySoftBorder`, so it looks
+ * exactly as it always has. Sage and lavender have no 200 step, so the 300
+ * stands in as their soft border — that's cheaper than inventing two palette
+ * entries for one edge.
+ *
+ * It stops at the chrome. The session player's ring stays on `colors.phase*`,
+ * for the reason spelled out where `PHASE_COLORS` is declared.
  */
 export const programColors = {
-  'pelvic-floor': { ring: palette.blush500, tint: palette.blush100, ink: palette.blush600 },
-  core: { ring: palette.sage500, tint: palette.sage100, ink: palette.sage600 },
-  'birth-prep': { ring: palette.lavender500, tint: palette.lavender100, ink: palette.lavender600 },
+  'pelvic-floor': {
+    ring: palette.blush500,
+    pressed: palette.blush600,
+    tint: palette.blush100,
+    softBorder: palette.blush200,
+    ink: palette.blush600,
+  },
+  core: {
+    ring: palette.sage500,
+    pressed: palette.sage600,
+    tint: palette.sage100,
+    softBorder: palette.sage300,
+    ink: palette.sage600,
+  },
+  'birth-prep': {
+    ring: palette.lavender500,
+    pressed: palette.lavender600,
+    tint: palette.lavender100,
+    softBorder: palette.lavender300,
+    ink: palette.lavender600,
+  },
 } as const;
 
 export type ProgramColorKey = keyof typeof programColors;
+
+/**
+ * The session ring, per program. The ring is the program's color at every phase
+ * — in core it is sage from the first breath to the last — so the phase reads as
+ * lightness within one family rather than as a jump to another hue.
+ *
+ * It darkens as the work intensifies: `rest` lightest, then `release`, `lift`,
+ * and `hold` darkest. That ordering is the whole point, so keep the four rungs
+ * one palette step apart and don't collapse two phases onto the same value —
+ * the ring is the only thing telling her whether to be working right now.
+ *
+ * This replaced a single cross-family scale (lift blush, release lavender, rest
+ * sage). That scale drew the phase with hue, which read well in pelvic floor and
+ * badly everywhere else: sage `rest` and lavender `release` were the *other two
+ * programs'* identity colors, so a core session went sage on rest for reasons
+ * that had nothing to do with core.
+ */
+export const programPhaseColors = {
+  'pelvic-floor': {
+    rest: palette.blush300,
+    release: palette.blush400,
+    lift: palette.blush500,
+    hold: palette.blush600,
+  },
+  core: {
+    rest: palette.sage300,
+    release: palette.sage400,
+    lift: palette.sage500,
+    hold: palette.sage600,
+  },
+  'birth-prep': {
+    rest: palette.lavender300,
+    release: palette.lavender400,
+    lift: palette.lavender500,
+    hold: palette.lavender600,
+  },
+} as const;

@@ -47,6 +47,27 @@ misleading, the code is right.
   test pinning that.
 - **`programColors` is program identity, `stageColors` is where she is.** Both in `src/theme`, not
   interchangeable: a stage says *when*, a program says *what*. Pelvic floor keeps the app's primary.
+- **A control that acts on one program takes that program's color.** `programColors` carries five
+  fields for exactly this — `ring`/`pressed` for a filled button, `tint`/`softBorder` for a soft one,
+  `ink` for the label — and `Button` takes them as one `tone` prop. Pass it on Today's card, in the
+  player, and on the reminder screen. A dusty rose button on the sage card is the bug, not the
+  baseline: the card is already program-toned, so the one element she touches was the odd one out.
+  App-level chrome stays on `colors.primary` — onboarding, the tab bar, **You**, and
+  `exercise/[id]`, which is a shared library with no program in scope.
+- **The session ring is the program's color, and the phase is a rung within it.**
+  `programPhaseColors` gives each program a four-step ramp out of its own palette family, ordered by
+  effort — `rest` lightest, then `release`, `lift`, `hold` darkest. So a core session is sage from the
+  first breath to the last, and the phase still reads. Keep the four rungs one palette step apart and
+  in that order: hue no longer marks the phase, so lightness is the only cue left, and two phases on
+  the same rung make the ring stop saying anything. `duration` borrows `hold` — it is a single
+  sustained effort with no lift/release cycle around it.
+  This replaced one cross-family scale (lift blush, release lavender, rest sage) that drew the phase
+  with hue. It read well in pelvic floor and badly in the other two, because sage `rest` and lavender
+  `release` were *other programs'* identity colors — a core session went sage on rest for reasons that
+  had nothing to do with core. That is also why `sage400` and `lavender400` exist: those families ran
+  300 → 500, and the ramp needs four rungs.
+  The screen snapshots capture only the *completed* session, so the running ring has no snapshot
+  coverage at all — `tests/flows/session-color.test.tsx` is the only thing pinning any of this.
 - **Session titles must be unique within a stage band, across programs.** Two cards sit side by side
   on Today, so a shared title reads as a duplicate. Session *ids* must be globally unique, since
   `SessionLog.sessionId` is a free string — new ones are program-prefixed (`core-build-a`), and

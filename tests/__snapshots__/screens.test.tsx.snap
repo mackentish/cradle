@@ -226,7 +226,7 @@ exports[`screen snapshots plan 1`] = `
                         "lineHeight": 21,
                       },
                       {
-                        "color": "#AE5F67",
+                        "color": "#647F60",
                       },
                       {
                         "textAlign": "center",
@@ -9845,7 +9845,9 @@ exports[`screen snapshots reminders, switched on 1`] = `
                     "lineHeight": 16,
                     "textTransform": "uppercase",
                   },
-                  null,
+                  {
+                    "color": "#AE5F67",
+                  },
                   null,
                   undefined,
                 ],
@@ -10359,7 +10361,7 @@ exports[`screen snapshots session complete 1`] = `
                         "lineHeight": 21,
                       },
                       {
-                        "color": "#7E9C79",
+                        "color": "#6F6389",
                       },
                       null,
                       undefined,
@@ -10380,7 +10382,7 @@ exports[`screen snapshots session complete 1`] = `
                     "alignSelf": "center",
                   },
                   {
-                    "backgroundColor": "#EAF1E7",
+                    "backgroundColor": "#EFEBF6",
                   },
                 ],
               },
@@ -10446,7 +10448,7 @@ exports[`screen snapshots session complete 1`] = `
                     "paddingHorizontal": 24,
                   },
                   {
-                    "backgroundColor": "#C9787F",
+                    "backgroundColor": "#8B7FA8",
                     "elevation": 2,
                     "shadowColor": "#8C6A6F",
                     "shadowOffset": {
@@ -11449,7 +11451,7 @@ exports[`screen snapshots today 1`] = `
                     "paddingHorizontal": 24,
                   },
                   {
-                    "backgroundColor": "#C9787F",
+                    "backgroundColor": "#7E9C79",
                     "elevation": 2,
                     "shadowColor": "#8C6A6F",
                     "shadowOffset": {
@@ -11785,7 +11787,7 @@ exports[`screen snapshots today 1`] = `
                     "paddingHorizontal": 24,
                   },
                   {
-                    "backgroundColor": "#C9787F",
+                    "backgroundColor": "#8B7FA8",
                     "elevation": 2,
                     "shadowColor": "#8C6A6F",
                     "shadowOffset": {
@@ -13862,7 +13864,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                           "lineHeight": 22,
                         },
                         {
-                          "color": "#AE5F67",
+                          "color": "#647F60",
                         },
                       ],
                     ],
@@ -13888,8 +13890,8 @@ exports[`screen snapshots today, with one program already done 1`] = `
                     "paddingHorizontal": 24,
                   },
                   {
-                    "backgroundColor": "#F8E7E8",
-                    "borderColor": "#F0D0D3",
+                    "backgroundColor": "#EAF1E7",
+                    "borderColor": "#C0D4BA",
                     "borderWidth": 1,
                   },
                   null,
@@ -14215,7 +14217,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                     "paddingHorizontal": 24,
                   },
                   {
-                    "backgroundColor": "#C9787F",
+                    "backgroundColor": "#8B7FA8",
                     "elevation": 2,
                     "shadowColor": "#8C6A6F",
                     "shadowOffset": {

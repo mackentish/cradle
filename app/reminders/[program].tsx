@@ -14,7 +14,7 @@ import {
   type PermissionState,
 } from '@/lib/notifications';
 import { useAppState } from '@/state/AppState';
-import { colors, palette, spacing } from '@/theme';
+import { colors, palette, programColors, spacing } from '@/theme';
 
 /** How long the picker must be still before the new time is saved. */
 const COMMIT_DELAY_MS = 350;
@@ -36,6 +36,7 @@ export default function RemindersScreen() {
   const programId: ProgramId = isProgramId(program) ? program : 'pelvic-floor';
   const { enabled, hour, minute } = profile.reminders[programId];
   const title = programTitle(programsById[programId], progress?.phase ?? 'pregnancy');
+  const tone = programColors[programsById[programId].colorKey];
 
   const [permission, setPermission] = useState<PermissionState>('undetermined');
   const [scheduled, setScheduled] = useState(0);
@@ -94,7 +95,9 @@ export default function RemindersScreen() {
       <BackLink />
 
       <View style={styles.header}>
-        <Text variant="label">Reminders</Text>
+        <Text variant="label" color={tone.ink}>
+          Reminders
+        </Text>
         <Text variant="title">{title}</Text>
         <Text variant="body">
           One nudge a day for this program, at a time you pick. It is scheduled on this phone by iOS
@@ -114,9 +117,9 @@ export default function RemindersScreen() {
             value={enabled}
             onValueChange={toggle}
             disabled={busy}
-            trackColor={{ false: palette.blush100, true: colors.primary }}
+            trackColor={{ false: tone.tint, true: tone.ring }}
             thumbColor={palette.white}
-            ios_backgroundColor={palette.blush100}
+            ios_backgroundColor={tone.tint}
             accessibilityLabel="Daily reminder"
           />
         </View>
@@ -132,6 +135,7 @@ export default function RemindersScreen() {
           <Button
             label="Open settings"
             variant="secondary"
+            tone={tone}
             onPress={() => Linking.openSettings()}
           />
         </Card>

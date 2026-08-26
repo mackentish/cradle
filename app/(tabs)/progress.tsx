@@ -41,6 +41,7 @@ function ProgressView({ progress }: Readonly<{ progress: Progress }>) {
     [logs]
   );
   const phaseStages = stagesForProgram(timelineProgram, progress.phase);
+  const timelineTone = programColors[programsById[timelineProgram].colorKey];
 
   return (
     <Screen testID="progress-screen">
@@ -102,6 +103,7 @@ function ProgressView({ progress }: Readonly<{ progress: Progress }>) {
         <SegmentedTabs
           value={timelineProgram}
           onChange={setTimelineProgram}
+          activeColor={timelineTone.ink}
           options={PROGRAM_IDS.map((programId) => ({
             value: programId,
             label: programTitle(programsById[programId], progress.phase),

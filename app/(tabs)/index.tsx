@@ -194,6 +194,7 @@ function ProgramCard({
       <Button
         label={done ? 'Do it again' : 'Start session'}
         variant={done ? 'secondary' : 'primary'}
+        tone={tone}
         onPress={() => router.push(`/session/${program.id}` as never)}
       />
     </Card>

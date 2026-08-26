@@ -18,10 +18,17 @@ export function SegmentedTabs<T extends string>({
   options,
   value,
   onChange,
+  activeColor = colors.primaryPressed,
 }: Readonly<{
   options: ReadonlyArray<SegmentOption<T>>;
   value: T;
   onChange: (next: T) => void;
+  /**
+   * The selected label's color. Where the tabs switch program, pass that
+   * program's ink so the control names what it selected; the due-date screen
+   * switches a mode rather than a program, so it keeps the default.
+   */
+  activeColor?: string;
 }>) {
   return (
     <View style={styles.row}>
@@ -38,7 +45,7 @@ export function SegmentedTabs<T extends string>({
           >
             <Text
               variant={active ? 'smallStrong' : 'small'}
-              color={active ? colors.primaryPressed : colors.textFaint}
+              color={active ? activeColor : colors.textFaint}
               center
             >
               {option.label}

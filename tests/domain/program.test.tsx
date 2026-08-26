@@ -14,6 +14,7 @@ import {
 } from '@/domain/program';
 import { buildSegments, sessionForDay, sessionSeconds } from '@/domain/session';
 import type { ExerciseId, ProgramId } from '@/domain/types';
+import { colors, programColors } from '@/theme';
 
 /**
  * `ExerciseId` and `Step.exerciseId` make the program's step data compile-time
@@ -100,6 +101,30 @@ describe('the program registry', () => {
     expect(programs).toHaveLength(PROGRAM_IDS.length);
     expect(programs.map((p) => p.id)).toEqual(PROGRAM_IDS);
     for (const id of PROGRAM_IDS) expect(programsById[id].id).toBe(id);
+  });
+
+  it('gives every program a complete control tone, all three distinct', () => {
+    // `programColors` is what a button, a switch and a progress track read to
+    // match the program they act on, so a missing field is a control with no
+    // color rather than a compile error at the call site.
+    const fields = ['ring', 'pressed', 'tint', 'softBorder', 'ink'] as const;
+    for (const id of PROGRAM_IDS) {
+      const tone = programColors[programsById[id].colorKey];
+      for (const field of fields) expect(tone[field]).toMatch(/^#[0-9A-F]{6}$/);
+    }
+    // Three identities means three fills. Two programs sharing one would make
+    // the Today cards read as the same program.
+    const fills = PROGRAM_IDS.map((id) => programColors[programsById[id].colorKey].ring);
+    expect(new Set(fills).size).toBe(PROGRAM_IDS.length);
+  });
+
+  it('leaves pelvic floor on the app primary, so nothing about it moved', () => {
+    // It was the whole app before the others existed.
+    const tone = programColors['pelvic-floor'];
+    expect(tone.ring).toBe(colors.primary);
+    expect(tone.pressed).toBe(colors.primaryPressed);
+    expect(tone.tint).toBe(colors.primarySoft);
+    expect(tone.softBorder).toBe(colors.primarySoftBorder);
   });
 
   it('rejects a program id that came from outside the type system', () => {

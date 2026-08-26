@@ -22,15 +22,25 @@ import { useDismiss } from "@/hooks/useDismiss";
 import { useSessionPlayer } from "@/hooks/useSessionPlayer";
 import { formatDuration } from "@/lib/date";
 import { useAppState } from "@/state/AppState";
-import { colors, radius, spacing } from "@/theme";
+import {
+  colors,
+  type ProgramColorKey,
+  programColors,
+  programPhaseColors,
+  radius,
+  spacing,
+} from "@/theme";
 
-const PHASE_COLORS: Record<SegmentKind, string> = {
-  lift: colors.phaseLift,
-  hold: colors.phaseHold,
-  release: colors.phaseRelease,
-  rest: colors.phaseRest,
-  duration: colors.phaseHold,
-};
+/**
+ * The ring is the running program's color, and the phase is the rung it sits on
+ * within that color — see `programPhaseColors`. A `duration` step is a single
+ * sustained effort with no lift/release cycle around it, so it borrows `hold`.
+ */
+type PhaseRamp = (typeof programPhaseColors)[ProgramColorKey];
+
+function phaseColor(ramp: PhaseRamp, kind: SegmentKind): string {
+  return kind === "duration" ? ramp.hold : ramp[kind];
+}
 
 export default function SessionScreen() {
   const { ready, progress } = useAppState();
@@ -53,6 +63,11 @@ function Player({
   useKeepAwake();
 
   const stage = progress.stages[programId];
+  // Identity for the chrome, the matching ramp for the ring. Both keyed off the
+  // one `colorKey`, so a program can never end up sage outside and blush inside.
+  const { colorKey } = programsById[programId];
+  const tone = programColors[colorKey];
+  const ramp = programPhaseColors[colorKey];
   const session = useMemo(() => sessionForDay(stage), [stage]);
   const player = useSessionPlayer(session);
   const [saved, setSaved] = useState(false);
@@ -125,13 +140,13 @@ function Player({
             </Text>
             <Pill
               label={`${programTitle(programsById[programId], progress.phase)} · ${elapsed}`}
-              tint={colors.accentSoft}
-              ink={colors.accent}
+              tint={tone.tint}
+              ink={tone.ink}
               center
             />
           </View>
           <View style={styles.completeActions}>
-            <Button label="Save and finish" onPress={finish} />
+            <Button label="Save and finish" tone={tone} onPress={finish} />
             <Button label="Discard this one" variant="quiet" onPress={leave} />
           </View>
         </Screen>
@@ -141,7 +156,7 @@ function Player({
   }
 
   const { exercise, step, segment } = player;
-  const phaseColor = PHASE_COLORS[segment?.kind ?? "hold"];
+  const ringColor = phaseColor(ramp, segment?.kind ?? "hold");
 
   return (
     <Screen scroll={false} style={styles.root}>
@@ -165,9 +180,10 @@ function Player({
 
       <View style={styles.track}>
         <View
+          testID="session-track"
           style={[
             styles.trackFill,
-            { width: `${player.overallProgress * 100}%` },
+            { width: `${player.overallProgress * 100}%`, backgroundColor: tone.ring },
           ]}
         />
       </View>
@@ -200,7 +216,7 @@ function Player({
               <Text variant="label">How to</Text>
               {exercise.howTo.map((line, index) => (
                 <View key={line} style={styles.howToRow}>
-                  <Text variant="smallStrong" color={colors.primaryPressed}>
+                  <Text variant="smallStrong" color={tone.ink}>
                     {index + 1}
                   </Text>
                   <Text variant="small" style={styles.howToText}>
@@ -225,7 +241,7 @@ function Player({
           </ScrollView>
 
           <View style={styles.introActions}>
-            <Button label="I'm ready" onPress={player.startStep} />
+            <Button label="I'm ready" tone={tone} onPress={player.startStep} />
             <Button
               label="Skip this one"
               variant="quiet"
@@ -239,12 +255,12 @@ function Player({
 
           <ProgressRing
             progress={player.segmentProgress}
-            color={phaseColor}
+            color={ringColor}
             trackColor={colors.surfaceSunken}
             size={280}
             strokeWidth={14}
           >
-            <Text variant="heading" color={phaseColor}>
+            <Text variant="heading" color={ringColor}>
               {segment?.label}
             </Text>
             <Text variant="timer">{player.secondsLeft}</Text>
@@ -269,6 +285,7 @@ function Player({
             <Button
               label={player.status === "paused" ? "Resume" : "Pause"}
               variant="secondary"
+              tone={tone}
               haptic={false}
               onPress={
                 player.status === "paused" ? player.resume : player.pause
@@ -303,10 +320,10 @@ const styles = StyleSheet.create({
     backgroundColor: colors.surfaceSunken,
     overflow: "hidden",
   },
+  // No background here: the fill takes the program's color, set in the render.
   trackFill: {
     height: 6,
     borderRadius: radius.pill,
-    backgroundColor: colors.primary,
   },
   introScroll: {
     flex: 1,
