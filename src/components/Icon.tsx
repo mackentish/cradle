@@ -5,13 +5,13 @@ import { colors } from '@/theme';
 
 export type IconName = 'bloom' | 'bars' | 'person';
 
-type IconProps = {
+type IconProps = Readonly<{
   name: IconName;
   size?: number;
   color?: string;
   /** Tab bar icons fill when active and outline when not. */
   active?: boolean;
-};
+}>;
 
 /**
  * Hand-rolled in SVG rather than pulling in an icon font — there are only three

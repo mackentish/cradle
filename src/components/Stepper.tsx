@@ -6,7 +6,7 @@ import { colors, radius, spacing } from '@/theme';
 
 import { Text } from './Text';
 
-type StepperProps = {
+type StepperProps = Readonly<{
   value: string;
   onDecrement: () => void;
   onIncrement: () => void;
@@ -18,7 +18,7 @@ type StepperProps = {
   size?: 'hero' | 'compact';
   decrementLabel?: string;
   incrementLabel?: string;
-};
+}>;
 
 /** A minus / value / plus control. Used for gestational week and reminder time. */
 export function Stepper({
@@ -69,12 +69,12 @@ function StepButton({
   onPress,
   compact,
   accessibilityLabel,
-}: {
+}: Readonly<{
   glyph: string;
   onPress: () => void;
   compact: boolean;
   accessibilityLabel: string;
-}) {
+}>) {
   const handlePress = () => {
     Haptics.selectionAsync().catch(() => {});
     onPress();

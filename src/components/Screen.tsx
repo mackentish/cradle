@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { colors, spacing } from '@/theme';
 
-type ScreenProps = {
+type ScreenProps = Readonly<{
   children: React.ReactNode;
   /** Scrolling is the default; pass false for full-bleed screens like the player. */
   scroll?: boolean;
@@ -17,7 +17,7 @@ type ScreenProps = {
   topInset?: number;
   /** Lets tests snapshot one screen without the navigator wrapped around it. */
   testID?: string;
-};
+}>;
 
 export function Screen({
   children,

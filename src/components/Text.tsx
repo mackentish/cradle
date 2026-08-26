@@ -5,11 +5,13 @@ import { textStyles } from '@/theme';
 
 type Variant = keyof typeof textStyles;
 
-export type AppTextProps = TextProps & {
-  variant?: Variant;
-  color?: string;
-  center?: boolean;
-};
+export type AppTextProps = Readonly<
+  TextProps & {
+    variant?: Variant;
+    color?: string;
+    center?: boolean;
+  }
+>;
 
 /** Every bit of text in the app goes through here, so the fonts stay consistent. */
 export function Text({

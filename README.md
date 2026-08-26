@@ -17,6 +17,26 @@ npm start          # then press i / a, or scan with Expo Go
 Requires Node 20+. Works in Expo Go — every dependency is part of the Expo SDK or pure JS, including
 the native `@expo/ui` pickers, whose module ships inside Expo Go.
 
+On a physical iOS device, scanning the QR from `npm start` needs the phone to reach Metro directly on
+the LAN. A filtered or managed network can block that even when the phone and the Mac are on the same
+subnet — the symptom in Expo Go is "The network connection was lost". Confirm it by opening
+`http://<your-mac-lan-ip>:8081/status` in Safari on the phone: `packager-status:running` means the LAN
+is fine, nothing back means it's blocked. When it's blocked, tunnel instead:
+
+```sh
+npm run start:tunnel   # EXPO_UNSTABLE_TUNNEL_V2=1 expo start --tunnel --go
+```
+
+`EXPO_UNSTABLE_TUNNEL_V2=1` is load-bearing. Without it, `--tunnel` goes through ngrok, and Expo pins
+`@expo/ngrok-bin` to the end-of-life v2 agent (2.3.41) while ngrok now requires 3.20.0+ — so it dies
+with `ERR_NGROK_121` on any free account, whatever the network. The flag switches to Expo's own
+tunnel service over your logged-in Expo account (`npx expo whoami`), which needs no ngrok at all.
+It's undocumented and marked unstable, so expect it to move between SDKs.
+
+That is dev-server transport only. The shipped app still makes no network calls of any kind — the
+tunnel carries the JavaScript bundle from your Mac to Expo Go during development and is not part of
+the build. LAN is faster, so `npm start` stays the default for simulator work.
+
 ```sh
 npm test                                # jest, including snapshots
 npm run typecheck                       # tsc --noEmit

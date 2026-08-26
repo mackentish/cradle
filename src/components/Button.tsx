@@ -8,7 +8,7 @@ import { Text } from './Text';
 
 type Variant = 'primary' | 'secondary' | 'quiet';
 
-type ButtonProps = {
+type ButtonProps = Readonly<{
   label: string;
   onPress: () => void;
   variant?: Variant;
@@ -16,7 +16,7 @@ type ButtonProps = {
   style?: ViewStyle;
   /** Off for repeated taps inside the player, where buzzing gets tiresome. */
   haptic?: boolean;
-};
+}>;
 
 export function Button({
   label,

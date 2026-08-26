@@ -30,7 +30,7 @@ const RING_WIDTH = 3;
  * the extra dependency in the render tree isn't worth it, and borders scale with
  * the theme's radius token for free.
  */
-export function DayDots({ days }: { days: DayMark[] }) {
+export function DayDots({ days }: Readonly<{ days: readonly DayMark[] }>) {
   return (
     <View style={styles.row}>
       {days.map(({ day, done }, index) => (

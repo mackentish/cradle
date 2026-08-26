@@ -4,7 +4,7 @@ import Svg, { Circle } from 'react-native-svg';
 
 import { colors } from '@/theme';
 
-type ProgressRingProps = {
+type ProgressRingProps = Readonly<{
   /** 0–1. */
   progress: number;
   size?: number;
@@ -12,7 +12,7 @@ type ProgressRingProps = {
   color?: string;
   trackColor?: string;
   children?: React.ReactNode;
-};
+}>;
 
 export function ProgressRing({
   progress,

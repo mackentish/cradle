@@ -3,14 +3,14 @@ import { Pressable, StyleSheet, View, ViewStyle } from 'react-native';
 
 import { colors, radius, shadow, spacing } from '@/theme';
 
-type CardProps = {
+type CardProps = Readonly<{
   children: React.ReactNode;
   style?: ViewStyle;
   onPress?: () => void;
   tint?: string;
   padded?: boolean;
   testID?: string;
-};
+}>;
 
 export function Card({ children, style, onPress, tint, padded = true, testID }: CardProps) {
   const base = [

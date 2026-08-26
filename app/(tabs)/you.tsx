@@ -125,12 +125,12 @@ function Row({
   value,
   onPress,
   destructive,
-}: {
+}: Readonly<{
   label: string;
   value: string;
   onPress: () => void;
   destructive?: boolean;
-}) {
+}>) {
   return (
     <Pressable onPress={onPress} style={styles.row} accessibilityRole="button">
       <Text variant="bodyStrong" color={destructive ? colors.primaryPressed : colors.text}>

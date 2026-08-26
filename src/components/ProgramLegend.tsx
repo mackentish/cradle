@@ -11,7 +11,7 @@ import { Text } from './Text';
  * Three colors on the day tracker mean nothing without this. Sits directly under
  * `DayDots` wherever it's used, in the same outside-in order as the rings.
  */
-export function ProgramLegend({ phase }: { phase: Phase }) {
+export function ProgramLegend({ phase }: Readonly<{ phase: Phase }>) {
   return (
     <View style={styles.row}>
       {PROGRAM_IDS.map((programId) => {

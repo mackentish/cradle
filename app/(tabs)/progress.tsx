@@ -13,7 +13,14 @@ import type { ProgramId, Progress } from '@/domain/types';
 import { formatDayKey, formatDuration } from '@/lib/date';
 import { recentDays, type ProgramSummary } from '@/lib/streak';
 import { useAppState } from '@/state/AppState';
-import { colors, programColors, radius, spacing, stageColors } from '@/theme';
+import {
+  colors,
+  programColors,
+  radius,
+  spacing,
+  stageColors,
+  type StageColorKey,
+} from '@/theme';
 
 export default function ProgressScreen() {
   const { ready, progress } = useAppState();
@@ -24,7 +31,7 @@ export default function ProgressScreen() {
   return <ProgressView progress={progress} />;
 }
 
-function ProgressView({ progress }: { progress: Progress }) {
+function ProgressView({ progress }: Readonly<{ progress: Progress }>) {
   const { logs, stats } = useAppState();
   const [timelineProgram, setTimelineProgram] = useState<ProgramId>('pelvic-floor');
 
@@ -42,13 +49,7 @@ function ProgressView({ progress }: { progress: Progress }) {
         <Text variant="hero">
           {stats.current} day{stats.current === 1 ? '' : 's'} running
         </Text>
-        <Text variant="body">
-          {stats.completedToday
-            ? 'Today is in the bank.'
-            : stats.current > 0
-              ? 'Yesterday counted. Today is still open.'
-              : 'Every streak starts with one session.'}
-        </Text>
+        <Text variant="body">{streakNote(stats.completedToday, stats.current)}</Text>
       </View>
 
       <View style={styles.statRow}>
@@ -117,7 +118,7 @@ function ProgressView({ progress }: { progress: Progress }) {
                 <View
                   style={[
                     styles.timelineDot,
-                    { backgroundColor: isCurrent ? tone.ink : done ? tone.tint : colors.border },
+                    { backgroundColor: timelineDotColor(tone, isCurrent, done) },
                   ]}
                 />
                 <View style={styles.timelineBody}>
@@ -182,6 +183,23 @@ function ProgressView({ progress }: { progress: Progress }) {
   );
 }
 
+/** The line under the headline streak. */
+function streakNote(completedToday: boolean, current: number): string {
+  if (completedToday) return 'Today is in the bank.';
+  if (current > 0) return 'Yesterday counted. Today is still open.';
+  return 'Every streak starts with one session.';
+}
+
+/** Filled for where she is, tinted for what she has been through, faint ahead. */
+function timelineDotColor(
+  tone: (typeof stageColors)[StageColorKey],
+  isCurrent: boolean,
+  done: boolean
+): string {
+  if (isCurrent) return tone.ink;
+  return done ? tone.tint : colors.border;
+}
+
 function describe(summary: ProgramSummary): string {
   const plural = summary.totalSessions === 1 ? '' : 's';
   const sessions = `${summary.totalSessions} session${plural}`;
@@ -189,7 +207,7 @@ function describe(summary: ProgramSummary): string {
   return `${sessions} · ${time} · ${summary.daysThisWeek}/7 this week`;
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ label, value }: Readonly<{ label: string; value: string }>) {
   return (
     <View style={styles.stat}>
       <Text variant="heading">{value}</Text>

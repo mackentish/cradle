@@ -7,7 +7,7 @@ import { colors } from '@/theme';
 import { Text } from './Text';
 
 /** The "‹ Back" affordance used by the screens pushed on top of the tabs. */
-export function BackLink({ label = 'Back' }: { label?: string }) {
+export function BackLink({ label = 'Back' }: Readonly<{ label?: string }>) {
   const dismiss = useDismiss();
 
   return (

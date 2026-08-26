@@ -162,14 +162,20 @@ export default function RemindersScreen() {
       ) : null}
 
       <Text variant="small" color={colors.textFaint} center>
-        {blocked
-          ? 'Saved, but your phone will not deliver it yet.'
-          : enabled
-            ? `${scheduled} of 3 reminders scheduled on this device.`
-            : 'Nothing scheduled for this program.'}
+        {statusNote(blocked, enabled, scheduled)}
       </Text>
     </Screen>
   );
+}
+
+/**
+ * The footnote. `scheduled` counts every Cradle reminder the OS is holding, not
+ * just this program's, so it reads as a check on the whole set.
+ */
+function statusNote(blocked: boolean, enabled: boolean, scheduled: number): string {
+  if (blocked) return 'Saved, but your phone will not deliver it yet.';
+  if (enabled) return `${scheduled} of 3 reminders scheduled on this device.`;
+  return 'Nothing scheduled for this program.';
 }
 
 const styles = StyleSheet.create({

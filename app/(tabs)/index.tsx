@@ -24,7 +24,7 @@ export default function TodayScreen() {
 }
 
 /** Split out so the hooks below never sit behind the gate above. */
-function Today({ progress }: { progress: Progress }) {
+function Today({ progress }: Readonly<{ progress: Progress }>) {
   const router = useRouter();
   const { logs, stats } = useAppState();
 
@@ -62,13 +62,7 @@ function Today({ progress }: { progress: Progress }) {
           <Text variant="subheading">
             {stats.programsToday} of {PROGRAM_IDS.length} done today ✓
           </Text>
-          <Text variant="small">
-            {stats.programsToday === PROGRAM_IDS.length
-              ? 'Everything, today. Rest is part of the program too.'
-              : stats.current > 1
-                ? `${stats.current} days in a row. One is enough to keep it going.`
-                : 'Nicely done. The others are there if you want them.'}
-          </Text>
+          <Text variant="small">{doneTodayNote(stats.programsToday, stats.current)}</Text>
         </Card>
       ) : null}
 
@@ -102,11 +96,11 @@ function ProgramCard({
   program,
   progress,
   done,
-}: {
+}: Readonly<{
   program: Program;
   progress: Progress;
   done: boolean;
-}) {
+}>) {
   const router = useRouter();
   const [expanded, setExpanded] = useState(false);
 
@@ -183,6 +177,18 @@ function ProgramCard({
       />
     </Card>
   );
+}
+
+/**
+ * What the "done today" card says under the count. Reads down from the best
+ * case: all three, then a run worth naming, then the first one of the day.
+ */
+function doneTodayNote(programsToday: number, streak: number): string {
+  if (programsToday === PROGRAM_IDS.length) {
+    return 'Everything, today. Rest is part of the program too.';
+  }
+  if (streak > 1) return `${streak} days in a row. One is enough to keep it going.`;
+  return 'Nicely done. The others are there if you want them.';
 }
 
 function greeting(): string {

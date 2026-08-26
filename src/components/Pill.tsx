@@ -10,13 +10,13 @@ export function Pill({
   tint = colors.primarySoft,
   ink = colors.primaryPressed,
   center = false,
-}: {
+}: Readonly<{
   label: string;
   tint?: string;
   ink?: string;
   /** Centers the pill instead of hugging the left edge of its row. */
   center?: boolean;
-}) {
+}>) {
   return (
     <View style={[styles.pill, center && styles.centered, { backgroundColor: tint }]}>
       <Text variant="smallStrong" color={ink}>

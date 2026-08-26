@@ -54,10 +54,10 @@ function TabIcon({
   name,
   color,
   focused,
-}: {
+}: Readonly<{
   name: IconName;
   color: ColorValue;
   focused: boolean;
-}) {
+}>) {
   return <Icon name={name} color={String(color)} active={focused} size={26} />;
 }

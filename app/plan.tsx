@@ -8,14 +8,13 @@ import { getExercise } from '@/domain/exercises';
 import { phaseLabel } from '@/domain/pregnancy';
 import { isProgramId, PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
 import { describeStep, sessionSeconds } from '@/domain/session';
-import type { ProgramId } from '@/domain/types';
+import type { ProgramId, Step } from '@/domain/types';
 import { formatDuration } from '@/lib/date';
 import { useAppState } from '@/state/AppState';
 import { colors, programColors, spacing, stageColors } from '@/theme';
 
 /** The whole program, so nothing about the progression feels like a black box. */
 export default function PlanScreen() {
-  const router = useRouter();
   const { progress } = useAppState();
   const { program } = useLocalSearchParams<{ program?: string }>();
 
@@ -101,19 +100,7 @@ export default function PlanScreen() {
                     </Text>
                   </View>
                   {session.steps.map((step, index) => (
-                    <Pressable
-                      key={`${session.id}-${step.exerciseId}-${index}`}
-                      onPress={() => router.push(`/exercise/${step.exerciseId}`)}
-                      accessibilityRole="button"
-                    >
-                      <Text variant="small">
-                        {getExercise(step.exerciseId).name}
-                        <Text variant="small" color={colors.textFaint}>
-                          {'  '}
-                          {describeStep(step)}
-                        </Text>
-                      </Text>
-                    </Pressable>
+                    <StepLink key={`${session.id}-${step.exerciseId}-${index}`} step={step} />
                   ))}
                 </View>
               ))}
@@ -122,6 +109,29 @@ export default function PlanScreen() {
         );
       })}
     </Screen>
+  );
+}
+
+/**
+ * One step in a session, linking to the exercise. Its own component so the tap
+ * handler doesn't sit four maps deep inside the screen.
+ */
+function StepLink({ step }: Readonly<{ step: Step }>) {
+  const router = useRouter();
+
+  return (
+    <Pressable
+      onPress={() => router.push(`/exercise/${step.exerciseId}`)}
+      accessibilityRole="button"
+    >
+      <Text variant="small">
+        {getExercise(step.exerciseId).name}
+        <Text variant="small" color={colors.textFaint}>
+          {'  '}
+          {describeStep(step)}
+        </Text>
+      </Text>
+    </Pressable>
   );
 }
 

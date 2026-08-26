@@ -25,7 +25,7 @@ const CONFETTI_COLORS: [string, ...string[]] = [
 const SPAWN_ABOVE = 60;
 const EXIT_BELOW = 60;
 
-type ConfettiProps = {
+type ConfettiProps = Readonly<{
   count?: number;
   /** How long one piece takes to cross the screen, ms. Controls the speed. */
   fallDuration?: number;
@@ -35,7 +35,7 @@ type ConfettiProps = {
    * emitting relative to how long they take to fall — not of how many there are.
    */
   coverage?: number;
-};
+}>;
 
 type Piece = {
   key: string;

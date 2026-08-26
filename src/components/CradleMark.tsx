@@ -9,7 +9,7 @@ import { palette } from '@/theme';
  *
  * Both arcs use sweep-flag 0 so they bow downward (SVG's y axis points down).
  */
-export function CradleMark({ size = 96 }: { size?: number }) {
+export function CradleMark({ size = 96 }: Readonly<{ size?: number }>) {
   return (
     <Svg width={size} height={size} viewBox="0 0 100 100">
       <Circle cx={50} cy={50} r={48} fill={palette.blush100} />

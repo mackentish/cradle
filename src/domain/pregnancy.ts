@@ -55,6 +55,11 @@ export function trimesterFor(week: number): 1 | 2 | 3 {
   return 3;
 }
 
+/** "day" or "days" for a count the caller has already put in the string. */
+function plural(count: number, noun: string): string {
+  return count === 1 ? noun : `${noun}s`;
+}
+
 /** "Week 22 · 4 days" style summary for headers. */
 export function describeProgress(progress: Progress): string {
   if (progress.phase === 'postpartum') {
@@ -62,12 +67,10 @@ export function describeProgress(progress: Progress): string {
       const days = progress.dayOfWeek;
       return days === 0 ? 'Day one' : `${days + 1} days postpartum`;
     }
-    return `${progress.week} ${progress.week === 1 ? 'week' : 'weeks'} postpartum`;
+    return `${progress.week} ${plural(progress.week, 'week')} postpartum`;
   }
   const dayPart =
-    progress.dayOfWeek === 0
-      ? ''
-      : ` · ${progress.dayOfWeek} ${progress.dayOfWeek === 1 ? 'day' : 'days'}`;
+    progress.dayOfWeek === 0 ? '' : ` · ${progress.dayOfWeek} ${plural(progress.dayOfWeek, 'day')}`;
   return `Week ${progress.week}${dayPart}`;
 }
 
@@ -77,7 +80,8 @@ export function describeCountdown(progress: Progress): string | null {
   if (daysUntilDue > 1) return `${daysUntilDue} days to go`;
   if (daysUntilDue === 1) return 'One day to go';
   if (daysUntilDue === 0) return 'Due today';
-  return `${Math.abs(daysUntilDue)} ${Math.abs(daysUntilDue) === 1 ? 'day' : 'days'} past due`;
+  const overdue = Math.abs(daysUntilDue);
+  return `${overdue} ${plural(overdue, 'day')} past due`;
 }
 
 /** Validates a candidate due date. Returns an error message, or null if it's fine. */

@@ -18,11 +18,11 @@ export function SegmentedTabs<T extends string>({
   options,
   value,
   onChange,
-}: {
-  options: Array<SegmentOption<T>>;
+}: Readonly<{
+  options: ReadonlyArray<SegmentOption<T>>;
   value: T;
   onChange: (next: T) => void;
-}) {
+}>) {
   return (
     <View style={styles.row}>
       {options.map((option) => {

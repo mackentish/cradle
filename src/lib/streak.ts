@@ -22,7 +22,8 @@ export type StreakSummary = ProgramSummary & {
 };
 
 function uniqueDays(logs: SessionLog[]): string[] {
-  return Array.from(new Set(logs.map((log) => log.day))).sort();
+  // Day keys are YYYY-MM-DD, so comparing them as strings sorts them by date.
+  return Array.from(new Set(logs.map((log) => log.day))).sort((a, b) => a.localeCompare(b));
 }
 
 /**

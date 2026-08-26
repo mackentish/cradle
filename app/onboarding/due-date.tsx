@@ -1,6 +1,6 @@
 import { useRouter } from 'expo-router';
 import React, { useCallback, useMemo, useState } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import {
   Button,
@@ -22,7 +22,7 @@ import { useDismiss } from '@/hooks/useDismiss';
 import { formatLongDate, fromDayKey, toDayKey } from '@/lib/date';
 import { emptyProfile } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
-import { colors, radius, spacing } from '@/theme';
+import { colors, spacing } from '@/theme';
 
 type Mode = 'due-date' | 'weeks-along';
 
@@ -141,21 +141,6 @@ const styles = StyleSheet.create({
   },
   header: {
     gap: spacing.sm,
-  },
-  switcher: {
-    flexDirection: 'row',
-    backgroundColor: colors.surfaceSunken,
-    borderRadius: radius.pill,
-    padding: 4,
-    gap: 4,
-  },
-  modeTab: {
-    flex: 1,
-    paddingVertical: spacing.md,
-    borderRadius: radius.pill,
-  },
-  modeTabActive: {
-    backgroundColor: colors.surface,
   },
   footer: {
     gap: spacing.sm,

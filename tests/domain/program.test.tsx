@@ -70,7 +70,8 @@ describe('the exercise library', () => {
       'birth-ball-lean',
     ];
 
-    expect(Object.keys(exercises).sort()).toEqual([...ids].sort());
+    const byName = (a: string, b: string) => a.localeCompare(b);
+    expect(Object.keys(exercises).sort(byName)).toEqual([...ids].sort(byName));
     for (const id of ids) expect(getExercise(id).id).toBe(id);
   });
 
@@ -113,7 +114,7 @@ describe('the program registry', () => {
     // This is what lets a log written before there were three programs still
     // pass `toLogs` — its `stageId` is one every program still recognizes.
     const perProgram = PROGRAM_IDS.map((id) =>
-      programsById[id].stages.map((stage) => stage.id).sort()
+      programsById[id].stages.map((stage) => stage.id).sort((a, b) => a.localeCompare(b))
     );
     for (const ids of perProgram) expect(ids).toEqual(perProgram[0]);
     expect(isStageId('build')).toBe(true);

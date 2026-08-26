@@ -6,11 +6,11 @@ import { colors, fonts, radius, spacing } from '@/theme';
 
 import { Text } from './Text';
 
-type DateFieldsProps = {
+type DateFieldsProps = Readonly<{
   initial?: Date | null;
   /** Fires on every keystroke: the parsed date (or null), plus whether the user has typed anything. */
   onChange: (date: Date | null, touched: boolean) => void;
-};
+}>;
 
 /**
  * MM / DD / YYYY entry. Deliberately not a native picker — plain number fields
@@ -88,14 +88,14 @@ function Field({
   maxLength,
   width,
   inputRef,
-}: {
+}: Readonly<{
   value: string;
   onChangeText: (text: string) => void;
   placeholder: string;
   maxLength: number;
   width: number;
   inputRef?: React.RefObject<TextInput | null>;
-}) {
+}>) {
   return (
     <TextInput
       ref={inputRef}

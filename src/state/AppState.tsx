@@ -41,7 +41,7 @@ type AppStateValue = {
 
 const AppStateContext = createContext<AppStateValue | null>(null);
 
-export function AppStateProvider({ children }: { children: React.ReactNode }) {
+export function AppStateProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   const [ready, setReady] = useState(false);
   const [profile, setProfile] = useState<Profile>(emptyProfile);
   const [logs, setLogs] = useState<SessionLog[]>([]);
