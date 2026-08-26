@@ -24,6 +24,7 @@ export const palette = {
   lavender100: '#EFEBF6',
   lavender300: '#CDC3E0',
   lavender500: '#8B7FA8',
+  lavender600: '#6F6389',
 
   // Neutrals, warmed slightly so nothing reads as gray-blue
   cream: '#FDFAF7',
@@ -73,3 +74,19 @@ export const stageColors = {
 } as const;
 
 export type StageColorKey = keyof typeof stageColors;
+
+/**
+ * Each program's identity color. Pelvic floor keeps the app's primary, since it
+ * was the whole app before the others existed. `ring` is the saturated version
+ * the day tracker draws with; `tint`/`ink` match the `stageColors` shape.
+ *
+ * Deliberately separate from `stageColors` — a stage says *when* she is, a
+ * program says *what* she's doing, and the two are not interchangeable.
+ */
+export const programColors = {
+  'pelvic-floor': { ring: palette.blush500, tint: palette.blush100, ink: palette.blush600 },
+  core: { ring: palette.sage500, tint: palette.sage100, ink: palette.sage600 },
+  'birth-prep': { ring: palette.lavender500, tint: palette.lavender100, ink: palette.lavender600 },
+} as const;
+
+export type ProgramColorKey = keyof typeof programColors;

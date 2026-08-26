@@ -50,17 +50,47 @@ describe('screen snapshots', () => {
     expect(visualTree('progress-screen')).toMatchSnapshot();
   });
 
-  it('reminders, switched on', async () => {
-    await seed({ profile: { reminders: { enabled: true, hour: 19, minute: 30 } } });
-    renderRouter('app', { initialUrl: '/reminders' });
+  it('today, with one program already done', async () => {
+    // The done card, a filled ring and one card in its "do it again" state — the
+    // partial-day case is the one three programs actually made possible.
+    await seed({
+      logs: [sessionLog({ day: daysAgo(0), programId: 'core', sessionId: 'core-build-a' })],
+    });
+    renderRouter('app', { initialUrl: '/(tabs)' });
 
-    await waitFor(() => expect(screen.getByTestId('reminders-screen')).toBeOnTheScreen());
-    expect(visualTree('reminders-screen')).toMatchSnapshot();
+    await waitFor(() => expect(screen.getByTestId('today-screen')).toBeOnTheScreen());
+    expect(visualTree('today-screen')).toMatchSnapshot();
+  });
+
+  it('plan', async () => {
+    await seed();
+    renderRouter('app', { initialUrl: '/plan?program=core' });
+
+    await waitFor(() => expect(screen.getByTestId('plan-screen')).toBeOnTheScreen());
+    expect(visualTree('plan-screen')).toMatchSnapshot();
+  });
+
+  it('reminders, switched on', async () => {
+    await seed({
+      profile: {
+        reminders: {
+          'pelvic-floor': { enabled: true, hour: 19, minute: 30 },
+          core: { enabled: false, hour: 17, minute: 0 },
+          'birth-prep': { enabled: false, hour: 20, minute: 0 },
+        },
+      },
+    });
+    renderRouter('app', { initialUrl: '/reminders/pelvic-floor' });
+
+    await waitFor(() =>
+      expect(screen.getByTestId('reminders-screen-pelvic-floor')).toBeOnTheScreen()
+    );
+    expect(visualTree('reminders-screen-pelvic-floor')).toMatchSnapshot();
   });
 
   it('session complete', async () => {
     await seed({ logs: [sessionLog({ day: daysAgo(1) })] });
-    renderRouter('app', { initialUrl: '/session' });
+    renderRouter('app', { initialUrl: '/session/birth-prep' });
 
     await waitFor(() => expect(screen.getByText(/Step 1 of/)).toBeOnTheScreen());
     for (let guard = 0; guard < 12; guard += 1) {

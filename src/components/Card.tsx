@@ -9,9 +9,10 @@ type CardProps = {
   onPress?: () => void;
   tint?: string;
   padded?: boolean;
+  testID?: string;
 };
 
-export function Card({ children, style, onPress, tint, padded = true }: CardProps) {
+export function Card({ children, style, onPress, tint, padded = true, testID }: CardProps) {
   const base = [
     styles.card,
     padded && styles.padded,
@@ -19,13 +20,18 @@ export function Card({ children, style, onPress, tint, padded = true }: CardProp
     style,
   ];
 
-  if (!onPress) return <View style={base}>{children}</View>;
+  if (!onPress) return (
+    <View style={base} testID={testID}>
+      {children}
+    </View>
+  );
 
   return (
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [...base, pressed && styles.pressed]}
       accessibilityRole="button"
+      testID={testID}
     >
       {children}
     </Pressable>

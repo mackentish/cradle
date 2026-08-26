@@ -49,6 +49,7 @@ export function sessionLog(overrides: Partial<SessionLog> = {}): SessionLog {
   return {
     day,
     completedAt: `${day}T09:00:00.000Z`,
+    programId: 'pelvic-floor',
     stageId: 'build',
     sessionId: 'build-a',
     week: 20,
@@ -56,4 +57,29 @@ export function sessionLog(overrides: Partial<SessionLog> = {}): SessionLog {
     seconds: 300,
     ...overrides,
   };
+}
+
+/**
+ * A profile in the shape written by a build that only had one program: reminders
+ * as a single flat object, logs with no `programId`. Used to prove the migration
+ * in `toProfile`/`toLogs` survives a real boot rather than only a unit test.
+ */
+export async function seedLegacy({
+  reminders = { enabled: true, hour: 7, minute: 30 },
+  logs = [],
+}: {
+  reminders?: { enabled: boolean; hour: number; minute: number };
+  logs?: Array<Record<string, unknown>>;
+} = {}): Promise<void> {
+  await AsyncStorage.setItem(
+    PROFILE_KEY,
+    JSON.stringify({
+      dueDate: dueDateForWeek(20),
+      birthDate: null,
+      name: null,
+      acknowledgedDisclaimerAt: now().toISOString(),
+      reminders,
+    })
+  );
+  await AsyncStorage.setItem(LOGS_KEY, JSON.stringify(logs));
 }

@@ -1,20 +1,33 @@
-import { useRouter } from 'expo-router';
-import React from 'react';
+import { useLocalSearchParams, useRouter } from 'expo-router';
+import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { BackLink, Card, Pill, Screen, Text } from '@/components';
+import { BackLink, Card, Pill, Screen, SegmentedTabs, Text } from '@/components';
+import { PROGRAM_SAFETY } from '@/content/safety';
 import { getExercise } from '@/domain/exercises';
 import { phaseLabel } from '@/domain/pregnancy';
-import { stages } from '@/domain/program';
+import { isProgramId, PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
 import { describeStep, sessionSeconds } from '@/domain/session';
+import type { ProgramId } from '@/domain/types';
 import { formatDuration } from '@/lib/date';
 import { useAppState } from '@/state/AppState';
-import { colors, spacing, stageColors } from '@/theme';
+import { colors, programColors, spacing, stageColors } from '@/theme';
 
 /** The whole program, so nothing about the progression feels like a black box. */
 export default function PlanScreen() {
   const router = useRouter();
   const { progress } = useAppState();
+  const { program } = useLocalSearchParams<{ program?: string }>();
+
+  // Today's "Full plan ›" passes the card she tapped, so she lands where she was.
+  const [selected, setSelected] = useState<ProgramId>(
+    isProgramId(program) ? program : 'pelvic-floor'
+  );
+
+  const phase = progress?.phase ?? 'pregnancy';
+  const active = programsById[selected];
+  const tone = programColors[active.colorKey];
+  const safety = PROGRAM_SAFETY[selected];
 
   return (
     <Screen testID="plan-screen">
@@ -23,24 +36,49 @@ export default function PlanScreen() {
       <View style={styles.header}>
         <Text variant="title">The full plan</Text>
         <Text variant="body">
-          Seven stages, from the first trimester through recovery. Cradle picks the one that matches
-          your week and rotates its sessions day to day.
+          Three programs, each with seven stages running from the first trimester through recovery.
+          Cradle picks the stage that matches your week and rotates its sessions day to day.
         </Text>
       </View>
 
-      {stages.map((stage) => {
-        const tone = stageColors[stage.colorKey];
-        const isCurrent = stage.id === progress?.stage.id;
+      <SegmentedTabs
+        value={selected}
+        onChange={setSelected}
+        options={PROGRAM_IDS.map((programId) => ({
+          value: programId,
+          label: programTitle(programsById[programId], phase),
+        }))}
+      />
+
+      <Card tint={tone.tint}>
+        <Text variant="heading">{programTitle(active, phase)}</Text>
+        <Text variant="small">{active.blurb}</Text>
+        <Text variant="small">{safety.intro}</Text>
+        <View style={styles.emphasis}>
+          {safety.rules.map((rule) => (
+            <Text key={rule} variant="small" color={tone.ink}>
+              · {rule}
+            </Text>
+          ))}
+        </View>
+      </Card>
+
+      {active.stages.map((stage) => {
+        const stageTone = stageColors[stage.colorKey];
+        const isCurrent = stage.id === progress?.stages[selected].id;
         return (
-          <Card key={stage.id} tint={isCurrent ? tone.tint : undefined}>
+          <Card
+            key={`${stage.programId}-${stage.id}`}
+            tint={isCurrent ? stageTone.tint : undefined}
+          >
             <View style={styles.stageHeader}>
               <View style={styles.stageTitle}>
-                <Text variant="label" color={tone.ink}>
+                <Text variant="label" color={stageTone.ink}>
                   {phaseLabel(stage.phase)} · {stage.range}
                 </Text>
                 <Text variant="heading">{stage.title}</Text>
               </View>
-              {isCurrent ? <Pill label="Now" tint={colors.surface} ink={tone.ink} /> : null}
+              {isCurrent ? <Pill label="Now" tint={colors.surface} ink={stageTone.ink} /> : null}
             </View>
 
             <Text variant="small">{stage.focus}</Text>

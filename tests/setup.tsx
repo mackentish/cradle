@@ -51,10 +51,22 @@ jest.mock('expo-notifications', () => {
       canAskAgain: notificationDouble.permission !== 'denied',
     })),
     setNotificationChannelAsync: jest.fn(async () => null),
-    scheduleNotificationAsync: jest.fn(async ({ content, trigger }: any) => {
-      const identifier = `scheduled-${notificationDouble.scheduled.length}`;
-      notificationDouble.scheduled.push({ identifier, content, trigger });
-      return identifier;
+    // Honors a passed identifier and replaces in place, the way the OS does —
+    // otherwise "reschedule one program" would append a duplicate instead.
+    scheduleNotificationAsync: jest.fn(async ({ identifier, content, trigger }: any) => {
+      const id = identifier ?? `scheduled-${notificationDouble.scheduled.length}`;
+      const existing = notificationDouble.scheduled.findIndex(
+        (item: any) => item.identifier === id
+      );
+      const entry = { identifier: id, content, trigger };
+      if (existing >= 0) notificationDouble.scheduled[existing] = entry;
+      else notificationDouble.scheduled.push(entry);
+      return id;
+    }),
+    cancelScheduledNotificationAsync: jest.fn(async (identifier: string) => {
+      notificationDouble.scheduled = notificationDouble.scheduled.filter(
+        (item: any) => item.identifier !== identifier
+      );
     }),
     cancelAllScheduledNotificationsAsync: jest.fn(async () => {
       notificationDouble.scheduled = [];

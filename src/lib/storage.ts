@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { isStageId } from '@/domain/program';
-import type { Phase, Profile, ReminderSettings, SessionLog } from '@/domain/types';
+import { isProgramId, isStageId } from '@/domain/program';
+import type { Phase, Profile, ProgramId, ReminderSettings, SessionLog } from '@/domain/types';
 
 import { now } from './clock';
 import { isDayKey } from './date';
@@ -17,12 +17,32 @@ const LOGS_KEY = 'cradle.logs.v1';
 const MAX_LOGGED_WEEK = 520;
 const MAX_LOGGED_SECONDS = 24 * 60 * 60;
 
+/**
+ * Default reminder times, staggered on purpose: three reminders all set to 9am
+ * would arrive as one buzz she learns to swipe away.
+ */
+const REMINDER_DEFAULTS: Record<ProgramId, ReminderSettings> = {
+  'pelvic-floor': { enabled: false, hour: 9, minute: 0 },
+  core: { enabled: false, hour: 17, minute: 0 },
+  'birth-prep': { enabled: false, hour: 20, minute: 0 },
+};
+
+function defaultReminders(): Record<ProgramId, ReminderSettings> {
+  // Fresh objects: a shallow spread of REMINDER_DEFAULTS would share the nested
+  // settings with it, and with every profile built from it.
+  return {
+    'pelvic-floor': { ...REMINDER_DEFAULTS['pelvic-floor'] },
+    core: { ...REMINDER_DEFAULTS.core },
+    'birth-prep': { ...REMINDER_DEFAULTS['birth-prep'] },
+  };
+}
+
 export const emptyProfile: Profile = {
   dueDate: null,
   birthDate: null,
   name: null,
   acknowledgedDisclaimerAt: null,
-  reminders: { enabled: false, hour: 9, minute: 0 },
+  reminders: defaultReminders(),
 };
 
 /**
@@ -52,12 +72,34 @@ function asRecord(value: unknown): Record<string, unknown> {
     : {};
 }
 
-function toReminders(value: unknown): ReminderSettings {
+function toReminders(value: unknown, fallback: ReminderSettings): ReminderSettings {
   const raw = asRecord(value);
   return {
     enabled: raw.enabled === true,
-    hour: boundedInt(raw.hour, 0, 23, emptyProfile.reminders.hour),
-    minute: boundedInt(raw.minute, 0, 59, emptyProfile.reminders.minute),
+    hour: boundedInt(raw.hour, 0, 23, fallback.hour),
+    minute: boundedInt(raw.minute, 0, 59, fallback.minute),
+  };
+}
+
+/**
+ * Reminders used to be a single flat `{ enabled, hour, minute }` — one program,
+ * one reminder. Recognize that shape and keep her existing reminder on the pelvic
+ * floor program rather than silently switching it off, which is what reading the
+ * new keys off an old profile would do.
+ *
+ * The new keys can't collide with the old ones, so the sniff is unambiguous.
+ */
+function toReminderMap(value: unknown): Record<ProgramId, ReminderSettings> {
+  const raw = asRecord(value);
+  const isLegacy = 'enabled' in raw || 'hour' in raw || 'minute' in raw;
+  const legacy = isLegacy ? toReminders(raw, REMINDER_DEFAULTS['pelvic-floor']) : null;
+
+  if (legacy) return { ...defaultReminders(), 'pelvic-floor': legacy };
+
+  return {
+    'pelvic-floor': toReminders(raw['pelvic-floor'], REMINDER_DEFAULTS['pelvic-floor']),
+    core: toReminders(raw.core, REMINDER_DEFAULTS.core),
+    'birth-prep': toReminders(raw['birth-prep'], REMINDER_DEFAULTS['birth-prep']),
   };
 }
 
@@ -68,7 +110,7 @@ export function toProfile(value: unknown): Profile {
     birthDate: nullableDayKey(raw.birthDate),
     name: nullableString(raw.name),
     acknowledgedDisclaimerAt: nullableString(raw.acknowledgedDisclaimerAt),
-    reminders: toReminders(raw.reminders),
+    reminders: toReminderMap(raw.reminders),
   };
 }
 
@@ -90,6 +132,9 @@ export function toLogs(value: unknown): SessionLog[] {
     logs.push({
       day: raw.day,
       completedAt: raw.completedAt,
+      // Every log written before the app had more than one program was a pelvic
+      // floor session, so default rather than drop — this is real history.
+      programId: isProgramId(raw.programId) ? raw.programId : 'pelvic-floor',
       stageId: raw.stageId,
       sessionId: typeof raw.sessionId === 'string' ? raw.sessionId : '',
       week: boundedInt(raw.week, 0, MAX_LOGGED_WEEK, 0),

@@ -1,6 +1,13 @@
-import type { StageColorKey } from '@/theme';
+import type { ProgramColorKey, StageColorKey } from '@/theme';
 
 export type Phase = 'pregnancy' | 'postpartum';
+
+/**
+ * The three programs, each with its own daily session, its own reminder and its
+ * own take on every stage. Pelvic floor came first, so its ids and log entries
+ * are the ones everything else stays compatible with.
+ */
+export type ProgramId = 'pelvic-floor' | 'core' | 'birth-prep';
 
 export type ExerciseKind =
   | 'breath'
@@ -8,7 +15,9 @@ export type ExerciseKind =
   | 'quick'
   | 'release'
   | 'functional'
-  | 'mobility';
+  | 'mobility'
+  | 'core'
+  | 'stretch';
 
 /**
  * Every exercise in the library, spelled out so the program's step data is
@@ -43,7 +52,24 @@ export type ExerciseId =
   | 'figure-four'
   | 'posture-reset'
   | 'gentle-walk'
-  | 'rest-and-breathe';
+  | 'rest-and-breathe'
+  // Core program
+  | 'quadruped-core-breath'
+  | 'standing-march'
+  | 'wall-plank'
+  | 'side-plank-knees'
+  | 'dead-bug-heel-tap'
+  | 'side-lying-leg-lift'
+  | 'anti-rotation-reach'
+  | 'tall-kneel-hold'
+  // Birth prep / recovery stretches
+  | 'butterfly-stretch'
+  | 'pelvic-circles-ball'
+  | 'supported-lunge-stretch'
+  | 'chest-opener-doorway'
+  | 'neck-shoulder-release'
+  | 'standing-hamstring-support'
+  | 'birth-ball-lean';
 
 export type Exercise = {
   id: ExerciseId;
@@ -101,6 +127,8 @@ export type StageId =
 
 export type Stage = {
   id: StageId;
+  /** Which program this stage belongs to. Stage ids are shared across programs. */
+  programId: ProgramId;
   colorKey: StageColorKey;
   phase: Phase;
   title: string;
@@ -117,6 +145,22 @@ export type Stage = {
   sessions: NonEmpty<SessionTemplate>;
 };
 
+/**
+ * A program: one card on Today, one reminder, one stage table. All three share
+ * the same `StageId`s and week boundaries, so "Week 22 · Build" describes the
+ * whole app rather than any one program.
+ */
+export type Program = {
+  id: ProgramId;
+  colorKey: ProgramColorKey;
+  title: string;
+  /** "Birth prep" makes no sense once the baby is here. Falls back to `title`. */
+  postpartumTitle?: string;
+  /** One line, shown on the Today card under the session name. */
+  blurb: string;
+  stages: NonEmpty<Stage>;
+};
+
 /** Where the user is right now, derived entirely from due date + optional birth date. */
 export type Progress = {
   phase: Phase;
@@ -127,6 +171,16 @@ export type Progress = {
   /** Days remaining until the due date; negative once past due. */
   daysUntilDue: number;
   trimester: 1 | 2 | 3 | null;
+  /**
+   * The stage each program is in. Programs share stage ids and week ranges, so
+   * these always agree on `id` and differ only in their copy and sessions.
+   */
+  stages: Record<ProgramId, Stage>;
+  /**
+   * The headline stage, used for the app-level banner and the celebration copy.
+   * Pelvic floor's, because it's the program the app started as — and since all
+   * three share week boundaries, its id and range speak for all of them.
+   */
   stage: Stage;
 };
 
@@ -145,6 +199,8 @@ export type SessionLog = {
   day: string;
   /** ISO timestamp of completion. */
   completedAt: string;
+  /** Absent on logs written before the app had more than one program. */
+  programId: ProgramId;
   stageId: StageId;
   sessionId: string;
   week: number;
@@ -159,7 +215,8 @@ export type Profile = {
   birthDate: string | null;
   name: string | null;
   acknowledgedDisclaimerAt: string | null;
-  reminders: ReminderSettings;
+  /** One independent reminder per program. */
+  reminders: Record<ProgramId, ReminderSettings>;
 };
 
 /** A single daily local notification. Off until she turns it on. */

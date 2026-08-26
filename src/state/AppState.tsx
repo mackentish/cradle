@@ -9,7 +9,8 @@ import React, {
 } from 'react';
 
 import { getProgress } from '@/domain/pregnancy';
-import type { Profile, Progress, ReminderSettings, SessionLog } from '@/domain/types';
+import { PROGRAM_IDS } from '@/domain/program';
+import type { Profile, Progress, ProgramId, ReminderSettings, SessionLog } from '@/domain/types';
 import { now } from '@/lib/clock';
 import { toDayKey } from '@/lib/date';
 import { syncReminders } from '@/lib/notifications';
@@ -31,7 +32,7 @@ type AppStateValue = {
   stats: StreakSummary;
   onboarded: boolean;
   updateProfile: (patch: Partial<Profile>) => Promise<void>;
-  updateReminders: (patch: Partial<ReminderSettings>) => Promise<void>;
+  updateReminders: (programId: ProgramId, patch: Partial<ReminderSettings>) => Promise<void>;
   logSession: (log: Omit<SessionLog, 'day' | 'completedAt'>) => Promise<void>;
   removeLog: (completedAt: string) => Promise<void>;
   replaceAll: (profile: Profile, logs: SessionLog[]) => Promise<void>;
@@ -84,9 +85,15 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   );
 
   const updateReminders = useCallback(
-    (patch: Partial<ReminderSettings>) => {
+    (programId: ProgramId, patch: Partial<ReminderSettings>) => {
       const current = profileRef.current;
-      return commitProfile({ ...current, reminders: { ...current.reminders, ...patch } });
+      return commitProfile({
+        ...current,
+        reminders: {
+          ...current.reminders,
+          [programId]: { ...current.reminders[programId], ...patch },
+        },
+      });
     },
     [commitProfile]
   );
@@ -124,14 +131,21 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const progress = useMemo(() => getProgress(profile), [profile]);
 
   // Keeps what the OS has scheduled in step with the saved settings and the
-  // current stage, so the reminder wording follows the program. Stage objects
-  // are singletons from the program table, so the identity check is stable.
-  const { enabled, hour, minute } = profile.reminders;
-  const stage = progress?.stage ?? null;
+  // current stage, so the reminder wording follows the program.
+  //
+  // These deps are string keys rather than the objects themselves: `getProgress`
+  // builds a fresh `stages` record every time it runs, so depending on its
+  // identity would reschedule all three notifications on any profile edit at all
+  // — including one that has nothing to do with reminders, like her name.
+  const reminderKey = JSON.stringify(profile.reminders);
+  const stageKey = progress ? PROGRAM_IDS.map((id) => progress.stages[id].id).join('|') : '';
+  const stagesRef = useRef(progress?.stages ?? null);
+  stagesRef.current = progress?.stages ?? null;
   useEffect(() => {
     if (!ready) return;
-    void syncReminders({ enabled, hour, minute }, stage);
-  }, [ready, enabled, hour, minute, stage]);
+    void syncReminders(profileRef.current.reminders, stagesRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- keyed by value, read by ref
+  }, [ready, reminderKey, stageKey]);
 
   const value = useMemo<AppStateValue>(
     () => ({

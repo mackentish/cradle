@@ -1,7 +1,7 @@
 import { now } from '@/lib/clock';
 import { daysBetween, fromDayKey, startOfDay } from '@/lib/date';
 
-import { stageFor } from './program';
+import { stagesForWeek } from './program';
 import type { Phase, Profile, Progress } from './types';
 
 /** A full-term pregnancy is dated as 280 days from LMP, i.e. 40 weeks. */
@@ -18,13 +18,15 @@ export function getProgress(profile: Profile, today: Date = now()): Progress | n
   if (birthDate) {
     const daysSinceBirth = Math.max(0, daysBetween(fromDayKey(birthDate), today));
     const week = Math.floor(daysSinceBirth / 7);
+    const stages = stagesForWeek('postpartum', week);
     return {
       phase: 'postpartum',
       week,
       dayOfWeek: daysSinceBirth % 7,
       daysUntilDue: dueDate ? daysBetween(today, fromDayKey(dueDate)) : 0,
       trimester: null,
-      stage: stageFor('postpartum', week),
+      stages,
+      stage: stages['pelvic-floor'],
     };
   }
 
@@ -34,6 +36,7 @@ export function getProgress(profile: Profile, today: Date = now()): Progress | n
   const gestationalDays = GESTATION_DAYS - daysUntilDue;
   const clamped = Math.min(Math.max(gestationalDays, 0), MAX_TRACKED_WEEK * 7 + 6);
   const week = Math.floor(clamped / 7);
+  const stages = stagesForWeek('pregnancy', week);
 
   return {
     phase: 'pregnancy',
@@ -41,7 +44,8 @@ export function getProgress(profile: Profile, today: Date = now()): Progress | n
     dayOfWeek: clamped % 7,
     daysUntilDue,
     trimester: trimesterFor(week),
-    stage: stageFor('pregnancy', week),
+    stages,
+    stage: stages['pelvic-floor'],
   };
 }
 

@@ -5,6 +5,7 @@ import { Alert, Pressable, Share, StyleSheet, View } from 'react-native';
 import { Card, Pill, Screen, Text } from '@/components';
 import { PT_NOTE, RED_FLAGS, SAFETY_INTRO } from '@/content/safety';
 import { describeProgress } from '@/domain/pregnancy';
+import { PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
 import { formatLongDate, formatTime, fromDayKey } from '@/lib/date';
 import { buildBackup } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
@@ -69,15 +70,17 @@ export default function YouScreen() {
 
       <Card>
         <Text variant="label">Reminders</Text>
-        <Row
-          label="Daily reminder"
-          value={
-            profile.reminders.enabled
-              ? formatTime(profile.reminders.hour, profile.reminders.minute)
-              : 'Off'
-          }
-          onPress={() => router.push('/reminders')}
-        />
+        {PROGRAM_IDS.map((programId) => {
+          const reminder = profile.reminders[programId];
+          return (
+            <Row
+              key={programId}
+              label={programTitle(programsById[programId], progress?.phase ?? 'pregnancy')}
+              value={reminder.enabled ? formatTime(reminder.hour, reminder.minute) : 'Off'}
+              onPress={() => router.push(`/reminders/${programId}` as never)}
+            />
+          );
+        })}
       </Card>
 
       <Card>

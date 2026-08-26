@@ -1,17 +1,18 @@
 import { useRouter } from 'expo-router';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, DayDots, Pill, Screen, Text } from '@/components';
+import { Button, Card, DayDots, Pill, ProgramLegend, Screen, Text } from '@/components';
 import { getExercise, kindLabels } from '@/domain/exercises';
 import { describeCountdown, describeProgress } from '@/domain/pregnancy';
+import { PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
 import { describeStep, sessionForDay, sessionSeconds } from '@/domain/session';
-import type { Progress } from '@/domain/types';
+import type { Program, Progress } from '@/domain/types';
 import { now } from '@/lib/clock';
 import { formatDuration } from '@/lib/date';
 import { recentDays } from '@/lib/streak';
 import { useAppState } from '@/state/AppState';
-import { colors, radius, spacing, stageColors } from '@/theme';
+import { colors, programColors, radius, spacing, stageColors } from '@/theme';
 
 export default function TodayScreen() {
   const { ready, progress } = useAppState();
@@ -29,8 +30,6 @@ function Today({ progress }: { progress: Progress }) {
 
   const { stage } = progress;
   const stageColor = stageColors[stage.colorKey];
-  const session = useMemo(() => sessionForDay(stage), [stage]);
-  const duration = useMemo(() => sessionSeconds(session), [session]);
   const days = useMemo(() => recentDays(logs, 7), [logs]);
   const countdown = describeCountdown(progress);
 
@@ -42,6 +41,10 @@ function Today({ progress }: { progress: Progress }) {
         {countdown ? <Text variant="body">{countdown}</Text> : null}
       </View>
 
+      {/*
+        Program-neutral on purpose: each stage's `focus` is its own program's copy,
+        so the banner carries only what all three agree on — the week band.
+      */}
       <Card tint={stageColor.tint}>
         <View style={styles.stageHeader}>
           <Pill label={stage.range} tint={colors.surface} ink={stageColor.ink} />
@@ -52,34 +55,101 @@ function Today({ progress }: { progress: Progress }) {
           </Pressable>
         </View>
         <Text variant="heading">{stage.title}</Text>
-        <Text variant="small">{stage.focus}</Text>
       </Card>
 
-      {stats.completedToday ? (
+      {stats.programsToday > 0 ? (
         <Card tint={colors.accentSoft}>
-          <Text variant="subheading">Today is done ✓</Text>
+          <Text variant="subheading">
+            {stats.programsToday} of {PROGRAM_IDS.length} done today ✓
+          </Text>
           <Text variant="small">
-            {stats.current > 1
-              ? `${stats.current} days in a row. Rest is part of the program too.`
-              : 'Nicely done. Come back tomorrow.'}
+            {stats.programsToday === PROGRAM_IDS.length
+              ? 'Everything, today. Rest is part of the program too.'
+              : stats.current > 1
+                ? `${stats.current} days in a row. One is enough to keep it going.`
+                : 'Nicely done. The others are there if you want them.'}
           </Text>
         </Card>
       ) : null}
 
+      {PROGRAM_IDS.map((programId) => (
+        <ProgramCard
+          key={programId}
+          program={programsById[programId]}
+          progress={progress}
+          done={stats.byProgram[programId].completedToday}
+        />
+      ))}
+
       <Card>
-        <View style={styles.sessionHeader}>
-          <View style={styles.sessionTitle}>
-            <Text variant="label">Today's session</Text>
+        <View style={styles.weekHeader}>
+          <Text variant="label">This week</Text>
+          <Text variant="smallStrong">{stats.daysThisWeek} of 7 days</Text>
+        </View>
+        <DayDots days={days} />
+        <ProgramLegend phase={progress.phase} />
+      </Card>
+    </Screen>
+  );
+}
+
+/**
+ * One program's session for today. Collapsed by default — three full step lists
+ * would run to fifteen rows and bury the third program below the fold — and
+ * expandable for when she wants to see what she's in for or read a how-to.
+ */
+function ProgramCard({
+  program,
+  progress,
+  done,
+}: {
+  program: Program;
+  progress: Progress;
+  done: boolean;
+}) {
+  const router = useRouter();
+  const [expanded, setExpanded] = useState(false);
+
+  const stage = progress.stages[program.id];
+  const tone = programColors[program.colorKey];
+  const session = useMemo(() => sessionForDay(stage), [stage]);
+  const duration = useMemo(() => sessionSeconds(session), [session]);
+  const title = programTitle(program, progress.phase);
+
+  return (
+    <Card tint={done ? undefined : tone.tint} testID={`program-card-${program.id}`}>
+      <Pressable
+        onPress={() => setExpanded((open) => !open)}
+        accessibilityRole="button"
+        accessibilityState={{ expanded }}
+        accessibilityLabel={`${title}, ${session.title}, ${formatDuration(duration)}`}
+      >
+        <View style={styles.cardHeader}>
+          <View style={styles.cardTitle}>
+            <View style={styles.programName}>
+              <View style={[styles.swatch, { borderColor: tone.ring }]} />
+              <Text variant="label" color={tone.ink}>
+                {title}
+              </Text>
+            </View>
             <Text variant="heading">{session.title}</Text>
           </View>
-          <View style={styles.durationBadge}>
-            <Text variant="smallStrong" color={colors.primaryPressed}>
-              {formatDuration(duration)}
+          <View style={styles.headerRight}>
+            <View style={[styles.durationBadge, { backgroundColor: tone.tint }]}>
+              <Text variant="smallStrong" color={tone.ink}>
+                {done ? 'Done ✓' : formatDuration(duration)}
+              </Text>
+            </View>
+            <Text variant="small" color={colors.textFaint}>
+              {expanded ? '⌃' : '⌄'}
             </Text>
           </View>
         </View>
+        <Text variant="small">{program.blurb}</Text>
+      </Pressable>
 
-        <View style={styles.steps}>
+      {expanded ? (
+        <View style={styles.steps} testID={`program-steps-${program.id}`}>
           {session.steps.map((step, index) => {
             const exercise = getExercise(step.exerciseId);
             return (
@@ -90,7 +160,7 @@ function Today({ progress }: { progress: Progress }) {
                 accessibilityRole="button"
               >
                 <View style={styles.stepIndex}>
-                  <Text variant="smallStrong" color={colors.primaryPressed}>
+                  <Text variant="smallStrong" color={tone.ink}>
                     {index + 1}
                   </Text>
                 </View>
@@ -104,24 +174,14 @@ function Today({ progress }: { progress: Progress }) {
             );
           })}
         </View>
+      ) : null}
 
-        <Button
-          label={stats.completedToday ? 'Do it again' : 'Start session'}
-          variant={stats.completedToday ? 'secondary' : 'primary'}
-          onPress={() => router.push('/session')}
-        />
-      </Card>
-
-      <Card>
-        <View style={styles.weekHeader}>
-          <Text variant="label">This week</Text>
-          <Text variant="smallStrong">
-            {stats.daysThisWeek} of 7 days
-          </Text>
-        </View>
-        <DayDots days={days} />
-      </Card>
-    </Screen>
+      <Button
+        label={done ? 'Do it again' : 'Start session'}
+        variant={done ? 'secondary' : 'primary'}
+        onPress={() => router.push(`/session/${program.id}` as never)}
+      />
+    </Card>
   );
 }
 
@@ -141,18 +201,32 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  sessionHeader: {
+  cardHeader: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     justifyContent: 'space-between',
     gap: spacing.md,
   },
-  sessionTitle: {
+  cardTitle: {
     flex: 1,
     gap: 2,
   },
+  programName: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  swatch: {
+    width: 10,
+    height: 10,
+    borderRadius: radius.pill,
+    borderWidth: 3,
+  },
+  headerRight: {
+    alignItems: 'flex-end',
+    gap: 4,
+  },
   durationBadge: {
-    backgroundColor: colors.primarySoft,
     borderRadius: radius.pill,
     paddingHorizontal: spacing.md,
     paddingVertical: 6,

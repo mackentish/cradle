@@ -1,3 +1,4 @@
+import { useLocalSearchParams } from "expo-router";
 import { useKeepAwake } from "expo-keep-awake";
 import React, { useMemo, useState } from "react";
 import { Alert, Pressable, ScrollView, StyleSheet, View } from "react-native";
@@ -14,8 +15,9 @@ import {
 } from "@/components";
 import { celebrationFor } from "@/content/celebration";
 import { kindLabels } from "@/domain/exercises";
+import { isProgramId, programsById, programTitle } from "@/domain/program";
 import { describeStep, sessionForDay } from "@/domain/session";
-import type { Progress, SegmentKind } from "@/domain/types";
+import type { ProgramId, Progress, SegmentKind } from "@/domain/types";
 import { useDismiss } from "@/hooks/useDismiss";
 import { useSessionPlayer } from "@/hooks/useSessionPlayer";
 import { formatDuration } from "@/lib/date";
@@ -32,23 +34,31 @@ const PHASE_COLORS: Record<SegmentKind, string> = {
 
 export default function SessionScreen() {
   const { ready, progress } = useAppState();
+  const { program } = useLocalSearchParams<{ program: string }>();
+
+  // The param arrives from outside the type system, so it gets validated rather
+  // than asserted — same reasoning as `findExercise` versus `getExercise`.
+  const programId: ProgramId = isProgramId(program) ? program : "pelvic-floor";
+
   if (!ready || !progress) return null;
-  return <Player progress={progress} />;
+  return <Player progress={progress} programId={programId} />;
 }
 
-function Player({ progress }: Readonly<{ progress: Progress }>) {
+function Player({
+  progress,
+  programId,
+}: Readonly<{ progress: Progress; programId: ProgramId }>) {
   const { logSession, stats } = useAppState();
   const leave = useDismiss();
   useKeepAwake();
 
-  const session = useMemo(
-    () => sessionForDay(progress.stage),
-    [progress.stage],
-  );
+  const stage = progress.stages[programId];
+  const session = useMemo(() => sessionForDay(stage), [stage]);
   const player = useSessionPlayer(session);
   const [saved, setSaved] = useState(false);
 
   const isComplete = player.status === "complete";
+  const elapsed = formatDuration(Math.round(player.completedSeconds));
   // Frozen at the moment the session completes. Saving the log moves the streak
   // and the session count, and recomputing would swap the message out from under
   // her — "That's one" becoming "Beautifully done" mid-read.
@@ -56,9 +66,14 @@ function Player({ progress }: Readonly<{ progress: Progress }>) {
     () =>
       celebrationFor({
         totalSessions: stats.totalSessions,
+        programSessions: stats.byProgram[programId].totalSessions,
         streak: stats.completedToday ? stats.current : stats.current + 1,
+        programsToday: stats.byProgram[programId].completedToday
+          ? stats.programsToday
+          : stats.programsToday + 1,
         phase: progress.phase,
-        stageId: progress.stage.id,
+        stageId: stage.id,
+        programId,
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isComplete],
@@ -83,7 +98,8 @@ function Player({ progress }: Readonly<{ progress: Progress }>) {
     if (!saved) {
       setSaved(true);
       await logSession({
-        stageId: progress.stage.id,
+        programId,
+        stageId: stage.id,
         sessionId: session.id,
         week: progress.week,
         phase: progress.phase,
@@ -108,7 +124,7 @@ function Player({ progress }: Readonly<{ progress: Progress }>) {
               {celebration.body}
             </Text>
             <Pill
-              label={`${formatDuration(Math.round(player.completedSeconds))} · ${session.title}`}
+              label={`${programTitle(programsById[programId], progress.phase)} · ${elapsed}`}
               tint={colors.accentSoft}
               ink={colors.accent}
               center

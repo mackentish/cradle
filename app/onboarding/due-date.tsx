@@ -2,7 +2,16 @@ import { useRouter } from 'expo-router';
 import React, { useCallback, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, DateFields, Pill, Screen, Stepper, Text } from '@/components';
+import {
+  Button,
+  Card,
+  DateFields,
+  Pill,
+  Screen,
+  SegmentedTabs,
+  Stepper,
+  Text,
+} from '@/components';
 import {
   describeProgress,
   dueDateFromWeek,
@@ -66,18 +75,14 @@ export default function DueDateScreen() {
         </Text>
       </View>
 
-      <View style={styles.switcher}>
-        <ModeTab
-          label="I know my due date"
-          active={mode === 'due-date'}
-          onPress={() => setMode('due-date')}
-        />
-        <ModeTab
-          label="I know my week"
-          active={mode === 'weeks-along'}
-          onPress={() => setMode('weeks-along')}
-        />
-      </View>
+      <SegmentedTabs
+        value={mode}
+        onChange={setMode}
+        options={[
+          { value: 'due-date', label: 'I know my due date' },
+          { value: 'weeks-along', label: 'I know my week' },
+        ]}
+      />
 
       {mode === 'due-date' ? (
         <Card>
@@ -129,28 +134,6 @@ export default function DueDateScreen() {
   );
 }
 
-function ModeTab({
-  label,
-  active,
-  onPress,
-}: {
-  label: string;
-  active: boolean;
-  onPress: () => void;
-}) {
-  return (
-    <Pressable
-      onPress={onPress}
-      style={[styles.modeTab, active && styles.modeTabActive]}
-      accessibilityRole="button"
-      accessibilityState={{ selected: active }}
-    >
-      <Text variant="smallStrong" color={active ? colors.primaryPressed : colors.textFaint} center>
-        {label}
-      </Text>
-    </Pressable>
-  );
-}
 
 const styles = StyleSheet.create({
   content: {

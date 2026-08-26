@@ -1,8 +1,11 @@
+import { useLocalSearchParams } from 'expo-router';
 import React, { useCallback, useEffect, useState } from 'react';
 import { Linking, StyleSheet, Switch, View } from 'react-native';
 
 import { BackLink, Button, Card, Screen, Text, TimePicker } from '@/components';
 import { reminderCopy } from '@/content/reminders';
+import { isProgramId, programsById, programTitle } from '@/domain/program';
+import type { ProgramId } from '@/domain/types';
 import { formatTime } from '@/lib/date';
 import {
   countScheduled,
@@ -17,12 +20,22 @@ import { colors, palette, spacing } from '@/theme';
 const COMMIT_DELAY_MS = 350;
 
 /**
- * One daily reminder, scheduled locally. The switch owns the permission dance;
- * AppState owns actually scheduling it, so this screen only ever saves settings.
+ * One program's daily reminder, scheduled locally. The switch owns the permission
+ * dance; AppState owns actually scheduling it, so this screen only ever saves
+ * settings.
+ *
+ * One program per screen rather than all three on a list, because both native
+ * `@expo/ui` pickers are uncontrolled — they read their value once on mount — so
+ * keeping exactly one wheel alive at a time avoids three of them fighting.
  */
 export default function RemindersScreen() {
   const { profile, progress, updateReminders } = useAppState();
-  const { enabled, hour, minute } = profile.reminders;
+  const { program } = useLocalSearchParams<{ program: string }>();
+
+  // From outside the type system, so validated rather than asserted.
+  const programId: ProgramId = isProgramId(program) ? program : 'pelvic-floor';
+  const { enabled, hour, minute } = profile.reminders[programId];
+  const title = programTitle(programsById[programId], progress?.phase ?? 'pregnancy');
 
   const [permission, setPermission] = useState<PermissionState>('undetermined');
   const [scheduled, setScheduled] = useState(0);
@@ -47,7 +60,7 @@ export default function RemindersScreen() {
 
   const toggle = async (next: boolean) => {
     if (!next) {
-      await updateReminders({ enabled: false });
+      await updateReminders(programId, { enabled: false });
       return;
     }
     setBusy(true);
@@ -56,7 +69,7 @@ export default function RemindersScreen() {
       setPermission(granted ? 'granted' : 'denied');
       // Saving enabled: false on refusal keeps the switch honest — it shouldn't
       // read as on while the OS is dropping every notification.
-      await updateReminders({ enabled: granted });
+      await updateReminders(programId, { enabled: granted });
     } finally {
       setBusy(false);
     }
@@ -69,22 +82,23 @@ export default function RemindersScreen() {
       setDraft(null);
       return;
     }
-    const commit = setTimeout(() => void updateReminders(draft), COMMIT_DELAY_MS);
+    const commit = setTimeout(() => void updateReminders(programId, draft), COMMIT_DELAY_MS);
     return () => clearTimeout(commit);
-  }, [draft, hour, minute, updateReminders]);
+  }, [draft, hour, minute, programId, updateReminders]);
 
-  const copy = reminderCopy(progress?.stage ?? null);
+  const copy = reminderCopy(programId, progress?.stages[programId] ?? null);
   const blocked = enabled && permission !== 'granted';
 
   return (
-    <Screen testID="reminders-screen">
+    <Screen testID={`reminders-screen-${programId}`}>
       <BackLink />
 
       <View style={styles.header}>
-        <Text variant="title">Reminders</Text>
+        <Text variant="label">Reminders</Text>
+        <Text variant="title">{title}</Text>
         <Text variant="body">
-          One nudge a day, at a time you pick. It is scheduled on this phone by iOS or Android — no
-          account, no server, and it works with the phone offline.
+          One nudge a day for this program, at a time you pick. It is scheduled on this phone by iOS
+          or Android — no account, no server, and it works with the phone offline.
         </Text>
       </View>
 
@@ -148,11 +162,11 @@ export default function RemindersScreen() {
       ) : null}
 
       <Text variant="small" color={colors.textFaint} center>
-        {scheduled > 0
-          ? 'Scheduled on this device.'
-          : blocked
-            ? 'Saved, but your phone will not deliver it yet.'
-            : 'Nothing scheduled — the reminder is off.'}
+        {blocked
+          ? 'Saved, but your phone will not deliver it yet.'
+          : enabled
+            ? `${scheduled} of 3 reminders scheduled on this device.`
+            : 'Nothing scheduled for this program.'}
       </Text>
     </Screen>
   );

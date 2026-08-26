@@ -1,4 +1,4 @@
-import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
+import { fireEvent, renderRouter, screen, waitFor, within } from 'expo-router/testing-library';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { daysAgo, seed, sessionLog } from '../helpers';
@@ -22,7 +22,9 @@ describe('a guided session', () => {
     renderRouter('app', { initialUrl: '/' });
 
     await waitFor(() => expect(screen.getByTestId('today-screen')).toBeOnTheScreen());
-    fireEvent.press(screen.getByText('Start session'));
+    // Three cards each have a Start button now, so scope the press to one.
+    const card = screen.getByTestId('program-card-pelvic-floor');
+    fireEvent.press(within(card).getByText('Start session'));
 
     // Every stage's sessions have five steps, and each opens on an intro.
     await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
@@ -47,15 +49,20 @@ describe('a guided session', () => {
 
     fireEvent.press(screen.getByText('Save and finish'));
 
-    await waitFor(() => expect(screen.getByText('Today is done ✓')).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText('1 of 3 done today ✓')).toBeOnTheScreen());
     const logs = JSON.parse((await AsyncStorage.getItem('cradle.logs.v1')) ?? '[]');
     expect(logs).toHaveLength(3);
-    expect(logs[2]).toMatchObject({ stageId: 'build', phase: 'pregnancy', week: 20 });
+    expect(logs[2]).toMatchObject({
+      programId: 'pelvic-floor',
+      stageId: 'build',
+      phase: 'pregnancy',
+      week: 20,
+    });
   });
 
   it('discards a session she chooses not to keep', async () => {
     await seed();
-    renderRouter('app', { initialUrl: '/session' });
+    renderRouter('app', { initialUrl: '/session/pelvic-floor' });
 
     await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
     skipEveryStep();
@@ -65,12 +72,12 @@ describe('a guided session', () => {
 
     await waitFor(() => expect(screen.getByTestId('today-screen')).toBeOnTheScreen());
     expect(JSON.parse((await AsyncStorage.getItem('cradle.logs.v1')) ?? '[]')).toHaveLength(0);
-    expect(screen.queryByText('Today is done ✓')).not.toBeOnTheScreen();
+    expect(screen.queryByText(/done today/)).not.toBeOnTheScreen();
   });
 
   it('celebrates a first-ever session differently', async () => {
     await seed({ logs: [] });
-    renderRouter('app', { initialUrl: '/session' });
+    renderRouter('app', { initialUrl: '/session/pelvic-floor' });
 
     await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
     skipEveryStep();

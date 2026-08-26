@@ -83,11 +83,11 @@ function RootNavigator() {
       <Stack.Protected guard={onboarded}>
         <Stack.Screen name="(tabs)" />
         <Stack.Screen
-          name="session"
+          name="session/[program]"
           options={{ animation: 'slide_from_bottom', gestureEnabled: false }}
         />
         <Stack.Screen name="plan" options={{ animation: 'slide_from_right' }} />
-        <Stack.Screen name="reminders" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="reminders/[program]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="exercise/[id]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="birth-date" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="restore" options={{ animation: 'slide_from_right' }} />

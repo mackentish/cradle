@@ -1,4 +1,4 @@
-import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-library';
+import { fireEvent, renderRouter, screen, waitFor, within } from 'expo-router/testing-library';
 
 import { seed } from '../helpers';
 
@@ -23,7 +23,12 @@ describe('the postpartum switch', () => {
     await waitFor(() => expect(screen.getByTestId('today-screen')).toBeOnTheScreen());
     expect(screen.getByText('Day one')).toBeOnTheScreen();
     expect(screen.getByText('Recover')).toBeOnTheScreen();
-    // Recovery is breath and rest, not a strength program.
-    expect(screen.getByText(/Nothing to train yet/)).toBeOnTheScreen();
+    // Every program flips, not just the one the app started as.
+    expect(screen.getByTestId('program-card-core')).toBeOnTheScreen();
+    // Birth prep makes no sense now, so it retitles rather than lingering. Its
+    // card and the tracker legend both use the new name, hence the scoping.
+    const stretches = screen.getByTestId('program-card-birth-prep');
+    expect(within(stretches).getByText('Recovery stretches')).toBeOnTheScreen();
+    expect(screen.queryByText('Birth prep')).not.toBeOnTheScreen();
   });
 });

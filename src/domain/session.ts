@@ -4,6 +4,7 @@ import { dayIndex } from '@/lib/date';
 import { getExercise } from './exercises';
 import type {
   Exercise,
+  ProgramId,
   Segment,
   SegmentKind,
   SessionTemplate,
@@ -14,6 +15,7 @@ import type {
 /**
  * Release-focused exercises use opening language for the same four phases —
  * telling someone to "lift" during perineal bulging would be exactly backwards.
+ * Stretches get the same treatment for the same reason.
  */
 const labels: Record<SegmentKind, Record<'default' | 'release', string>> = {
   lift: { default: 'Lift', release: 'Soften' },
@@ -23,8 +25,12 @@ const labels: Record<SegmentKind, Record<'default' | 'release', string>> = {
   duration: { default: 'Breathe', release: 'Breathe' },
 };
 
+function opensRatherThanLifts(exercise: Exercise): boolean {
+  return exercise.kind === 'release' || exercise.kind === 'stretch';
+}
+
 function labelFor(kind: SegmentKind, exercise: Exercise): string {
-  return labels[kind][exercise.kind === 'release' ? 'release' : 'default'];
+  return labels[kind][opensRatherThanLifts(exercise) ? 'release' : 'default'];
 }
 
 /** Expands a step into the ordered timer segments the player counts down. */
@@ -85,15 +91,28 @@ export function describeStep(step: Step): string {
   const exercise = getExercise(step.exerciseId);
   // "8 × 1s hold" is a silly way to describe a quick flick.
   if (exercise.kind === 'quick') return `${step.reps} quick reps`;
-  if (exercise.kind === 'release') return `${step.reps} × ${step.holdSec}s open`;
+  if (opensRatherThanLifts(exercise)) return `${step.reps} × ${step.holdSec}s open`;
   return `${step.reps} × ${step.holdSec}s hold`;
 }
+
+/**
+ * A stable per-program offset. Without it, three programs with the same number of
+ * session variants pick the same letter every single day — she would get variant
+ * A of all three, then variant B of all three, forever. Pelvic floor's offset is
+ * zero so its rotation is exactly what it has always been.
+ */
+const PROGRAM_OFFSET: Record<ProgramId, number> = {
+  'pelvic-floor': 0,
+  core: 1,
+  'birth-prep': 2,
+};
 
 /**
  * Rotates through a stage's session variants by calendar day, so the same day
  * always yields the same session and consecutive days differ.
  */
 export function sessionForDay(stage: Stage, date: Date = now()): SessionTemplate {
-  const index = Math.abs(dayIndex(date)) % stage.sessions.length;
+  const offset = dayIndex(date) + PROGRAM_OFFSET[stage.programId];
+  const index = Math.abs(offset) % stage.sessions.length;
   return stage.sessions[index] ?? stage.sessions[0];
 }

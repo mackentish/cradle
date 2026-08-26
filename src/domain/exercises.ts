@@ -1,14 +1,19 @@
 import type { Exercise, ExerciseId } from './types';
 
 /**
- * The exercise library. Everything here is general pelvic-floor wellness content
- * for an uncomplicated pregnancy — the app gates it behind a disclaimer and
- * repeats "check with your provider" wherever it matters.
+ * The exercise library, shared by all three programs — an exercise has no program
+ * of its own, and several are used by two. Everything here is general wellness
+ * content for an uncomplicated pregnancy; the app gates it behind a disclaimer
+ * and repeats "check with your provider" wherever it matters.
  *
- * Two ideas run through the whole library:
+ * Four ideas run through the whole library:
  *   1. Exhale to lift. Effort happens on the out-breath, never on a held breath.
  *   2. A pelvic floor that can't relax isn't strong, it's tight. Release is
  *      trained as deliberately as the squeeze, and takes over late in pregnancy.
+ *   3. Core work is judged by whether the midline stays quiet. Doming or coning
+ *      along the linea alba means regress the exercise, not push through it.
+ *   4. Relaxin makes end range easy to reach and easy to overshoot. Stretches
+ *      are held at comfortable, never at maximum.
  */
 const list: Exercise[] = [
   {
@@ -385,6 +390,239 @@ const list: Exercise[] = [
     ],
     cues: ['Heavy and soft', 'Slow out-breath', 'Nothing to do'],
   },
+  // ---------------------------------------------------------------------------
+  // Core program. Deep-core-first, midline-quiet progressions — nothing here
+  // asks for a crunch, and the supine work carries an explicit way out.
+  // ---------------------------------------------------------------------------
+  {
+    id: 'quadruped-core-breath',
+    name: 'Quadruped Core Breath',
+    kind: 'core',
+    summary: 'Teaches the deep core to fire with the exhale, before any load.',
+    positions: ['Hands and knees', 'Forearms on a sofa seat if wrists complain'],
+    howTo: [
+      'Come to hands and knees with a long, neutral spine — not arched, not tucked.',
+      'Inhale and let the belly hang heavy without letting the low back sag.',
+      'Exhale slowly through pursed lips and feel the deep abdominals draw in low and wide.',
+      'Keep the ribs still. The movement is under the skin, not in your back.',
+    ],
+    cues: ['Exhale draws in low', 'Ribs quiet', 'Long spine'],
+  },
+  {
+    id: 'standing-march',
+    name: 'Standing March',
+    kind: 'core',
+    summary: 'Anti-tip core work you can do at any size, at any wall.',
+    positions: ['Standing, back against a wall', 'Standing free, fingertips on a counter'],
+    howTo: [
+      'Stand tall with your ribs stacked over your pelvis, feet hip-width.',
+      'Exhale and lift one knee to hip height without letting your pelvis tip or your ribs flare.',
+      'Lower with control and repeat on the other side.',
+      'Slower is harder. Let the trunk staying still be the point.',
+    ],
+    cues: ['Pelvis level', 'Ribs over hips', 'Exhale to lift the knee'],
+  },
+  {
+    id: 'wall-plank',
+    name: 'Wall Plank',
+    kind: 'core',
+    summary: 'A plank at an angle your midline can actually hold.',
+    positions: ['Hands on a wall', 'Hands on a kitchen counter for more challenge'],
+    howTo: [
+      'Place your hands on a wall at shoulder height and step your feet back a little.',
+      'Make one long line from heels to head, ribs down, tailbone neutral.',
+      'Breathe normally and hold. Exhale-lift the pelvic floor every few breaths.',
+      'Step in closer to the wall the moment the position starts to sag.',
+    ],
+    cues: ['One long line', 'Ribs down', 'Keep breathing'],
+    caution:
+      'Watch your midline. If you see or feel a ridge or doming along the center line of your belly, walk your feet in until it settles — that is the right dose, not a lesser one. Skip if you have significant abdominal separation until a pelvic floor physical therapist has assessed you.',
+  },
+  {
+    id: 'side-plank-knees',
+    name: 'Side Plank from Knees',
+    kind: 'core',
+    summary: 'Loads the side of the trunk without any pressure on the belly.',
+    positions: ['Forearm and bottom knee down', 'Forearm on a stack of pillows to raise the angle'],
+    howTo: [
+      'Lie on your side with your forearm under your shoulder and knees bent behind you.',
+      'Exhale and lift your hips so your shoulder, hip and bottom knee make a line.',
+      'Breathe and hold, then lower with control and change sides.',
+    ],
+    cues: ['Press the forearm down', 'Hips forward, not sagging back', 'Even breaths'],
+    caution:
+      'Stop if you get pubic bone, groin or wrist pain. Raising the forearm onto pillows reduces the load; pubic symphysis pain means leave this one out.',
+  },
+  {
+    id: 'dead-bug-heel-tap',
+    name: 'Dead Bug Heel Taps',
+    kind: 'core',
+    summary: 'The clearest way to feel whether the deep core is holding.',
+    positions: ['Reclined on a wedge of pillows', 'Flat on your back only in early pregnancy'],
+    howTo: [
+      'Recline on a firm wedge of pillows so your chest sits above your hips.',
+      'Bring both knees over your hips, shins parallel to the floor.',
+      'Exhale and lower one heel to tap the floor, keeping your low back still.',
+      'Inhale back to the start and change sides.',
+    ],
+    cues: ['Low back stays quiet', 'Exhale as the heel lowers', 'Small range first'],
+    caution:
+      'From around the middle of the second trimester, lying flat on your back can make you lightheaded and is best avoided — use the pillow wedge, or swap this for the side-lying work instead. Stop if your midline domes or your back arches away from the support.',
+  },
+  {
+    id: 'side-lying-leg-lift',
+    name: 'Side-Lying Leg Lift',
+    kind: 'core',
+    summary: 'Hips and lateral trunk, in the most comfortable position there is.',
+    positions: ['Side-lying with a pillow between the ribs and floor', 'Side-lying with a bump pillow'],
+    howTo: [
+      'Lie on your side, hips and shoulders stacked, bottom knee bent for stability.',
+      'Exhale and lift the top leg to about hip height, toes facing forward.',
+      'Lower slowly without letting your top hip roll backwards.',
+    ],
+    cues: ['Toes point forward, not up', 'Hips stay stacked', 'Slow on the way down'],
+    caution:
+      'If you have pubic symphysis or SI joint pain, keep the range small and stop at the first twinge.',
+  },
+  {
+    id: 'anti-rotation-reach',
+    name: 'Anti-Rotation Reach',
+    kind: 'core',
+    summary: 'Trains the core to resist twist — what it actually does all day.',
+    positions: ['Tall kneeling', 'Standing in a short split stance'],
+    howTo: [
+      'Kneel tall or stand in a short split stance, ribs stacked over your pelvis.',
+      'Bring both hands together in front of your chest and press your palms together.',
+      'Exhale and reach both hands slowly out to one side without letting your trunk turn.',
+      'Return to center and reach to the other side.',
+    ],
+    cues: ['Hips stay square', 'Exhale as you reach', 'Nothing rotates'],
+    caution:
+      'Keep the reach short enough that your midline stays flat. Doming means come back closer to your chest.',
+  },
+  {
+    id: 'tall-kneel-hold',
+    name: 'Tall Kneeling Hold',
+    kind: 'core',
+    summary: 'Takes the legs out of the equation so the trunk has to work.',
+    positions: ['Tall kneeling on a mat or folded blanket', 'Tall kneeling beside a sofa to hold'],
+    howTo: [
+      'Kneel upright with knees under hips and a cushion under your shins.',
+      'Stack your ribs over your pelvis and let your glutes stay soft.',
+      'Hold, breathing normally, and exhale-lift the pelvic floor every few breaths.',
+    ],
+    cues: ['Ribs over hips', 'Glutes soft', 'Tall through the crown'],
+    caution: 'Skip it if kneeling is uncomfortable for your knees; the standing version is fine.',
+  },
+  // ---------------------------------------------------------------------------
+  // Birth prep and recovery stretches. Held at comfortable, never at end range —
+  // relaxin makes it easy to reach further than the joint wants to be.
+  // ---------------------------------------------------------------------------
+  {
+    id: 'butterfly-stretch',
+    name: 'Seated Butterfly',
+    kind: 'stretch',
+    summary: 'Opens the inner thighs and the front of the pelvis.',
+    positions: ['Seated on a cushion, back against a wall', 'Seated on a low stool'],
+    howTo: [
+      'Sit on a cushion so your hips are above your knees, soles of the feet together.',
+      'Let your knees fall open under their own weight — no pressing down with your hands.',
+      'Sit tall and breathe slowly, letting the pelvic floor soften on each inhale.',
+    ],
+    cues: ['Let gravity do it', 'Sit tall', 'Soften on the inhale'],
+    caution:
+      'Comfortable, never maximum. If you have pubic symphysis pain, keep your knees closer together or leave this one out — wide-leg positions are a common trigger.',
+  },
+  {
+    id: 'pelvic-circles-ball',
+    name: 'Pelvic Circles on a Ball',
+    kind: 'stretch',
+    summary: 'Mobilizes the pelvis and is genuinely useful in early labor.',
+    positions: ['Seated on a birth ball', 'Seated on a firm chair'],
+    howTo: [
+      'Sit on the ball with your feet flat and wide, knees a little below your hips.',
+      'Circle your hips slowly in one direction, letting the movement come from the pelvis.',
+      'Change direction after several circles, then add slow figure-eights.',
+    ],
+    cues: ['Slow and loose', 'Let the jaw go', 'Breathe out through the movement'],
+    caution:
+      'Have something solid within reach the first few times, and check the ball is sized so your hips sit slightly above your knees.',
+  },
+  {
+    id: 'supported-lunge-stretch',
+    name: 'Supported Lunge',
+    kind: 'stretch',
+    summary: 'Lengthens the hip flexors that pull the pelvis forward.',
+    positions: ['Standing with a foot on a low step', 'Kneeling with the back knee on a cushion'],
+    howTo: [
+      'Step one foot forward onto a low step, holding a wall or counter.',
+      'Keep your ribs stacked over your pelvis and gently shift your weight forward.',
+      'Feel the stretch at the front of the back hip, not in your low back.',
+      'Breathe slowly, then change sides.',
+    ],
+    cues: ['Tailbone heavy', 'No arching', 'Stop at a stretch'],
+    caution:
+      'A split stance can aggravate pubic symphysis and SI joint pain. Shorten the stride, and skip it if you feel it in the pubic bone.',
+  },
+  {
+    id: 'chest-opener-doorway',
+    name: 'Doorway Chest Opener',
+    kind: 'stretch',
+    summary: 'Undoes the rounded-forward posture of pregnancy and feeding.',
+    positions: ['Standing in a doorway', 'Standing at a wall corner'],
+    howTo: [
+      'Place your forearm on a door frame with your elbow at about shoulder height.',
+      'Turn your body slowly away from that arm until you feel the chest open.',
+      'Breathe into the front of the ribs, then change sides.',
+    ],
+    cues: ['Chest, not shoulder joint', 'Ribs down', 'Slow and small'],
+    caution:
+      'Shoulder ligaments are laxer than usual too. If you feel this pulling in the front of the shoulder joint rather than across the chest, back off.',
+  },
+  {
+    id: 'neck-shoulder-release',
+    name: 'Neck and Shoulder Release',
+    kind: 'stretch',
+    summary: 'The one that helps most once you are holding a baby all day.',
+    positions: ['Seated', 'Standing'],
+    howTo: [
+      'Sit tall and let one ear drift toward that shoulder, without turning your head.',
+      'Let the opposite shoulder soften down and breathe there.',
+      'Come back to center, change sides, then roll both shoulders slowly backwards.',
+    ],
+    cues: ['Shoulders down', 'No forcing with the hand', 'Slow breaths'],
+  },
+  {
+    id: 'standing-hamstring-support',
+    name: 'Supported Hamstring Stretch',
+    kind: 'stretch',
+    summary: 'Eases the back-of-thigh tightness that tips the pelvis.',
+    positions: ['Standing with a heel on a low step', 'Seated on the edge of a chair'],
+    howTo: [
+      'Rest one heel on a low step with your leg almost straight.',
+      'Hinge forward from the hips with a long back until you feel the back of the thigh.',
+      'Hold and breathe, then change sides.',
+    ],
+    cues: ['Hinge from the hips', 'Back long, not rounded', 'Comfortable, not maximum'],
+    caution:
+      'Hamstrings under relaxin will let you go much further than is useful. Take the first sensation of stretch and stay there.',
+  },
+  {
+    id: 'birth-ball-lean',
+    name: 'Forward Lean on a Ball',
+    kind: 'stretch',
+    summary: 'Takes the weight off your pelvis and opens the back of it.',
+    positions: ['Kneeling and draped over a birth ball', 'Kneeling and draped over a sofa seat'],
+    howTo: [
+      'Kneel with a cushion under your knees and drape your upper body over the ball.',
+      'Let your arms and head be heavy and your belly hang forward, unsupported.',
+      'Breathe slowly and let your whole pelvic floor go soft.',
+      'Rock gently side to side if that feels good.',
+    ],
+    cues: ['Heavy and draped', 'Let the belly hang', 'Nothing to hold'],
+    caution:
+      'Wedge the ball against a sofa or wall so it cannot roll away, and come up slowly.',
+  },
 ];
 
 /**
@@ -412,4 +650,6 @@ export const kindLabels: Record<Exercise['kind'], string> = {
   release: 'Release',
   functional: 'Functional',
   mobility: 'Mobility',
+  core: 'Core',
+  stretch: 'Stretch',
 };
