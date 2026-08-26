@@ -11,7 +11,62 @@ exports[`screen snapshots plan 1`] = `
               "children": [
                 {
                   "children": [
-                    "‹ ",
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "props": {
+                                "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                "fill": null,
+                                "stroke": {
+                                  "payload": 4288844698,
+                                  "type": 0,
+                                },
+                              },
+                              "type": "RNSVGPath",
+                            },
+                          ],
+                          "props": {
+                            "fill": {
+                              "payload": 4278190080,
+                              "type": 0,
+                            },
+                          },
+                          "type": "RNSVGGroup",
+                        },
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          {
+                            "flex": 0,
+                            "height": 14,
+                            "width": 14,
+                          },
+                        ],
+                      },
+                      "type": "RNSVGSvgView",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "height": 14,
+                      "transform": [
+                        {
+                          "rotate": "180deg",
+                        },
+                      ],
+                      "width": 14,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
                     "Back",
                   ],
                   "props": {
@@ -41,6 +96,11 @@ exports[`screen snapshots plan 1`] = `
                   "disabled": undefined,
                   "expanded": undefined,
                   "selected": undefined,
+                },
+                "style": {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
                 },
               },
               "type": "View",
@@ -9667,7 +9727,62 @@ exports[`screen snapshots reminders, switched on 1`] = `
               "children": [
                 {
                   "children": [
-                    "‹ ",
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "props": {
+                                "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                "fill": null,
+                                "stroke": {
+                                  "payload": 4288844698,
+                                  "type": 0,
+                                },
+                              },
+                              "type": "RNSVGPath",
+                            },
+                          ],
+                          "props": {
+                            "fill": {
+                              "payload": 4278190080,
+                              "type": 0,
+                            },
+                          },
+                          "type": "RNSVGGroup",
+                        },
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "backgroundColor": "transparent",
+                            "borderWidth": 0,
+                          },
+                          {
+                            "flex": 0,
+                            "height": 14,
+                            "width": 14,
+                          },
+                        ],
+                      },
+                      "type": "RNSVGSvgView",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "height": 14,
+                      "transform": [
+                        {
+                          "rotate": "180deg",
+                        },
+                      ],
+                      "width": 14,
+                    },
+                  },
+                  "type": "View",
+                },
+                {
+                  "children": [
                     "Back",
                   ],
                   "props": {
@@ -9697,6 +9812,11 @@ exports[`screen snapshots reminders, switched on 1`] = `
                   "disabled": undefined,
                   "expanded": undefined,
                   "selected": undefined,
+                },
+                "style": {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
                 },
               },
               "type": "View",
@@ -10552,7 +10672,7 @@ exports[`screen snapshots today 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Full plan ›",
+                        "Full plan",
                       ],
                       "props": {
                         "style": [
@@ -10571,8 +10691,65 @@ exports[`screen snapshots today 1`] = `
                       },
                       "type": "Text",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "props": {
+                                    "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                    "fill": null,
+                                    "stroke": {
+                                      "payload": 4284776288,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGPath",
+                                },
+                              ],
+                              "props": {
+                                "fill": {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                },
+                              },
+                              "type": "RNSVGGroup",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              {
+                                "flex": 0,
+                                "height": 14,
+                                "width": 14,
+                              },
+                            ],
+                          },
+                          "type": "RNSVGSvgView",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "height": 14,
+                          "transform": [
+                            {
+                              "rotate": "0deg",
+                            },
+                          ],
+                          "width": 14,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
+                    "accessibilityLabel": "Full plan",
                     "accessibilityRole": "button",
                     "accessibilityState": {
                       "busy": undefined,
@@ -10580,6 +10757,11 @@ exports[`screen snapshots today 1`] = `
                       "disabled": undefined,
                       "expanded": undefined,
                       "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
                     },
                   },
                   "type": "View",
@@ -10704,36 +10886,6 @@ exports[`screen snapshots today 1`] = `
                         },
                         {
                           "children": [
-                            "Strength",
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#3D3238",
-                                "fontFamily": "Quicksand_600SemiBold",
-                                "fontSize": 20,
-                                "lineHeight": 27,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "style": {
-                          "flex": 1,
-                          "gap": 2,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             {
                               "children": [
                                 "6m 8s",
@@ -10770,32 +10922,103 @@ exports[`screen snapshots today 1`] = `
                           },
                           "type": "View",
                         },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
                         {
                           "children": [
-                            "⌄",
+                            "Strength",
                           ],
                           "props": {
                             "style": [
                               {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              {
-                                "color": "#A2939A",
+                                "color": "#3D3238",
+                                "fontFamily": "Quicksand_600SemiBold",
+                                "fontSize": 20,
+                                "lineHeight": 27,
                               },
                               null,
-                              undefined,
+                              null,
+                              {
+                                "flex": 1,
+                              },
                             ],
                           },
                           "type": "Text",
                         },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "props": {
+                                        "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                        "fill": null,
+                                        "stroke": {
+                                          "payload": 4288844698,
+                                          "type": 0,
+                                        },
+                                      },
+                                      "type": "RNSVGPath",
+                                    },
+                                  ],
+                                  "props": {
+                                    "fill": {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGGroup",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ],
+                              },
+                              "type": "RNSVGSvgView",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "height": 16,
+                              "transform": [
+                                {
+                                  "rotate": "90deg",
+                                },
+                              ],
+                              "width": 16,
+                            },
+                          },
+                          "type": "View",
+                        },
                       ],
                       "props": {
                         "style": {
-                          "alignItems": "flex-end",
-                          "gap": 4,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
                         },
                       },
                       "type": "View",
@@ -10803,10 +11026,7 @@ exports[`screen snapshots today 1`] = `
                   ],
                   "props": {
                     "style": {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "gap": 2,
                     },
                   },
                   "type": "View",
@@ -11002,36 +11222,6 @@ exports[`screen snapshots today 1`] = `
                         },
                         {
                           "children": [
-                            "All Directions",
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#3D3238",
-                                "fontFamily": "Quicksand_600SemiBold",
-                                "fontSize": 20,
-                                "lineHeight": 27,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "style": {
-                          "flex": 1,
-                          "gap": 2,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             {
                               "children": [
                                 "6m 41s",
@@ -11068,32 +11258,103 @@ exports[`screen snapshots today 1`] = `
                           },
                           "type": "View",
                         },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
                         {
                           "children": [
-                            "⌄",
+                            "All Directions",
                           ],
                           "props": {
                             "style": [
                               {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              {
-                                "color": "#A2939A",
+                                "color": "#3D3238",
+                                "fontFamily": "Quicksand_600SemiBold",
+                                "fontSize": 20,
+                                "lineHeight": 27,
                               },
                               null,
-                              undefined,
+                              null,
+                              {
+                                "flex": 1,
+                              },
                             ],
                           },
                           "type": "Text",
                         },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "props": {
+                                        "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                        "fill": null,
+                                        "stroke": {
+                                          "payload": 4288844698,
+                                          "type": 0,
+                                        },
+                                      },
+                                      "type": "RNSVGPath",
+                                    },
+                                  ],
+                                  "props": {
+                                    "fill": {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGGroup",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ],
+                              },
+                              "type": "RNSVGSvgView",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "height": 16,
+                              "transform": [
+                                {
+                                  "rotate": "90deg",
+                                },
+                              ],
+                              "width": 16,
+                            },
+                          },
+                          "type": "View",
+                        },
                       ],
                       "props": {
                         "style": {
-                          "alignItems": "flex-end",
-                          "gap": 4,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
                         },
                       },
                       "type": "View",
@@ -11101,10 +11362,7 @@ exports[`screen snapshots today 1`] = `
                   ],
                   "props": {
                     "style": {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "gap": 2,
                     },
                   },
                   "type": "View",
@@ -11300,36 +11558,6 @@ exports[`screen snapshots today 1`] = `
                         },
                         {
                           "children": [
-                            "Upper and Lower",
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#3D3238",
-                                "fontFamily": "Quicksand_600SemiBold",
-                                "fontSize": 20,
-                                "lineHeight": 27,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "style": {
-                          "flex": 1,
-                          "gap": 2,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             {
                               "children": [
                                 "5 min",
@@ -11366,32 +11594,103 @@ exports[`screen snapshots today 1`] = `
                           },
                           "type": "View",
                         },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
                         {
                           "children": [
-                            "⌄",
+                            "Upper and Lower",
                           ],
                           "props": {
                             "style": [
                               {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              {
-                                "color": "#A2939A",
+                                "color": "#3D3238",
+                                "fontFamily": "Quicksand_600SemiBold",
+                                "fontSize": 20,
+                                "lineHeight": 27,
                               },
                               null,
-                              undefined,
+                              null,
+                              {
+                                "flex": 1,
+                              },
                             ],
                           },
                           "type": "Text",
                         },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "props": {
+                                        "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                        "fill": null,
+                                        "stroke": {
+                                          "payload": 4288844698,
+                                          "type": 0,
+                                        },
+                                      },
+                                      "type": "RNSVGPath",
+                                    },
+                                  ],
+                                  "props": {
+                                    "fill": {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGGroup",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ],
+                              },
+                              "type": "RNSVGSvgView",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "height": 16,
+                              "transform": [
+                                {
+                                  "rotate": "90deg",
+                                },
+                              ],
+                              "width": 16,
+                            },
+                          },
+                          "type": "View",
+                        },
                       ],
                       "props": {
                         "style": {
-                          "alignItems": "flex-end",
-                          "gap": 4,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
                         },
                       },
                       "type": "View",
@@ -11399,10 +11698,7 @@ exports[`screen snapshots today 1`] = `
                   ],
                   "props": {
                     "style": {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "gap": 2,
                     },
                   },
                   "type": "View",
@@ -12742,7 +13038,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Full plan ›",
+                        "Full plan",
                       ],
                       "props": {
                         "style": [
@@ -12761,8 +13057,65 @@ exports[`screen snapshots today, with one program already done 1`] = `
                       },
                       "type": "Text",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "props": {
+                                    "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                    "fill": null,
+                                    "stroke": {
+                                      "payload": 4284776288,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGPath",
+                                },
+                              ],
+                              "props": {
+                                "fill": {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                },
+                              },
+                              "type": "RNSVGGroup",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              {
+                                "flex": 0,
+                                "height": 14,
+                                "width": 14,
+                              },
+                            ],
+                          },
+                          "type": "RNSVGSvgView",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "height": 14,
+                          "transform": [
+                            {
+                              "rotate": "0deg",
+                            },
+                          ],
+                          "width": 14,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
+                    "accessibilityLabel": "Full plan",
                     "accessibilityRole": "button",
                     "accessibilityState": {
                       "busy": undefined,
@@ -12770,6 +13123,11 @@ exports[`screen snapshots today, with one program already done 1`] = `
                       "disabled": undefined,
                       "expanded": undefined,
                       "selected": undefined,
+                    },
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 4,
                     },
                   },
                   "type": "View",
@@ -12967,36 +13325,6 @@ exports[`screen snapshots today, with one program already done 1`] = `
                         },
                         {
                           "children": [
-                            "Strength",
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#3D3238",
-                                "fontFamily": "Quicksand_600SemiBold",
-                                "fontSize": 20,
-                                "lineHeight": 27,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "style": {
-                          "flex": 1,
-                          "gap": 2,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             {
                               "children": [
                                 "6m 8s",
@@ -13033,32 +13361,103 @@ exports[`screen snapshots today, with one program already done 1`] = `
                           },
                           "type": "View",
                         },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
                         {
                           "children": [
-                            "⌄",
+                            "Strength",
                           ],
                           "props": {
                             "style": [
                               {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              {
-                                "color": "#A2939A",
+                                "color": "#3D3238",
+                                "fontFamily": "Quicksand_600SemiBold",
+                                "fontSize": 20,
+                                "lineHeight": 27,
                               },
                               null,
-                              undefined,
+                              null,
+                              {
+                                "flex": 1,
+                              },
                             ],
                           },
                           "type": "Text",
                         },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "props": {
+                                        "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                        "fill": null,
+                                        "stroke": {
+                                          "payload": 4288844698,
+                                          "type": 0,
+                                        },
+                                      },
+                                      "type": "RNSVGPath",
+                                    },
+                                  ],
+                                  "props": {
+                                    "fill": {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGGroup",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ],
+                              },
+                              "type": "RNSVGSvgView",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "height": 16,
+                              "transform": [
+                                {
+                                  "rotate": "90deg",
+                                },
+                              ],
+                              "width": 16,
+                            },
+                          },
+                          "type": "View",
+                        },
                       ],
                       "props": {
                         "style": {
-                          "alignItems": "flex-end",
-                          "gap": 4,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
                         },
                       },
                       "type": "View",
@@ -13066,10 +13465,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                   ],
                   "props": {
                     "style": {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "gap": 2,
                     },
                   },
                   "type": "View",
@@ -13265,36 +13661,6 @@ exports[`screen snapshots today, with one program already done 1`] = `
                         },
                         {
                           "children": [
-                            "All Directions",
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#3D3238",
-                                "fontFamily": "Quicksand_600SemiBold",
-                                "fontSize": 20,
-                                "lineHeight": 27,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "style": {
-                          "flex": 1,
-                          "gap": 2,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             {
                               "children": [
                                 "Done ✓",
@@ -13331,32 +13697,103 @@ exports[`screen snapshots today, with one program already done 1`] = `
                           },
                           "type": "View",
                         },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
                         {
                           "children": [
-                            "⌄",
+                            "All Directions",
                           ],
                           "props": {
                             "style": [
                               {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              {
-                                "color": "#A2939A",
+                                "color": "#3D3238",
+                                "fontFamily": "Quicksand_600SemiBold",
+                                "fontSize": 20,
+                                "lineHeight": 27,
                               },
                               null,
-                              undefined,
+                              null,
+                              {
+                                "flex": 1,
+                              },
                             ],
                           },
                           "type": "Text",
                         },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "props": {
+                                        "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                        "fill": null,
+                                        "stroke": {
+                                          "payload": 4288844698,
+                                          "type": 0,
+                                        },
+                                      },
+                                      "type": "RNSVGPath",
+                                    },
+                                  ],
+                                  "props": {
+                                    "fill": {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGGroup",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ],
+                              },
+                              "type": "RNSVGSvgView",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "height": 16,
+                              "transform": [
+                                {
+                                  "rotate": "90deg",
+                                },
+                              ],
+                              "width": 16,
+                            },
+                          },
+                          "type": "View",
+                        },
                       ],
                       "props": {
                         "style": {
-                          "alignItems": "flex-end",
-                          "gap": 4,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
                         },
                       },
                       "type": "View",
@@ -13364,10 +13801,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                   ],
                   "props": {
                     "style": {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "gap": 2,
                     },
                   },
                   "type": "View",
@@ -13554,36 +13988,6 @@ exports[`screen snapshots today, with one program already done 1`] = `
                         },
                         {
                           "children": [
-                            "Upper and Lower",
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#3D3238",
-                                "fontFamily": "Quicksand_600SemiBold",
-                                "fontSize": 20,
-                                "lineHeight": 27,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "style": {
-                          "flex": 1,
-                          "gap": 2,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             {
                               "children": [
                                 "5 min",
@@ -13620,32 +14024,103 @@ exports[`screen snapshots today, with one program already done 1`] = `
                           },
                           "type": "View",
                         },
+                      ],
+                      "props": {
+                        "style": {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
                         {
                           "children": [
-                            "⌄",
+                            "Upper and Lower",
                           ],
                           "props": {
                             "style": [
                               {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              {
-                                "color": "#A2939A",
+                                "color": "#3D3238",
+                                "fontFamily": "Quicksand_600SemiBold",
+                                "fontSize": 20,
+                                "lineHeight": 27,
                               },
                               null,
-                              undefined,
+                              null,
+                              {
+                                "flex": 1,
+                              },
                             ],
                           },
                           "type": "Text",
                         },
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "children": [
+                                    {
+                                      "props": {
+                                        "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                        "fill": null,
+                                        "stroke": {
+                                          "payload": 4288844698,
+                                          "type": 0,
+                                        },
+                                      },
+                                      "type": "RNSVGPath",
+                                    },
+                                  ],
+                                  "props": {
+                                    "fill": {
+                                      "payload": 4278190080,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGGroup",
+                                },
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  {
+                                    "flex": 0,
+                                    "height": 16,
+                                    "width": 16,
+                                  },
+                                ],
+                              },
+                              "type": "RNSVGSvgView",
+                            },
+                          ],
+                          "props": {
+                            "style": {
+                              "height": 16,
+                              "transform": [
+                                {
+                                  "rotate": "90deg",
+                                },
+                              ],
+                              "width": 16,
+                            },
+                          },
+                          "type": "View",
+                        },
                       ],
                       "props": {
                         "style": {
-                          "alignItems": "flex-end",
-                          "gap": 4,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "gap": 12,
+                          "justifyContent": "space-between",
                         },
                       },
                       "type": "View",
@@ -13653,10 +14128,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                   ],
                   "props": {
                     "style": {
-                      "alignItems": "flex-start",
-                      "flexDirection": "row",
-                      "gap": 12,
-                      "justifyContent": "space-between",
+                      "gap": 2,
                     },
                   },
                   "type": "View",

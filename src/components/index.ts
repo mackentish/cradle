@@ -1,6 +1,8 @@
 export { BackLink } from './BackLink';
 export { Button } from './Button';
 export { Card } from './Card';
+export { Chevron, type ChevronDirection } from './Chevron';
+export { Collapsible } from './Collapsible';
 export { Confetti } from './Confetti';
 export { CradleMark } from './CradleMark';
 export { DateFields } from './DateFields';

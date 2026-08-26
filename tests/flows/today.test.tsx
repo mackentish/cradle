@@ -53,4 +53,25 @@ describe('Today', () => {
     // The other two stay closed — expanding is per card.
     expect(screen.queryByTestId('program-steps-pelvic-floor')).not.toBeOnTheScreen();
   });
+
+  it('drops the steps from the tree once a card has closed again', async () => {
+    await seed();
+    renderRouter('app', { initialUrl: '/' });
+
+    await waitFor(() => expect(screen.getByTestId('today-screen')).toBeOnTheScreen());
+
+    const card = screen.getByTestId('program-card-core');
+    const header = within(card).getByLabelText(/^Core,/);
+
+    fireEvent.press(header);
+    await waitFor(() => expect(screen.getByTestId('program-steps-core')).toBeOnTheScreen());
+
+    // The reveal animates, so the steps outlive the tap that closes them — but
+    // only until it finishes. Leaving them mounted would keep five invisible
+    // buttons in the accessibility tree under a collapsed card.
+    fireEvent.press(header);
+    await waitFor(() =>
+      expect(screen.queryByTestId('program-steps-core')).not.toBeOnTheScreen()
+    );
+  });
 });

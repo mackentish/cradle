@@ -3,7 +3,7 @@ import Svg, { Circle, Ellipse, Path, Rect } from 'react-native-svg';
 
 import { colors } from '@/theme';
 
-export type IconName = 'bloom' | 'bars' | 'person';
+export type IconName = 'bloom' | 'bars' | 'person' | 'chevron';
 
 type IconProps = Readonly<{
   name: IconName;
@@ -14,8 +14,11 @@ type IconProps = Readonly<{
 }>;
 
 /**
- * Hand-rolled in SVG rather than pulling in an icon font — there are only three
- * of them, and they can then share the app's palette exactly.
+ * Hand-rolled in SVG rather than pulling in an icon font — there are only a
+ * handful of them, and they can then share the app's palette exactly.
+ *
+ * `chevron` always points right; rotating it is `Chevron`'s job, so there is one
+ * path to keep consistent rather than four that can drift apart.
  */
 export function Icon({ name, size = 24, color = colors.textFaint, active = false }: IconProps) {
   const stroke = color;
@@ -49,6 +52,17 @@ export function Icon({ name, size = 24, color = colors.textFaint, active = false
           <Rect x={10} y={8} width={4} height={12.5} rx={2} stroke={stroke} strokeWidth={1.5} fill={fill} />
           <Rect x={16.5} y={4} width={4} height={16.5} rx={2} stroke={stroke} strokeWidth={1.5} fill={fill} />
         </>
+      ) : null}
+
+      {name === 'chevron' ? (
+        <Path
+          d="M9.5 4.5 17 12l-7.5 7.5"
+          stroke={stroke}
+          strokeWidth={2.2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
       ) : null}
 
       {name === 'person' ? (

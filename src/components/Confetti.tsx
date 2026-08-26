@@ -1,13 +1,7 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import {
-  AccessibilityInfo,
-  Animated,
-  Easing,
-  StyleSheet,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import React, { useEffect, useMemo, useRef } from 'react';
+import { Animated, Easing, StyleSheet, useWindowDimensions, View } from 'react-native';
 
+import { useReduceMotion } from '@/hooks/useReduceMotion';
 import { palette, radius } from '@/theme';
 
 /** Soft pastels rather than primaries — this should feel like petals, not a party popper. */
@@ -77,22 +71,7 @@ export function Confetti({
   // The driver runs long enough for the last-starting piece to finish its fall.
   const total = fallDuration + stagger;
   const progress = useRef(new Animated.Value(0)).current;
-  const [reduceMotion, setReduceMotion] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    let canceled = false;
-    AccessibilityInfo.isReduceMotionEnabled().then((enabled) => {
-      if (!canceled) setReduceMotion(enabled);
-    });
-    const subscription = AccessibilityInfo.addEventListener(
-      'reduceMotionChanged',
-      setReduceMotion
-    );
-    return () => {
-      canceled = true;
-      subscription.remove();
-    };
-  }, []);
+  const reduceMotion = useReduceMotion();
 
   const pieces = useMemo<Piece[]>(
     () =>

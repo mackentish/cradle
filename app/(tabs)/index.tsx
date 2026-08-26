@@ -2,7 +2,17 @@ import { useRouter } from 'expo-router';
 import React, { useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Button, Card, DayDots, Pill, ProgramLegend, Screen, Text } from '@/components';
+import {
+  Button,
+  Card,
+  Chevron,
+  Collapsible,
+  DayDots,
+  Pill,
+  ProgramLegend,
+  Screen,
+  Text,
+} from '@/components';
 import { getExercise, kindLabels } from '@/domain/exercises';
 import { describeCountdown, describeProgress } from '@/domain/pregnancy';
 import { PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
@@ -48,10 +58,16 @@ function Today({ progress }: Readonly<{ progress: Progress }>) {
       <Card tint={stageColor.tint}>
         <View style={styles.stageHeader}>
           <Pill label={stage.range} tint={colors.surface} ink={stageColor.ink} />
-          <Pressable onPress={() => router.push('/plan')} accessibilityRole="button">
+          <Pressable
+            onPress={() => router.push('/plan')}
+            accessibilityRole="button"
+            accessibilityLabel="Full plan"
+            style={styles.fullPlan}
+          >
             <Text variant="smallStrong" color={stageColor.ink}>
-              Full plan ›
+              Full plan
             </Text>
+            <Chevron size={14} color={stageColor.ink} />
           </Pressable>
         </View>
         <Text variant="heading">{stage.title}</Text>
@@ -118,57 +134,62 @@ function ProgramCard({
         accessibilityState={{ expanded }}
         accessibilityLabel={`${title}, ${session.title}, ${formatDuration(duration)}`}
       >
+        {/*
+          Two rows rather than a left/right split, so each trailing element is
+          centered against the line it belongs to: the badge on the program
+          label, the chevron on the session title. Stacking the chevron under
+          the badge instead makes its position a function of the badge's height,
+          which left it sitting below the title it discloses.
+        */}
         <View style={styles.cardHeader}>
-          <View style={styles.cardTitle}>
+          <View style={styles.headerRow}>
             <View style={styles.programName}>
               <View style={[styles.swatch, { borderColor: tone.ring }]} />
               <Text variant="label" color={tone.ink}>
                 {title}
               </Text>
             </View>
-            <Text variant="heading">{session.title}</Text>
-          </View>
-          <View style={styles.headerRight}>
             <View style={[styles.durationBadge, { backgroundColor: tone.tint }]}>
               <Text variant="smallStrong" color={tone.ink}>
                 {done ? 'Done ✓' : formatDuration(duration)}
               </Text>
             </View>
-            <Text variant="small" color={colors.textFaint}>
-              {expanded ? '⌃' : '⌄'}
+          </View>
+          <View style={styles.headerRow}>
+            <Text variant="heading" style={styles.sessionTitle}>
+              {session.title}
             </Text>
+            <Chevron direction={expanded ? 'up' : 'down'} size={16} />
           </View>
         </View>
         <Text variant="small">{program.blurb}</Text>
       </Pressable>
 
-      {expanded ? (
-        <View style={styles.steps} testID={`program-steps-${program.id}`}>
-          {session.steps.map((step, index) => {
-            const exercise = getExercise(step.exerciseId);
-            return (
-              <Pressable
-                key={`${step.exerciseId}-${index}`}
-                onPress={() => router.push(`/exercise/${exercise.id}`)}
-                style={styles.step}
-                accessibilityRole="button"
-              >
-                <View style={styles.stepIndex}>
-                  <Text variant="smallStrong" color={tone.ink}>
-                    {index + 1}
-                  </Text>
-                </View>
-                <View style={styles.stepBody}>
-                  <Text variant="bodyStrong">{exercise.name}</Text>
-                  <Text variant="small" color={colors.textFaint}>
-                    {kindLabels[exercise.kind]} · {describeStep(step)}
-                  </Text>
-                </View>
-              </Pressable>
-            );
-          })}
-        </View>
-      ) : null}
+      <Collapsible expanded={expanded} style={styles.steps} testID={`program-steps-${program.id}`}>
+        {session.steps.map((step, index) => {
+          const exercise = getExercise(step.exerciseId);
+          return (
+            <Pressable
+              key={`${step.exerciseId}-${index}`}
+              onPress={() => router.push(`/exercise/${exercise.id}`)}
+              style={styles.step}
+              accessibilityRole="button"
+            >
+              <View style={styles.stepIndex}>
+                <Text variant="smallStrong" color={tone.ink}>
+                  {index + 1}
+                </Text>
+              </View>
+              <View style={styles.stepBody}>
+                <Text variant="bodyStrong">{exercise.name}</Text>
+                <Text variant="small" color={colors.textFaint}>
+                  {kindLabels[exercise.kind]} · {describeStep(step)}
+                </Text>
+              </View>
+            </Pressable>
+          );
+        })}
+      </Collapsible>
 
       <Button
         label={done ? 'Do it again' : 'Start session'}
@@ -207,15 +228,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  cardHeader: {
+  fullPlan: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  cardHeader: {
+    gap: 2,
+  },
+  headerRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     justifyContent: 'space-between',
     gap: spacing.md,
   },
-  cardTitle: {
+  sessionTitle: {
+    // Wraps within the row rather than pushing the chevron off the card.
     flex: 1,
-    gap: 2,
   },
   programName: {
     flexDirection: 'row',
@@ -228,10 +257,6 @@ const styles = StyleSheet.create({
     borderRadius: radius.pill,
     borderWidth: 3,
   },
-  headerRight: {
-    alignItems: 'flex-end',
-    gap: 4,
-  },
   durationBadge: {
     borderRadius: radius.pill,
     paddingHorizontal: spacing.md,
@@ -239,7 +264,7 @@ const styles = StyleSheet.create({
   },
   steps: {
     gap: spacing.md,
-    marginVertical: spacing.sm,
+    paddingVertical: spacing.sm,
   },
   step: {
     flexDirection: 'row',

@@ -18,7 +18,7 @@ export default function PlanScreen() {
   const { progress } = useAppState();
   const { program } = useLocalSearchParams<{ program?: string }>();
 
-  // Today's "Full plan ›" passes the card she tapped, so she lands where she was.
+  // Today's "Full plan" link passes the card she tapped, so she lands where she was.
   const [selected, setSelected] = useState<ProgramId>(
     isProgramId(program) ? program : 'pelvic-floor'
   );

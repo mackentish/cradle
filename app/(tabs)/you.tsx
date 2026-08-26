@@ -2,7 +2,7 @@ import { useRouter } from 'expo-router';
 import React from 'react';
 import { Alert, Pressable, Share, StyleSheet, View } from 'react-native';
 
-import { Card, Pill, Screen, Text } from '@/components';
+import { Card, Chevron, Pill, Screen, Text } from '@/components';
 import { PT_NOTE, RED_FLAGS, SAFETY_INTRO } from '@/content/safety';
 import { describeProgress } from '@/domain/pregnancy';
 import { PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
@@ -140,9 +140,7 @@ function Row({
         <Text variant="small" color={colors.textFaint}>
           {value}
         </Text>
-        <Text variant="small" color={colors.textFaint}>
-          ›
-        </Text>
+        <Chevron size={14} />
       </View>
     </Pressable>
   );
