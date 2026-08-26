@@ -42,7 +42,7 @@ describe('reminders', () => {
 
     await waitFor(() => expect(notificationDouble.scheduled).toHaveLength(1));
     expect(notificationDouble.scheduled[0]?.content).toMatchObject({
-      title: 'Practise opening',
+      title: 'Practice opening',
     });
   });
 

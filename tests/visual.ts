@@ -63,7 +63,7 @@ function prune(node: JsonNode | string): unknown {
  * Taken from the screen's own subtree so the navigator stays out of the diff, and
  * pruned so a reviewer can actually read the result. These are render-tree
  * snapshots rather than pixel comparisons, but the tree carries resolved styles,
- * so a colour, radius or spacing regression still shows up.
+ * so a color, radius or spacing regression still shows up.
  */
 export function visualTree(testID: string): unknown {
   const root = screen.toJSON() as JsonNode | null;

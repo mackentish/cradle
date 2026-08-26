@@ -63,7 +63,7 @@ export default function YouScreen() {
           onPress={() => router.push('/birth-date')}
         />
         {profile.birthDate ? (
-          <Pill label="Postpartum programme" tint={colors.accentSoft} ink={colors.accent} />
+          <Pill label="Postpartum program" tint={colors.accentSoft} ink={colors.accent} />
         ) : null}
       </Card>
 

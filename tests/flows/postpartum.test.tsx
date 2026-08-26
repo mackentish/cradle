@@ -3,7 +3,7 @@ import { fireEvent, renderRouter, screen, waitFor } from 'expo-router/testing-li
 import { seed } from '../helpers';
 
 describe('the postpartum switch', () => {
-  it('moves the whole programme to recovery once a birth date is set', async () => {
+  it('moves the whole program to recovery once a birth date is set', async () => {
     await seed();
     renderRouter('app', { initialUrl: '/(tabs)/you' });
 
@@ -16,14 +16,14 @@ describe('the postpartum switch', () => {
 
     fireEvent.press(screen.getByText('Save'));
 
-    await waitFor(() => expect(screen.getByText('Postpartum programme')).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText('Postpartum program')).toBeOnTheScreen());
 
     fireEvent.press(screen.getByLabelText(/Today, tab/));
 
     await waitFor(() => expect(screen.getByTestId('today-screen')).toBeOnTheScreen());
     expect(screen.getByText('Day one')).toBeOnTheScreen();
     expect(screen.getByText('Recover')).toBeOnTheScreen();
-    // Recovery is breath and rest, not a strength programme.
+    // Recovery is breath and rest, not a strength program.
     expect(screen.getByText(/Nothing to train yet/)).toBeOnTheScreen();
   });
 });

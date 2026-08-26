@@ -21,7 +21,7 @@ import {
   saveLogs,
   saveProfile,
 } from '@/lib/storage';
-import { summarise, type StreakSummary } from '@/lib/streak';
+import { summarize, type StreakSummary } from '@/lib/streak';
 
 type AppStateValue = {
   ready: boolean;
@@ -53,16 +53,16 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   logsRef.current = logs;
 
   useEffect(() => {
-    let cancelled = false;
+    let canceled = false;
     (async () => {
       const [storedProfile, storedLogs] = await Promise.all([loadProfile(), loadLogs()]);
-      if (cancelled) return;
+      if (canceled) return;
       setProfile(storedProfile);
       setLogs(storedLogs);
       setReady(true);
     })();
     return () => {
-      cancelled = true;
+      canceled = true;
     };
   }, []);
 
@@ -124,8 +124,8 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
   const progress = useMemo(() => getProgress(profile), [profile]);
 
   // Keeps what the OS has scheduled in step with the saved settings and the
-  // current stage, so the reminder wording follows the programme. Stage objects
-  // are singletons from the programme table, so the identity check is stable.
+  // current stage, so the reminder wording follows the program. Stage objects
+  // are singletons from the program table, so the identity check is stable.
   const { enabled, hour, minute } = profile.reminders;
   const stage = progress?.stage ?? null;
   useEffect(() => {
@@ -139,7 +139,7 @@ export function AppStateProvider({ children }: { children: React.ReactNode }) {
       profile,
       logs,
       progress,
-      stats: summarise(logs),
+      stats: summarize(logs),
       onboarded: Boolean(progress) && Boolean(profile.acknowledgedDisclaimerAt),
       updateProfile,
       updateReminders,

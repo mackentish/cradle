@@ -8,7 +8,7 @@ import { colors, spacing } from '@/theme';
 const POINTS = [
   {
     title: 'Built around your week',
-    body: 'Tell Cradle your due date once. The programme moves with you, week by week, and shifts toward birth prep as you get closer.',
+    body: 'Tell Cradle your due date once. The program moves with you, week by week, and shifts toward birth prep as you get closer.',
   },
   {
     title: 'Squeeze and release',

@@ -14,7 +14,7 @@ export function Pill({
   label: string;
   tint?: string;
   ink?: string;
-  /** Centres the pill instead of hugging the left edge of its row. */
+  /** Centers the pill instead of hugging the left edge of its row. */
   center?: boolean;
 }) {
   return (

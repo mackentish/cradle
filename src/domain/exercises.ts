@@ -126,7 +126,7 @@ const list: Exercise[] = [
     id: 'full-release',
     name: 'Full Release',
     kind: 'release',
-    summary: 'Training the letting-go, which most of us never practise.',
+    summary: 'Training the letting-go, which most of us never practice.',
     positions: ['Side-lying', 'Supported deep squat', 'Seated on the toilet'],
     howTo: [
       'Inhale slowly and imagine the pelvic floor blooming open and widening.',
@@ -139,7 +139,7 @@ const list: Exercise[] = [
     id: 'perineal-bulge',
     name: 'Perineal Bulging',
     kind: 'release',
-    summary: 'Practising the opening direction you will need for birth.',
+    summary: 'Practicing the opening direction you will need for birth.',
     positions: ['Supported deep squat', 'Side-lying with a pillow between knees'],
     howTo: [
       'Inhale into your belly and let the pelvic floor drop and widen.',
@@ -149,7 +149,7 @@ const list: Exercise[] = [
     ],
     cues: ['Open, do not push', 'Loose jaw, loose throat', 'Gentle and brief'],
     caution:
-      'Birth-prep work, generally introduced around 34 weeks. Skip it if you have a history of preterm labour, cervical insufficiency, placenta praevia, or your provider has advised against bearing down — ask them first.',
+      'Birth-prep work, generally introduced around 34 weeks. Skip it if you have a history of preterm labor, cervical insufficiency, placenta previa, or your provider has advised against bearing down — ask them first.',
   },
   {
     id: 'birth-breathing',

@@ -7,7 +7,7 @@ import type { ReminderSettings, Stage } from '@/domain/types';
 /**
  * Reminders are local notifications scheduled on the device — no server, no push
  * token, nothing leaving the phone. A single DAILY trigger repeats forever until
- * it's cancelled, so there is nothing to keep alive in the background.
+ * it's canceled, so there is nothing to keep alive in the background.
  *
  * Every call is wrapped: notifications are the one part of the app that can fail
  * for reasons outside it (permissions revoked in Settings, an unsupported

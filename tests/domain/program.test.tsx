@@ -4,7 +4,7 @@ import { buildSegments, sessionSeconds } from '@/domain/session';
 import type { ExerciseId } from '@/domain/types';
 
 /**
- * `ExerciseId` and `Step.exerciseId` make the programme's step data compile-time
+ * `ExerciseId` and `Step.exerciseId` make the program's step data compile-time
  * checked, but the union is written by hand: TypeScript catches a step naming an
  * id that isn't in the union, and this catches a union member with no exercise
  * behind it. Together they close the loop.
@@ -53,7 +53,7 @@ describe('the exercise library', () => {
   });
 });
 
-describe('the programme', () => {
+describe('the program', () => {
   it('covers both phases with stages that carry sessions', () => {
     expect(stagesForPhase('pregnancy').length).toBeGreaterThan(0);
     expect(stagesForPhase('postpartum').length).toBeGreaterThan(0);

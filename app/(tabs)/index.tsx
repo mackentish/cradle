@@ -60,7 +60,7 @@ function Today({ progress }: { progress: Progress }) {
           <Text variant="subheading">Today is done ✓</Text>
           <Text variant="small">
             {stats.current > 1
-              ? `${stats.current} days in a row. Rest is part of the programme too.`
+              ? `${stats.current} days in a row. Rest is part of the program too.`
               : 'Nicely done. Come back tomorrow.'}
           </Text>
         </Card>

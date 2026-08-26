@@ -7,7 +7,7 @@ export type ReminderCopy = {
 
 /**
  * Reminder wording per stage. A daily trigger carries fixed text, so the app
- * reschedules on launch — which means the copy follows the programme as she
+ * reschedules on launch — which means the copy follows the program as she
  * moves through it, and a third-trimester reminder never says "build strength".
  */
 const COPY: Record<StageId, ReminderCopy> = {
@@ -24,7 +24,7 @@ const COPY: Record<StageId, ReminderCopy> = {
     body: 'Maintain what you built, and give the release work its time.',
   },
   prepare: {
-    title: 'Practise opening',
+    title: 'Practice opening',
     body: 'Softening and breathing are the skills you will actually use. A few minutes today.',
   },
   recover: {

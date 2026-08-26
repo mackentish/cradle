@@ -10,7 +10,7 @@ import { visualTree } from './visual';
  * navigator's internals stay out of the diff.
  *
  * These are render-tree snapshots, not pixel comparisons — but the tree carries
- * resolved styles, so a colour, radius or spacing regression does show up here.
+ * resolved styles, so a color, radius or spacing regression does show up here.
  *
  * The clock is frozen because three things on these screens move with it: the
  * greeting, which session the day-rotation picks, and every formatted date.

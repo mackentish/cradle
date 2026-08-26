@@ -17,7 +17,7 @@ function uniqueDays(logs: SessionLog[]): string[] {
   return Array.from(new Set(logs.map((log) => log.day))).sort();
 }
 
-export function summarise(logs: SessionLog[], today: Date = now()): StreakSummary {
+export function summarize(logs: SessionLog[], today: Date = now()): StreakSummary {
   const days = uniqueDays(logs);
   const daySet = new Set(days);
   const todayKey = toDayKey(today);

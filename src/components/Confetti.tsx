@@ -80,16 +80,16 @@ export function Confetti({
   const [reduceMotion, setReduceMotion] = useState<boolean | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    let canceled = false;
     AccessibilityInfo.isReduceMotionEnabled().then((enabled) => {
-      if (!cancelled) setReduceMotion(enabled);
+      if (!canceled) setReduceMotion(enabled);
     });
     const subscription = AccessibilityInfo.addEventListener(
       'reduceMotionChanged',
       setReduceMotion
     );
     return () => {
-      cancelled = true;
+      canceled = true;
       subscription.remove();
     };
   }, []);

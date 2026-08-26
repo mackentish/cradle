@@ -21,7 +21,7 @@ Expo SDK 57 + expo-router, TypeScript, no backend. See README.md for the domain 
   anything remote — that would need a server and break the promise above. All OS notification calls
   live in `src/lib/notifications.ts`, wrapped so a revoked permission can never take a screen down;
   `AppState` owns scheduling, screens only save settings.
-- **All text goes through `src/components/Text.tsx`** and all colour/spacing through `src/theme`.
+- **All text goes through `src/components/Text.tsx`** and all color/spacing through `src/theme`.
   Don't hardcode a hex value or a font family in a screen.
 - **Safety copy lives in `src/content/safety.ts`.** Don't restate a disclaimer inline.
 - **Gestational age is computed in one place** (`src/domain/pregnancy.ts`). Don't recompute weeks
@@ -42,7 +42,7 @@ Expo SDK 57 + expo-router, TypeScript, no backend. See README.md for the domain 
 
 ## Content changes
 
-Exercises are in `src/domain/exercises.ts`, the stage/session programme in `src/domain/program.ts`.
+Exercises are in `src/domain/exercises.ts`, the stage/session program in `src/domain/program.ts`.
 Anything with a contraindication needs a `caution`. This is health content for pregnant users: don't
 invent exercise prescriptions, and flag anything that should be reviewed by a pelvic floor PT.
 
@@ -59,7 +59,7 @@ invent exercise prescriptions, and flag anything that should be reviewed by a pe
   Prefer them over `jest.spyOn` on a module you also mocked — the spy patches a
   different object than the one under test.
 - Snapshots go through `visualTree()`, which prunes to styles, copy and structure.
-  Snapshotting a `ReactTestInstance` directly serialises the fiber and throws
+  Snapshotting a `ReactTestInstance` directly serializes the fiber and throws
   `RangeError: Invalid string length`.
 - Screens are guarded by `Stack.Protected` in the root layout, not by redirecting
   from inside a screen. The anchor keeps the tabs mounted underneath, and a

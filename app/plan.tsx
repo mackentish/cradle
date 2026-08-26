@@ -11,7 +11,7 @@ import { formatDuration } from '@/lib/date';
 import { useAppState } from '@/state/AppState';
 import { colors, spacing, stageColors } from '@/theme';
 
-/** The whole programme, so nothing about the progression feels like a black box. */
+/** The whole program, so nothing about the progression feels like a black box. */
 export default function PlanScreen() {
   const router = useRouter();
   const { progress } = useAppState();

@@ -10,7 +10,7 @@ import { emptyProfile } from '@/lib/storage';
 import { useAppState } from '@/state/AppState';
 import { colors, spacing } from '@/theme';
 
-/** Setting a birth date is what flips the whole programme over to postpartum. */
+/** Setting a birth date is what flips the whole program over to postpartum. */
 export default function BirthDateScreen() {
   const { profile, updateProfile } = useAppState();
   const dismiss = useDismiss();
@@ -50,7 +50,7 @@ export default function BirthDateScreen() {
       <View style={styles.header}>
         <Text variant="title">Congratulations</Text>
         <Text variant="body">
-          Tell Cradle when baby arrived and the programme switches to recovery — breath and rest
+          Tell Cradle when baby arrived and the program switches to recovery — breath and rest
           first, strength later, at the pace your body sets.
         </Text>
       </View>

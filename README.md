@@ -1,7 +1,7 @@
 # Cradle
 
 Progressive pelvic floor exercises for pregnancy and recovery. Tell Cradle your due date once and
-the programme moves with you — awareness in the first trimester, real strength through the second,
+the program moves with you — awareness in the first trimester, real strength through the second,
 and a deliberate shift toward release and birth prep as you get close.
 
 No account, no server, no network. Everything lives on the device.
@@ -33,12 +33,12 @@ npx expo export --platform ios          # verify the bundle builds
 | Foundation | weeks 1–13 | Find the muscles, pair the lift with the exhale. Low volume. |
 | Build | weeks 14–27 | Longer holds, more reps, hips and deep core integrated. |
 | Sustain | weeks 28–34 | Maintain rather than chase. Release work grows. |
-| Prepare | week 35+ | Mostly opening, softening and breathing for labour. |
+| Prepare | week 35+ | Mostly opening, softening and breathing for labor. |
 | Recover | postpartum 0–1 | Breath and rest only. |
 | Reconnect | postpartum 2–5 | Short holds, gentle movement, walking. |
 | Rebuild | postpartum 6+ | Progressive strength, get properly assessed. |
 
-Setting a birth date in **You** flips the whole programme to the postpartum track.
+Setting a birth date in **You** flips the whole program to the postpartum track.
 
 Each stage carries two or three session variants. `sessionForDay` rotates them by calendar day, so
 sessions vary day to day without anything being fetched — the same day always yields the same
@@ -56,14 +56,14 @@ app/                      expo-router routes
   onboarding/             welcome → due date → safety gate
   (tabs)/                 Today · Progress · You
   session.tsx             the guided player
-  plan.tsx                the whole programme, all seven stages
+  plan.tsx                the whole program, all seven stages
   exercise/[id].tsx       library detail
 src/
-  domain/                 types, exercise library, programme, pregnancy math, session builder
+  domain/                 types, exercise library, program, pregnancy math, session builder
   state/AppState.tsx      the single provider: profile + logs + derived progress
   lib/                    dates, AsyncStorage, streaks
   components/             design system
-  theme/                  colours, type scale, spacing
+  theme/                  colors, type scale, spacing
   content/safety.ts       all safety copy, in one place
 ```
 
@@ -71,18 +71,18 @@ src/
 
 Dusty rose primary, sage secondary, warm cream background. Quicksand for headings, Nunito for body
 — both rounded, both free. Tokens live in `src/theme`; the palette is the only place to change a
-colour.
+color.
 
 ## Reminders
 
 One daily reminder, off by default, toggled in **You → Daily reminder**. It's a *local*
 notification: `expo-notifications` hands iOS/Android a single `DAILY` trigger that repeats on the
-device forever until cancelled. No push token, no server, no network — it fires with the phone in
+device forever until canceled. No push token, no server, no network — it fires with the phone in
 airplane mode.
 
 `src/lib/notifications.ts` is the only place that talks to the OS. `AppState` re-syncs on every
 launch and whenever the settings or the current stage change, which means the wording follows the
-programme (`src/content/reminders.ts`) — a third-trimester reminder talks about opening and
+program (`src/content/reminders.ts`) — a third-trimester reminder talks about opening and
 breathing, not building strength.
 
 Enabling requests permission and saves `enabled: false` if refused, so the switch never reads as on
@@ -107,7 +107,7 @@ since a spinning wheel would otherwise mean an AsyncStorage write and a reschedu
 ## Tests
 
 `npm test` drives the app through its happy paths with `expo-router`'s testing
-library — real navigation, real AsyncStorage, real pregnancy maths. Only the things
+library — real navigation, real AsyncStorage, real pregnancy math. Only the things
 that reach native code are doubled (`tests/doubles/`), and the notification double
 keeps real state so "enabling a reminder schedules exactly one daily trigger" is an
 assertion rather than a hope.
@@ -122,7 +122,7 @@ tests/
 ```
 
 The snapshots are **render-tree, not pixel**. They capture structure, copy and
-resolved styles — so a colour, radius or spacing regression shows up — but they
+resolved styles — so a color, radius or spacing regression shows up — but they
 cannot catch a layout that only breaks once real text metrics are involved. Pixel
 diffing would need a simulator harness plus image comparison, which is a bigger
 piece of infrastructure than this repo currently earns. Regenerate with
@@ -141,7 +141,7 @@ Two things worth knowing before touching the setup:
 
 ## Safety
 
-Cradle is a wellness app, not medical advice. Onboarding gates the programme behind a disclaimer
+Cradle is a wellness app, not medical advice. Onboarding gates the program behind a disclaimer
 and a red-flag list, and every exercise with any risk attached carries its own caution. Content is
 written for an uncomplicated, low-risk pregnancy.
 

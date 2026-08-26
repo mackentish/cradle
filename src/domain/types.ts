@@ -11,7 +11,7 @@ export type ExerciseKind =
   | 'mobility';
 
 /**
- * Every exercise in the library, spelled out so the programme's step data is
+ * Every exercise in the library, spelled out so the program's step data is
  * checked at compile time. `src/domain/program.ts` is ~600 lines of hand-written
  * steps; without this a mistyped id is a crash on the day that session comes up
  * in the rotation, which could be weeks after the typo shipped.

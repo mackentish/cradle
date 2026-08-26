@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "scheme": "cradle",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/cradle-mark-1024.png",
     "userInterfaceStyle": "light",
     "backgroundColor": "#FDFAF7",
     "ios": {
@@ -33,7 +33,7 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/splash-icon.png",
+          "image": "./assets/cradle-mark-splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#FDFAF7"

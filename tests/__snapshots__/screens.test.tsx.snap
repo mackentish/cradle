@@ -4035,7 +4035,7 @@ exports[`screen snapshots welcome 1`] = `
                     },
                     {
                       "children": [
-                        "Tell Cradle your due date once. The programme moves with you, week by week, and shifts toward birth prep as you get closer.",
+                        "Tell Cradle your due date once. The program moves with you, week by week, and shifts toward birth prep as you get closer.",
                       ],
                       "props": {
                         "style": [

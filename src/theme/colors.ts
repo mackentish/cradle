@@ -25,7 +25,7 @@ export const palette = {
   lavender300: '#CDC3E0',
   lavender500: '#8B7FA8',
 
-  // Neutrals, warmed slightly so nothing reads as grey-blue
+  // Neutrals, warmed slightly so nothing reads as gray-blue
   cream: '#FDFAF7',
   surface: '#FFFFFF',
   border: '#F0E7E4',

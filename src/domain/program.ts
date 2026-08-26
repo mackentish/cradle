@@ -308,10 +308,10 @@ export const stages: Stage[] = [
     title: 'Prepare',
     range: 'Week 35 onward',
     focus:
-      'The emphasis flips. Most of what helps now is opening, softening and breathing — the skills you actually use in labour. Strength work stays in, but light, just enough to keep the connection.',
+      'The emphasis flips. Most of what helps now is opening, softening and breathing — the skills you actually use in labor. Strength work stays in, but light, just enough to keep the connection.',
     emphasis: [
       'Release and opening take the lead',
-      'Practise breathing that keeps the floor soft',
+      'Practice breathing that keeps the floor soft',
       'Keep a light strength thread, nothing maximal',
     ],
     startWeek: 35,

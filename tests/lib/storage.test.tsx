@@ -1,5 +1,5 @@
 import { parseBackup, toLogs, toProfile } from '@/lib/storage';
-import { summarise } from '@/lib/streak';
+import { summarize } from '@/lib/streak';
 
 /**
  * A backup is pasted in by hand, so a malformed one is something a user can
@@ -40,7 +40,7 @@ describe('parseBackup', () => {
     const { profile } = parseBackup(
       wrap({ profile: { dueDate: '2027-02-31', birthDate: '2026-03-14' } })
     );
-    // 02/31 would roll over to March, quietly moving the whole programme.
+    // 02/31 would roll over to March, quietly moving the whole program.
     expect(profile.dueDate).toBeNull();
     expect(profile.birthDate).toBe('2026-03-14');
   });
@@ -61,7 +61,7 @@ describe('parseBackup', () => {
 
     expect(logs).toEqual([good]);
     // The streak summary walks every entry, so a survivor has to be complete.
-    expect(() => summarise(logs)).not.toThrow();
+    expect(() => summarize(logs)).not.toThrow();
   });
 
   it('survives a backup with nothing in it at all', () => {
