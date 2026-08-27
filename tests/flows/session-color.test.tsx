@@ -45,7 +45,10 @@ describe('color in the session player', () => {
     await started('core');
     const foreign = [palette.blush300, palette.blush400, palette.blush500, palette.blush600];
     expect(foreign).not.toContain(arcStroke());
-    expect(arcStroke()).toBe(programPhaseColors.core.hold);
+    // `lift`, not `hold`: the first step here is rep-based, so `buildSegments` opens
+    // on the lift of rep 1 rather than on a sustained hold. Pinning the exact rung
+    // and not just the family is what catches the ramp being wired off by one.
+    expect(arcStroke()).toBe(programPhaseColors.core.lift);
   });
 
   it('darkens every ramp monotonically from rest through hold', () => {
