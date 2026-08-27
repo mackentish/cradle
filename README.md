@@ -45,11 +45,11 @@ npx expo export --platform ios          # verify the bundle builds
 
 ## The three programs
 
-| Program | What it is | Color |
-| --- | --- | --- |
-| Pelvic floor | Lift, hold and release. The program Cradle started as. | Dusty rose |
-| Core | Deep-core strength, midline kept quiet. No crunches. | Sage |
-| Birth prep | Hips, length and rehearsing letting go. Retitles to *Recovery stretches* postpartum. | Lavender |
+| Program      | What it is                                                                           | Color      |
+| ------------ | ------------------------------------------------------------------------------------ | ---------- |
+| Pelvic floor | Lift, hold and release. The program Cradle started as.                               | Dusty rose |
+| Core         | Deep-core strength, midline kept quiet. No crunches.                                 | Sage       |
+| Birth prep   | Hips, length and rehearsing letting go. Retitles to _Recovery stretches_ postpartum. | Lavender   |
 
 Each has its own Today card, its own daily session, its own configurable reminder and its own take on
 every stage. They are declared in `src/domain/program.ts` — the registry — with the stage data itself
@@ -66,15 +66,15 @@ log written before this existed, since `toLogs` drops an entry whose `stageId` i
 `src/domain/pregnancy.ts` turns a due date into a gestational week (280 days from LMP, so
 `week = floor((280 - daysUntilDue) / 7)`). That week selects one of seven stages, per program:
 
-| Stage | When | Emphasis (pelvic floor; each program writes its own) |
-| --- | --- | --- |
-| Foundation | weeks 1–13 | Find the muscles, pair the lift with the exhale. Low volume. |
-| Build | weeks 14–27 | Longer holds, more reps, hips and deep core integrated. |
-| Sustain | weeks 28–34 | Maintain rather than chase. Release work grows. |
-| Prepare | week 35+ | Mostly opening, softening and breathing for labor. |
-| Recover | postpartum 0–1 | Breath and rest only. |
-| Reconnect | postpartum 2–5 | Short holds, gentle movement, walking. |
-| Rebuild | postpartum 6+ | Progressive strength, get properly assessed. |
+| Stage      | When           | Emphasis (pelvic floor; each program writes its own)         |
+| ---------- | -------------- | ------------------------------------------------------------ |
+| Foundation | weeks 1–13     | Find the muscles, pair the lift with the exhale. Low volume. |
+| Build      | weeks 14–27    | Longer holds, more reps, hips and deep core integrated.      |
+| Sustain    | weeks 28–34    | Maintain rather than chase. Release work grows.              |
+| Prepare    | week 35+       | Mostly opening, softening and breathing for labor.           |
+| Recover    | postpartum 0–1 | Breath and rest only.                                        |
+| Reconnect  | postpartum 2–5 | Short holds, gentle movement, walking.                       |
+| Rebuild    | postpartum 6+  | Progressive strength, get properly assessed.                 |
 
 Setting a birth date in **You** flips all three programs to the postpartum track.
 
@@ -121,7 +121,7 @@ Dusty rose primary, sage secondary, warm cream background. Quicksand for heading
 color.
 
 Four color scales, each answering a different question, and mixing them up is the easy mistake.
-`stageColors` is *when* she is — the Today banner, the plan timeline. `programColors` is *what* she's
+`stageColors` is _when_ she is — the Today banner, the plan timeline. `programColors` is _what_ she's
 doing, and it owns not just a program's card but every control that acts on it: the Start button, the
 progress track, the reminder switch. `programPhaseColors` is what to do with her body in the next
 eight seconds — a four-step ramp per program, out of that program's own family, darkening from `rest`
@@ -132,7 +132,7 @@ program in scope.
 
 The ring used to run on one cross-family scale — blush to lift, lavender to release, sage to rest.
 That read well in pelvic floor, where it was designed, and badly in the other two: sage and lavender
-are the *other programs'* identity colors, so a core session turned sage on every rest for reasons
+are the _other programs'_ identity colors, so a core session turned sage on every rest for reasons
 that had nothing to do with core. Per-program ramps cost two new palette steps (`sage400`,
 `lavender400` — those families ran 300 → 500) and buy a ring that always agrees with the card that
 launched it.
@@ -140,7 +140,7 @@ launched it.
 ## Reminders
 
 One daily reminder **per program**, all off by default, each toggled from its row in **You →
-Reminders**. They're *local* notifications: `expo-notifications` hands iOS/Android a `DAILY` trigger
+Reminders**. They're _local_ notifications: `expo-notifications` hands iOS/Android a `DAILY` trigger
 per program that repeats on the device forever until canceled. No push token, no server, no network —
 they fire with the phone in airplane mode.
 
@@ -151,7 +151,7 @@ three reminders set to the same minute arrive as one buzz you learn to swipe awa
 `src/lib/notifications.ts` is the only place that talks to the OS. `AppState` re-syncs on every
 launch and whenever the settings or any current stage change, which means the wording follows both
 the program and the stage (`src/content/reminders.ts`, twenty-one entries) — birth prep at 38 weeks
-says *rehearse for labor*, and core at 38 weeks says *light and practical*, at the same time on the
+says _rehearse for labor_, and core at 38 weeks says _light and practical_, at the same time on the
 same day.
 
 One thing worth knowing if you ever change those identifiers: `syncReminders` sweeps any scheduled
@@ -204,12 +204,12 @@ tests/
 
 A few of these exist to pin decisions that are easy to undo by accident: that the three programs
 agree on week boundaries, that no two sessions in a stage band share a title (two cards side by side
-would read as duplicates), that the day rotation gives the three programs *different* sessions, that
+would read as duplicates), that the day rotation gives the three programs _different_ sessions, that
 switching one reminder on leaves the other two untouched, and that each program's session ring stays
 inside its own color family while still darkening from rest through hold. That last one needs its own
-test because the screen snapshots capture only the *completed* session — the running timer has no
+test because the screen snapshots capture only the _completed_ session — the running timer has no
 snapshot coverage at all, so a ring quietly reverted to dusty rose in all three programs would
-otherwise ship green. What is *not* covered is the live transition between phases: driving the player
+otherwise ship green. What is _not_ covered is the live transition between phases: driving the player
 past a segment boundary needs fake timers, and those deadlock the synchronous `waitFor` in
 `@testing-library/react-native` 13. The ramp's ordering is asserted as data instead.
 
@@ -236,13 +236,6 @@ Two things worth knowing before touching the setup:
 Cradle is a wellness app, not medical advice. Onboarding gates the program behind a disclaimer
 and a red-flag list, and every exercise with any risk attached carries its own caution. Content is
 written for an uncomplicated, low-risk pregnancy.
-
-**Before this ships to anyone: have the exercise library and the stage progression reviewed by a
-pelvic floor physical therapist.** That now covers three programs rather than one — the core and
-birth-prep content is conservative and well-established, but it is unreviewed, and the two areas
-that most need a professional eye are the diastasis/doming guidance in the core program and the
-end-range and pubic-symphysis cautions in the stretches. App Store health-app review will also want
-the disclaimer to be prominent.
 
 Program-specific caveats live in `PROGRAM_SAFETY` (`src/content/safety.ts`) and are shown on each
 program's page in the full plan, so they sit next to the content they apply to.
