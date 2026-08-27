@@ -8,11 +8,11 @@ import { colors, spacing } from '@/theme';
 const POINTS = [
   {
     title: 'Built around your week',
-    body: 'Tell Cradle your due date once. The program moves with you, week by week, and shifts toward birth prep as you get closer.',
+    body: 'Tell Cradle your due date once. All three programs move with you, week by week, and shift toward birth prep as you get closer.',
   },
   {
-    title: 'Squeeze and release',
-    body: 'A pelvic floor that can let go matters as much as one that can lift. Both are trained here — and the balance changes over time.',
+    title: 'Pelvic floor, core and birth prep',
+    body: 'Three programs, each with its own daily session. Do one a day, or all three — and they carry on through recovery.',
   },
   {
     title: 'Yours alone',
@@ -31,7 +31,7 @@ export default function Welcome() {
           Cradle
         </Text>
         <Text variant="body" center>
-          Pelvic floor care that keeps pace with your pregnancy.
+          Three programs that keep pace with your pregnancy — and your recovery.
         </Text>
       </View>
 

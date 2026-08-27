@@ -39,7 +39,7 @@ export default function SafetyScreen() {
       </Card>
 
       <Card>
-        <Text variant="subheading">Two rules for every session</Text>
+        <Text variant="subheading">Rules for every session</Text>
         <View style={styles.list}>
           {STOP_RULES.map((rule) => (
             <View key={rule.title} style={styles.listItem}>

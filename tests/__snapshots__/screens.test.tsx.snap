@@ -15446,7 +15446,7 @@ exports[`screen snapshots welcome 1`] = `
             },
             {
               "children": [
-                "Pelvic floor care that keeps pace with your pregnancy.",
+                "Three programs that keep pace with your pregnancy — and your recovery.",
               ],
               "props": {
                 "style": [
@@ -15513,7 +15513,7 @@ exports[`screen snapshots welcome 1`] = `
                     },
                     {
                       "children": [
-                        "Tell Cradle your due date once. The program moves with you, week by week, and shifts toward birth prep as you get closer.",
+                        "Tell Cradle your due date once. All three programs move with you, week by week, and shift toward birth prep as you get closer.",
                       ],
                       "props": {
                         "style": [
@@ -15566,7 +15566,7 @@ exports[`screen snapshots welcome 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Squeeze and release",
+                        "Pelvic floor, core and birth prep",
                       ],
                       "props": {
                         "style": [
@@ -15585,7 +15585,7 @@ exports[`screen snapshots welcome 1`] = `
                     },
                     {
                       "children": [
-                        "A pelvic floor that can let go matters as much as one that can lift. Both are trained here — and the balance changes over time.",
+                        "Three programs, each with its own daily session. Do one a day, or all three — and they carry on through recovery.",
                       ],
                       "props": {
                         "style": [

@@ -10,7 +10,9 @@ describe('onboarding', () => {
 
     // A first launch has no profile, so only the onboarding routes exist.
     await waitFor(() => expect(screen.getByTestId('welcome-screen')).toBeOnTheScreen());
-    expect(screen.getByText(/keeps pace with your pregnancy/)).toBeOnTheScreen();
+    // Pinned on the three-program framing, not just any hero text: this copy fell behind
+    // once already, and it is the first screen a store reviewer sees.
+    expect(screen.getByText(/Three programs that keep pace/)).toBeOnTheScreen();
 
     fireEvent.press(screen.getByText("Let's begin"));
     await waitFor(() => expect(screen.getByText('When is baby due?')).toBeOnTheScreen());
