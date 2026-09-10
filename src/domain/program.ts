@@ -1,5 +1,5 @@
-import { birthPrepProgram } from "./programs/birth-prep";
-import { coreProgram } from "./programs/core";
+import { birthPrepProgram } from "./programs/deep-stretch";
+import { coreProgram } from "./programs/core-strength";
 import { pelvicFloorProgram } from "./programs/pelvic-floor";
 import type {
   NonEmpty,
