@@ -148,6 +148,11 @@ misleading, the code is right.
 Exercises are in `src/domain/exercises.ts` — one shared library, no program field, and several
 exercises are used by two programs. The stage/session tables are in `src/domain/programs/*.ts`.
 
+Diaphragmatic breathing is pelvic floor's alone, and a test in `tests/domain/program.test.tsx`
+pins that. The library being shared is what makes it easy to reach for as a generic opener, and that
+is the thing to resist: core opens on Cat-Cow into its own quadruped core breath, and deep stretch
+has open-throat breathing and Rest and Breathe. A program's breath should say which program it is.
+
 An exercise whose work *is* the breath gets a `breath` cadence, and that is what puts a paced circle
 in front of it. Only give one to an exercise she practices by breathing — a butterfly stretch is
 ninety seconds of breathing too, but the breath is not the thing being trained.

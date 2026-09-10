@@ -34,7 +34,7 @@ const stages: NonEmpty<Stage> = [
         id: "core-foundation-a",
         title: "Deep Core Basics",
         steps: [
-          { type: "hold", exerciseId: "diaphragmatic-breath", durationSec: 60 },
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           {
             type: "reps",
             exerciseId: "quadruped-core-breath",
@@ -456,21 +456,15 @@ const stages: NonEmpty<Stage> = [
         id: "core-recover-a",
         title: "Nothing to Do",
         steps: [
-          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 180 },
-          {
-            type: "hold",
-            exerciseId: "diaphragmatic-breath",
-            durationSec: 120,
-          },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 300 },
         ],
       },
       {
         id: "core-recover-b",
         title: "First Breaths",
         steps: [
-          { type: "hold", exerciseId: "diaphragmatic-breath", durationSec: 90 },
           { type: "hold", exerciseId: "connection-breath", durationSec: 90 },
-          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 120 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 210 },
         ],
       },
     ],
@@ -496,7 +490,7 @@ const stages: NonEmpty<Stage> = [
         id: "core-reconnect-a",
         title: "Switching On",
         steps: [
-          { type: "hold", exerciseId: "diaphragmatic-breath", durationSec: 60 },
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           {
             type: "reps",
             exerciseId: "quadruped-core-breath",

@@ -711,7 +711,7 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
-                            "Diaphragmatic Breathing",
+                            "Cat-Cow",
                             {
                               "children": [
                                 "  ",
@@ -4805,63 +4805,7 @@ exports[`screen snapshots plan 1`] = `
                             {
                               "children": [
                                 "  ",
-                                "3 min",
-                              ],
-                              "props": {
-                                "style": [
-                                  {
-                                    "color": "#6E5F65",
-                                    "fontFamily": "Nunito_400Regular",
-                                    "fontSize": 14,
-                                    "lineHeight": 21,
-                                  },
-                                  {
-                                    "color": "#A2939A",
-                                  },
-                                  null,
-                                  undefined,
-                                ],
-                              },
-                              "type": "Text",
-                            },
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "accessibilityRole": "button",
-                        "accessibilityState": {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
-                            "Diaphragmatic Breathing",
-                            {
-                              "children": [
-                                "  ",
-                                "2 min",
+                                "5 min",
                               ],
                               "props": {
                                 "style": [
@@ -4978,62 +4922,6 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
-                            "Diaphragmatic Breathing",
-                            {
-                              "children": [
-                                "  ",
-                                "90s",
-                              ],
-                              "props": {
-                                "style": [
-                                  {
-                                    "color": "#6E5F65",
-                                    "fontFamily": "Nunito_400Regular",
-                                    "fontSize": 14,
-                                    "lineHeight": 21,
-                                  },
-                                  {
-                                    "color": "#A2939A",
-                                  },
-                                  null,
-                                  undefined,
-                                ],
-                              },
-                              "type": "Text",
-                            },
-                          ],
-                          "props": {
-                            "style": [
-                              {
-                                "color": "#6E5F65",
-                                "fontFamily": "Nunito_400Regular",
-                                "fontSize": 14,
-                                "lineHeight": 21,
-                              },
-                              null,
-                              null,
-                              undefined,
-                            ],
-                          },
-                          "type": "Text",
-                        },
-                      ],
-                      "props": {
-                        "accessibilityRole": "button",
-                        "accessibilityState": {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        },
-                      },
-                      "type": "View",
-                    },
-                    {
-                      "children": [
-                        {
-                          "children": [
                             "Connection Breath",
                             {
                               "children": [
@@ -5094,7 +4982,7 @@ exports[`screen snapshots plan 1`] = `
                             {
                               "children": [
                                 "  ",
-                                "2 min",
+                                "210s",
                               ],
                               "props": {
                                 "style": [
@@ -5414,7 +5302,7 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
-                            "Diaphragmatic Breathing",
+                            "Cat-Cow",
                             {
                               "children": [
                                 "  ",

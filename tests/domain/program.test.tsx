@@ -239,6 +239,22 @@ describe("the program registry", () => {
     }
   });
 
+  /**
+   * Diaphragmatic breathing is pelvic floor's, and the library is shared, so
+   * nothing but a program table stops another program from reaching for it.
+   * Core opens on Cat-Cow into its own quadruped core breath; deep stretch has
+   * open-throat breathing and Rest and Breathe.
+   */
+  it("keeps diaphragmatic breathing inside the pelvic floor program", () => {
+    for (const stage of stages) {
+      if (stage.programId === "pelvic-floor") continue;
+      for (const session of stage.sessions) {
+        const ids = session.steps.map((step) => step.exerciseId);
+        expect(ids).not.toContain("diaphragmatic-breath");
+      }
+    }
+  });
+
   it("clamps a week outside every stage range, per program", () => {
     for (const id of PROGRAM_IDS) {
       // A due date more than 40 weeks out lands before the first stage.

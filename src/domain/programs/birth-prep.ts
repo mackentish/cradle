@@ -47,7 +47,7 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-foundation-b",
         title: "Open and Settle",
         steps: [
-          { type: "hold", exerciseId: "diaphragmatic-breath", durationSec: 60 },
+          { type: "hold", exerciseId: "birth-breathing", durationSec: 60 },
           { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           { type: "hold", exerciseId: "figure-four", durationSec: 60 },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 60 },
@@ -260,13 +260,12 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-recover-b",
         title: "Soft Reset",
         steps: [
-          { type: "hold", exerciseId: "diaphragmatic-breath", durationSec: 90 },
           {
             type: "hold",
             exerciseId: "neck-shoulder-release",
             durationSec: 90,
           },
-          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 120 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 210 },
         ],
       },
     ],
