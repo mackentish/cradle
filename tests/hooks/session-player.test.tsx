@@ -282,6 +282,44 @@ describe('the session player', () => {
     expect(result.current.secondsLeft).toBe(4);
   });
 
+  /**
+   * What the paced view reads instead of the segment clock: the exercise timed
+   * end to end, so the arc can hold still while the circle inside it moves.
+   * Step one here is one rep of lift 2, hold 6, release 3 — eleven seconds.
+   */
+  it('times the exercise as a whole alongside the phase', () => {
+    const { result } = player();
+    act(() => result.current.startStep());
+
+    expect(result.current.stepSecondsLeft).toBe(11);
+    expect(result.current.stepProgress).toBe(0);
+    expect(result.current.segmentElapsed).toBe(0);
+
+    tick(2000); // The lift is done; the hold is only starting.
+    expect(result.current.secondsLeft).toBe(6);
+    expect(result.current.stepSecondsLeft).toBe(9);
+    expect(result.current.segmentElapsed).toBe(0);
+
+    tick(1000); // A second into the hold, three into the exercise.
+    expect(result.current.segmentElapsed).toBe(1);
+    expect(result.current.stepSecondsLeft).toBe(8);
+    expect(result.current.stepProgress).toBeCloseTo(3 / 11);
+  });
+
+  it('rewinds the exercise clock when she goes back to the intro', () => {
+    const { result } = player();
+    act(() => result.current.startStep());
+    tick(2000);
+    expect(result.current.stepProgress).toBeGreaterThan(0);
+
+    act(() => result.current.restartStep());
+
+    // The circle starts from the top of the exercise, same as the count does.
+    expect(result.current.stepProgress).toBe(0);
+    expect(result.current.stepSecondsLeft).toBe(11);
+    expect(result.current.segmentElapsed).toBe(0);
+  });
+
   it('counts a repeated exercise twice over, and a skipped one not at all', () => {
     const { result } = player();
     act(() => result.current.startStep());

@@ -81,6 +81,95 @@ export function sessionSeconds(session: SessionTemplate): number {
   return session.steps.reduce((total, step) => total + stepSeconds(step), 0);
 }
 
+/**
+ * Whether the player paces this step with a circle that grows and shrinks,
+ * instead of sweeping a fresh arc for each phase. Two kinds of step earn it:
+ *
+ *   - one whose work *is* the breath, which is what a `breath` cadence on the
+ *     exercise declares. A minute of "Breathe" over an arc creeping around once
+ *     never said when to breathe in; the circle does nothing else.
+ *   - a rep step short enough that a per-phase arc is a strobe. Quick flicks run
+ *     1s up, 1s held, 1s down: the ring sweeps a full turn and resets before her
+ *     eye lands on it, and the number under it only ever reads 1.
+ *
+ * The arc still turns either way — it just times the exercise as a whole, so
+ * nothing on the screen is flickering at the phase.
+ *
+ * Deliberately strict about which rep steps qualify: the knack and short holds
+ * lift in a second too, but they *hold* for two or three, and the number
+ * counting that hold down is the thing she is working to. Only a step with no
+ * phase longer than a second has nothing to lose.
+ */
+export function isPacedStep(step: Step): boolean {
+  if (step.type === 'hold') return getExercise(step.exerciseId).breath !== undefined;
+  return step.liftSec <= 1 && step.holdSec <= 1 && step.releaseSec <= 1;
+}
+
+export type PaceState = {
+  /** 0 where the circle is smallest, 1 at full radius. */
+  fill: number;
+  /** What she should be doing right now, shown inside the circle. */
+  label: string;
+};
+
+/**
+ * Where the paced circle sits and what it says, from the seconds spent so far
+ * in the current segment.
+ *
+ * Derived from the clock the arc and the countdown already run on rather than
+ * animated on a timer of its own, which is what makes pausing freeze it, going
+ * back rewind it and a screen test able to read it. A breathing step has one
+ * long segment and loops the cadence inside it; a rep step already has its
+ * phases, so the circle just follows them — out on the lift, back in on the
+ * release, and small through the rest.
+ */
+export function paceState(step: Step, segment: Segment, elapsedSec: number): PaceState {
+  const elapsed = Math.max(0, elapsedSec);
+  const { breath } = getExercise(step.exerciseId);
+
+  if (segment.kind === 'duration' && breath) {
+    const cycle = breath.inSec + breath.outSec;
+    const atCycle = elapsed % cycle;
+    return atCycle < breath.inSec
+      ? { fill: atCycle / breath.inSec, label: breath.inLabel }
+      : { fill: 1 - (atCycle - breath.inSec) / breath.outSec, label: breath.outLabel };
+  }
+
+  const progress = segment.seconds > 0 ? Math.min(1, elapsed / segment.seconds) : 0;
+  const fill = { lift: progress, release: 1 - progress, rest: 0, hold: 1, duration: 1 }[
+    segment.kind
+  ];
+  return { fill, label: segment.label };
+}
+
+/**
+ * What the timer is about to do, for the intro card — the answer to "what am I
+ * tapping into", written before she taps rather than discovered a second after.
+ * Only paced steps have anything surprising to explain; everything else counts
+ * one phase down at a time, which the header already spells out.
+ */
+export function describePacing(step: Step): string | null {
+  if (!isPacedStep(step)) return null;
+
+  if (step.type === 'reps') {
+    const perRep = step.liftSec + step.holdSec + step.releaseSec;
+    return (
+      `This one moves fast: ${step.reps} reps of about ${perRep} seconds. The circle jumps out ` +
+      'as you lift and drops as you let go, and the ring around it counts the whole set down — ' +
+      'so there is no one second number to chase.'
+    );
+  }
+
+  // A paced hold step is by definition one with a cadence, so this is present.
+  const { breath } = getExercise(step.exerciseId);
+  if (!breath) return null;
+  return (
+    `A circle sets the pace rather than a countdown: breathe in over ${breath.inSec} seconds ` +
+    `as it grows, out over ${breath.outSec} as it shrinks, and let it keep looping. ` +
+    'The ring around it counts the whole exercise down, not each breath.'
+  );
+}
+
 export function describeStep(step: Step): string {
   if (step.type === 'hold') {
     const minutes = Math.round(step.durationSec / 60);

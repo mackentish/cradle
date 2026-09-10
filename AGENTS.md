@@ -68,6 +68,28 @@ misleading, the code is right.
   300 → 500, and the ramp needs four rungs.
   The screen snapshots capture only the *completed* session, so the running ring has no snapshot
   coverage at all — `tests/flows/session-color.test.tsx` is the only thing pinning any of this.
+- **A breathing exercise is paced by a circle, not counted down.** `isPacedStep` picks the two
+  cases: a `hold` step whose exercise declares a `breath` cadence, and a rep step with no phase
+  longer than a second — quick flicks run 1s up, 1s held, 1s down, and a per-phase arc there sweeps
+  a whole turn and resets before her eye lands on it. On a paced step the ring times the *exercise*
+  (`stepProgress`, not `segmentProgress`) and holds still on the program's `hold` rung, while
+  `BreathCircle` grows through the in-breath and shrinks through the out. Deliberately strict about
+  which rep steps qualify: the knack and short holds lift in a second too, but they hold for two or
+  three, and the number counting that hold down is what she's working to.
+  `paceState` derives the circle from the seconds already elapsed in the segment, so it rides the
+  player's clock — pausing freezes it, going back rewinds it, and a screen test can read it. Don't
+  give it a timer or an `Animated` loop of its own; there would then be two clocks to keep in step.
+  The cadence lives on the exercise because the words do too: the out-breath is `Sigh out` on an
+  open-throat breath and `Do nothing` on a full release, which the segment table can't say. Adding a
+  `breath` to an exercise is what opts it in — nothing keys off `kind`, since `find-your-floor` is a
+  `breath` whose work is a lift and `birth-breathing` is a `release` that is nothing but breathing.
+- **On a paced step the number gets quiet and "Next rep" goes away.** The countdown drops to small
+  text, because not chasing a number is the whole point and the ring already says how much is left;
+  everywhere else it stays the biggest thing on the screen. Rest keeps the primary slot only on
+  unpaced steps — a two second dip between quick flicks would swap that button's label under her
+  thumb about once a second. `describePacing` writes the intro card that says all of this in
+  seconds before she taps: arriving at a four second breath unannounced was the jarring part, not
+  the pace itself. Reduce Motion holds the circle still and lets the label carry it.
 - **Moving around a session always lands on an intro, never mid-count.** `previousStep` and the
   forward advance both go through `goToStep`, which stops the clock and parks on that exercise's
   intro — getting into side-lying with a bump takes longer than a countdown, and she gets to
@@ -125,6 +147,10 @@ misleading, the code is right.
 
 Exercises are in `src/domain/exercises.ts` — one shared library, no program field, and several
 exercises are used by two programs. The stage/session tables are in `src/domain/programs/*.ts`.
+
+An exercise whose work *is* the breath gets a `breath` cadence, and that is what puts a paced circle
+in front of it. Only give one to an exercise she practices by breathing — a butterfly stretch is
+ninety seconds of breathing too, but the breath is not the thing being trained.
 
 Anything with a contraindication needs a `caution`. This is health content for pregnant users: don't
 invent exercise prescriptions, and flag anything that should be reviewed by a pelvic floor PT. For

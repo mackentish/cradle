@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import { Alert, Pressable, ScrollView, StyleSheet, View } from "react-native";
 
 import {
+  BreathCircle,
   Button,
   Card,
   Chevron,
@@ -17,7 +18,13 @@ import {
 import { celebrationFor } from "@/content/celebration";
 import { kindLabels } from "@/domain/exercises";
 import { isProgramId, programsById, programTitle } from "@/domain/program";
-import { describeStep, sessionForDay } from "@/domain/session";
+import {
+  describePacing,
+  describeStep,
+  isPacedStep,
+  paceState,
+  sessionForDay,
+} from "@/domain/session";
 import type { ProgramId, Progress, SegmentKind } from "@/domain/types";
 import { useDismiss } from "@/hooks/useDismiss";
 import { useSessionPlayer } from "@/hooks/useSessionPlayer";
@@ -157,7 +164,17 @@ function Player({
   }
 
   const { exercise, step, segment } = player;
-  const ringColor = phaseColor(ramp, segment?.kind ?? "hold");
+  /*
+    Breathing, and anything else moving too fast for an arc, is paced by a
+    circle instead — see `isPacedStep`. The arc stays, timing the exercise from
+    end to end, so it holds still on one rung while the circle carries the
+    phase; a per-phase color on a one second phase would only be another thing
+    flickering.
+  */
+  const paced = isPacedStep(step);
+  const pace = paced && segment ? paceState(step, segment, player.segmentElapsed) : null;
+  const ringColor = paced ? ramp.hold : phaseColor(ramp, segment?.kind ?? "hold");
+  const pacing = describePacing(step);
 
   return (
     <Screen scroll={false} style={styles.root}>
@@ -225,6 +242,19 @@ function Player({
               <Text variant="body">{exercise.summary}</Text>
             </View>
 
+            {/*
+              Above the position and the how-to, because it is the answer to
+              "what am I tapping into" — on a paced exercise the clock starts
+              the instant she taps, and a circle she was not expecting is
+              exactly as jarring as a countdown she cannot read.
+            */}
+            {pacing ? (
+              <Card tint={colors.surfaceSunken}>
+                <Text variant="label">Before you start</Text>
+                <Text variant="small">{pacing}</Text>
+              </Card>
+            ) : null}
+
             <Card>
               <Text variant="label">Get into position</Text>
               {exercise.positions.map((position) => (
@@ -278,18 +308,43 @@ function Player({
           </Text>
 
           <ProgressRing
-            progress={player.segmentProgress}
+            progress={paced ? player.stepProgress : player.segmentProgress}
             color={ringColor}
             trackColor={colors.surfaceSunken}
             size={280}
             strokeWidth={14}
           >
-            <Text variant="heading" color={ringColor}>
-              {segment?.label}
+            {pace ? (
+              <BreathCircle
+                testID="session-breath-circle"
+                fill={pace.fill}
+                size={232}
+                color={tone.tint}
+                borderColor={tone.softBorder}
+              />
+            ) : null}
+            <Text variant="heading" color={ringColor} testID="session-phase">
+              {pace ? pace.label : segment?.label}
             </Text>
-            <Text variant="timer" testID="session-countdown">
-              {player.secondsLeft}
-            </Text>
+            {/*
+              Quiet on a paced exercise: the number is the one thing she should
+              not be chasing there, and the ring already says how much is left.
+              Everywhere else it is the count she is holding to, so it stays the
+              biggest thing on the screen.
+            */}
+            {paced ? (
+              <Text
+                variant="smallStrong"
+                color={colors.textSoft}
+                testID="session-countdown"
+              >
+                {`${formatDuration(player.stepSecondsLeft)} left`}
+              </Text>
+            ) : (
+              <Text variant="timer" testID="session-countdown">
+                {player.secondsLeft}
+              </Text>
+            )}
             {segment?.repTotal ? (
               <Text variant="small" color={colors.textFaint}>
                 Rep {(segment.repIndex ?? 0) + 1} of {segment.repTotal}
@@ -314,8 +369,13 @@ function Player({
               second gap has nothing to offer that the gap doesn't already. The
               next rep's own clock is a tap away from being paused if she needs
               it.
+
+              Not on a paced exercise, though: its rest is a two second dip
+              between quick flicks, so the button would swap labels roughly once
+              a second and land under her thumb as the wrong one. There is
+              nothing there worth skipping.
             */}
-            {player.isResting ? (
+            {player.isResting && !paced ? (
               <Button
                 label="Next rep"
                 variant="secondary"

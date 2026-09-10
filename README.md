@@ -90,6 +90,15 @@ cycle lift → hold → release → rest, duration steps are a single stretch. R
 relabel those phases (soften / open / let go) because telling someone to "lift" during perineal
 bulging is exactly backwards.
 
+Two kinds of step are _paced_ rather than counted down: an exercise whose work is the breath, which
+declares a cadence, and a rep step with no phase longer than a second — quick flicks are one up, one
+held, one down, and an arc per phase there is a strobe. On both, the ring times the exercise end to
+end instead of the phase, and a circle inside it grows through the in-breath and shrinks through the
+out. Its radius is derived from the seconds already elapsed, so it rides the player's own clock
+rather than an animation beside it: a pause freezes it and going back rewinds it, for free. The
+intro card spells the cadence out in seconds before she taps — arriving at a four second breath
+unannounced was the jarring part, not the pace.
+
 ## Layout
 
 ```

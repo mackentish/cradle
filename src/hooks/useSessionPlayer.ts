@@ -213,6 +213,11 @@ export function useSessionPlayer(session: SessionTemplate) {
       ? Math.min(1, (secondsBeforeStep + secondsWithinStep + elapsedInSegment) / totalSeconds)
       : 0;
 
+  // This exercise on its own, for the paced view: its circle carries the phase,
+  // so the arc around it is free to time the exercise end to end.
+  const stepTotalSeconds = useMemo(() => stepSeconds(step), [step]);
+  const elapsedInStep = secondsWithinStep + elapsedInSegment;
+
   return {
     status,
     step,
@@ -225,6 +230,12 @@ export function useSessionPlayer(session: SessionTemplate) {
     secondsLeft,
     segmentProgress: Math.min(Math.max(segmentProgress, 0), 1),
     overallProgress,
+    /** Seconds spent inside the current segment — what the paced circle reads. */
+    segmentElapsed: Math.max(0, elapsedInSegment),
+    /** 0–1 through the current exercise, and the whole seconds it has left. */
+    stepProgress:
+      stepTotalSeconds > 0 ? Math.min(1, Math.max(0, elapsedInStep / stepTotalSeconds)) : 0,
+    stepSecondsLeft: Math.max(0, Math.ceil(stepTotalSeconds - elapsedInStep)),
     /**
      * Guided seconds actually completed, for the session log. A skipped
      * exercise contributes nothing and a repeated one counts twice, because

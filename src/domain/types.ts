@@ -71,6 +71,27 @@ export type ExerciseId =
   | 'standing-hamstring-support'
   | 'birth-ball-lean';
 
+/**
+ * The cadence of the paced circle, on the exercises whose work *is* the breath.
+ * The circle grows over `inSec` and shrinks over `outSec` — longer, everywhere
+ * here, because the out-breath is where the work lives.
+ *
+ * The labels come with the cadence rather than from the segment table: what she
+ * should be doing on the way out is "sigh" on an open-throat breath and
+ * "nothing" on a full release, and "Breathe out" would flatten both.
+ *
+ * Its presence is what opts an exercise into the paced view — see `isPacedStep`
+ * in `src/domain/session.ts`.
+ */
+export type BreathPace = {
+  /** Seconds the circle spends growing, then shrinking. */
+  inSec: number;
+  outSec: number;
+  /** Shown while it grows, and while it shrinks. Two words at most. */
+  inLabel: string;
+  outLabel: string;
+};
+
 export type Exercise = {
   id: ExerciseId;
   name: string;
@@ -83,6 +104,8 @@ export type Exercise = {
   /** Short in-session reminders, shown under the timer. */
   cues: string[];
   caution?: string;
+  /** Set only where the breath is the exercise; paces the session circle. */
+  breath?: BreathPace;
 };
 
 /** A step measured in repetitions, each rep cycling lift → hold → release → rest. */

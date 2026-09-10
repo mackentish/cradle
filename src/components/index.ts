@@ -1,4 +1,5 @@
 export { BackLink } from './BackLink';
+export { BreathCircle } from './BreathCircle';
 export { Button, type ButtonTone } from './Button';
 export { Card } from './Card';
 export { Chevron, type ChevronDirection } from './Chevron';

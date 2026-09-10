@@ -34,12 +34,11 @@ describe('color in the session player', () => {
     StyleSheet.flatten(screen.getByTestId('session-track').props.style).backgroundColor;
 
   /**
-   * Every label `buildSegments` can produce, so this doesn't pin one session,
-   * and no exercise name or cue collides with one — there is exactly one of
-   * these on a running screen.
+   * The one label over the ring. Read off its testID rather than off a list of
+   * the copy it could be: a paced exercise puts its own words there — "Sigh
+   * out", "Do nothing" — instead of anything `buildSegments` produces.
    */
-  const phaseLabel = () =>
-    screen.getByText(/^(Lift|Soften|Hold|Open|Release|Let go|Rest|Breathe)$/);
+  const phaseLabel = () => screen.getByTestId('session-phase');
 
   /**
    * The rung each label must land on, spelled out here rather than taken from
@@ -65,6 +64,12 @@ describe('color in the session player', () => {
    * whether a session opens on a lift or on a sustained hold changes daily.
    */
   const shownRung = (): 'rest' | 'release' | 'lift' | 'hold' => {
+    // A paced exercise's arc times the exercise end to end rather than the
+    // phase inside it, so it holds still on `hold` and the circle within it is
+    // what moves. Which exercise that is depends on the day, same as the rest
+    // of this file, so it gets read off the screen too.
+    if (screen.queryByTestId('session-breath-circle')) return 'hold';
+
     const label = phaseLabel().props.children;
     const rung = typeof label === 'string' ? rungForLabel[label] : undefined;
     if (!rung) throw new Error(`no rung for phase label ${String(label)}`);

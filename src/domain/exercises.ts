@@ -20,7 +20,8 @@ const list: Exercise[] = [
     id: 'diaphragmatic-breath',
     name: 'Diaphragmatic Breathing',
     kind: 'breath',
-    summary: 'The breath everything else is built on.',
+    summary:
+      'The breath everything else is built on. Slow in, slower out, following a circle that grows and shrinks with you.',
     positions: ['Seated, back supported', 'Side-lying', 'Hands and knees'],
     howTo: [
       'Rest one hand on your ribs and one on your belly.',
@@ -29,6 +30,7 @@ const list: Exercise[] = [
       'Exhale slowly through your mouth and let the ribs knit back down.',
     ],
     cues: ['Widen the ribs, not just the belly', 'Slow out-breath', 'Jaw loose'],
+    breath: { inSec: 4, outSec: 6, inLabel: 'Breathe in', outLabel: 'Breathe out' },
   },
   {
     id: 'find-your-floor',
@@ -50,7 +52,8 @@ const list: Exercise[] = [
     id: 'connection-breath',
     name: 'Connection Breath',
     kind: 'breath',
-    summary: 'Pair the lift with your exhale so it becomes automatic.',
+    summary:
+      'Pair the lift with your exhale so it becomes automatic — soften as the circle grows, lift as it shrinks.',
     positions: ['Side-lying', 'Seated', 'Hands and knees'],
     howTo: [
       'Inhale and let the pelvic floor soften and widen.',
@@ -58,6 +61,7 @@ const list: Exercise[] = [
       'Release fully as the next inhale arrives.',
     ],
     cues: ['Exhale to lift', 'Inhale to soften', 'Let the breath lead'],
+    breath: { inSec: 4, outSec: 6, inLabel: 'Inhale, soften', outLabel: 'Exhale, lift' },
   },
   {
     id: 'short-hold',
@@ -105,7 +109,8 @@ const list: Exercise[] = [
     id: 'quick-flicks',
     name: 'Quick Flicks',
     kind: 'quick',
-    summary: 'Fast on, fast off — for coughs, sneezes and laughing.',
+    summary:
+      'Fast on, fast off — for coughs, sneezes and laughing. A second up and a second down, so this one moves quickly.',
     positions: ['Seated', 'Standing', 'Side-lying'],
     howTo: [
       'Lift the pelvic floor quickly and strongly.',
@@ -131,7 +136,8 @@ const list: Exercise[] = [
     id: 'full-release',
     name: 'Full Release',
     kind: 'release',
-    summary: 'Training the letting-go, which most of us never practice.',
+    summary:
+      'Training the letting-go, which most of us never practice. The in-breath opens; the out-breath asks for nothing at all.',
     positions: ['Side-lying', 'Supported deep squat', 'Seated on the toilet'],
     howTo: [
       'Inhale slowly and imagine the pelvic floor blooming open and widening.',
@@ -139,6 +145,7 @@ const list: Exercise[] = [
       'Do nothing on the exhale — no lift, no squeeze. Just rest.',
     ],
     cues: ['Soften and widen', 'Nothing to hold', 'Let it be heavy'],
+    breath: { inSec: 4, outSec: 6, inLabel: 'Inhale, open', outLabel: 'Do nothing' },
   },
   {
     id: 'perineal-bulge',
@@ -160,7 +167,8 @@ const list: Exercise[] = [
     id: 'birth-breathing',
     name: 'Open-Throat Breathing',
     kind: 'release',
-    summary: 'Breathing that lets the pelvic floor open under effort.',
+    summary:
+      'Breathing that lets the pelvic floor open under effort. A short breath in, then a long, low sigh all the way out.',
     positions: ['Supported squat', 'Side-lying', 'Hands and knees'],
     howTo: [
       'Take a slow breath in through your nose.',
@@ -169,6 +177,8 @@ const list: Exercise[] = [
       'Compare it to a tight, held breath and feel the difference in your pelvis.',
     ],
     cues: ['Low sound, open throat', 'Soft pelvic floor', 'Never hold the breath'],
+    // Twice as long on the way out as in: the sigh is the whole exercise.
+    breath: { inSec: 4, outSec: 8, inLabel: 'Breathe in', outLabel: 'Sigh out' },
   },
   {
     id: 'happy-baby-supported',
@@ -381,7 +391,8 @@ const list: Exercise[] = [
     id: 'rest-and-breathe',
     name: 'Rest and Breathe',
     kind: 'breath',
-    summary: 'Doing nothing, on purpose. This counts.',
+    summary:
+      'Doing nothing, on purpose — one slow circle to follow and nothing to lift. This counts.',
     positions: ['Side-lying', 'Reclined on pillows'],
     howTo: [
       'Lie down somewhere comfortable with your knees supported.',
@@ -389,6 +400,7 @@ const list: Exercise[] = [
       'Nothing to lift, nothing to hold.',
     ],
     cues: ['Heavy and soft', 'Slow out-breath', 'Nothing to do'],
+    breath: { inSec: 4, outSec: 6, inLabel: 'Breathe in', outLabel: 'Breathe out' },
   },
   // ---------------------------------------------------------------------------
   // Core program. Deep-core-first, midline-quiet progressions — nothing here
