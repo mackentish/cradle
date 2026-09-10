@@ -215,7 +215,7 @@ exports[`screen snapshots plan 1`] = `
               "children": [
                 {
                   "children": [
-                    "Core",
+                    "Core strength",
                   ],
                   "props": {
                     "style": [
@@ -238,7 +238,7 @@ exports[`screen snapshots plan 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Core",
+                "accessibilityLabel": "Core strength",
                 "accessibilityRole": "tab",
                 "accessibilityState": {
                   "busy": undefined,
@@ -265,7 +265,7 @@ exports[`screen snapshots plan 1`] = `
               "children": [
                 {
                   "children": [
-                    "Birth prep",
+                    "Deep stretch",
                   ],
                   "props": {
                     "style": [
@@ -288,7 +288,7 @@ exports[`screen snapshots plan 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Birth prep",
+                "accessibilityLabel": "Deep stretch",
                 "accessibilityRole": "tab",
                 "accessibilityState": {
                   "busy": undefined,
@@ -325,7 +325,7 @@ exports[`screen snapshots plan 1`] = `
           "children": [
             {
               "children": [
-                "Core",
+                "Core strength",
               ],
               "props": {
                 "style": [
@@ -8231,7 +8231,7 @@ exports[`screen snapshots progress 1`] = `
                     },
                     {
                       "children": [
-                        "Core",
+                        "Core strength",
                       ],
                       "props": {
                         "style": [
@@ -8282,7 +8282,7 @@ exports[`screen snapshots progress 1`] = `
                     },
                     {
                       "children": [
-                        "Birth prep",
+                        "Deep stretch",
                       ],
                       "props": {
                         "style": [
@@ -8519,7 +8519,7 @@ exports[`screen snapshots progress 1`] = `
                       "children": [
                         {
                           "children": [
-                            "Core",
+                            "Core strength",
                           ],
                           "props": {
                             "style": [
@@ -8620,7 +8620,7 @@ exports[`screen snapshots progress 1`] = `
                       "children": [
                         {
                           "children": [
-                            "Birth prep",
+                            "Deep stretch",
                           ],
                           "props": {
                             "style": [
@@ -8813,7 +8813,7 @@ exports[`screen snapshots progress 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Core",
+                        "Core strength",
                       ],
                       "props": {
                         "style": [
@@ -8836,7 +8836,7 @@ exports[`screen snapshots progress 1`] = `
                     },
                   ],
                   "props": {
-                    "accessibilityLabel": "Core",
+                    "accessibilityLabel": "Core strength",
                     "accessibilityRole": "tab",
                     "accessibilityState": {
                       "busy": undefined,
@@ -8861,7 +8861,7 @@ exports[`screen snapshots progress 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Birth prep",
+                        "Deep stretch",
                       ],
                       "props": {
                         "style": [
@@ -8884,7 +8884,7 @@ exports[`screen snapshots progress 1`] = `
                     },
                   ],
                   "props": {
-                    "accessibilityLabel": "Birth prep",
+                    "accessibilityLabel": "Deep stretch",
                     "accessibilityRole": "tab",
                     "accessibilityState": {
                       "busy": undefined,
@@ -10306,7 +10306,7 @@ exports[`screen snapshots session complete 1`] = `
             },
             {
               "children": [
-                "Birth prep, started",
+                "Deep stretch, started",
               ],
               "props": {
                 "style": [
@@ -10350,7 +10350,7 @@ exports[`screen snapshots session complete 1`] = `
               "children": [
                 {
                   "children": [
-                    "Birth prep · 0s",
+                    "Deep stretch · 0s",
                   ],
                   "props": {
                     "style": [
@@ -11191,7 +11191,7 @@ exports[`screen snapshots today 1`] = `
                             },
                             {
                               "children": [
-                                "Core",
+                                "Core strength",
                               ],
                               "props": {
                                 "style": [
@@ -11390,7 +11390,7 @@ exports[`screen snapshots today 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Core, All Directions, 6m 41s",
+                "accessibilityLabel": "Core strength, All Directions, 6m 41s",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -11527,7 +11527,7 @@ exports[`screen snapshots today 1`] = `
                             },
                             {
                               "children": [
-                                "Birth prep",
+                                "Deep stretch",
                               ],
                               "props": {
                                 "style": [
@@ -11726,7 +11726,7 @@ exports[`screen snapshots today 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Birth prep, Upper and Lower, 5 min",
+                "accessibilityLabel": "Deep stretch, Upper and Lower, 5 min",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -12779,7 +12779,7 @@ exports[`screen snapshots today 1`] = `
                     },
                     {
                       "children": [
-                        "Core",
+                        "Core strength",
                       ],
                       "props": {
                         "style": [
@@ -12830,7 +12830,7 @@ exports[`screen snapshots today 1`] = `
                     },
                     {
                       "children": [
-                        "Birth prep",
+                        "Deep stretch",
                       ],
                       "props": {
                         "style": [
@@ -13630,7 +13630,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                             },
                             {
                               "children": [
-                                "Core",
+                                "Core strength",
                               ],
                               "props": {
                                 "style": [
@@ -13829,7 +13829,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Core, All Directions, 6m 41s",
+                "accessibilityLabel": "Core strength, All Directions, 6m 41s",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -13957,7 +13957,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                             },
                             {
                               "children": [
-                                "Birth prep",
+                                "Deep stretch",
                               ],
                               "props": {
                                 "style": [
@@ -14156,7 +14156,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Birth prep, Upper and Lower, 5 min",
+                "accessibilityLabel": "Deep stretch, Upper and Lower, 5 min",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -15208,7 +15208,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                     },
                     {
                       "children": [
-                        "Core",
+                        "Core strength",
                       ],
                       "props": {
                         "style": [
@@ -15259,7 +15259,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                     },
                     {
                       "children": [
-                        "Birth prep",
+                        "Deep stretch",
                       ],
                       "props": {
                         "style": [
@@ -15513,7 +15513,7 @@ exports[`screen snapshots welcome 1`] = `
                     },
                     {
                       "children": [
-                        "Tell Cradle your due date once. All three programs move with you, week by week, and shift toward birth prep as you get closer.",
+                        "Tell Cradle your due date once. All three programs move with you, week by week, and shift toward birth preparation as you get closer.",
                       ],
                       "props": {
                         "style": [
@@ -15566,7 +15566,7 @@ exports[`screen snapshots welcome 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Pelvic floor, core and birth prep",
+                        "Pelvic floor, core strength and deep stretch",
                       ],
                       "props": {
                         "style": [

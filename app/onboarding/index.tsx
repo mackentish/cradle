@@ -8,10 +8,10 @@ import { colors, spacing } from '@/theme';
 const POINTS = [
   {
     title: 'Built around your week',
-    body: 'Tell Cradle your due date once. All three programs move with you, week by week, and shift toward birth prep as you get closer.',
+    body: 'Tell Cradle your due date once. All three programs move with you, week by week, and shift toward birth preparation as you get closer.',
   },
   {
-    title: 'Pelvic floor, core and birth prep',
+    title: 'Pelvic floor, core strength and deep stretch',
     body: 'Three programs, each with its own daily session. Do one a day, or all three — and they carry on through recovery.',
   },
   {

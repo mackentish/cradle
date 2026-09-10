@@ -161,7 +161,7 @@ const list: Exercise[] = [
     ],
     cues: ['Open, do not push', 'Loose jaw, loose throat', 'Gentle and brief'],
     caution:
-      'Birth-prep work, generally introduced around 34 weeks. Skip it if you have a history of preterm labor, cervical insufficiency, placenta previa, or your provider has advised against bearing down — ask them first.',
+      'Birth-preparation work, generally introduced around 34 weeks. Skip it if you have a history of preterm labor, cervical insufficiency, placenta previa, or your provider has advised against bearing down — ask them first.',
   },
   {
     id: 'birth-breathing',
@@ -527,7 +527,7 @@ const list: Exercise[] = [
     caution: 'Skip it if kneeling is uncomfortable for your knees; the standing version is fine.',
   },
   // ---------------------------------------------------------------------------
-  // Birth prep and recovery stretches. Held at comfortable, never at end range —
+  // Deep stretch and recovery stretches. Held at comfortable, never at end range —
   // relaxin makes it easy to reach further than the joint wants to be.
   // ---------------------------------------------------------------------------
   {

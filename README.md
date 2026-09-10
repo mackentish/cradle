@@ -45,11 +45,11 @@ npx expo export --platform ios          # verify the bundle builds
 
 ## The three programs
 
-| Program      | What it is                                                                           | Color      |
-| ------------ | ------------------------------------------------------------------------------------ | ---------- |
-| Pelvic floor | Lift, hold and release. The program Cradle started as.                               | Dusty rose |
-| Core         | Deep-core strength, midline kept quiet. No crunches.                                 | Sage       |
-| Birth prep   | Hips, length and rehearsing letting go. Retitles to _Recovery stretches_ postpartum. | Lavender   |
+| Program       | What it is                                                                           | Color      |
+| ------------- | ------------------------------------------------------------------------------------ | ---------- |
+| Pelvic floor  | Lift, hold and release. The program Cradle started as.                               | Dusty rose |
+| Core strength | Deep-core strength, midline kept quiet. No crunches.                                 | Sage       |
+| Deep stretch  | Hips, length and rehearsing letting go. Retitles to _Recovery stretches_ postpartum. | Lavender   |
 
 Each has its own Today card, its own daily session, its own configurable reminder and its own take on
 every stage. They are declared in `src/domain/program.ts` — the registry — with the stage data itself
@@ -159,7 +159,7 @@ three reminders set to the same minute arrive as one buzz you learn to swipe awa
 
 `src/lib/notifications.ts` is the only place that talks to the OS. `AppState` re-syncs on every
 launch and whenever the settings or any current stage change, which means the wording follows both
-the program and the stage (`src/content/reminders.ts`, twenty-one entries) — birth prep at 38 weeks
+the program and the stage (`src/content/reminders.ts`, twenty-one entries) — deep stretch at 38 weeks
 says _rehearse for labor_, and core at 38 weeks says _light and practical_, at the same time on the
 same day.
 

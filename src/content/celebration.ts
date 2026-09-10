@@ -1,5 +1,5 @@
-import { programsById, programTitle } from '@/domain/program';
-import type { Phase, ProgramId, StageId } from '@/domain/types';
+import { programsById, programTitle } from "@/domain/program";
+import type { Phase, ProgramId, StageId } from "@/domain/types";
 
 export type Celebration = {
   title: string;
@@ -22,32 +22,32 @@ type CelebrationInput = {
 
 /** What she sees when a session finishes, per program. */
 const FIRST_IN_PROGRAM: Record<ProgramId, Celebration> = {
-  'pelvic-floor': {
-    title: 'Floor work, started',
-    body: 'This is the one that pays off quietly and for years. Good place to begin.',
+  "pelvic-floor": {
+    title: "Floor work, started",
+    body: "This is the one that pays off quietly and for years. Good place to begin.",
   },
   core: {
-    title: 'Core work, started',
-    body: 'Deep and unglamorous, and worth more than any amount of crunching. Nicely done.',
+    title: "Core work, started",
+    body: "Deep and unglamorous, and worth more than any amount of crunching. Nicely done.",
   },
-  'birth-prep': {
-    title: 'Birth prep, started',
-    body: 'Every one of these makes a position or a breath more familiar than it was.',
+  "birth-prep": {
+    title: "Deep stretch, started",
+    body: "Every one of these makes a position or a breath more familiar than it was.",
   },
 };
 
 const IN_PREPARE: Record<ProgramId, Celebration> = {
-  'pelvic-floor': {
-    title: 'Well done',
-    body: 'Every one of these teaches your body to open and let go. That is what you will lean on.',
+  "pelvic-floor": {
+    title: "Well done",
+    body: "Every one of these teaches your body to open and let go. That is what you will lean on.",
   },
   core: {
-    title: 'Well done',
-    body: 'Light and practical is exactly right this close in. Nothing to prove now.',
+    title: "Well done",
+    body: "Light and practical is exactly right this close in. Nothing to prove now.",
   },
-  'birth-prep': {
-    title: 'Rehearsed',
-    body: 'That is one more time these positions and this breath were not new. It adds up.',
+  "birth-prep": {
+    title: "Rehearsed",
+    body: "That is one more time these positions and this breath were not new. It adds up.",
   },
 };
 
@@ -69,7 +69,7 @@ export function celebrationFor({
   if (totalSessions === 0) {
     return {
       title: "That's one",
-      body: 'Your first session is behind you. Showing up was the hard part — the rest is just repetition.',
+      body: "Your first session is behind you. Showing up was the hard part — the rest is just repetition.",
     };
   }
 
@@ -81,38 +81,38 @@ export function celebrationFor({
 
   if (programsToday === 3) {
     return {
-      title: 'All three, today',
-      body: 'Floor, core and stretching in one day. That is a complete day by any measure.',
+      title: "All three, today",
+      body: "Floor, core and stretching in one day. That is a complete day by any measure.",
     };
   }
 
-  if (phase === 'postpartum' && stageId === 'recover') {
+  if (phase === "postpartum" && stageId === "recover") {
     return {
-      title: 'Rest counts',
-      body: 'Breathing and lying still is the work right now. You did it.',
+      title: "Rest counts",
+      body: "Breathing and lying still is the work right now. You did it.",
     };
   }
 
-  if (stageId === 'prepare') {
+  if (stageId === "prepare") {
     return IN_PREPARE[programId];
   }
 
   if (streak >= 7) {
     return {
       title: `${streak} days running`,
-      body: 'More than a week without a gap. This is a habit now, not an effort.',
+      body: "More than a week without a gap. This is a habit now, not an effort.",
     };
   }
 
   if (streak >= 3) {
     return {
       title: `${streak} days in a row`,
-      body: 'Consistency is doing more for you here than any single hard session could.',
+      body: "Consistency is doing more for you here than any single hard session could.",
     };
   }
 
   return {
-    title: 'Beautifully done',
+    title: "Beautifully done",
     body: `Take a slow breath before you get up. ${programTitle(programsById[programId], phase)} is done for today.`,
   };
 }

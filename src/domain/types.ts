@@ -1,23 +1,23 @@
-import type { ProgramColorKey, StageColorKey } from '@/theme';
+import type { ProgramColorKey, StageColorKey } from "@/theme";
 
-export type Phase = 'pregnancy' | 'postpartum';
+export type Phase = "pregnancy" | "postpartum";
 
 /**
  * The three programs, each with its own daily session, its own reminder and its
  * own take on every stage. Pelvic floor came first, so its ids and log entries
  * are the ones everything else stays compatible with.
  */
-export type ProgramId = 'pelvic-floor' | 'core' | 'birth-prep';
+export type ProgramId = "pelvic-floor" | "core" | "birth-prep";
 
 export type ExerciseKind =
-  | 'breath'
-  | 'endurance'
-  | 'quick'
-  | 'release'
-  | 'functional'
-  | 'mobility'
-  | 'core'
-  | 'stretch';
+  | "breath"
+  | "endurance"
+  | "quick"
+  | "release"
+  | "functional"
+  | "mobility"
+  | "core"
+  | "stretch";
 
 /**
  * Every exercise in the library, spelled out so the program's step data is
@@ -26,50 +26,50 @@ export type ExerciseKind =
  * in the rotation, which could be weeks after the typo shipped.
  */
 export type ExerciseId =
-  | 'diaphragmatic-breath'
-  | 'find-your-floor'
-  | 'connection-breath'
-  | 'short-hold'
-  | 'long-hold'
-  | 'elevator'
-  | 'quick-flicks'
-  | 'the-knack'
-  | 'full-release'
-  | 'perineal-bulge'
-  | 'birth-breathing'
-  | 'happy-baby-supported'
-  | 'child-pose-wide'
-  | 'deep-squat-support'
-  | 'bridge'
-  | 'side-lying-clam'
-  | 'bird-dog'
-  | 'heel-slide'
-  | 'sit-to-stand'
-  | 'wall-sit-lift'
-  | 'cat-cow'
-  | 'pelvic-tilt'
-  | 'hip-flexor-kneel'
-  | 'figure-four'
-  | 'posture-reset'
-  | 'gentle-walk'
-  | 'rest-and-breathe'
+  | "diaphragmatic-breath"
+  | "find-your-floor"
+  | "connection-breath"
+  | "short-hold"
+  | "long-hold"
+  | "elevator"
+  | "quick-flicks"
+  | "the-knack"
+  | "full-release"
+  | "perineal-bulge"
+  | "birth-breathing"
+  | "happy-baby-supported"
+  | "child-pose-wide"
+  | "deep-squat-support"
+  | "bridge"
+  | "side-lying-clam"
+  | "bird-dog"
+  | "heel-slide"
+  | "sit-to-stand"
+  | "wall-sit-lift"
+  | "cat-cow"
+  | "pelvic-tilt"
+  | "hip-flexor-kneel"
+  | "figure-four"
+  | "posture-reset"
+  | "gentle-walk"
+  | "rest-and-breathe"
   // Core program
-  | 'quadruped-core-breath'
-  | 'standing-march'
-  | 'wall-plank'
-  | 'side-plank-knees'
-  | 'dead-bug-heel-tap'
-  | 'side-lying-leg-lift'
-  | 'anti-rotation-reach'
-  | 'tall-kneel-hold'
-  // Birth prep / recovery stretches
-  | 'butterfly-stretch'
-  | 'pelvic-circles-ball'
-  | 'supported-lunge-stretch'
-  | 'chest-opener-doorway'
-  | 'neck-shoulder-release'
-  | 'standing-hamstring-support'
-  | 'birth-ball-lean';
+  | "quadruped-core-breath"
+  | "standing-march"
+  | "wall-plank"
+  | "side-plank-knees"
+  | "dead-bug-heel-tap"
+  | "side-lying-leg-lift"
+  | "anti-rotation-reach"
+  | "tall-kneel-hold"
+  // Deep stretch / recovery stretches
+  | "butterfly-stretch"
+  | "pelvic-circles-ball"
+  | "supported-lunge-stretch"
+  | "chest-opener-doorway"
+  | "neck-shoulder-release"
+  | "standing-hamstring-support"
+  | "birth-ball-lean";
 
 /**
  * The cadence of the paced circle, on the exercises whose work *is* the breath.
@@ -110,7 +110,7 @@ export type Exercise = {
 
 /** A step measured in repetitions, each rep cycling lift → hold → release → rest. */
 export type RepStep = {
-  type: 'reps';
+  type: "reps";
   exerciseId: ExerciseId;
   reps: number;
   liftSec: number;
@@ -122,7 +122,7 @@ export type RepStep = {
 
 /** A step measured in one continuous stretch of time (breathing, stretches). */
 export type HoldStep = {
-  type: 'hold';
+  type: "hold";
   exerciseId: ExerciseId;
   durationSec: number;
   note?: string;
@@ -140,13 +140,13 @@ export type SessionTemplate = {
 };
 
 export type StageId =
-  | 'foundation'
-  | 'build'
-  | 'sustain'
-  | 'prepare'
-  | 'recover'
-  | 'reconnect'
-  | 'rebuild';
+  | "foundation"
+  | "build"
+  | "sustain"
+  | "prepare"
+  | "recover"
+  | "reconnect"
+  | "rebuild";
 
 export type Stage = {
   id: StageId;
@@ -177,7 +177,7 @@ export type Program = {
   id: ProgramId;
   colorKey: ProgramColorKey;
   title: string;
-  /** "Birth prep" makes no sense once the baby is here. Falls back to `title`. */
+  /** Deep stretch reads as "Recovery stretches" once the baby is here. Falls back to `title`. */
   postpartumTitle?: string;
   /** One line, shown on the Today card under the session name. */
   blurb: string;
@@ -207,7 +207,7 @@ export type Progress = {
   stage: Stage;
 };
 
-export type SegmentKind = 'lift' | 'hold' | 'release' | 'rest' | 'duration';
+export type SegmentKind = "lift" | "hold" | "release" | "rest" | "duration";
 
 export type Segment = {
   kind: SegmentKind;
