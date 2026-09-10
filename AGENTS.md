@@ -68,6 +68,30 @@ misleading, the code is right.
   300 → 500, and the ramp needs four rungs.
   The screen snapshots capture only the *completed* session, so the running ring has no snapshot
   coverage at all — `tests/flows/session-color.test.tsx` is the only thing pinning any of this.
+- **Moving around a session always lands on an intro, never mid-count.** `previousStep` and the
+  forward advance both go through `goToStep`, which stops the clock and parks on that exercise's
+  intro — getting into side-lying with a bump takes longer than a countdown, and she gets to
+  re-read the cues whichever direction she arrived from. The step counter in the top bar *is* the
+  back control, so one element serves both the intro and the running view instead of a fourth
+  button crowding each; it drops to plain text on step one, where there is nowhere to go.
+  `restartStep` is deliberately `startStep`, and deliberately skips `clearTimer`: restarting a
+  segment that is already index zero changes neither `status` nor `advance`, so the interval effect
+  would not re-run to replace a cleared interval and the count would sit frozen at full.
+  `beginSegment` moves the deadline instead and the live interval picks it up on the next tick.
+- **`completedSeconds` is time practiced, not position reached.** A repeated exercise counts twice,
+  a skipped one counts nothing, and a rest she cut short counts only the seconds she took.
+  `overallProgress` is the one that tracks where she is in the template, so going back rewinds the
+  progress bar and leaves the log alone.
+- **Rest between reps is a ceiling, not a requirement.** During a `rest` segment the player's
+  primary control becomes **Next rep**; `skipRest` credits only the seconds she actually took to
+  `completedSeconds`, so the log stays time-practiced rather than time-scheduled. Pause gives up
+  the slot while resting on purpose — there is nothing to pause about a six second gap, and the
+  next rep's own clock is a tap away. Don't auto-skip rest instead: deciding she's ready is hers.
+- **`foundation` rest matches the hold it recovers from**, floored at two seconds, because the
+  first trimester work is awareness and coordination rather than strength. The `release` segment
+  already sits in front of the rest, so `releaseSec + restSec` still lands at twice `holdSec` —
+  the recovery a pelvic floor hold actually wants. The loaded stages are deliberately *below* that
+  ratio (a 20s wall plank rests 20s, not 40s); don't retune them to a rule written for foundation.
 - **Session titles must be unique within a stage band, across programs.** Two cards sit side by side
   on Today, so a shared title reads as a duplicate. Session *ids* must be globally unique, since
   `SessionLog.sessionId` is a free string — new ones are program-prefixed (`core-build-a`), and
@@ -121,6 +145,17 @@ tripwire that catches a union member with no exercise behind it.
   in the worst way: no error, just state updates that never apply.
 - Flows use `renderRouter` from `expo-router/testing-library` and navigate the way
   a user would. Only native-facing modules are mocked, in `tests/setup.tsx`.
+- **A flow test must not assert anything that depends on which session the rotation
+  serves.** The session flows call `seed()` without `setNow`, so `sessionForDay`
+  picks by the real calendar day and the variant — and its first step's kind —
+  changes from one day to the next. Compare a later reading against an earlier one
+  in the same test, or set the clock; never hardcode a count of seconds or a phase.
+- **The player's timing is pinned in `tests/hooks/session-player.test.tsx`, not in a
+  flow.** Driving it needs fake timers, which the mounted router does not survive.
+  The split is: the hook file owns pause, restart, going back and skipping rest as
+  *clock* behavior; the flow file owns the wiring, via the `session-countdown` and
+  `session-exercise` testIDs. One `act` commits once, so a single tick can only
+  cross one segment boundary — walking a rep takes one `tick` per phase.
 - Stateful doubles live in `tests/doubles/` and are reset in a global `afterEach`.
   Prefer them over `jest.spyOn` on a module you also mocked — the spy patches a
   different object than the one under test.

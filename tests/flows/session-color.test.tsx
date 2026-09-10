@@ -33,6 +33,44 @@ describe('color in the session player', () => {
   const trackFill = () =>
     StyleSheet.flatten(screen.getByTestId('session-track').props.style).backgroundColor;
 
+  /**
+   * Every label `buildSegments` can produce, so this doesn't pin one session,
+   * and no exercise name or cue collides with one — there is exactly one of
+   * these on a running screen.
+   */
+  const phaseLabel = () =>
+    screen.getByText(/^(Lift|Soften|Hold|Open|Release|Let go|Rest|Breathe)$/);
+
+  /**
+   * The rung each label must land on, spelled out here rather than taken from
+   * the screen's own `phaseColor`: an expectation computed the way the code
+   * computes it agrees with an off-by-one instead of catching it. `Breathe` is
+   * the interesting one — a `duration` step has no lift/release cycle around
+   * it, so it borrows `hold`.
+   */
+  const rungForLabel: Record<string, 'rest' | 'release' | 'lift' | 'hold'> = {
+    Lift: 'lift',
+    Soften: 'lift',
+    Hold: 'hold',
+    Open: 'hold',
+    Release: 'release',
+    'Let go': 'release',
+    Rest: 'rest',
+    Breathe: 'hold',
+  };
+
+  /**
+   * The rung the screen says it is on. Read rather than assumed, because these
+   * flows set no clock: `sessionForDay` picks by the real calendar day, so
+   * whether a session opens on a lift or on a sustained hold changes daily.
+   */
+  const shownRung = (): 'rest' | 'release' | 'lift' | 'hold' => {
+    const label = phaseLabel().props.children;
+    const rung = typeof label === 'string' ? rungForLabel[label] : undefined;
+    if (!rung) throw new Error(`no rung for phase label ${String(label)}`);
+    return rung;
+  };
+
   it.each(PROGRAM_IDS)('draws %s’s ring in its own color family', async (programId) => {
     await started(programId);
     const ramp = programPhaseColors[programsById[programId].colorKey];
@@ -45,10 +83,10 @@ describe('color in the session player', () => {
     await started('core');
     const foreign = [palette.blush300, palette.blush400, palette.blush500, palette.blush600];
     expect(foreign).not.toContain(arcStroke());
-    // `lift`, not `hold`: the first step here is rep-based, so `buildSegments` opens
-    // on the lift of rep 1 rather than on a sustained hold. Pinning the exact rung
-    // and not just the family is what catches the ramp being wired off by one.
-    expect(arcStroke()).toBe(programPhaseColors.core.lift);
+    // Pinning the exact rung and not just the family is what catches the ramp
+    // being wired off by one. Which rung that is depends on the phase the day's
+    // session happens to open on, so it comes from the label on screen.
+    expect(arcStroke()).toBe(programPhaseColors.core[shownRung()]);
   });
 
   it('darkens every ramp monotonically from rest through hold', () => {
@@ -68,9 +106,7 @@ describe('color in the session player', () => {
 
   it('keeps the phase label on the same color as the arc it sits in', async () => {
     await started('core');
-    // Every label `buildSegments` can produce, so this doesn't pin one session.
-    const label = screen.getByText(/^(Lift|Soften|Hold|Open|Release|Let go|Rest|Breathe)$/);
-    expect(StyleSheet.flatten(label.props.style).color).toBe(arcStroke());
+    expect(StyleSheet.flatten(phaseLabel().props.style).color).toBe(arcStroke());
   });
 
   it('paints the progress track with the program, not the app primary', async () => {

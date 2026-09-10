@@ -86,3 +86,100 @@ describe('a guided session', () => {
     expect(screen.getByText(/Showing up was the hard part/)).toBeOnTheScreen();
   });
 });
+
+describe('moving around inside a session', () => {
+  /** Opens the player and stops on the first exercise's intro. */
+  const openPlayer = async () => {
+    await seed();
+    renderRouter('app', { initialUrl: '/session/pelvic-floor' });
+    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+  };
+
+  it('offers no way back from the first exercise', async () => {
+    await openPlayer();
+    expect(screen.queryByLabelText('Previous exercise')).not.toBeOnTheScreen();
+  });
+
+  it('goes back to the exercise before this one, at its intro', async () => {
+    await openPlayer();
+    fireEvent.press(screen.getByText('Skip this one'));
+    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+
+    fireEvent.press(screen.getByLabelText('Previous exercise'));
+
+    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    // The intro, not the timer: she gets to read the cues and get back into
+    // position before the clock starts again.
+    expect(screen.getByText('Get into position')).toBeOnTheScreen();
+    expect(screen.getByText("I'm ready")).toBeOnTheScreen();
+  });
+
+  it('stops the clock when she goes back mid-exercise', async () => {
+    await openPlayer();
+    fireEvent.press(screen.getByText('Skip this one'));
+    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+    fireEvent.press(screen.getByText("I'm ready"));
+    await waitFor(() => expect(screen.getByText('Pause')).toBeOnTheScreen());
+
+    // Both running-view controls are there before she leaves it.
+    expect(screen.getByText('Start over')).toBeOnTheScreen();
+
+    fireEvent.press(screen.getByLabelText('Previous exercise'));
+
+    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    expect(screen.queryByText('Pause')).not.toBeOnTheScreen();
+    expect(screen.getByText("I'm ready")).toBeOnTheScreen();
+  });
+
+  /**
+   * The countdown, read the instant the clock is armed. Which session the
+   * rotation serves depends on the real calendar day — these tests set no
+   * clock — so nothing here may hardcode a number of seconds. Comparing a
+   * later reading against an earlier one is rotation-independent.
+   */
+  const countdown = () => screen.getByTestId('session-countdown').props.children;
+
+  /** The exercise name over the ring, which is the running step's identity. */
+  const runningExercise = () => screen.getByTestId('session-exercise').props.children;
+
+  it('arms the previous exercise’s own clock, not the one she left', async () => {
+    await openPlayer();
+    fireEvent.press(screen.getByText("I'm ready"));
+    await waitFor(() => expect(screen.getByText('Pause')).toBeOnTheScreen());
+    const firstExercise = runningExercise();
+    const firstCountdown = countdown();
+
+    // Forward to the second exercise and start it, so there is a live clock
+    // belonging to the wrong step for going back to pick up by mistake.
+    fireEvent.press(screen.getByText('Skip step'));
+    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+    fireEvent.press(screen.getByText("I'm ready"));
+    await waitFor(() => expect(screen.getByText('Pause')).toBeOnTheScreen());
+
+    fireEvent.press(screen.getByLabelText('Previous exercise'));
+    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    fireEvent.press(screen.getByText("I'm ready"));
+
+    // Exercise one, from the top of its own first segment.
+    expect(runningExercise()).toBe(firstExercise);
+    expect(countdown()).toBe(firstCountdown);
+  });
+
+  it('starts the exercise over without leaving it', async () => {
+    await openPlayer();
+    fireEvent.press(screen.getByText("I'm ready"));
+    await waitFor(() => expect(screen.getByText('Pause')).toBeOnTheScreen());
+    const exercise = runningExercise();
+    const fromTheTop = countdown();
+
+    fireEvent.press(screen.getByText('Start over'));
+
+    // Same exercise, same step, counting again rather than parked on the intro
+    // — going back to the beginning of an exercise is not leaving it.
+    expect(runningExercise()).toBe(exercise);
+    expect(countdown()).toBe(fromTheTop);
+    expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen();
+    expect(screen.getByText('Pause')).toBeOnTheScreen();
+    expect(screen.queryByText("I'm ready")).not.toBeOnTheScreen();
+  });
+});

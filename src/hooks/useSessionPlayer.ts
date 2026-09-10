@@ -61,38 +61,67 @@ export function useSessionPlayer(session: SessionTemplate) {
     [segments]
   );
 
-  /**
-   * Stops the clock and moves to the next step's intro, or ends the session if
-   * that was the last one. Reached both by finishing a step and by skipping it.
-   */
-  const leaveStep = useCallback(() => {
-    clearTimer();
-    deadlineRef.current = null;
-    if (stepIndex + 1 < session.steps.length) {
-      setStepIndex(stepIndex + 1);
+  /** Stops the clock and parks on a step's intro, whichever direction we came from. */
+  const goToStep = useCallback(
+    (index: number) => {
+      clearTimer();
+      deadlineRef.current = null;
+      setStepIndex(index);
       setSegmentIndex(0);
       setRemainingMs(0);
       setStatus('intro');
-    } else {
-      setStatus('complete');
-    }
-  }, [clearTimer, session.steps.length, stepIndex]);
+    },
+    [clearTimer]
+  );
 
-  /** Called when a segment's clock runs out. */
-  const advance = useCallback(() => {
-    const finished = segments[segmentIndex];
-    setCompletedSeconds((current) => current + (finished?.seconds ?? 0));
-
-    const nextIndex = segmentIndex + 1;
-    if (nextIndex < segments.length) {
-      Haptics.selectionAsync().catch(() => {});
-      beginSegment(nextIndex);
+  /**
+   * Moves to the next step's intro, or ends the session if that was the last
+   * one. Reached both by finishing a step and by skipping it.
+   */
+  const leaveStep = useCallback(() => {
+    if (stepIndex + 1 < session.steps.length) {
+      goToStep(stepIndex + 1);
       return;
     }
+    clearTimer();
+    deadlineRef.current = null;
+    setStatus('complete');
+  }, [clearTimer, goToStep, session.steps.length, stepIndex]);
 
-    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-    leaveStep();
-  }, [beginSegment, leaveStep, segmentIndex, segments]);
+  /**
+   * Back to the exercise before this one, at its intro rather than mid-count —
+   * she gets to re-read the cues and get back into position before the clock
+   * starts, exactly as she did arriving there the first time.
+   */
+  const previousStep = useCallback(() => {
+    if (stepIndex === 0) return;
+    goToStep(stepIndex - 1);
+  }, [goToStep, stepIndex]);
+
+  /**
+   * Moves on from the current segment. `creditedSeconds` is what gets added to
+   * `completedSeconds`; it defaults to the whole segment, which is right when
+   * the clock ran out, and is passed explicitly when she cut a segment short.
+   */
+  const advance = useCallback(
+    (creditedSeconds?: number) => {
+      const finished = segments[segmentIndex];
+      setCompletedSeconds(
+        (current) => current + (creditedSeconds ?? finished?.seconds ?? 0)
+      );
+
+      const nextIndex = segmentIndex + 1;
+      if (nextIndex < segments.length) {
+        Haptics.selectionAsync().catch(() => {});
+        beginSegment(nextIndex);
+        return;
+      }
+
+      Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
+      leaveStep();
+    },
+    [beginSegment, leaveStep, segmentIndex, segments]
+  );
 
   // One interval for the whole session; it reads the current deadline each tick.
   useEffect(() => {
@@ -114,6 +143,18 @@ export function useSessionPlayer(session: SessionTemplate) {
     return clearTimer;
   }, [status, advance, clearTimer]);
 
+  /**
+   * Starts the current exercise at rep one. Leaving the intro and restarting
+   * mid-exercise are the same move, so they share it — the second is what she
+   * reaches for after losing the thread halfway through, instead of giving up
+   * the whole session.
+   *
+   * Deliberately no `clearTimer`, which only matters on the restart path: when
+   * the running segment is already the first one, neither `status` nor `advance`
+   * changes, so the interval effect would not re-run to replace a cleared
+   * interval and the count would sit frozen at full. `beginSegment` moves the
+   * deadline instead, and the live interval picks it up on the next tick.
+   */
   const startStep = useCallback(() => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light).catch(() => {});
     beginSegment(0);
@@ -132,6 +173,24 @@ export function useSessionPlayer(session: SessionTemplate) {
     deadlineRef.current = Date.now() + remainingMs;
     setStatus('running');
   }, [remainingMs, status]);
+
+  /**
+   * Ends the rest between reps early and starts the next one. The recovery
+   * built into the program is a ceiling, not a requirement: on the low-load
+   * early work especially, sitting through a countdown she doesn't need is the
+   * thing that makes a five minute session feel long.
+   *
+   * Only the rest she actually took is credited — `completedSeconds` is time
+   * practiced, so the seconds she skipped never happened. Reading the deadline
+   * rather than `remainingMs` keeps that exact to the tap instead of to the
+   * last tick, and falling back to `remainingMs` covers a rest she paused.
+   */
+  const skipRest = useCallback(() => {
+    if (segment?.kind !== 'rest') return;
+    const deadline = deadlineRef.current;
+    const leftMs = deadline === null ? remainingMs : Math.max(0, deadline - Date.now());
+    advance(Math.max(0, segment.seconds - leftMs / 1000));
+  }, [advance, remainingMs, segment]);
 
   const finishNow = useCallback(() => {
     clearTimer();
@@ -166,12 +225,24 @@ export function useSessionPlayer(session: SessionTemplate) {
     secondsLeft,
     segmentProgress: Math.min(Math.max(segmentProgress, 0), 1),
     overallProgress,
-    /** Guided seconds actually completed, for the session log. */
+    /**
+     * Guided seconds actually completed, for the session log. A skipped
+     * exercise contributes nothing and a repeated one counts twice, because
+     * this is the time she practiced rather than how far through the template
+     * she got — `overallProgress` is the one that tracks position.
+     */
     completedSeconds,
     totalSeconds,
+    /** True once there is an earlier exercise to go back to. */
+    canGoBack: stepIndex > 0,
+    /** True while the clock is on a rest between reps, running or paused. */
+    isResting: segment?.kind === 'rest',
     startStep,
     pause,
     resume,
+    skipRest,
+    restartStep: startStep,
+    previousStep,
     skipStep: leaveStep,
     finishNow,
   };

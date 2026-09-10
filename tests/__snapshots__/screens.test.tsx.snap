@@ -678,7 +678,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "3m 49s",
+                            "3m 44s",
                           ],
                           "props": {
                             "style": [
@@ -967,7 +967,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "4m 20s",
+                            "4m 1s",
                           ],
                           "props": {
                             "style": [

@@ -6,6 +6,7 @@ import { Alert, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import {
   Button,
   Card,
+  Chevron,
   Confetti,
   CradleMark,
   Pill,
@@ -170,9 +171,30 @@ function Player({
             Close
           </Text>
         </Pressable>
-        <Text variant="label">
-          Step {player.stepIndex + 1} of {player.stepCount}
-        </Text>
+        {/*
+          The step counter doubles as the way back to the exercise before it,
+          so one control serves both the intro and the running view instead of
+          a fourth button crowding each. Plain text on step one, where there is
+          nowhere to go.
+        */}
+        {player.canGoBack ? (
+          <Pressable
+            onPress={player.previousStep}
+            hitSlop={12}
+            accessibilityRole="button"
+            accessibilityLabel="Previous exercise"
+            style={styles.stepBack}
+          >
+            <Chevron direction="left" size={14} color={tone.ink} />
+            <Text variant="label" color={tone.ink}>
+              Step {player.stepIndex + 1} of {player.stepCount}
+            </Text>
+          </Pressable>
+        ) : (
+          <Text variant="label">
+            Step {player.stepIndex + 1} of {player.stepCount}
+          </Text>
+        )}
         <Text variant="smallStrong" color={colors.textFaint}>
           {formatDuration(player.totalSeconds)}
         </Text>
@@ -251,7 +273,9 @@ function Player({
         </>
       ) : (
         <View style={styles.runningBody}>
-          <Text variant="label">{exercise.name}</Text>
+          <Text variant="label" testID="session-exercise">
+            {exercise.name}
+          </Text>
 
           <ProgressRing
             progress={player.segmentProgress}
@@ -263,7 +287,9 @@ function Player({
             <Text variant="heading" color={ringColor}>
               {segment?.label}
             </Text>
-            <Text variant="timer">{player.secondsLeft}</Text>
+            <Text variant="timer" testID="session-countdown">
+              {player.secondsLeft}
+            </Text>
             {segment?.repTotal ? (
               <Text variant="small" color={colors.textFaint}>
                 Rep {(segment.repIndex ?? 0) + 1} of {segment.repTotal}
@@ -282,21 +308,50 @@ function Player({
           </View>
 
           <View style={styles.runningActions}>
-            <Button
-              label={player.status === "paused" ? "Resume" : "Pause"}
-              variant="secondary"
-              tone={tone}
-              haptic={false}
-              onPress={
-                player.status === "paused" ? player.resume : player.pause
-              }
-            />
-            <Button
-              label="Skip step"
-              variant="quiet"
-              haptic={false}
-              onPress={player.skipStep}
-            />
+            {/*
+              Rest takes over the primary slot, because moving on is the only
+              thing she wants from a countdown between reps — and pausing a six
+              second gap has nothing to offer that the gap doesn't already. The
+              next rep's own clock is a tap away from being paused if she needs
+              it.
+            */}
+            {player.isResting ? (
+              <Button
+                label="Next rep"
+                variant="secondary"
+                tone={tone}
+                haptic={false}
+                onPress={player.skipRest}
+              />
+            ) : (
+              <Button
+                label={player.status === "paused" ? "Resume" : "Pause"}
+                variant="secondary"
+                tone={tone}
+                haptic={false}
+                onPress={
+                  player.status === "paused" ? player.resume : player.pause
+                }
+              />
+            )}
+            {/* Both quiet, side by side: starting this exercise over is the
+                gentler neighbor of skipping it, not a competing headline. */}
+            <View style={styles.runningMinorActions}>
+              <Button
+                label="Start over"
+                variant="quiet"
+                haptic={false}
+                style={styles.runningMinorAction}
+                onPress={player.restartStep}
+              />
+              <Button
+                label="Skip step"
+                variant="quiet"
+                haptic={false}
+                style={styles.runningMinorAction}
+                onPress={player.skipStep}
+              />
+            </View>
           </View>
         </View>
       )}
@@ -313,6 +368,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingBottom: spacing.lg,
+  },
+  stepBack: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: spacing.xs,
   },
   track: {
     height: 6,
@@ -370,6 +430,15 @@ const styles = StyleSheet.create({
   runningActions: {
     alignSelf: "stretch",
     gap: spacing.sm,
+  },
+  runningMinorActions: {
+    flexDirection: "row",
+    gap: spacing.sm,
+  },
+  // Even halves, so neither label's length decides how the row sits.
+  runningMinorAction: {
+    flex: 1,
+    paddingHorizontal: spacing.sm,
   },
   centered: {
     flexGrow: 1,
