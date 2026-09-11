@@ -154,6 +154,16 @@ misleading, the code is right.
 - A program id from a route param goes through `isProgramId` before use, never a cast — same
   reasoning as `findExercise` versus `getExercise`. `/session/[program]` and `/reminders/[program]`
   both fall back to `'pelvic-floor'`.
+- **The full plan is a tab, and its stages are folded shut.** It used to be a pushed route reached
+  from a small text link inside one of Today's cards, which is a page nobody found; seven stages of
+  three sessions of five steps is also a page nobody reads. Three things follow. The screen is
+  mounted for the whole session now, so the `program` search param is synced in an effect rather
+  than read once into `useState` — a link naming a program has to land even when the tab has been
+  open since launch. The `PROGRAM_SAFETY` card stays open while the stage cards collapse: a
+  disclaimer behind a closed chevron is one she never reads. And each stage card owns its own
+  `expanded`, so opening one doesn't shut the last — which is also why `StageCard` is a component
+  rather than a map in the screen body. Today's banner link survives as a second way in, and uses
+  `navigate` rather than `push` so tapping it twice doesn't stack a tab that is already there.
 - One reminder screen per program, not all three on a list: both native `@expo/ui` pickers are
   uncontrolled and read their value once on mount, so keep exactly one wheel alive at a time.
 - **The onboarding routes stop existing once she is onboarded**, so anything she can reach from

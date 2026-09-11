@@ -32,6 +32,19 @@ export default function TabsLayout() {
           tabBarIcon: (props) => <TabIcon name="bloom" {...props} />,
         }}
       />
+      {/*
+        The plan sits second on purpose: it is the answer to "what is this week
+        for, and what comes next", which is the question Today raises. It used to
+        be a text link inside one of Today's cards, where nothing about it said
+        there were seven stages behind it.
+      */}
+      <Tabs.Screen
+        name="plan"
+        options={{
+          title: 'Plan',
+          tabBarIcon: (props) => <TabIcon name="stages" {...props} />,
+        }}
+      />
       <Tabs.Screen
         name="progress"
         options={{

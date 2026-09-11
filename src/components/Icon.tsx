@@ -3,7 +3,7 @@ import Svg, { Circle, Ellipse, Path, Rect } from 'react-native-svg';
 
 import { colors } from '@/theme';
 
-export type IconName = 'bloom' | 'bars' | 'person' | 'chevron';
+export type IconName = 'bloom' | 'bars' | 'stages' | 'person' | 'chevron';
 
 type IconProps = Readonly<{
   name: IconName;
@@ -51,6 +51,28 @@ export function Icon({ name, size = 24, color = colors.textFaint, active = false
           <Rect x={3.5} y={13} width={4} height={7.5} rx={2} stroke={stroke} strokeWidth={1.5} fill={fill} />
           <Rect x={10} y={8} width={4} height={12.5} rx={2} stroke={stroke} strokeWidth={1.5} fill={fill} />
           <Rect x={16.5} y={4} width={4} height={16.5} rx={2} stroke={stroke} strokeWidth={1.5} fill={fill} />
+        </>
+      ) : null}
+
+      {/*
+        Three rows, each a node and the work beside it — the shape of a stage
+        list. Outlined nodes rather than filled ones when inactive, the same way
+        the other two tab icons carry the state.
+      */}
+      {name === 'stages' ? (
+        <>
+          {[6, 12, 18].map((y, index) => (
+            <React.Fragment key={y}>
+              <Circle cx={5} cy={y} r={2} stroke={stroke} strokeWidth={1.5} fill={fill} />
+              <Path
+                d={`M10 ${y}h${index === 2 ? 7 : 10.5}`}
+                stroke={stroke}
+                strokeWidth={1.6}
+                strokeLinecap="round"
+                fill="none"
+              />
+            </React.Fragment>
+          ))}
         </>
       ) : null}
 

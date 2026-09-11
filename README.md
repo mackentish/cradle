@@ -104,10 +104,10 @@ unannounced was the jarring part, not the pace.
 ```
 app/                      expo-router routes
   onboarding/             welcome → due date → safety gate
-  (tabs)/                 Today · Progress · You
+  (tabs)/                 Today · Plan · Progress · You
+    plan.tsx              every program, all seven stages each, folded shut
   session/[program].tsx   the guided player, per program
   reminders/[program].tsx reminder settings, per program
-  plan.tsx                every program, all seven stages each
   exercise/[id].tsx       library detail
 src/
   domain/

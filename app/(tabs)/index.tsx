@@ -58,8 +58,13 @@ function Today({ progress }: Readonly<{ progress: Progress }>) {
       <Card tint={stageColor.tint}>
         <View style={styles.stageHeader}>
           <Pill label={stage.range} tint={colors.surface} ink={stageColor.ink} />
+          {/*
+            A second way into the Plan tab, from the banner that raises the
+            question — `navigate` rather than `push` so tapping it twice doesn't
+            stack two copies of a tab that is already there.
+          */}
           <Pressable
-            onPress={() => router.push('/plan')}
+            onPress={() => router.navigate('/plan')}
             accessibilityRole="button"
             accessibilityLabel="Full plan"
             style={styles.fullPlan}
