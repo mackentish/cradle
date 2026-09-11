@@ -89,6 +89,7 @@ function RootNavigator() {
         <Stack.Screen name="plan" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="reminders/[program]" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="exercise/[id]" options={{ animation: 'slide_from_right' }} />
+        <Stack.Screen name="due-date" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="birth-date" options={{ animation: 'slide_from_right' }} />
         <Stack.Screen name="restore" options={{ animation: 'slide_from_right' }} />
       </Stack.Protected>

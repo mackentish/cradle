@@ -8,6 +8,7 @@ export { Confetti } from './Confetti';
 export { CradleMark } from './CradleMark';
 export { DateFields } from './DateFields';
 export { DayDots } from './DayDots';
+export { DueDateForm } from './DueDateForm';
 export { Icon, type IconName } from './Icon';
 export { Pill } from './Pill';
 export { ProgramLegend } from './ProgramLegend';

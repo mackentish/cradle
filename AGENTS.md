@@ -142,6 +142,14 @@ misleading, the code is right.
   both fall back to `'pelvic-floor'`.
 - One reminder screen per program, not all three on a list: both native `@expo/ui` pickers are
   uncontrolled and read their value once on mount, so keep exactly one wheel alive at a time.
+- **The onboarding routes stop existing once she is onboarded**, so anything she can reach from
+  **You** needs a top-level route of its own: `/due-date` edits the date `onboarding/due-date`
+  collects, and `DueDateForm` is the form both of them render. A row pointing at a guarded-out
+  route is silent — the tap simply does nothing, which is how the due date sat uneditable.
+  Saving from `/due-date` leaves the birth date alone; only onboarding sends `birthDate: null`,
+  because that path is starting a pregnancy from scratch. Clearing a birth date is offered only
+  when there is a due date to fall back to: a profile with neither has no `progress`, so
+  `onboarded` flips false and the whole app drops back to the welcome screen.
 
 ## Content changes
 

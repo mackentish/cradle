@@ -56,7 +56,7 @@ export default function YouScreen() {
         <Row
           label="Due date"
           value={profile.dueDate ? formatLongDate(fromDayKey(profile.dueDate)) : 'Not set'}
-          onPress={() => router.push('/onboarding/due-date')}
+          onPress={() => router.push('/due-date')}
         />
         <Row
           label={profile.birthDate ? 'Birth date' : 'Baby has arrived'}

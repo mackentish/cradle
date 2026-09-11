@@ -13,7 +13,8 @@ import { colors, spacing } from '@/theme';
 /** Setting a birth date is what flips the whole program over to postpartum. */
 export default function BirthDateScreen() {
   const { profile, updateProfile } = useAppState();
-  const dismiss = useDismiss();
+  const dismiss = useDismiss('/(tabs)/you');
+  const isEditing = Boolean(profile.birthDate);
 
   const [date, setDate] = useState<Date | null>(
     profile.birthDate ? fromDayKey(profile.birthDate) : now()
@@ -45,13 +46,23 @@ export default function BirthDateScreen() {
     dismiss();
   };
 
+  // Clearing it puts her back on the due date, so only offer it when there is
+  // one to go back to — a profile with neither date has no program at all.
+  const canClear = isEditing && Boolean(profile.dueDate);
+
+  const clear = async () => {
+    await updateProfile({ birthDate: null });
+    dismiss();
+  };
+
   return (
-    <Screen contentStyle={styles.content}>
+    <Screen contentStyle={styles.content} testID="birth-date-screen">
       <View style={styles.header}>
-        <Text variant="title">Congratulations</Text>
+        <Text variant="title">{isEditing ? 'Birth date' : 'Congratulations'}</Text>
         <Text variant="body">
-          Tell Cradle when baby arrived and the program switches to recovery — breath and rest
-          first, strength later, at the pace your body sets.
+          {isEditing
+            ? 'Your recovery is dated from this day — where you are in it, which session comes next, and how the weeks are counted.'
+            : 'Tell Cradle when baby arrived and the program switches to recovery — breath and rest first, strength later, at the pace your body sets.'}
         </Text>
       </View>
 
@@ -68,14 +79,19 @@ export default function BirthDateScreen() {
 
       {preview ? (
         <Card tint={colors.accentSoft}>
-          <Text variant="subheading">Starting in {preview.stage.title}</Text>
+          <Text variant="subheading">
+            {isEditing ? 'Now in' : 'Starting in'} {preview.stage.title}
+          </Text>
           <Text variant="small">{preview.stage.focus}</Text>
         </Card>
       ) : null}
 
       <View style={styles.footer}>
         <Button label="Save" onPress={save} disabled={!date || Boolean(error)} />
-        <Button label="Not yet" variant="quiet" onPress={dismiss} />
+        <Button label={isEditing ? 'Cancel' : 'Not yet'} variant="quiet" onPress={dismiss} />
+        {canClear ? (
+          <Button label="Baby hasn't arrived yet" variant="quiet" onPress={clear} />
+        ) : null}
       </View>
     </Screen>
   );
