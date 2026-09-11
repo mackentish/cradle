@@ -2,6 +2,7 @@ import { birthPrepProgram } from "./programs/deep-stretch";
 import { coreProgram } from "./programs/core-strength";
 import { pelvicFloorProgram } from "./programs/pelvic-floor";
 import type {
+  ExerciseId,
   NonEmpty,
   Phase,
   Program,
@@ -118,4 +119,40 @@ export function stagesForWeek(
     core: stageFor("core", phase, week),
     "birth-prep": stageFor("birth-prep", phase, week),
   };
+}
+
+/**
+ * The exercises `programId` shares with another program, in the order it first
+ * asks for them, along with the programs it shares each one with.
+ *
+ * One library serves all three programs and an exercise carries no program field
+ * (see `src/domain/exercises.ts`), so an overlap exists only in the stage tables
+ * and has to be read back out of them. Walks every stage of every phase, which is
+ * what the full plan lists.
+ */
+export function sharedExercises(
+  programId: ProgramId,
+): { exerciseId: ExerciseId; programIds: ProgramId[] }[] {
+  const owners = new Map<ExerciseId, ProgramId[]>();
+  for (const program of programs) {
+    for (const exerciseId of exerciseIdsOf(program)) {
+      const seen = owners.get(exerciseId) ?? [];
+      if (!seen.includes(program.id)) owners.set(exerciseId, [...seen, program.id]);
+    }
+  }
+
+  const shared: { exerciseId: ExerciseId; programIds: ProgramId[] }[] = [];
+  for (const exerciseId of exerciseIdsOf(programsById[programId])) {
+    if (shared.some((entry) => entry.exerciseId === exerciseId)) continue;
+    // Every id came out of `owners` above, so the program itself is always in there.
+    const others = (owners.get(exerciseId) ?? []).filter((id) => id !== programId);
+    if (others.length > 0) shared.push({ exerciseId, programIds: others });
+  }
+  return shared;
+}
+
+function exerciseIdsOf(program: Program): ExerciseId[] {
+  return program.stages.flatMap((stage) =>
+    stage.sessions.flatMap((session) => session.steps.map((step) => step.exerciseId)),
+  );
 }

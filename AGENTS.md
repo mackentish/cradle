@@ -164,6 +164,10 @@ misleading, the code is right.
   `expanded`, so opening one doesn't shut the last — which is also why `StageCard` is a component
   rather than a map in the screen body. Today's banner link survives as a second way in, and uses
   `navigate` rather than `push` so tapping it twice doesn't stack a tab that is already there.
+  The shared-exercise callout gets its *list* from `sharedExercises` and its *reasons* from
+  `SHARED_EXERCISE_NOTES`: which exercises overlap is a fact about the stage tables and would drift
+  if hand-written, but why an overlap earns its place is a decision and can only be written down.
+  The sentence stays open and the names fold away, two lines each.
 - One reminder screen per program, not all three on a list: both native `@expo/ui` pickers are
   uncontrolled and read their value once on mount, so keep exactly one wheel alive at a time.
 - **The onboarding routes stop existing once she is onboarded**, so anything she can reach from
@@ -177,8 +181,26 @@ misleading, the code is right.
 
 ## Content changes
 
-Exercises are in `src/domain/exercises.ts` — one shared library, no program field, and several
-exercises are used by two programs. The stage/session tables are in `src/domain/programs/*.ts`.
+Exercises are in `src/domain/exercises.ts` — one shared library, no program field. The
+stage/session tables are in `src/domain/programs/*.ts`.
+
+**Programs are meant to ask for different work, and the overlap between them is a short, named
+list.** It used to be seventeen exercises, largely because pelvic floor reached for core's
+functional work and deep stretch's hip openers while core and deep stretch reached back. Filling a
+slot with the nearest library exercise is the easy mistake, and it makes two cards on Today read as
+the same session. What is left shared is the universal frame — Cat-Cow to warm up, Wide-Knee
+Child's Pose and Rest and Breathe to close — plus `posture-reset` (pressure management, which is
+both pelvic floor and core), the two birth-facing skills pelvic floor and deep stretch train from
+opposite ends (`birth-breathing`, `deep-squat-support`), and `gentle-walk`, which both postpartum
+reconnect stages name in their own copy. Every one of those has a line in
+`src/content/shared-exercises.ts`, and `tests/domain/program.test.tsx` fails both ways: a new
+overlap with no reason written for it, and a reason for an overlap that has been designed out. It
+also caps the count, so the creep back has to be deliberate.
+
+That is also why each program has functional work of its own rather than one shared pool: pelvic
+floor trains the everyday task *with a lift* (`lift-and-carry`, `step-up-lift`, `roll-and-rise`),
+core trains trunk control (`heel-slide`, `sit-to-stand`, `bird-dog`), and deep stretch owns the hip
+openers. Reaching across that line is what generated the overlap the first time.
 
 Diaphragmatic breathing is pelvic floor's alone, and a test in `tests/domain/program.test.tsx`
 pins that. The library being shared is what makes it easy to reach for as a generic opener, and that

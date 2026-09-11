@@ -1,4 +1,5 @@
 import { setNow } from "@/lib/clock";
+import { SHARED_EXERCISE_NOTES } from "@/content/shared-exercises";
 import { exercises, findExercise, getExercise } from "@/domain/exercises";
 import {
   isProgramId,
@@ -10,6 +11,7 @@ import {
   stageById,
   stageFor,
   stages,
+  sharedExercises,
   stagesForProgram,
 } from "@/domain/program";
 import { buildSegments, sessionForDay, sessionSeconds } from "@/domain/session";
@@ -45,6 +47,9 @@ describe("the exercise library", () => {
       "heel-slide",
       "sit-to-stand",
       "wall-sit-lift",
+      "lift-and-carry",
+      "step-up-lift",
+      "roll-and-rise",
       "cat-cow",
       "pelvic-tilt",
       "hip-flexor-kneel",
@@ -61,6 +66,9 @@ describe("the exercise library", () => {
       "side-lying-leg-lift",
       "anti-rotation-reach",
       "tall-kneel-hold",
+      "reclined-core-breath",
+      "rock-backs",
+      "thread-the-needle",
       // Deep stretch / recovery stretches
       "butterfly-stretch",
       "pelvic-circles-ball",
@@ -69,6 +77,7 @@ describe("the exercise library", () => {
       "neck-shoulder-release",
       "standing-hamstring-support",
       "birth-ball-lean",
+      "seated-side-bend",
     ];
 
     const byName = (a: string, b: string) => a.localeCompare(b);
@@ -253,6 +262,35 @@ describe("the program registry", () => {
         expect(ids).not.toContain("diaphragmatic-breath");
       }
     }
+  });
+
+  /**
+   * The three programs are meant to ask for different work: one library serves
+   * all of them, so nothing but these tables stops a program from filling a slot
+   * with another program's exercise. What is left shared is a short, deliberate
+   * list — the warm-up, the release, the close, and the two birth-facing skills
+   * pelvic floor and deep stretch train from opposite ends.
+   */
+  it("keeps the overlap between programs small and explained", () => {
+    const shared = new Set(
+      PROGRAM_IDS.flatMap((id) =>
+        sharedExercises(id).map((entry) => entry.exerciseId),
+      ),
+    );
+
+    // Both directions: an overlap with no reason written for it is a slot
+    // someone filled by reaching for the nearest exercise, and a reason with no
+    // overlap behind it is a note left behind by a program that moved on.
+    const byName = (a: string, b: string) => a.localeCompare(b);
+    expect(Object.keys(SHARED_EXERCISE_NOTES).sort(byName)).toEqual(
+      [...shared].sort(byName),
+    );
+    for (const id of shared) expect(SHARED_EXERCISE_NOTES[id]).toBeTruthy();
+
+    // A ceiling rather than an exact count, so tightening it further is not a
+    // test failure. Seventeen exercises used to be shared; that is the number
+    // this exists to keep from creeping back.
+    expect(shared.size).toBeLessThanOrEqual(8);
   });
 
   it("clamps a week outside every stage range, per program", () => {

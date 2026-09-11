@@ -35,7 +35,7 @@ const stages: NonEmpty<Stage> = [
         steps: [
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
-          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 45 },
+          { type: "hold", exerciseId: "seated-side-bend", durationSec: 45 },
           { type: "hold", exerciseId: "figure-four", durationSec: 60 },
           {
             type: "hold",
@@ -103,7 +103,7 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-build-b",
         title: "Long Lines",
         steps: [
-          { type: "hold", exerciseId: "posture-reset", durationSec: 45 },
+          { type: "hold", exerciseId: "seated-side-bend", durationSec: 45 },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           {
             type: "hold",
@@ -178,7 +178,7 @@ const stages: NonEmpty<Stage> = [
         title: "Space to Breathe",
         steps: [
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
-          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "neck-shoulder-release",
@@ -265,7 +265,7 @@ const stages: NonEmpty<Stage> = [
         title: "Ease and Comfort",
         steps: [
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
-          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "neck-shoulder-release",
@@ -350,9 +350,9 @@ const stages: NonEmpty<Stage> = [
             durationSec: 90,
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 90 },
-          { type: "hold", exerciseId: "posture-reset", durationSec: 45 },
+          { type: "hold", exerciseId: "seated-side-bend", durationSec: 45 },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
-          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 45 },
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 45 },
           { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },
@@ -423,8 +423,8 @@ const stages: NonEmpty<Stage> = [
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 90 },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
-          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 45 },
-          { type: "hold", exerciseId: "posture-reset", durationSec: 45 },
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 45 },
+          { type: "hold", exerciseId: "seated-side-bend", durationSec: 45 },
           { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },

@@ -46,6 +46,9 @@ export type ExerciseId =
   | "heel-slide"
   | "sit-to-stand"
   | "wall-sit-lift"
+  | "lift-and-carry"
+  | "step-up-lift"
+  | "roll-and-rise"
   | "cat-cow"
   | "pelvic-tilt"
   | "hip-flexor-kneel"
@@ -62,6 +65,9 @@ export type ExerciseId =
   | "side-lying-leg-lift"
   | "anti-rotation-reach"
   | "tall-kneel-hold"
+  | "reclined-core-breath"
+  | "rock-backs"
+  | "thread-the-needle"
   // Deep stretch / recovery stretches
   | "butterfly-stretch"
   | "pelvic-circles-ball"
@@ -69,7 +75,8 @@ export type ExerciseId =
   | "chest-opener-doorway"
   | "neck-shoulder-release"
   | "standing-hamstring-support"
-  | "birth-ball-lean";
+  | "birth-ball-lean"
+  | "seated-side-bend";
 
 /**
  * The cadence of the paced circle, on the exercises whose work *is* the breath.

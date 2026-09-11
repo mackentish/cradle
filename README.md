@@ -117,6 +117,7 @@ src/
     pregnancy.ts          the only place gestational age is computed
     session.ts            rotation and the timed-segment builder
   state/AppState.tsx      the single provider: profile + logs + derived progress
+  content/                safety copy, reminder copy, why an exercise is shared
   lib/                    dates, AsyncStorage, streaks
   components/             design system
   theme/                  colors, type scale, spacing

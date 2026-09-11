@@ -2,7 +2,10 @@ import type { Exercise, ExerciseId } from './types';
 
 /**
  * The exercise library, shared by all three programs — an exercise has no program
- * of its own, and several are used by two. Everything here is general wellness
+ * of its own. Most belong to one program in practice; the handful that two or
+ * three programs genuinely both need is kept short on purpose, and each one has
+ * its reason written down in `src/content/shared-exercises.ts`. Everything here
+ * is general wellness
  * content for an uncomplicated pregnancy; the app gates it behind a disclaimer
  * and repeats "check with your provider" wherever it matters.
  *
@@ -308,6 +311,54 @@ const list: Exercise[] = [
     cues: ['Breathe through the hold', 'Knees behind the toes', 'Stop before shaking'],
   },
   {
+    id: 'lift-and-carry',
+    name: 'Lift and Carry',
+    kind: 'functional',
+    summary: 'The lift you actually do all day, done on an out-breath instead of a held one.',
+    positions: ['Standing, with a laundry basket', 'Standing, with a toddler'],
+    howTo: [
+      'Stand close to whatever you are lifting, feet apart, and hinge at the hips with soft knees.',
+      'Exhale and lift the pelvic floor just before you take the weight.',
+      'Come up on that same out-breath, keeping the load close to your body.',
+      'Set it down, let the floor go completely, then do the next one.',
+    ],
+    cues: ['Exhale before you take the weight', 'Load stays close', 'Let go between lifts'],
+    caution:
+      'If you feel heaviness, dragging or leaking during or after this, the load is too heavy for now — halve it and mention it to your provider or a pelvic floor physical therapist.',
+  },
+  {
+    id: 'step-up-lift',
+    name: 'Stairs with a Lift',
+    kind: 'functional',
+    summary: 'Puts the lift exactly where the pressure is — the moment you push up a step.',
+    positions: ['A bottom step, hand on the rail', 'A low, stable step'],
+    howTo: [
+      'Stand at the bottom of the stairs with one hand on the rail.',
+      'Exhale, lift the pelvic floor, and step up with the whole foot.',
+      'Step back down and let the lift go completely.',
+      'Work one leg at a time, then change sides.',
+    ],
+    cues: ['Lift just before the step', 'Whole foot on the step', 'Release on the way down'],
+    caution:
+      'Keep the rail. Pubic bone or groin pain on a single-leg step is a reason to stop and use both feet per step instead.',
+  },
+  {
+    id: 'roll-and-rise',
+    name: 'Roll and Rise',
+    kind: 'functional',
+    summary: 'Getting up without bracing your belly, which is most of what a day asks for.',
+    positions: ['Side-lying on a bed', 'Side-lying on the floor'],
+    howTo: [
+      'From lying on your back, bend both knees and roll onto your side in one piece.',
+      'Exhale, lift the pelvic floor, and push up through your arms as your legs swing down.',
+      'Reverse it to lie back down — roll rather than curl.',
+      'A few each way is plenty.',
+    ],
+    cues: ['Roll, never curl up', 'Exhale to push', 'Let the arms do it'],
+    caution:
+      'This is the way to get up for the rest of pregnancy and the early weeks after birth, and it matters most after a cesarean. Curling straight up loads the midline at its weakest.',
+  },
+  {
     id: 'cat-cow',
     name: 'Cat-Cow',
     kind: 'mobility',
@@ -531,6 +582,53 @@ const list: Exercise[] = [
   // relaxin makes it easy to reach further than the joint wants to be.
   // ---------------------------------------------------------------------------
   {
+    id: 'reclined-core-breath',
+    name: 'Reclined Core Breath',
+    kind: 'breath',
+    summary: 'The quadruped core breath, lying down — the version for a body that has just given birth.',
+    positions: ['Reclined on pillows', 'Side-lying', 'Flat on your back postpartum'],
+    howTo: [
+      'Lie propped on pillows with your knees supported and your hands resting low on your belly.',
+      'Inhale and let the belly rise into your hands without pushing it out.',
+      'Exhale slowly and feel the abdominal wall draw in low and wide, all by itself.',
+      'No holding at the end of the out-breath. Let the next one in.',
+    ],
+    cues: ['Exhale draws in low', 'Nothing to brace', 'Slow out-breath'],
+    caution:
+      'In the first weeks after birth this is the whole exercise — no holding, no testing the midline. After a cesarean, support the incision with a hand or a folded towel if the out-breath tugs.',
+    breath: { inSec: 4, outSec: 6, inLabel: 'Let it fill', outLabel: 'Draw in low' },
+  },
+  {
+    id: 'rock-backs',
+    name: 'Rock Backs',
+    kind: 'mobility',
+    summary: 'Takes the load back out of the core and shows you where your range ends.',
+    positions: ['Hands and knees, knees wide', 'Forearms on a sofa seat'],
+    howTo: [
+      'Come to hands and knees with a long spine and your knees wide enough for the bump.',
+      'Exhale and sit your hips back toward your heels, going only as far as your low back stays long.',
+      'Inhale and rock forward to where you started.',
+      'Keep it slow. This is a rhythm, not a stretch to get into.',
+    ],
+    cues: ['Spine stays long', 'Only as far as comfortable', 'Move with the breath'],
+  },
+  {
+    id: 'thread-the-needle',
+    name: 'Thread the Needle',
+    kind: 'mobility',
+    summary: 'Rotation for a ribcage that has spent the day holding still.',
+    positions: ['Hands and knees, knees wide', 'Forearms on a sofa seat'],
+    howTo: [
+      'On hands and knees with your knees wide, slide one arm under your body along the floor.',
+      'Let that shoulder settle and turn the top of your chest toward the floor.',
+      'Breathe out as you rotate, come back, then open the same arm up toward the ceiling.',
+      'A few slow ones on that side, then change.',
+    ],
+    cues: ['Turn from the ribs', 'Hips stay square', 'Bump has room underneath'],
+    caution:
+      'Keep the rotation in the upper back rather than the waist, and skip it if anything pulls across the belly.',
+  },
+  {
     id: 'butterfly-stretch',
     name: 'Seated Butterfly',
     kind: 'stretch',
@@ -634,6 +732,22 @@ const list: Exercise[] = [
     cues: ['Heavy and draped', 'Let the belly hang', 'Nothing to hold'],
     caution:
       'Wedge the ball against a sofa or wall so it cannot roll away, and come up slowly.',
+  },
+  {
+    id: 'seated-side-bend',
+    name: 'Seated Side Bend',
+    kind: 'stretch',
+    summary: 'Gives the ribs back some of the space a bump takes away.',
+    positions: ['Seated on a firm chair', 'Seated on a birth ball', 'Kneeling'],
+    howTo: [
+      'Sit tall with both sitting bones taking even weight and one hand resting beside you.',
+      'Reach the other arm up and over, lengthening the side of your ribs rather than folding sideways.',
+      'Stay for three or four slow breaths, breathing into the long side.',
+      'Come up on an inhale and change sides.',
+    ],
+    cues: ['Lengthen, do not lean', 'Both hips stay down', 'Breathe into the long side'],
+    caution:
+      'Stay inside the first sensation of stretch — relaxin makes this one easy to overshoot. Rib pain that does not ease when you change position is worth mentioning to your provider.',
   },
 ];
 

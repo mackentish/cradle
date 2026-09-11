@@ -1,14 +1,21 @@
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Card, Chevron, Collapsible, Pill, Screen, SegmentedTabs, Text } from '@/components';
 import { PROGRAM_SAFETY } from '@/content/safety';
+import { SHARED_EXERCISE_NOTES } from '@/content/shared-exercises';
 import { getExercise } from '@/domain/exercises';
 import { phaseLabel } from '@/domain/pregnancy';
-import { isProgramId, PROGRAM_IDS, programsById, programTitle } from '@/domain/program';
+import {
+  isProgramId,
+  PROGRAM_IDS,
+  programsById,
+  programTitle,
+  sharedExercises,
+} from '@/domain/program';
 import { describeStep, sessionSeconds } from '@/domain/session';
-import type { ProgramId, Stage, Step } from '@/domain/types';
+import type { Phase, ProgramId, Stage, Step } from '@/domain/types';
 import { formatDuration } from '@/lib/date';
 import { useAppState } from '@/state/AppState';
 import { colors, programColors, spacing, stageColors } from '@/theme';
@@ -75,6 +82,8 @@ export default function PlanScreen() {
         </View>
       </Card>
 
+      <SharedCard programId={selected} phase={phase} />
+
       {active.stages.map((stage) => (
         <StageCard
           key={`${stage.programId}-${stage.id}`}
@@ -84,6 +93,82 @@ export default function PlanScreen() {
       ))}
     </Screen>
   );
+}
+
+/**
+ * Why a familiar exercise turns up in a second program. One library serves all
+ * three (`src/domain/exercises.ts`), so the overlap is real rather than a
+ * duplicate — and this is the only screen it is visible from, where two
+ * programs' step lists sit one tab apart.
+ *
+ * Which exercises overlap is derived from the stage tables, so the card cannot
+ * claim an overlap the sessions no longer have; *why* each one does comes from
+ * `SHARED_EXERCISE_NOTES`, which is the part no amount of walking the tables can
+ * work out. The overlap is deliberately small — a handful per program — and the
+ * reason is what makes it read as a decision rather than as filler, so a name
+ * without one is a test failure.
+ *
+ * The sentence is the callout and stays open; the names and reasons fold away,
+ * because two lines each is a block she scrolls past rather than reads.
+ */
+function SharedCard({ programId, phase }: Readonly<{ programId: ProgramId; phase: Phase }>) {
+  const [expanded, setExpanded] = useState(false);
+  const shared = useMemo(() => sharedExercises(programId), [programId]);
+
+  if (shared.length === 0) return null;
+
+  return (
+    <Card testID={`plan-shared-${programId}`}>
+      <Text variant="bodyStrong">A few exercises appear in more than one program</Text>
+      <Text variant="small">
+        All three programs draw on one library of exercises, and most of what they ask for is their
+        own. {shared.length === 1 ? 'One exercise in' : `${shared.length} exercises in`}{' '}
+        {programTitle(programsById[programId], phase)} {shared.length === 1 ? 'is' : 'are'} asked
+        for elsewhere too, each one on purpose.
+      </Text>
+
+      <Pressable
+        onPress={() => setExpanded((open) => !open)}
+        accessibilityRole="button"
+        accessibilityState={{ expanded }}
+        accessibilityLabel="Which exercises are shared"
+      >
+        <View style={styles.sharedToggle}>
+          <Text variant="smallStrong" color={colors.textFaint}>
+            Which ones, and why
+          </Text>
+          <Chevron direction={expanded ? 'up' : 'down'} size={14} />
+        </View>
+      </Pressable>
+
+      <Collapsible expanded={expanded} testID={`plan-shared-detail-${programId}`}>
+        <View style={styles.sharedList}>
+          {shared.map(({ exerciseId, programIds }) => (
+            <View key={exerciseId} style={styles.sharedEntry}>
+              <Text variant="smallStrong">
+                {getExercise(exerciseId).name}
+                <Text variant="small" color={colors.textFaint}>
+                  {'  also in '}
+                  {programNames(programIds, phase)}
+                </Text>
+              </Text>
+              <Text variant="small" color={colors.textFaint}>
+                {SHARED_EXERCISE_NOTES[exerciseId]}
+              </Text>
+            </View>
+          ))}
+        </View>
+      </Collapsible>
+    </Card>
+  );
+}
+
+/** "Deep stretch", or "Core strength and Deep stretch" for one shared with both. */
+function programNames(programIds: ProgramId[], phase: Phase): string {
+  const titles = programIds.map((id) => programTitle(programsById[id], phase));
+  return titles.length > 1
+    ? `${titles.slice(0, -1).join(', ')} and ${titles[titles.length - 1]}`
+    : (titles[0] ?? '');
 }
 
 /**
@@ -218,6 +303,17 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   emphasis: {
+    gap: 2,
+  },
+  sharedToggle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  sharedList: {
+    gap: spacing.md,
+  },
+  sharedEntry: {
     gap: 2,
   },
   detail: {

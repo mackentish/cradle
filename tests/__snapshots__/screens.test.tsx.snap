@@ -407,6 +407,185 @@ stretch",
           "children": [
             {
               "children": [
+                "A few exercises appear in more than one program",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#3D3238",
+                    "fontFamily": "Nunito_600SemiBold",
+                    "fontSize": 16,
+                    "lineHeight": 25,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                "All three programs draw on one library of exercises, and most of what they ask for is their own. ",
+                "5 exercises in",
+                " ",
+                "Core strength",
+                " ",
+                "are",
+                " asked for elsewhere too, each one on purpose.",
+              ],
+              "props": {
+                "style": [
+                  {
+                    "color": "#6E5F65",
+                    "fontFamily": "Nunito_400Regular",
+                    "fontSize": 14,
+                    "lineHeight": 21,
+                  },
+                  null,
+                  null,
+                  undefined,
+                ],
+              },
+              "type": "Text",
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "children": [
+                        "Which ones, and why",
+                      ],
+                      "props": {
+                        "style": [
+                          {
+                            "color": "#3D3238",
+                            "fontFamily": "Nunito_600SemiBold",
+                            "fontSize": 14,
+                            "lineHeight": 21,
+                          },
+                          {
+                            "color": "#A2939A",
+                          },
+                          null,
+                          undefined,
+                        ],
+                      },
+                      "type": "Text",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            {
+                              "children": [
+                                {
+                                  "props": {
+                                    "d": "M9.5 4.5 17 12l-7.5 7.5",
+                                    "fill": null,
+                                    "stroke": {
+                                      "payload": 4288844698,
+                                      "type": 0,
+                                    },
+                                  },
+                                  "type": "RNSVGPath",
+                                },
+                              ],
+                              "props": {
+                                "fill": {
+                                  "payload": 4278190080,
+                                  "type": 0,
+                                },
+                              },
+                              "type": "RNSVGGroup",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "backgroundColor": "transparent",
+                                "borderWidth": 0,
+                              },
+                              {
+                                "flex": 0,
+                                "height": 14,
+                                "width": 14,
+                              },
+                            ],
+                          },
+                          "type": "RNSVGSvgView",
+                        },
+                      ],
+                      "props": {
+                        "style": {
+                          "height": 14,
+                          "transform": [
+                            {
+                              "rotate": "90deg",
+                            },
+                          ],
+                          "width": 14,
+                        },
+                      },
+                      "type": "View",
+                    },
+                  ],
+                  "props": {
+                    "style": {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "gap": 6,
+                    },
+                  },
+                  "type": "View",
+                },
+              ],
+              "props": {
+                "accessibilityLabel": "Which exercises are shared",
+                "accessibilityRole": "button",
+                "accessibilityState": {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": false,
+                  "selected": undefined,
+                },
+              },
+              "type": "View",
+            },
+          ],
+          "props": {
+            "style": [
+              {
+                "backgroundColor": "#FFFFFF",
+                "borderColor": "#F0E7E4",
+                "borderRadius": 24,
+                "borderWidth": 1,
+                "elevation": 2,
+                "shadowColor": "#8C6A6F",
+                "shadowOffset": {
+                  "height": 6,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.08,
+                "shadowRadius": 16,
+              },
+              {
+                "gap": 12,
+                "padding": 24,
+              },
+              null,
+              undefined,
+            ],
+            "testID": "plan-shared-core",
+          },
+          "type": "View",
+        },
+        {
+          "children": [
+            {
+              "children": [
                 {
                   "children": [
                     {
@@ -1640,7 +1819,7 @@ stretch",
                         },
                         {
                           "children": [
-                            "3 sessions · 10–12 min",
+                            "3 sessions · 9–12 min",
                           ],
                           "props": {
                             "style": [
@@ -1736,7 +1915,7 @@ stretch",
                 },
               ],
               "props": {
-                "accessibilityLabel": "Rebuild, Postpartum Week 6 onward, 3 sessions · 10–12 min",
+                "accessibilityLabel": "Rebuild, Postpartum Week 6 onward, 3 sessions · 9–12 min",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,

@@ -1,6 +1,9 @@
 import { fireEvent, renderRouter, screen, waitFor, within } from 'expo-router/testing-library';
 
 import { PROGRAM_SAFETY } from '@/content/safety';
+import { SHARED_EXERCISE_NOTES } from '@/content/shared-exercises';
+import { getExercise } from '@/domain/exercises';
+import { programsById, programTitle, sharedExercises } from '@/domain/program';
 
 import { seed } from '../helpers';
 
@@ -74,6 +77,39 @@ describe('Plan', () => {
     await waitFor(() =>
       expect(screen.queryByTestId('plan-stage-detail-build')).not.toBeOnTheScreen()
     );
+  });
+
+  it('calls out the exercises a program shares, with the names behind a tap', async () => {
+    await seed();
+    renderRouter('app', { initialUrl: '/plan' });
+
+    await waitFor(() => expect(screen.getByTestId('plan-screen')).toBeOnTheScreen());
+
+    // The tab's drawn label is broken across lines by `wrapLabels`; its
+    // accessibility label is the program name as written.
+    fireEvent.press(screen.getByLabelText('Core strength'));
+
+    const card = await waitFor(() => screen.getByTestId('plan-shared-core'));
+    const shared = sharedExercises('core');
+    expect(shared.length).toBeGreaterThan(0);
+
+    // The sentence is the callout, so it is never behind the chevron.
+    expect(within(card).getByText(/one library of exercises/)).toBeOnTheScreen();
+    expect(screen.queryByTestId('plan-shared-detail-core')).not.toBeOnTheScreen();
+
+    fireEvent.press(within(card).getByLabelText('Which exercises are shared'));
+    await waitFor(() => expect(screen.getByTestId('plan-shared-detail-core')).toBeOnTheScreen());
+
+    // Every name, who else asks for it, and why it is worth doing twice. The
+    // name and the "also in" sit in one nested Text, so they match as one line.
+    for (const { exerciseId, programIds } of shared) {
+      const names = programIds.map((id) => programTitle(programsById[id], 'pregnancy'));
+      const line = `${getExercise(exerciseId).name} also in ${names.join(' and ')}`;
+      expect(within(card).getByText(line)).toBeOnTheScreen();
+      expect(
+        within(card).getByText(SHARED_EXERCISE_NOTES[exerciseId] ?? 'no reason on file')
+      ).toBeOnTheScreen();
+    }
   });
 
   it('opens on the program named in the link', async () => {
