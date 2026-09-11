@@ -39,9 +39,26 @@ jest.mock('expo-keep-awake', () => ({
 
 jest.mock('expo-notifications', () => {
   // Required inside the factory: jest hoists this above the imports.
-  const { notificationDouble } = require('./doubles/notifications');
+  const { notificationDouble, DEFAULT_ACTION_IDENTIFIER } = require('./doubles/notifications');
   return {
     setNotificationHandler: jest.fn(),
+    DEFAULT_ACTION_IDENTIFIER,
+    // The two ways a tap reaches the app: held by native across a cold start,
+    // and emitted to whoever is listening while it runs.
+    getLastNotificationResponse: jest.fn(() => notificationDouble.lastResponse),
+    clearLastNotificationResponse: jest.fn(() => {
+      notificationDouble.lastResponse = null;
+    }),
+    addNotificationResponseReceivedListener: jest.fn((listener: any) => {
+      notificationDouble.listeners.push(listener);
+      return {
+        remove: () => {
+          notificationDouble.listeners = notificationDouble.listeners.filter(
+            (item: any) => item !== listener
+          );
+        },
+      };
+    }),
     getPermissionsAsync: jest.fn(async () => ({
       status: notificationDouble.permission,
       canAskAgain: notificationDouble.permission !== 'denied',
@@ -111,10 +128,14 @@ jest.mock('@expo/ui/jetpack-compose', () => {
   return { Host: View, DateTimePicker: View };
 });
 
-// Doubles are module state, so reset them rather than leaking across tests.
+// Doubles are module state, so reset them rather than leaking across tests. So
+// is the tap the app has already answered, which outlives any one screen on
+// purpose — and so outlives a test unless it is forgotten here.
 afterEach(() => {
   const { notificationDouble } = require('./doubles/notifications');
   const { accessibilityDouble } = require('./doubles/accessibility');
+  const { forgetReminderTaps } = require('@/lib/notifications');
   notificationDouble.reset();
   accessibilityDouble.reset();
+  forgetReminderTaps();
 });

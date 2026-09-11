@@ -32,6 +32,20 @@ misleading, the code is right.
   scheduled notification it does not recognize — that is what stops the unnamed reminder from the
   single-program build firing forever alongside the new one on an upgraded install. Never change
   those identifier strings; they are how we find a reminder a *previous* install scheduled.
+- **A tapped reminder opens that program's session.** The program travels two ways: `programId` in
+  the notification's `data`, and the reminder identifier as the fallback, which is what a reminder
+  still queued from an earlier build has. Both are read in `reminderTapFrom`; a response we can't
+  place just opens the app, the way it did before.
+- **The launch tap is decided by `app/index.tsx`, not pushed at from the layout.** `Redirect`
+  navigates from a focus effect, so a push made during the first mount is undone by the entry gate a
+  moment later — which is exactly the shape of a cold open. Index redirects straight to the session
+  `withAnchor`, so the tabs stay mounted underneath and closing it lands on Today. Taps that arrive
+  while the app is already running are the root layout's, via `useReminderTap`.
+- **One delivery is answered once.** The OS reports a tap twice — the stored response, the only one
+  that survives a cold start, and an event to any listener — and which arrives first is a race. So
+  `claim` keeps the delivery key (`identifier:date`; the identifier alone repeats every day) and the
+  second report is dropped, because two pushes stack two session screens. That memory outlives any
+  one screen on purpose, which is why `forgetReminderTaps` exists for the tests.
 - **All text goes through `src/components/Text.tsx`** and all color/spacing through `src/theme`.
   Don't hardcode a hex value or a font family in a screen.
 - **Safety copy lives in `src/content/safety.ts`.** Don't restate a disclaimer inline.

@@ -16,6 +16,7 @@ import React from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { useReminderTap } from '@/hooks/useReminderTap';
 import { configureNotifications } from '@/lib/notifications';
 import { AppStateProvider, useAppState } from '@/state/AppState';
 import { colors } from '@/theme';
@@ -65,6 +66,11 @@ export default function RootLayout() {
  */
 function RootNavigator() {
   const { ready, onboarded } = useAppState();
+
+  // A tapped reminder opens that program's session, on top of the tabs. Gated on
+  // the same condition as the routes below, since that is when the session route
+  // starts existing — and called above the early return, not behind it.
+  useReminderTap(ready && onboarded);
 
   // Hold the navigator back until storage has been read, so the guards below are
   // decided once rather than flipping under the user.

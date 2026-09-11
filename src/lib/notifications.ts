@@ -2,7 +2,7 @@ import * as Notifications from 'expo-notifications';
 import { Platform } from 'react-native';
 
 import { reminderCopy } from '@/content/reminders';
-import { PROGRAM_IDS } from '@/domain/program';
+import { isProgramId, PROGRAM_IDS } from '@/domain/program';
 import type { ProgramId, ReminderSettings, Stage } from '@/domain/types';
 
 /**
@@ -131,6 +131,9 @@ async function syncOne(
         title: copy.title,
         body: copy.body,
         sound: true,
+        // Names the program she tapped, so the tap can open that program's
+        // session rather than only the app. Read back by `reminderTapFrom`.
+        data: { programId },
       },
       trigger: {
         type: Notifications.SchedulableTriggerInputTypes.DAILY,
@@ -165,6 +168,110 @@ export async function syncReminders(
   );
 
   return Object.fromEntries(results) as Record<ProgramId, boolean>;
+}
+
+/**
+ * A tap on one of our reminders, once we've established that's what it was.
+ *
+ * `key` identifies one *delivery*. The request identifier can't do that job on
+ * its own — it is fixed per program and reused every day, so it cannot tell
+ * today's tap from tomorrow's — and the delivery date is what makes it specific.
+ */
+export type ReminderTap = {
+  programId: ProgramId;
+  key: string;
+};
+
+/**
+ * One tap is reported twice, and which report arrives first is a race: the OS
+ * both stores the response (`getLastNotificationResponse`, the only report that
+ * survives a cold start) and emits it to any listener. So the first report to
+ * arrive claims the delivery and the second is dropped — answering both would
+ * open the session twice, one screen stacked on the other.
+ *
+ * Module state, because the memory has to outlive any one screen: the launch is
+ * read by the entry gate, and taps after it by the root layout.
+ */
+let claimedKey: string | null = null;
+
+/** `undefined` until the launch has been looked at; see `launchReminderTap`. */
+let launchTap: ReminderTap | null | undefined;
+
+function claim(tap: ReminderTap): boolean {
+  if (claimedKey === tap.key) return false;
+  claimedKey = tap.key;
+  return true;
+}
+
+function reminderTapFrom(response: Notifications.NotificationResponse): ReminderTap | null {
+  // An action on the notification rather than a tap on the notification itself.
+  // We declare no actions, so there is nothing here to act on.
+  if (response.actionIdentifier !== Notifications.DEFAULT_ACTION_IDENTIFIER) return null;
+
+  const { identifier, content } = response.notification.request;
+  // `data` is whatever JSON the OS was holding, so it gets checked rather than
+  // cast. The identifier is the fallback, and covers a reminder still queued
+  // from the build before this one, which carries no `programId` at all.
+  const fromData = (content.data as { programId?: unknown } | null)?.programId;
+  const programId = isProgramId(fromData)
+    ? fromData
+    : PROGRAM_IDS.find((id) => REMINDER_IDS[id] === identifier);
+  if (!programId) return null;
+
+  return { programId, key: `${identifier}:${response.notification.date}` };
+}
+
+/**
+ * The response the OS is holding, which on a cold start is the tap that launched
+ * the app. Clearing it means a later launch that has nothing to do with a
+ * reminder can't reopen the session this one pointed at.
+ */
+function storedTap(): ReminderTap | null {
+  try {
+    const response = Notifications.getLastNotificationResponse();
+    const tap = response ? reminderTapFrom(response) : null;
+    if (!tap || !claim(tap)) return null;
+    Notifications.clearLastNotificationResponse();
+    return tap;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * The tap that launched the app, if that's how it was launched. Synchronous,
+ * because the launch destination has to be settled in the first render rather
+ * than navigated to afterwards.
+ *
+ * Read once and then remembered: the answer decides where the app opens, so
+ * asking twice — a re-render, or React running a render twice in development —
+ * has to give the same answer rather than "no tap" the second time.
+ */
+export function launchReminderTap(): ReminderTap | null {
+  if (launchTap === undefined) launchTap = storedTap();
+  return launchTap;
+}
+
+/** Taps that arrive while the app is already running. Returns an unsubscribe. */
+export function addReminderTapListener(handler: (tap: ReminderTap) => void): () => void {
+  try {
+    const subscription = Notifications.addNotificationResponseReceivedListener((response) => {
+      const tap = reminderTapFrom(response);
+      if (tap && claim(tap)) handler(tap);
+    });
+    return () => subscription.remove();
+  } catch {
+    return () => {};
+  }
+}
+
+/**
+ * Test seam, so one test's tap is not still claimed in the next. Production code
+ * never calls this.
+ */
+export function forgetReminderTaps(): void {
+  claimedKey = null;
+  launchTap = undefined;
 }
 
 /**
