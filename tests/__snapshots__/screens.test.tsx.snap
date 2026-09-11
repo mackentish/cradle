@@ -678,7 +678,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "3m 44s",
+                            "6m 42s",
                           ],
                           "props": {
                             "style": [
@@ -772,6 +772,118 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "6 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Dead Bug Heel Taps",
+                            {
+                              "children": [
+                                "  ",
+                                "6 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Heel Slides",
+                            {
+                              "children": [
+                                "  ",
+                                "6 × 2s hold",
                               ],
                               "props": {
                                 "style": [
@@ -931,6 +1043,62 @@ exports[`screen snapshots plan 1`] = `
                       },
                       "type": "View",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Rest and Breathe",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
                     "style": {
@@ -967,7 +1135,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "4m 1s",
+                            "7m 41s",
                           ],
                           "props": {
                             "style": [
@@ -1112,6 +1280,62 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Sit to Stand",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Quadruped Core Breath",
                             {
                               "children": [
@@ -1168,7 +1392,119 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Side-Lying Leg Lift",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Cat-Cow",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Wide-Knee Child's Pose",
                             {
                               "children": [
                                 "  ",
@@ -1499,7 +1835,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "7m 53s",
+                            "11m 24s",
                           ],
                           "props": {
                             "style": [
@@ -1700,11 +2036,179 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Side-Lying Leg Lift",
+                            {
+                              "children": [
+                                "  ",
+                                "10 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Bird Dog",
                             {
                               "children": [
                                 "  ",
                                 "8 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Cat-Cow",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Wide-Knee Child's Pose",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
                               ],
                               "props": {
                                 "style": [
@@ -1788,7 +2292,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "6m 41s",
+                            "9m 17s",
                           ],
                           "props": {
                             "style": [
@@ -1882,6 +2386,62 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "10 × 3s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Sit to Stand",
+                            {
+                              "children": [
+                                "  ",
+                                "10 × 2s hold",
                               ],
                               "props": {
                                 "style": [
@@ -2097,6 +2657,62 @@ exports[`screen snapshots plan 1`] = `
                       },
                       "type": "View",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Kneeling Hip Opener",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
                     "style": {
@@ -2133,7 +2749,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "7m 1s",
+                            "10m 3s",
                           ],
                           "props": {
                             "style": [
@@ -2166,7 +2782,119 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Quadruped Core Breath",
+                            {
+                              "children": [
+                                "  ",
+                                "5 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Dead Bug Heel Taps",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Heel Slides",
                             {
                               "children": [
                                 "  ",
@@ -2335,6 +3063,62 @@ exports[`screen snapshots plan 1`] = `
                         {
                           "children": [
                             "Ribs Over Pelvis Reset",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Seated Pelvic Tilts",
                             {
                               "children": [
                                 "  ",
@@ -2628,7 +3412,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "6m 19s",
+                            "10m 34s",
                           ],
                           "props": {
                             "style": [
@@ -2773,7 +3557,119 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Bird Dog",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Side-Lying Leg Lift",
+                            {
+                              "children": [
+                                "  ",
+                                "10 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Side-Lying Clam",
                             {
                               "children": [
                                 "  ",
@@ -2881,6 +3777,62 @@ exports[`screen snapshots plan 1`] = `
                       },
                       "type": "View",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Wide-Knee Child's Pose",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
                     "style": {
@@ -2917,7 +3869,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "6m 29s",
+                            "9m 59s",
                           ],
                           "props": {
                             "style": [
@@ -3011,6 +3963,62 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "10 × 3s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Sit to Stand",
+                            {
+                              "children": [
+                                "  ",
+                                "10 × 2s hold",
                               ],
                               "props": {
                                 "style": [
@@ -3170,6 +4178,118 @@ exports[`screen snapshots plan 1`] = `
                       },
                       "type": "View",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Seated Pelvic Tilts",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Kneeling Hip Opener",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
                     "style": {
@@ -3206,7 +4326,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "6m 5s",
+                            "10m 5s",
                           ],
                           "props": {
                             "style": [
@@ -3239,11 +4359,179 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Cat-Cow",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Quadruped Core Breath",
+                            {
+                              "children": [
+                                "  ",
+                                "5 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Side Plank from Knees",
                             {
                               "children": [
                                 "  ",
                                 "3 × 15s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Side-Lying Leg Lift",
+                            {
+                              "children": [
+                                "  ",
+                                "10 × 2s hold",
                               ],
                               "props": {
                                 "style": [
@@ -3698,7 +4986,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "4m 27s",
+                            "7m 35s",
                           ],
                           "props": {
                             "style": [
@@ -3843,11 +5131,123 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Sit to Stand",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Quadruped Core Breath",
                             {
                               "children": [
                                 "  ",
                                 "6 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Seated Pelvic Tilts",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
                               ],
                               "props": {
                                 "style": [
@@ -3951,6 +5351,62 @@ exports[`screen snapshots plan 1`] = `
                       },
                       "type": "View",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Wide-Knee Child's Pose",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
                     "style": {
@@ -3987,7 +5443,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "5m 3s",
+                            "8m 4s",
                           ],
                           "props": {
                             "style": [
@@ -4012,6 +5468,62 @@ exports[`screen snapshots plan 1`] = `
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Ribs Over Pelvis Reset",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         },
                       },
                       "type": "View",
@@ -4132,11 +5644,123 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Side-Lying Clam",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Sit to Stand",
                             {
                               "children": [
                                 "  ",
                                 "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Cat-Cow",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
                               ],
                               "props": {
                                 "style": [
@@ -4276,7 +5900,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "8m 48s",
+                            "10m 56s",
                           ],
                           "props": {
                             "style": [
@@ -4314,6 +5938,62 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Standing March",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
                               ],
                               "props": {
                                 "style": [
@@ -4426,6 +6106,62 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "6 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Seated Pelvic Tilts",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
                               ],
                               "props": {
                                 "style": [
@@ -5269,7 +7005,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "8m 9s",
+                            "10m 17s",
                           ],
                           "props": {
                             "style": [
@@ -5414,7 +7150,119 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Heel Slides",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Seated Pelvic Tilts",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Ribs Over Pelvis Reset",
                             {
                               "children": [
                                 "  ",
@@ -5558,7 +7406,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "4m 58s",
+                            "8m 14s",
                           ],
                           "props": {
                             "style": [
@@ -5583,6 +7431,62 @@ exports[`screen snapshots plan 1`] = `
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Connection Breath",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         },
                       },
                       "type": "View",
@@ -5703,6 +7607,62 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Side-Lying Clam",
+                            {
+                              "children": [
+                                "  ",
+                                "8 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Heel Slides",
                             {
                               "children": [
@@ -5764,6 +7724,62 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Rest and Breathe",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
                               ],
                               "props": {
                                 "style": [
@@ -6050,7 +8066,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "8m 37s",
+                            "11m 23s",
                           ],
                           "props": {
                             "style": [
@@ -6251,11 +8267,123 @@ exports[`screen snapshots plan 1`] = `
                       "children": [
                         {
                           "children": [
+                            "Side-Lying Leg Lift",
+                            {
+                              "children": [
+                                "  ",
+                                "10 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
                             "Bird Dog",
                             {
                               "children": [
                                 "  ",
                                 "10 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Cat-Cow",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
                               ],
                               "props": {
                                 "style": [
@@ -6339,7 +8467,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "7m 24s",
+                            "9m 54s",
                           ],
                           "props": {
                             "style": [
@@ -6364,6 +8492,62 @@ exports[`screen snapshots plan 1`] = `
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Ribs Over Pelvis Reset",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         },
                       },
                       "type": "View",
@@ -6592,6 +8776,118 @@ exports[`screen snapshots plan 1`] = `
                       },
                       "type": "View",
                     },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Cat-Cow",
+                            {
+                              "children": [
+                                "  ",
+                                "45s",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Kneeling Hip Opener",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
                   ],
                   "props": {
                     "style": {
@@ -6628,7 +8924,7 @@ exports[`screen snapshots plan 1`] = `
                         },
                         {
                           "children": [
-                            "10m 9s",
+                            "12m 10s",
                           ],
                           "props": {
                             "style": [
@@ -6653,6 +8949,62 @@ exports[`screen snapshots plan 1`] = `
                           "alignItems": "center",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Quadruped Core Breath",
+                            {
+                              "children": [
+                                "  ",
+                                "5 × 4s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
                         },
                       },
                       "type": "View",
@@ -6834,6 +9186,62 @@ exports[`screen snapshots plan 1`] = `
                               "children": [
                                 "  ",
                                 "12 × 2s hold",
+                              ],
+                              "props": {
+                                "style": [
+                                  {
+                                    "color": "#6E5F65",
+                                    "fontFamily": "Nunito_400Regular",
+                                    "fontSize": 14,
+                                    "lineHeight": 21,
+                                  },
+                                  {
+                                    "color": "#A2939A",
+                                  },
+                                  null,
+                                  undefined,
+                                ],
+                              },
+                              "type": "Text",
+                            },
+                          ],
+                          "props": {
+                            "style": [
+                              {
+                                "color": "#6E5F65",
+                                "fontFamily": "Nunito_400Regular",
+                                "fontSize": 14,
+                                "lineHeight": 21,
+                              },
+                              null,
+                              null,
+                              undefined,
+                            ],
+                          },
+                          "type": "Text",
+                        },
+                      ],
+                      "props": {
+                        "accessibilityRole": "button",
+                        "accessibilityState": {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        },
+                      },
+                      "type": "View",
+                    },
+                    {
+                      "children": [
+                        {
+                          "children": [
+                            "Wide-Knee Child's Pose",
+                            {
+                              "children": [
+                                "  ",
+                                "1 min",
                               ],
                               "props": {
                                 "style": [
@@ -10778,7 +13186,7 @@ exports[`screen snapshots today 1`] = `
                           "children": [
                             {
                               "children": [
-                                "6m 8s",
+                                "9m 24s",
                               ],
                               "props": {
                                 "style": [
@@ -10942,7 +13350,7 @@ exports[`screen snapshots today 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Pelvic floor, Strength, 6m 8s",
+                "accessibilityLabel": "Pelvic floor, Strength, 9m 24s",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -11114,7 +13522,7 @@ exports[`screen snapshots today 1`] = `
                           "children": [
                             {
                               "children": [
-                                "6m 41s",
+                                "9m 17s",
                               ],
                               "props": {
                                 "style": [
@@ -11278,7 +13686,7 @@ exports[`screen snapshots today 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Core strength, All Directions, 6m 41s",
+                "accessibilityLabel": "Core strength, All Directions, 9m 17s",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -11450,7 +13858,7 @@ exports[`screen snapshots today 1`] = `
                           "children": [
                             {
                               "children": [
-                                "5 min",
+                                "9 min",
                               ],
                               "props": {
                                 "style": [
@@ -11614,7 +14022,7 @@ exports[`screen snapshots today 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Deep stretch, Upper and Lower, 5 min",
+                "accessibilityLabel": "Deep stretch, Upper and Lower, 9 min",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -13217,7 +15625,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                           "children": [
                             {
                               "children": [
-                                "6m 8s",
+                                "9m 24s",
                               ],
                               "props": {
                                 "style": [
@@ -13381,7 +15789,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Pelvic floor, Strength, 6m 8s",
+                "accessibilityLabel": "Pelvic floor, Strength, 9m 24s",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -13717,7 +16125,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Core strength, All Directions, 6m 41s",
+                "accessibilityLabel": "Core strength, All Directions, 9m 17s",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,
@@ -13880,7 +16288,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                           "children": [
                             {
                               "children": [
-                                "5 min",
+                                "9 min",
                               ],
                               "props": {
                                 "style": [
@@ -14044,7 +16452,7 @@ exports[`screen snapshots today, with one program already done 1`] = `
                 },
               ],
               "props": {
-                "accessibilityLabel": "Deep stretch, Upper and Lower, 5 min",
+                "accessibilityLabel": "Deep stretch, Upper and Lower, 9 min",
                 "accessibilityRole": "button",
                 "accessibilityState": {
                   "busy": undefined,

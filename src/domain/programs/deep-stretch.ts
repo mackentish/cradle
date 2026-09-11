@@ -20,7 +20,7 @@ const stages: NonEmpty<Stage> = [
     title: "Foundation",
     range: "Weeks 1–13",
     focus:
-      "Nothing about birth yet. This early it is a habit you are building, not a skill — five easy minutes of moving the spine and hips, which also happens to be one of the better things you can do about first-trimester stiffness.",
+      "Nothing about birth yet. This early it is a habit you are building, not a skill — a few easy minutes of moving the spine and hips, which also happens to be one of the better things you can do about first-trimester stiffness.",
     emphasis: [
       "Move the spine and hips every day",
       "Comfortable range only",
@@ -35,12 +35,15 @@ const stages: NonEmpty<Stage> = [
         steps: [
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
+          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 45 },
+          { type: "hold", exerciseId: "figure-four", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "neck-shoulder-release",
             durationSec: 60,
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 60 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },
       {
@@ -49,7 +52,18 @@ const stages: NonEmpty<Stage> = [
         steps: [
           { type: "hold", exerciseId: "birth-breathing", durationSec: 60 },
           { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
+          { type: "hold", exerciseId: "hip-flexor-kneel", durationSec: 60 },
+          {
+            type: "hold",
+            exerciseId: "standing-hamstring-support",
+            durationSec: 60,
+          },
           { type: "hold", exerciseId: "figure-four", durationSec: 60 },
+          {
+            type: "hold",
+            exerciseId: "neck-shoulder-release",
+            durationSec: 60,
+          },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 60 },
         ],
       },
@@ -76,16 +90,21 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-build-a",
         title: "Hips and Breath",
         steps: [
+          { type: "hold", exerciseId: "birth-breathing", durationSec: 60 },
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
           { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           { type: "hold", exerciseId: "hip-flexor-kneel", durationSec: 60 },
-          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
+          { type: "hold", exerciseId: "figure-four", durationSec: 90 },
+          { type: "hold", exerciseId: "child-pose-wide", durationSec: 60 },
         ],
       },
       {
         id: "birth-prep-build-b",
         title: "Long Lines",
         steps: [
+          { type: "hold", exerciseId: "posture-reset", durationSec: 45 },
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "standing-hamstring-support",
@@ -97,6 +116,11 @@ const stages: NonEmpty<Stage> = [
             durationSec: 90,
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 60 },
+          {
+            type: "hold",
+            exerciseId: "neck-shoulder-release",
+            durationSec: 60,
+          },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 60 },
         ],
       },
@@ -104,13 +128,16 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-build-c",
         title: "Upper and Lower",
         steps: [
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "neck-shoulder-release",
             durationSec: 60,
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
           { type: "hold", exerciseId: "figure-four", durationSec: 90 },
+          { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           { type: "hold", exerciseId: "birth-ball-lean", durationSec: 90 },
         ],
       },
@@ -137,19 +164,29 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-sustain-a",
         title: "Opening Up",
         steps: [
+          { type: "hold", exerciseId: "birth-breathing", durationSec: 60 },
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 120 },
           { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           { type: "hold", exerciseId: "deep-squat-support", durationSec: 45 },
           { type: "hold", exerciseId: "birth-ball-lean", durationSec: 90 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },
       {
         id: "birth-prep-sustain-b",
         title: "Space to Breathe",
         steps: [
-          { type: "hold", exerciseId: "birth-ball-lean", durationSec: 120 },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 60 },
+          {
+            type: "hold",
+            exerciseId: "neck-shoulder-release",
+            durationSec: 60,
+          },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 60 },
+          { type: "hold", exerciseId: "hip-flexor-kneel", durationSec: 60 },
+          { type: "hold", exerciseId: "birth-ball-lean", durationSec: 120 },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 90 },
         ],
       },
@@ -157,6 +194,7 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-sustain-c",
         title: "Hips Wide",
         steps: [
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
           {
             type: "hold",
             exerciseId: "supported-lunge-stretch",
@@ -169,6 +207,8 @@ const stages: NonEmpty<Stage> = [
             exerciseId: "standing-hamstring-support",
             durationSec: 60,
           },
+          { type: "hold", exerciseId: "deep-squat-support", durationSec: 45 },
+          { type: "hold", exerciseId: "birth-ball-lean", durationSec: 90 },
         ],
       },
     ],
@@ -194,18 +234,28 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-prepare-a",
         title: "Practicing Opening",
         steps: [
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
+          { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           { type: "hold", exerciseId: "deep-squat-support", durationSec: 60 },
           { type: "hold", exerciseId: "birth-breathing", durationSec: 90 },
           { type: "hold", exerciseId: "birth-ball-lean", durationSec: 120 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },
       {
         id: "birth-prep-prepare-b",
         title: "Positions for Labor",
         steps: [
-          { type: "hold", exerciseId: "birth-ball-lean", durationSec: 120 },
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
+          { type: "hold", exerciseId: "figure-four", durationSec: 90 },
+          {
+            type: "hold",
+            exerciseId: "supported-lunge-stretch",
+            durationSec: 90,
+          },
           { type: "hold", exerciseId: "deep-squat-support", durationSec: 60 },
+          { type: "hold", exerciseId: "birth-ball-lean", durationSec: 120 },
           { type: "hold", exerciseId: "happy-baby-supported", durationSec: 60 },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 90 },
         ],
@@ -214,12 +264,15 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-prepare-c",
         title: "Ease and Comfort",
         steps: [
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "neck-shoulder-release",
             durationSec: 60,
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 60 },
+          { type: "hold", exerciseId: "hip-flexor-kneel", durationSec: 60 },
           { type: "hold", exerciseId: "birth-ball-lean", durationSec: 120 },
           { type: "hold", exerciseId: "rest-and-breathe", durationSec: 120 },
         ],
@@ -299,14 +352,22 @@ const stages: NonEmpty<Stage> = [
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 90 },
           { type: "hold", exerciseId: "posture-reset", durationSec: 45 },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 45 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },
       {
         id: "birth-prep-reconnect-b",
         title: "Hips Again",
         steps: [
+          { type: "hold", exerciseId: "pelvic-circles-ball", durationSec: 90 },
           { type: "hold", exerciseId: "figure-four", durationSec: 90 },
           { type: "hold", exerciseId: "hip-flexor-kneel", durationSec: 60 },
+          {
+            type: "hold",
+            exerciseId: "standing-hamstring-support",
+            durationSec: 60,
+          },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 60 },
         ],
@@ -334,6 +395,7 @@ const stages: NonEmpty<Stage> = [
         id: "birth-prep-rebuild-a",
         title: "Full Range",
         steps: [
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           {
             type: "hold",
             exerciseId: "standing-hamstring-support",
@@ -345,7 +407,9 @@ const stages: NonEmpty<Stage> = [
             durationSec: 90,
           },
           { type: "hold", exerciseId: "figure-four", durationSec: 90 },
+          { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 60 },
+          { type: "hold", exerciseId: "child-pose-wide", durationSec: 60 },
         ],
       },
       {
@@ -359,20 +423,29 @@ const stages: NonEmpty<Stage> = [
           },
           { type: "hold", exerciseId: "chest-opener-doorway", durationSec: 90 },
           { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
+          { type: "hold", exerciseId: "pelvic-tilt", durationSec: 45 },
           { type: "hold", exerciseId: "posture-reset", durationSec: 45 },
+          { type: "hold", exerciseId: "rest-and-breathe", durationSec: 90 },
         ],
       },
       {
         id: "birth-prep-rebuild-c",
         title: "Everything Long",
         steps: [
+          { type: "hold", exerciseId: "cat-cow", durationSec: 60 },
           { type: "hold", exerciseId: "butterfly-stretch", durationSec: 90 },
           {
             type: "hold",
             exerciseId: "standing-hamstring-support",
             durationSec: 90,
           },
+          {
+            type: "hold",
+            exerciseId: "supported-lunge-stretch",
+            durationSec: 90,
+          },
           { type: "hold", exerciseId: "hip-flexor-kneel", durationSec: 90 },
+          { type: "hold", exerciseId: "figure-four", durationSec: 90 },
           { type: "hold", exerciseId: "child-pose-wide", durationSec: 90 },
         ],
       },

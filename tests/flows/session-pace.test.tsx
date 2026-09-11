@@ -16,7 +16,7 @@ import { seed } from '../helpers';
  * session the rotation serves decides whether a paced step is on the screen at
  * all. Week 20 puts pelvic floor in Build, and these two days pick:
  *
- *   2026-06-15 → `build-a`  connection breath, endurance holds, quick flicks
+ *   2026-06-15 → `build-a`  connection breath first, quick flicks at step four
  *   2026-06-17 → `build-c`  posture reset first, and nothing paced about it
  */
 describe('a paced exercise', () => {
@@ -26,7 +26,7 @@ describe('a paced exercise', () => {
     setNow(new Date(`${day}T09:30:00Z`));
     await seed();
     renderRouter('app', { initialUrl: '/session/pelvic-floor' });
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
   };
 
   /** Forward to a later exercise, stopping on its intro. */
@@ -34,7 +34,7 @@ describe('a paced exercise', () => {
     for (let at = 1; at < step; at += 1) {
       fireEvent.press(screen.getByText('Skip this one'));
       await waitFor(() =>
-        expect(screen.getByText(new RegExp(`Step ${at + 1} of 5`))).toBeOnTheScreen()
+        expect(screen.getByText(new RegExp(`Step ${at + 1} of \\d+`))).toBeOnTheScreen()
       );
     }
   };
@@ -83,7 +83,7 @@ describe('a paced exercise', () => {
 
   it('counts a fast set down as a set, not as one second at a time', async () => {
     await openPlayer('2026-06-15');
-    await skipTo(3);
+    await skipTo(4);
     await start();
 
     // Ten quick flicks: 3s a rep and 3s between them, so 57 seconds of set. The

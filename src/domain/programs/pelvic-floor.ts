@@ -33,6 +33,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Finding the Floor',
         steps: [
           { type: 'hold', exerciseId: 'diaphragmatic-breath', durationSec: 60 },
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'find-your-floor',
@@ -44,7 +45,9 @@ const stages: NonEmpty<Stage> = [
             note: 'Slow and curious. Finding it counts as doing it.',
           },
           { type: 'hold', exerciseId: 'connection-breath', durationSec: 60 },
+          { type: 'hold', exerciseId: 'cat-cow', durationSec: 45 },
           { type: 'hold', exerciseId: 'pelvic-tilt', durationSec: 45 },
+          { type: 'hold', exerciseId: 'full-release', durationSec: 45 },
         ],
       },
       {
@@ -52,6 +55,7 @@ const stages: NonEmpty<Stage> = [
         title: 'First Lifts',
         steps: [
           { type: 'hold', exerciseId: 'diaphragmatic-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'short-hold',
@@ -70,6 +74,17 @@ const stages: NonEmpty<Stage> = [
             releaseSec: 1,
             restSec: 2,
           },
+          {
+            type: 'reps',
+            exerciseId: 'heel-slide',
+            reps: 6,
+            liftSec: 2,
+            holdSec: 2,
+            releaseSec: 2,
+            restSec: 2,
+            note: 'Alternate legs.',
+          },
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           { type: 'hold', exerciseId: 'full-release', durationSec: 45 },
         ],
       },
@@ -97,6 +112,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Strength',
         steps: [
           { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'cat-cow', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'long-hold',
@@ -117,6 +133,16 @@ const stages: NonEmpty<Stage> = [
           },
           {
             type: 'reps',
+            exerciseId: 'bridge',
+            reps: 8,
+            liftSec: 2,
+            holdSec: 2,
+            releaseSec: 3,
+            restSec: 5,
+            note: 'Prop your head and shoulders up on pillows.',
+          },
+          {
+            type: 'reps',
             exerciseId: 'side-lying-clam',
             reps: 10,
             liftSec: 1,
@@ -125,6 +151,7 @@ const stages: NonEmpty<Stage> = [
             restSec: 3,
             note: 'Ten each side. Pillow under the bump.',
           },
+          { type: 'hold', exerciseId: 'hip-flexor-kneel', durationSec: 60 },
           { type: 'hold', exerciseId: 'full-release', durationSec: 45 },
         ],
       },
@@ -133,6 +160,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Whole Core',
         steps: [
           { type: 'hold', exerciseId: 'diaphragmatic-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'elevator',
@@ -154,6 +182,16 @@ const stages: NonEmpty<Stage> = [
           },
           {
             type: 'reps',
+            exerciseId: 'heel-slide',
+            reps: 8,
+            liftSec: 2,
+            holdSec: 2,
+            releaseSec: 2,
+            restSec: 4,
+            note: 'Alternate legs.',
+          },
+          {
+            type: 'reps',
             exerciseId: 'bird-dog',
             reps: 8,
             liftSec: 2,
@@ -170,6 +208,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Everyday Strength',
         steps: [
           { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
+          { type: 'hold', exerciseId: 'pelvic-tilt', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'sit-to-stand',
@@ -197,7 +236,17 @@ const stages: NonEmpty<Stage> = [
             releaseSec: 3,
             restSec: 10,
           },
+          {
+            type: 'reps',
+            exerciseId: 'quick-flicks',
+            reps: 8,
+            liftSec: 1,
+            holdSec: 1,
+            releaseSec: 1,
+            restSec: 3,
+          },
           { type: 'hold', exerciseId: 'figure-four', durationSec: 60 },
+          { type: 'hold', exerciseId: 'hip-flexor-kneel', durationSec: 60 },
         ],
       },
     ],
@@ -224,6 +273,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Steady Strength',
         steps: [
           { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'long-hold',
@@ -252,6 +302,7 @@ const stages: NonEmpty<Stage> = [
             restSec: 3,
             note: 'Ten each side.',
           },
+          { type: 'hold', exerciseId: 'figure-four', durationSec: 60 },
           { type: 'hold', exerciseId: 'full-release', durationSec: 60 },
         ],
       },
@@ -259,6 +310,7 @@ const stages: NonEmpty<Stage> = [
         id: 'sustain-b',
         title: 'Open and Mobile',
         steps: [
+          { type: 'hold', exerciseId: 'birth-breathing', durationSec: 60 },
           { type: 'hold', exerciseId: 'cat-cow', durationSec: 60 },
           { type: 'hold', exerciseId: 'pelvic-tilt', durationSec: 60 },
           {
@@ -272,6 +324,7 @@ const stages: NonEmpty<Stage> = [
             note: 'Hold the counter. Relax the floor completely at the bottom.',
           },
           { type: 'hold', exerciseId: 'hip-flexor-kneel', durationSec: 60 },
+          { type: 'hold', exerciseId: 'child-pose-wide', durationSec: 60 },
           { type: 'hold', exerciseId: 'full-release', durationSec: 60 },
         ],
       },
@@ -280,6 +333,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Control',
         steps: [
           { type: 'hold', exerciseId: 'diaphragmatic-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'elevator',
@@ -288,6 +342,15 @@ const stages: NonEmpty<Stage> = [
             holdSec: 3,
             releaseSec: 4,
             restSec: 8,
+          },
+          {
+            type: 'reps',
+            exerciseId: 'short-hold',
+            reps: 6,
+            liftSec: 2,
+            holdSec: 3,
+            releaseSec: 3,
+            restSec: 6,
           },
           {
             type: 'reps',
@@ -328,6 +391,7 @@ const stages: NonEmpty<Stage> = [
         steps: [
           { type: 'hold', exerciseId: 'diaphragmatic-breath', durationSec: 60 },
           { type: 'hold', exerciseId: 'birth-breathing', durationSec: 60 },
+          { type: 'hold', exerciseId: 'cat-cow', durationSec: 60 },
           {
             type: 'reps',
             exerciseId: 'perineal-bulge',
@@ -348,6 +412,7 @@ const stages: NonEmpty<Stage> = [
             restSec: 10,
           },
           { type: 'hold', exerciseId: 'child-pose-wide', durationSec: 60 },
+          { type: 'hold', exerciseId: 'full-release', durationSec: 60 },
         ],
       },
       {
@@ -355,6 +420,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Light and Connected',
         steps: [
           { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'short-hold',
@@ -373,6 +439,16 @@ const stages: NonEmpty<Stage> = [
             releaseSec: 1,
             restSec: 4,
           },
+          {
+            type: 'reps',
+            exerciseId: 'side-lying-clam',
+            reps: 8,
+            liftSec: 1,
+            holdSec: 2,
+            releaseSec: 2,
+            restSec: 4,
+            note: 'Eight each side.',
+          },
           { type: 'hold', exerciseId: 'happy-baby-supported', durationSec: 60 },
           { type: 'hold', exerciseId: 'full-release', durationSec: 60 },
         ],
@@ -381,10 +457,12 @@ const stages: NonEmpty<Stage> = [
         id: 'prepare-c',
         title: 'Comfort',
         steps: [
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           { type: 'hold', exerciseId: 'cat-cow', durationSec: 60 },
           { type: 'hold', exerciseId: 'pelvic-tilt', durationSec: 60 },
           { type: 'hold', exerciseId: 'figure-four', durationSec: 60 },
           { type: 'hold', exerciseId: 'hip-flexor-kneel', durationSec: 60 },
+          { type: 'hold', exerciseId: 'child-pose-wide', durationSec: 60 },
           { type: 'hold', exerciseId: 'rest-and-breathe', durationSec: 90 },
         ],
       },
@@ -459,7 +537,9 @@ const stages: NonEmpty<Stage> = [
             releaseSec: 3,
             restSec: 8,
           },
+          { type: 'hold', exerciseId: 'cat-cow', durationSec: 45 },
           { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
+          { type: 'hold', exerciseId: 'full-release', durationSec: 60 },
         ],
       },
       {
@@ -477,8 +557,19 @@ const stages: NonEmpty<Stage> = [
             restSec: 5,
             note: 'Alternate legs. Stop if you feel any doming or dragging.',
           },
+          {
+            type: 'reps',
+            exerciseId: 'side-lying-clam',
+            reps: 8,
+            liftSec: 1,
+            holdSec: 2,
+            releaseSec: 2,
+            restSec: 4,
+            note: 'Eight each side.',
+          },
           { type: 'hold', exerciseId: 'pelvic-tilt', durationSec: 60 },
           { type: 'hold', exerciseId: 'gentle-walk', durationSec: 180 },
+          { type: 'hold', exerciseId: 'rest-and-breathe', durationSec: 90 },
         ],
       },
     ],
@@ -505,6 +596,7 @@ const stages: NonEmpty<Stage> = [
         title: 'Strength',
         steps: [
           { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
+          { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           {
             type: 'reps',
             exerciseId: 'long-hold',
@@ -542,12 +634,14 @@ const stages: NonEmpty<Stage> = [
             restSec: 3,
             note: 'Ten each side.',
           },
+          { type: 'hold', exerciseId: 'full-release', durationSec: 60 },
         ],
       },
       {
         id: 'rebuild-b',
         title: 'Function',
         steps: [
+          { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
           { type: 'hold', exerciseId: 'posture-reset', durationSec: 45 },
           {
             type: 'reps',
@@ -560,6 +654,15 @@ const stages: NonEmpty<Stage> = [
           },
           {
             type: 'reps',
+            exerciseId: 'the-knack',
+            reps: 6,
+            liftSec: 1,
+            holdSec: 2,
+            releaseSec: 2,
+            restSec: 6,
+          },
+          {
+            type: 'reps',
             exerciseId: 'bird-dog',
             reps: 8,
             liftSec: 2,
@@ -568,15 +671,7 @@ const stages: NonEmpty<Stage> = [
             restSec: 4,
             note: 'Alternate sides each rep.',
           },
-          {
-            type: 'reps',
-            exerciseId: 'the-knack',
-            reps: 6,
-            liftSec: 1,
-            holdSec: 2,
-            releaseSec: 2,
-            restSec: 6,
-          },
+          { type: 'hold', exerciseId: 'hip-flexor-kneel', durationSec: 60 },
           { type: 'hold', exerciseId: 'full-release', durationSec: 45 },
         ],
       },
@@ -584,7 +679,17 @@ const stages: NonEmpty<Stage> = [
         id: 'rebuild-c',
         title: 'Load Ready',
         steps: [
+          { type: 'hold', exerciseId: 'cat-cow', durationSec: 45 },
           { type: 'hold', exerciseId: 'connection-breath', durationSec: 45 },
+          {
+            type: 'reps',
+            exerciseId: 'elevator',
+            reps: 5,
+            liftSec: 4,
+            holdSec: 3,
+            releaseSec: 4,
+            restSec: 8,
+          },
           {
             type: 'reps',
             exerciseId: 'wall-sit-lift',

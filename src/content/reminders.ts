@@ -18,7 +18,7 @@ const COPY: Record<ProgramId, Record<StageId, ReminderCopy>> = {
   'pelvic-floor': {
     foundation: {
       title: 'A few quiet minutes',
-      body: 'Find your breath, find your pelvic floor. Four minutes is a whole session.',
+      body: 'Find your breath, find your pelvic floor. A few good minutes is a whole session.',
     },
     build: {
       title: 'Time to build',
@@ -77,7 +77,7 @@ const COPY: Record<ProgramId, Record<StageId, ReminderCopy>> = {
   },
   'birth-prep': {
     foundation: {
-      title: 'Five easy minutes',
+      title: 'A few easy minutes',
       body: 'Move the spine and hips. Nothing about birth yet — just the habit.',
     },
     build: {

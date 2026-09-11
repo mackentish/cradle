@@ -5,7 +5,7 @@ import { daysAgo, seed, sessionLog } from '../helpers';
 
 /** Steps through the intro screens until the session finishes. */
 function skipEveryStep() {
-  for (let guard = 0; guard < 12; guard += 1) {
+  for (let guard = 0; guard < 16; guard += 1) {
     const skip = screen.queryByText('Skip this one');
     if (!skip) return;
     fireEvent.press(skip);
@@ -26,8 +26,9 @@ describe('a guided session', () => {
     const card = screen.getByTestId('program-card-pelvic-floor');
     fireEvent.press(within(card).getByText('Start session'));
 
-    // Every stage's sessions have five steps, and each opens on an intro.
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    // Every session opens on its first exercise's intro. How many steps it has
+    // depends on which one the rotation served, so match the count loosely.
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
     expect(screen.getByText('Get into position')).toBeOnTheScreen();
     expect(screen.getByText('How to')).toBeOnTheScreen();
 
@@ -37,7 +38,7 @@ describe('a guided session', () => {
     expect(screen.queryByText("I'm ready")).not.toBeOnTheScreen();
 
     fireEvent.press(screen.getByText('Skip step'));
-    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 2 of \d+/)).toBeOnTheScreen());
 
     skipEveryStep();
 
@@ -64,7 +65,7 @@ describe('a guided session', () => {
     await seed();
     renderRouter('app', { initialUrl: '/session/pelvic-floor' });
 
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
     skipEveryStep();
 
     await waitFor(() => expect(screen.getByTestId('session-complete')).toBeOnTheScreen());
@@ -79,7 +80,7 @@ describe('a guided session', () => {
     await seed({ logs: [] });
     renderRouter('app', { initialUrl: '/session/pelvic-floor' });
 
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
     skipEveryStep();
 
     await waitFor(() => expect(screen.getByText("That's one")).toBeOnTheScreen());
@@ -92,7 +93,7 @@ describe('moving around inside a session', () => {
   const openPlayer = async () => {
     await seed();
     renderRouter('app', { initialUrl: '/session/pelvic-floor' });
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
   };
 
   it('offers no way back from the first exercise', async () => {
@@ -103,11 +104,11 @@ describe('moving around inside a session', () => {
   it('goes back to the exercise before this one, at its intro', async () => {
     await openPlayer();
     fireEvent.press(screen.getByText('Skip this one'));
-    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 2 of \d+/)).toBeOnTheScreen());
 
     fireEvent.press(screen.getByLabelText('Previous exercise'));
 
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
     // The intro, not the timer: she gets to read the cues and get back into
     // position before the clock starts again.
     expect(screen.getByText('Get into position')).toBeOnTheScreen();
@@ -117,7 +118,7 @@ describe('moving around inside a session', () => {
   it('stops the clock when she goes back mid-exercise', async () => {
     await openPlayer();
     fireEvent.press(screen.getByText('Skip this one'));
-    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 2 of \d+/)).toBeOnTheScreen());
     fireEvent.press(screen.getByText("I'm ready"));
     await waitFor(() => expect(screen.getByText('Pause')).toBeOnTheScreen());
 
@@ -126,7 +127,7 @@ describe('moving around inside a session', () => {
 
     fireEvent.press(screen.getByLabelText('Previous exercise'));
 
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
     expect(screen.queryByText('Pause')).not.toBeOnTheScreen();
     expect(screen.getByText("I'm ready")).toBeOnTheScreen();
   });
@@ -152,12 +153,12 @@ describe('moving around inside a session', () => {
     // Forward to the second exercise and start it, so there is a live clock
     // belonging to the wrong step for going back to pick up by mistake.
     fireEvent.press(screen.getByText('Skip step'));
-    await waitFor(() => expect(screen.getByText(/Step 2 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 2 of \d+/)).toBeOnTheScreen());
     fireEvent.press(screen.getByText("I'm ready"));
     await waitFor(() => expect(screen.getByText('Pause')).toBeOnTheScreen());
 
     fireEvent.press(screen.getByLabelText('Previous exercise'));
-    await waitFor(() => expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen());
+    await waitFor(() => expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen());
     fireEvent.press(screen.getByText("I'm ready"));
 
     // Exercise one, from the top of its own first segment.
@@ -178,7 +179,7 @@ describe('moving around inside a session', () => {
     // — going back to the beginning of an exercise is not leaving it.
     expect(runningExercise()).toBe(exercise);
     expect(countdown()).toBe(fromTheTop);
-    expect(screen.getByText(/Step 1 of 5/)).toBeOnTheScreen();
+    expect(screen.getByText(/Step 1 of \d+/)).toBeOnTheScreen();
     expect(screen.getByText('Pause')).toBeOnTheScreen();
     expect(screen.queryByText("I'm ready")).not.toBeOnTheScreen();
   });
