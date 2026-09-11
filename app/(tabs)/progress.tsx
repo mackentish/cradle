@@ -104,6 +104,7 @@ function ProgressView({ progress }: Readonly<{ progress: Progress }>) {
           value={timelineProgram}
           onChange={setTimelineProgram}
           activeColor={timelineTone.ink}
+          wrapLabels
           options={PROGRAM_IDS.map((programId) => ({
             value: programId,
             label: programTitle(programsById[programId], progress.phase),

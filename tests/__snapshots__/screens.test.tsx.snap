@@ -11059,7 +11059,8 @@ exports[`screen snapshots progress 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Pelvic floor",
+                        "Pelvic
+floor",
                       ],
                       "props": {
                         "style": [
@@ -11109,7 +11110,8 @@ exports[`screen snapshots progress 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Core strength",
+                        "Core
+strength",
                       ],
                       "props": {
                         "style": [
@@ -11157,7 +11159,8 @@ exports[`screen snapshots progress 1`] = `
                   "children": [
                     {
                       "children": [
-                        "Deep stretch",
+                        "Deep
+stretch",
                       ],
                       "props": {
                         "style": [

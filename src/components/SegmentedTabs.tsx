@@ -19,6 +19,7 @@ export function SegmentedTabs<T extends string>({
   value,
   onChange,
   activeColor = colors.primaryPressed,
+  wrapLabels = false,
 }: Readonly<{
   options: ReadonlyArray<SegmentOption<T>>;
   value: T;
@@ -29,6 +30,14 @@ export function SegmentedTabs<T extends string>({
    * switches a mode rather than a program, so it keeps the default.
    */
   activeColor?: string;
+  /**
+   * Break every label at its spaces, so a two-word program name always reads as
+   * two lines instead of wrapping only on the narrow phones. Three tabs of
+   * program names otherwise change height with the screen, and the one whose
+   * name happens to fit sits taller than its neighbors. The break is only in
+   * what's drawn — `accessibilityLabel` keeps the label as written.
+   */
+  wrapLabels?: boolean;
 }>) {
   return (
     <View style={styles.row}>
@@ -48,7 +57,7 @@ export function SegmentedTabs<T extends string>({
               color={active ? activeColor : colors.textFaint}
               center
             >
-              {option.label}
+              {wrapLabels ? option.label.split(' ').join('\n') : option.label}
             </Text>
           </Pressable>
         );
